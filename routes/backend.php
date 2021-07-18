@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/video/edit/{id}', ['as' => 'admin.video.edit', 'uses' => 'Backend\VideoController@edit']);
     Route::post('/video/update/{id}', ['as' => 'admin.video.update', 'uses' => 'Backend\VideoController@update']);
     Route::delete('/video/delete/{id}', ['as' => 'admin.video.destroy', 'uses' => 'Backend\VideoController@destroy']);
+    Route::post('/video/update_multiple', ['as' => 'admin.video.update_multiple', 'uses' => 'Backend\VideoController@update_multiple']);
     
     /* Quản lý news */
     Route::get('/news', ['as' => 'admin.news.index', 'uses' => 'Backend\NewsController@index']);
@@ -36,7 +37,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/news/edit/{id}', ['as' => 'admin.news.edit', 'uses' => 'Backend\NewsController@edit']);
     Route::post('/news/update/{id}', ['as' => 'admin.news.update', 'uses' => 'Backend\NewsController@update']);
     Route::delete('/news/delete/{id}', ['as' => 'admin.news.destroy', 'uses' => 'Backend\NewsController@destroy']);
+    Route::post('/news/update_multiple', ['as' => 'admin.news.update_multiple', 'uses' => 'Backend\NewsController@update_multiple']);
     
+    /* Quản lý khoá học */
+    Route::get('course/test', ['as' => 'admin.course.index', 'uses' => 'Backend\CourseController@index']);
+    Route::get('/course/create', ['as' => 'admin.course.create', 'uses' => 'Backend\CourseController@create']);
+    Route::post('/course/store', ['as' => 'admin.course.store', 'uses' => 'Backend\CourseController@store']);
+    Route::get('/course/edit/{id}', ['as' => 'admin.course.edit', 'uses' => 'Backend\CourseController@edit']);
+    Route::post('/course/update/{id}', ['as' => 'admin.course.update', 'uses' => 'Backend\CourseController@update']);
+    Route::delete('/course/delete/{id}', ['as' => 'admin.course.destroy', 'uses' => 'Backend\CourseController@destroy']);
+
     /* Quản lý test */
     Route::get('/test', ['as' => 'admin.test.index', 'uses' => 'Backend\TestController@index']);
     Route::get('/test/create', ['as' => 'admin.test.create', 'uses' => 'Backend\TestController@create']);
@@ -44,6 +54,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/test/edit/{id}', ['as' => 'admin.test.edit', 'uses' => 'Backend\TestController@edit']);
     Route::post('/test/update/{id}', ['as' => 'admin.test.update', 'uses' => 'Backend\TestController@update']);
     Route::delete('/test/delete/{id}', ['as' => 'admin.test.destroy', 'uses' => 'Backend\TestController@destroy']);
+
+
 
     /* Quản lý câu hỏi */
     Route::get('/question', ['as' => 'admin.question.index', 'uses' => 'Backend\QuestionController@index']);
@@ -102,6 +114,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/gallery/edit/{id}', ['as' => 'admin.gallery.edit', 'uses' => 'Backend\GalleryController@edit']);
     Route::post('/gallery/update/{id}', ['as' => 'admin.gallery.update', 'uses' => 'Backend\GalleryController@update']);
     Route::delete('/gallery/delete/{id}', ['as' => 'admin.gallery.destroy', 'uses' => 'Backend\GalleryController@destroy']);
+    Route::post('/gallery/update_multiple', ['as' => 'admin.gallery.update_multiple', 'uses' => 'Backend\GalleryController@update_multiple']);
     
     /* Quản lý danh mục cấp bậc */
     Route::get('/rank', ['as' => 'admin.rank.index', 'uses' => 'Backend\RankController@index']);
@@ -128,7 +141,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/user/edit_profile/{id}', ['as' => 'admin.user.index_profile', 'uses' => 'Backend\UserController@editProfile']);
     Route::post('/user/update_profile/{id}', ['as' => 'admin.user.update_profile', 'uses' => 'Backend\UserController@updateProfile']);
     /* Quản lý quyền */
-    Route::get('/role', ['as' => 'admin.role.index', 'uses' => 'Backend\RoleController@index']);
+        Route::get('/role', ['as' => 'admin.role.index', 'uses' => 'Backend\RoleController@index']);
+    Route::get('/role/create', ['as' => 'admin.role.create', 'uses' => 'Backend\RoleController@create']);
+    Route::get('/role/edit/{id}', ['as' => 'admin.role.edit', 'uses' => 'Backend\RoleController@edit']);
+    Route::post('/role/store', ['as' => 'admin.role.store', 'uses' => 'Backend\RoleController@store']);
+    Route::post('/role/update/{id}', ['as' => 'admin.role.update', 'uses' => 'Backend\RoleController@update']);
+    Route::delete('/role/delete/{id}', ['as' => 'admin.role.destroy', 'uses' => 'Backend\RoleController@destroy']);
     /* Menu*/
     Route::get('/menu', ['as' => 'admin.menu.index', 'uses' => 'Backend\MenuController@index']);
     Route::get('/menu/create', ['as' => 'admin.menu.create', 'uses' => 'Backend\MenuController@create']);
@@ -157,6 +175,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::post('/service/store', ['as' => 'admin.service.store', 'uses' => 'Backend\ServiceController@store']);
     Route::post('/service/update/{id}', ['as' => 'admin.service.update', 'uses' => 'Backend\ServiceController@update']);
     Route::delete('/service/delete/{id}', ['as' => 'admin.service.destroy', 'uses' => 'Backend\ServiceController@destroy']);
+    //section
+    Route::get('/section', ['as' => 'admin.section.index', 'uses' => 'Backend\SectionController@index']);
+    Route::get('/section/create', ['as' => 'admin.section.create', 'uses' => 'Backend\SectionController@create']);
+    Route::get('/section/edit/{id}', ['as' => 'admin.section.edit', 'uses' => 'Backend\SectionController@edit']);
+    Route::post('/section/store', ['as' => 'admin.section.store', 'uses' => 'Backend\SectionController@store']);
+    Route::post('/section/update/{id}', ['as' => 'admin.section.update', 'uses' => 'Backend\SectionController@update']);
+    Route::delete('/section/delete/{id}', ['as' => 'admin.section.destroy', 'uses' => 'Backend\SectionController@destroy']);
+      Route::post('/section/update_multiple', ['as' => 'admin.section.update_multiple', 'uses' => 'Backend\SectionController@update_multiple']);
     /* Người đăng kí*/
     Route::get('/subscriber', ['as' => 'admin.subscriber.index', 'uses' => 'Backend\SubscriberController@index']);
     Route::delete('/subscriber/delete/{id}', ['as' => 'admin.subscriber.destroy', 'uses' => 'Backend\SubscriberController@destroy']);
@@ -177,4 +203,28 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/template_setting/create', ['as' => 'admin.template_setting.create', 'uses' => 'Backend\TemplateSettingController@create']);
     Route::post('/template_setting/store', ['as' => 'admin.template_setting.store', 'uses' => 'Backend\TemplateSettingController@store']);
 
+    /* Quản lý giảng viên */
+    Route::get('/teacher', ['as' => 'admin.teacher.index', 'uses' => 'Backend\TeacherController@index']);
+    Route::get('/teacher/create', ['as' => 'admin.teacher.create', 'uses' => 'Backend\TeacherController@create']);
+    Route::post('/teacher/store', ['as' => 'admin.teacher.store', 'uses' => 'Backend\TeacherController@store']);
+    Route::get('/teacher/edit/{id}', ['as' => 'admin.teacher.edit', 'uses' => 'Backend\TeacherController@edit']);
+    Route::post('/teacher/update/{id}', ['as' => 'admin.teacher.update', 'uses' => 'Backend\TeacherController@update']);
+    Route::delete('/teacher/delete/{id}', ['as' => 'admin.teacher.destroy', 'uses' => 'Backend\TeacherController@destroy']);
+
+      /* Quản lý địa chỉ liên hệ */
+    Route::get('/contact_address', ['as' => 'admin.contact_address.index', 'uses' => 'Backend\ContactAddressController@index']);
+    Route::get('/contact_address/create', ['as' => 'admin.contact_address.create', 'uses' => 'Backend\ContactAddressController@create']);
+    Route::post('/contact_address/store', ['as' => 'admin.contact_address.store', 'uses' => 'Backend\ContactAddressController@store']);
+    Route::get('/contact_address/edit/{id}', ['as' => 'admin.contact_address.edit', 'uses' => 'Backend\ContactAddressController@edit']);
+    Route::post('/contact_address/update/{id}', ['as' => 'admin.contact_address.update', 'uses' => 'Backend\ContactAddressController@update']);
+    Route::delete('/contact_address/delete/{id}', ['as' => 'admin.contact_address.destroy', 'uses' => 'Backend\ContactAddressController@destroy']);
+
+    
+      /*Lịch */
+    Route::get('/schedule', ['as' => 'admin.schedule.index', 'uses' => 'Backend\ScheduleController@index']);
+    Route::get('/schedule/create', ['as' => 'admin.schedule.create', 'uses' => 'Backend\ScheduleController@create']);
+    Route::post('/schedule/store', ['as' => 'admin.schedule.store', 'uses' => 'Backend\ScheduleController@store']);
+    Route::get('/schedule/edit/{id}', ['as' => 'admin.schedule.edit', 'uses' => 'Backend\ScheduleController@edit']);
+    Route::post('/schedule/update/{id}', ['as' => 'admin.schedule.update', 'uses' => 'Backend\ScheduleController@update']);
+    Route::delete('/schedule/delete/{id}', ['as' => 'admin.schedule.destroy', 'uses' => 'Backend\ScheduleController@destroy']);
 });

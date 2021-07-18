@@ -13,6 +13,7 @@
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
 Route::post('/login', ['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']);
 Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
+Route::get('/filter-news-cat', ['as' => 'api.filter_news_cat', 'uses' => 'Backend\NewssController@filter_news_cat']);
 Route::group(['prefix' => 'api', 'middleware' => 'api'], function() {
     Route::post('/login-marketing', ['as' => 'api.login-marketing', 'uses' => 'Api\AuthController@login']);
     Route::get('/logout-marketing', ['as' => 'api.logout-marketing', 'uses' => 'Api\AuthController@logout']);

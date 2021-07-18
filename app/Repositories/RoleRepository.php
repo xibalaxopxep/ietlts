@@ -19,4 +19,12 @@ class RoleRepository extends AbstractRepository {
         return $roles;
     }
 
+    public static function getSelectOptions($options, $selected = '') {
+        $html = '<option></option>';
+        foreach ($options as $option) {
+            $html .= '<option value="' . $option->id . '"' . ((is_array($selected) ? in_array($option->id, $selected) : $selected == $option->id) ? 'selected' : '') . '>' . $option->name . '</option>';
+        }
+        return $html;
+    }
+
 }

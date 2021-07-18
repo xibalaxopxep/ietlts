@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-user-tie"></i> <span>Người dùng</span></a>
+                    <a href="#" class="nav-link"><i class="icon-user-tie"></i> <span>Người dùng hệ thống</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
 
                         <li class="nav-item">
@@ -77,6 +77,18 @@
                 </li>
                 @endif
                 <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-video-camera"></i> <span>Menu</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="{{route('admin.menu.index')}}" class="nav-link">Menu</a></li>
+                    </ul>
+                </li>
+                  <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-video-camera"></i> <span>Slide</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="{{route('admin.slide.index')}}" class="nav-link">Slide</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link"><i class="icon-newspaper2"></i> <span>Tin tức</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
                         <li class="nav-item"><a href="{{route('admin.category.index', \App\Category::TYPE_NEWS)}}" class="nav-link">Danh mục</a></li>
@@ -85,6 +97,7 @@
                 </li>
                 
                 @if (\Auth::user()->role_id == \App\User::ROLE_ADMINISTRATOR)
+                 
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link"><i class="icon-video-camera"></i> <span>Video</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
@@ -104,7 +117,34 @@
                     <ul class="nav nav-group-sub" data-submenu-title="bài test">
                         <li class="nav-item"><a href="{{route('admin.category.index', \App\Category::TYPE_TEST)}}" class="nav-link">Danh mục</a></li>
                         <li class="nav-item"><a href="{{route('admin.test.index')}}" class="nav-link">Bài test</a></li>
+                        <li class="nav-item"><a href="{{route('admin.section.index')}}" class="nav-link">Section</a></li>
                         <li class="nav-item"><a href="{{route('admin.quizz.index')}}" class="nav-link">Câu hỏi</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Khoá học</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="bài test">
+                        <li class="nav-item"><a href="{{route('admin.course.index')}}" class="nav-link">Danh sách khoá học</a></li>
+                         <li class="nav-item"><a href="{{route('admin.schedule.index')}}" class="nav-link">Lịch học</a></li>
+
+                    </ul>
+                </li>
+
+                    <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Liên hệ</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="bài test">
+                        <li class="nav-item"><a href="{{route('admin.contact_address.index')}}" class="nav-link">Địa chỉ liên hệ</a></li>
+                        <li class="nav-item"><a href="{{route('admin.contact.index')}}" class="nav-link">Danh sách liên hệ</a></li>
+                    </ul>
+                </li>
+
+                  <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Đội ngũ giảng viên</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="bài test">
+                        <li class="nav-item"><a href="{{route('admin.teacher.index')}}" class="nav-link">Danh sách giảng viên</a></li>
+
                     </ul>
                 </li>
              

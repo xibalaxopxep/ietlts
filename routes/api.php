@@ -46,3 +46,5 @@ Route::post('/uploadImage', ['as' => 'api.uploadimage', 'uses' => 'Api\FrontendC
 Route::post('/delete_image', ['as' => 'api.upload', 'uses' => 'Api\FrontendController@delete_image']);
 
 Route::post('/create-question-api', ['as' => 'api.create_question', 'uses' => 'Api\QuestionController@create_question']);
+
+//Route::post('/filter-news-cat', ['as' => 'api.filter_news_cat', 'uses' => 'Api\FilterController@filter_news_cat']);

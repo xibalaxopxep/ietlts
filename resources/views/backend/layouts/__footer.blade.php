@@ -7,7 +7,17 @@
     </div>
 
 </div>
+<script type="text/javascript">
+	 function UpdatePreview(){
+        $('#frame').attr('src', URL.createObjectURL(event.target.files[0]));
+    };
 
+    function UpdatePreview2(){
+        $('#frame2').attr('src', URL.createObjectURL(event.target.files[0]));
+    };
+
+
+</script>
 
 <script src="{!! asset('assets/global_assets/js/main/jquery.min.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/main/bootstrap.bundle.min.js') !!}"></script>
@@ -21,5 +31,6 @@
 <script src="{!! asset('assets/global_assets/js/plugins/bootbox/bootbox.min.js') !!}"></script>
 <script src="{!!asset('assets/frontend/js/sweetalert.min.js')!!}"></script> 
 <script src="{!! asset('assets/backend/js/common.js') !!}"></script>
+<script src="{!! asset('assets/backend/js/custom.js') !!}"></script>
 <script src="{!! asset('assets/js/app.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/demo_pages/dashboard.js') !!}"></script>

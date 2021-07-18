@@ -8,6 +8,7 @@ use Repositories\GalleryRepository;
 use Repositories\CategoryRepository;
 use Repositories\AttributeRepository;
 use Repositories\PostHistoryRepository;
+use DB;
 
 class GalleryController extends Controller {
 
@@ -23,9 +24,19 @@ class GalleryController extends Controller {
         $this->postHistoryRepo = $postHistoryRepo;
     }
 
-    public function index() {
-        $records = $this->galleryRepo->all();
-        return view('backend/gallery/index', compact('records'));
+    public function index(Request $request) {
+       
+
+         $cat_id = $request->cat_id;
+        if($cat_id != null ){
+           $gallery_id = DB::table('gallery_category')->where('category_id',$cat_id)->get()->pluck('gallery_id');
+           $records = DB::table('gallery')->whereIn('id',$gallery_id)->get(); 
+        }
+        elseif($cat_id == null || $cat_id == "0"){
+            $records = $this->galleryRepo->all();
+        }
+        $categories = DB::table('category')->where('type',3)->get();
+        return view('backend/gallery/index', compact('records','categories','cat_id'));
     }
 
     /**
@@ -34,10 +45,12 @@ class GalleryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
+        $count_order = DB::table('news')->count();
+        $count_order++;
         $options = $this->categoryRepo->readCategoryByType(\App\Category::TYPE_GALLERY);
         $category_html = \App\Helpers\StringHelper::getSelectOptions($options);
         // $attributes = $this->attributeRepo->readAttributeByParentAdmin($module = "gallery");
-        return view('backend/gallery/create', compact('category_html'));
+        return view('backend/gallery/create', compact('category_html','count_order'));
     }
 
     //Lấy danh sách thuộc tính hình ảnh gửi lên và gom lại cho đúng form
@@ -120,10 +133,14 @@ class GalleryController extends Controller {
      */
     public function edit($id) {
         $record = $this->galleryRepo->find($id);
-        $options = $this->categoryRepo->readCategoryByType(\App\Category::TYPE_GALLERY);
-        $category_ids = $record->categories()->get()->pluck('id')->toArray();
-        $category_html = \App\Helpers\StringHelper::getSelectOptions($options, $category_ids);
-        return view('backend/gallery/edit', compact('record', 'category_html'));
+        if($record){
+            $options = $this->categoryRepo->readCategoryByType(\App\Category::TYPE_GALLERY);
+            $category_ids = $record->categories()->get()->pluck('id')->toArray();
+            $category_html = \App\Helpers\StringHelper::getSelectOptions($options, $category_ids);
+            return view('backend/gallery/edit', compact('record', 'category_html'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -172,6 +189,36 @@ class GalleryController extends Controller {
         $gallery = $this->galleryRepo->find($id);
         $gallery->categories()->detach();
         return redirect()->back()->with('success', 'Xóa thành công');
+    }
+
+    public function update_multiple(Request $request) {
+        $data = $request->all();
+        if($request->check == null){
+            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một ảnh");
+        }
+        if($request->action == "save"){      
+           foreach($data['check'] as $key => $chk){
+                 DB::table('gallery')->where('id',$chk)->update(['ordering'=>$data['orderBy'][$key],'title'=>$data['title'][$key]]);
+           }  
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
+        elseif($request->action == "delete"){
+           foreach($data['check'] as $key => $chk){
+                 DB::table('gallery')->where('id',$chk)->delete();
+           }  
+           return redirect()->back()->with('success',"Xoá thành công");
+        }
+        elseif($request->action == "active"){
+           foreach($data['check'] as $key => $chk){
+                 DB::table('gallery')->where('id',$chk)->update(['status'=>1]);
+           }  
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }else{
+              foreach($data['check'] as $key => $chk){
+                 DB::table('gallery')->where('id',$chk)->update(['status'=>0]);
+           }  
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
     }
 
 }

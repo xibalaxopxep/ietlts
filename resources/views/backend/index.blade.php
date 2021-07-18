@@ -10,7 +10,7 @@
                     </div> 
                     <div class="num" data-start="0" data-end="3350" data-postfix="" data-duration="1500" data-delay="0">
                         {{$product_count}}                        </div>
-                    <h3>Sản phẩm</h3>
+                    <h3>Khoá học</h3>
                 </div>
             </a>
         </div>

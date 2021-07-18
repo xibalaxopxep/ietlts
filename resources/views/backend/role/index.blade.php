@@ -28,17 +28,24 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Loại</th>
-                    <th>Mô tả</th>
+                    <th>Quyền</th>
+                    <th class="text-center">Tác vụ</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($records as $key=>$record)
+                @foreach($records as $key => $record)
                 <tr>
                     <td>{{++$key}}</td>
-                    <td>{{$record->title}}</td>
-                    <td>
-                        {{$record->description}}
+                    <td>{{$record->name}}</td>
+                    <td class="text-center">
+                        <a href="{{route('admin.role.edit', $record->id)}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
+                        <form action="{!! route('admin.role.destroy', ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
+                            {!! method_field('DELETE') !!}
+                            {!! csrf_field() !!}
+                            <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
+                                <i class="icon-close2"></i>
+                            </a>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Repositories\NewsRepository;
 use Repositories\CategoryRepository;
 use Repositories\PostHistoryRepository;
+use DB;
 
 class NewsController extends Controller {
 
@@ -21,13 +22,22 @@ class NewsController extends Controller {
         $this->postHistoryRepo = $postHistoryRepo;
     }
 
-    public function index() {
-        if (\Auth::user()->role_id == \App\User::ROLE_ADMINISTRATOR || \Auth::user()->role_id == \App\User::ROLE_EDITOR) {
-            $records = $this->newsRepo->all();
-        } else {
-            $records = $this->newsRepo->getAllByUserId(\Auth::user()->id);
+    public function index(Request $request) {
+        // if (\Auth::user()->role_id == \App\User::ROLE_ADMINISTRATOR || \Auth::user()->role_id == \App\User::ROLE_EDITOR) {
+        //     $records = $this->newsRepo->all();
+        // } else {
+        //     $records = $this->newsRepo->getAllByUserId(\Auth::user()->id);
+        // }
+        $cat_id = $request->cat_id;
+        if($cat_id != null ){
+           $news_id = DB::table('news_category')->where('category_id',$cat_id)->get()->pluck('news_id');
+           $records = DB::table('news')->whereIn('id',$news_id)->get(); 
         }
-        return view('backend/news/index', compact('records'));
+        elseif($cat_id == null || $cat_id == "0"){
+            $records = $this->newsRepo->all();
+        }
+        $categories = DB::table('category')->where('type',2)->get();
+        return view('backend/news/index', compact('records','categories','cat_id'));
     }
 
     /**
@@ -36,9 +46,11 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
+        $count_order = DB::table('news')->count();
+        $count_order++;
         $options = $this->categoryRepo->readCategoryByType(\App\Category::TYPE_NEWS);
         $category_html = \App\Helpers\StringHelper::getSelectOptions($options);
-        return view('backend/news/create', compact('category_html'));
+        return view('backend/news/create', compact('category_html','count_order'));
     }
 
     /**
@@ -92,11 +104,15 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $record = $this->newsRepo->find($id);
-        $category_ids = $record->categories()->get()->pluck('id')->toArray();
-        $options = $this->categoryRepo->readCategoryByType(\App\Category::TYPE_NEWS);
-        $category_html = \App\Helpers\StringHelper::getSelectOptions($options, $category_ids);
-        return view('backend/news/edit', compact('record', 'category_html'));
+        if($record){
+            $record = $this->newsRepo->find($id);
+            $category_ids = $record->categories()->get()->pluck('id')->toArray();
+            $options = $this->categoryRepo->readCategoryByType(\App\Category::TYPE_NEWS);
+            $category_html = \App\Helpers\StringHelper::getSelectOptions($options, $category_ids);
+            return view('backend/news/edit', compact('record', 'category_html'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -128,6 +144,36 @@ class NewsController extends Controller {
             return redirect()->route('admin.news.index')->with('error', 'Cập nhật thất bại');
         }
     }
+    
+    public function update_multiple(Request $request) {
+        $data = $request->all();
+        if($request->check == null){
+            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một bài viết");
+        }
+        if($request->action == "save"){      
+           foreach($data['check'] as $key => $chk){
+                 DB::table('news')->where('id',$chk)->update(['ordering'=>$data['orderBy'][$key]]);
+           }  
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
+        elseif($request->action == "delete"){
+           foreach($data['check'] as $key => $chk){
+                 DB::table('news')->where('id',$chk)->delete();
+           }  
+           return redirect()->back()->with('success',"Xoá thành công");
+        }
+        elseif($request->action == "active"){
+           foreach($data['check'] as $key => $chk){
+                 DB::table('news')->where('id',$chk)->update(['status'=>1]);
+           }  
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }else{
+              foreach($data['check'] as $key => $chk){
+                 DB::table('news')->where('id',$chk)->update(['status'=>0]);
+           }  
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -141,6 +187,10 @@ class NewsController extends Controller {
         $this->newsRepo->delete($id);
         return redirect()->route('admin.news.index')->with('success', 'Xóa thành công');
         //
+    }
+
+    public function filter_news_cat($id){
+        dd('1');
     }
 
 }

@@ -1,0 +1,81 @@
+@extends('backend.layouts.master')
+@section('content')
+<!-- Content area -->
+<div class="content">
+    <!-- Table header styling -->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Danh sách giảng viên </h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            @if (Session::has('success'))
+            <div class="alert bg-success alert-styled-left">
+                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                <span class="text-semibold">{{ Session::get('success') }}</span>
+            </div>
+            @endif
+        </div>
+
+        <table class="table datatable-basic">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Avatar</th>
+                    <th>Tên giáo viên</th>
+                    <th>Ngày tạo</th>
+                    <th>Trạng thái</th>
+                    <th>Tác vụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($records as $key=>$record)
+                <tr>
+                    <td>{{++$key}}</td>
+                    @if($record->avatar == null)
+                    <td><img src="{{url('/img/avatar-drive.png')}}" id ="frame" alt="Chuyên gia" width="100" height="100" /></td>
+                    @else
+                    <td><img class="img-responsive" style="width: 100px; height: 100px;" src="{{asset($record->avatar)}}"></td>
+                    @endif
+                    <td>{{$record->name}}</td>
+                    <td>{{date('d-m-Y', strtotime($record->created_at))}}</td>
+                    <td>
+                        @if($record->status == 1)
+                        <span class="badge bg-success-400">Kích hoạt</span>
+                        @else
+                        <span class="badge bg-grey-400">Khoá</span>
+                        @endif
+                    </td>
+                    <td class="">
+                        <a href="{{route('admin.teacher.edit', $record->id)}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
+                        <form action="{!! route('admin.teacher.destroy', ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
+                            {!! method_field('DELETE') !!}
+                            {!! csrf_field() !!}
+                            <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
+                                <i class="icon-close2"></i>
+                            </a>              
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <!-- /table header styling -->
+
+</div>
+<!-- /content area -->
+@stop
+@section('script')
+@parent
+<script src="{!! asset('assets/global_assets/js/plugins/tables/datatables/datatables.min.js') !!}"></script>
+<script src="{!! asset('assets/global_assets/js/plugins/forms/selects/select2.min.js') !!}"></script>
+<script src="{!! asset('assets/global_assets/js/demo_pages/datatables_basic.js') !!}"></script>
+@stop   

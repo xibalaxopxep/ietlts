@@ -58,11 +58,17 @@
                                     <div class="form-group col-md-6">
                                         <label class="required">Quyền hạn <span class="text-danger">*</span></label>
                                         <select name="role_id" class="form-control select-search" data-placeholder="Chọn quyền hạn" required="">
-                                            {!!$role_html!!}
+                                            @foreach($roles as $role)
+                                            @if($role->id == $record->role_id)
+                                           <option selected="" value="{{$role->id}}">{{$role->name}}</option>
+                                           @else
+                                           <option value="{{$role->id}}">{{$role->name}}</option>
+                                           @endif
+                                           @endforeach
                                         </select>
                                         {!! $errors->first('role_id', '<span class="text-danger">:message</span>') !!}
                                     </div>
-                                    <div class="form-group col-md-1">
+                                    <div class="form-group col-md-2">
                                         <div class="form-check  form-check-right">
                                             <label class="form-check-label float-right">
                                                 Kích hoạt

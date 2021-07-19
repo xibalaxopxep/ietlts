@@ -13,12 +13,13 @@ class CourseController extends Controller {
 
 
     public function index() {
-        $records = Course::all();
+        $records = Course::orderBy('ordering','desc')->get();
         return view('backend/course/index', compact('records'));
     }
 
     public function create() {
-        return view('backend/course/create');
+        $count_ordering = Course::count();
+        return view('backend/course/create',compact('count_ordering'));
     }
 
     public function store(Request $request) {
@@ -112,6 +113,43 @@ class CourseController extends Controller {
         return redirect()->back()->with('success', 'Xóa thành công');
     }
 
+    public function update_multiple(Request $request) {
+        $data = $request->all();
+        
+        if($request->action == "save"){      
+          $records = Course::orderBy('ordering','desc')->get();
+           foreach ($records as $key => $record) {
+               if($record->ordering != $data['orderBy'][$key]){
+                    DB::table('course')->where('id',$record->id)->update(['ordering'=>$data['orderBy'][$key]]);
+               }
+           }
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
+        else{
+            if($request->check == null){
+            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một khoá học");
+            }
+
+            if($request->action == "delete"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('course')->where('id',$chk)->delete();
+               }  
+               return redirect()->back()->with('success',"Xoá thành công");
+            }
+            elseif($request->action == "active"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('course')->where('id',$chk)->update(['status'=>1]);
+               }  
+               return redirect()->back()->with('success',"Cập nhật thành công");
+            }else{
+                  foreach($data['check'] as $key => $chk){
+                     DB::table('course')->where('id',$chk)->update(['status'=>0]);
+               } 
+               } 
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
+    }
+
     public function getProductAttributes($input) {
         $attributes = array();
         foreach ($input['attribute'] as $key => $val) {
@@ -124,6 +162,8 @@ class CourseController extends Controller {
         }
         return $attributes;
     }
+
+
 
     public function addPostHistory($test) {
 

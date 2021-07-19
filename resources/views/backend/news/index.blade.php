@@ -39,7 +39,7 @@
             <div class="col-md-7">
              <select class="form-control select-search filter_new" >
                     @if(0 == $cat_id)
-                    <option selected="" value="0">Tất cả bài test</option>
+                    <option selected="" value="0">Tất cả danh mục</option>
                      @else
                      <option  value="0">Tất cả danh mục</option>
                      @endif

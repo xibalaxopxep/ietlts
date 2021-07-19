@@ -161,32 +161,46 @@ class VideoController extends Controller {
         return redirect()->route('admin.video.index')->with('success', 'Xóa thành công');
     }
 
-    public function update_multiple(Request $request) {
+     public function update_multiple(Request $request) {
         $data = $request->all();
-        if($request->check == null){
+        
+        if($request->action == "save"){    
+            $cat_id = $request->cat_id;
+            if($cat_id != null ){
+               $video_id = DB::table('video_category')->where('category_id',$cat_id)->get()->pluck('video_id');
+               $records = DB::table('video')->whereIn('id',$video_id)->get(); 
+            }
+            elseif($cat_id == null || $cat_id == "0"){
+               $records = $this->videoRepo->all();
+            }
+           foreach ($records as $key => $record) {
+               if($record->ordering != $data['orderBy'][$key]){
+                    DB::table('video')->where('id',$record->id)->update(['ordering'=>$data['orderBy'][$key]]);
+               }
+           }
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
+        else{
+            if($request->check == null){
             return redirect()->back()->with('error',"Vui lòng chọn ít nhất một video");
-        }
-        if($request->action == "save"){      
-           foreach($data['check'] as $key => $chk){
-                 DB::table('video')->where('id',$chk)->update(['ordering'=>$data['orderBy'][$key]]);
-           }  
-           return redirect()->back()->with('success',"Cập nhật thành công");
-        }
-        elseif($request->action == "delete"){
-           foreach($data['check'] as $key => $chk){
-                 DB::table('video')->where('id',$chk)->delete();
-           }  
-           return redirect()->back()->with('success',"Xoá thành công");
-        }
-        elseif($request->action == "active"){
-           foreach($data['check'] as $key => $chk){
-                 DB::table('video')->where('id',$chk)->update(['status'=>1]);
-           }  
-           return redirect()->back()->with('success',"Cập nhật thành công");
-        }else{
-              foreach($data['check'] as $key => $chk){
-                 DB::table('video')->where('id',$chk)->update(['status'=>0]);
-           }  
+            }
+
+            if($request->action == "delete"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('video')->where('id',$chk)->delete();
+               }  
+               return redirect()->back()->with('success',"Xoá thành công");
+            }
+            elseif($request->action == "active"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('video')->where('id',$chk)->update(['status'=>1]);
+               }  
+               return redirect()->back()->with('success',"Cập nhật thành công");
+            }else{
+                  foreach($data['check'] as $key => $chk){
+                     DB::table('video')->where('id',$chk)->update(['status'=>0]);
+               } 
+               } 
            return redirect()->back()->with('success',"Cập nhật thành công");
         }
     }

@@ -49,7 +49,7 @@
                                             <div class="form-group row">
                                                 <label class="col-md-3 col-form-label text-right">Biệt danh<span class="text-danger">*</span></label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control"  name="nickname" value="{!!$record->nickname!!}" required>
+                                                    <input type="text" class="form-control"  name="nickname" value="{!!$record->nickname!!}" >
                                                     {!! $errors->first('nickname', '<span class="text-danger">:message</span>') !!}
                                                 </div>
                                             </div>
@@ -59,7 +59,12 @@
                                             <div class="col-md-3">
                                             </div>
                                             <div class="form-group col-md-2">
-                                                 <img src="{{asset($record->avatar)}}" id ="frame" alt="test" width="150" height="150" />
+                                                @if($record->avatar == null)
+                                                 <img src="{{url('/img/avt.png')}}" id ="frame" class="img-thumbnail" alt="test" width="150" height="150" />
+                                                @else
+                                                <img src="{{asset($record->avatar)}}" id ="frame" class="img-thumbnail" alt="test" width="150" height="150" />
+                                                @endif
+                                                 
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label class="required">Avatar</label>

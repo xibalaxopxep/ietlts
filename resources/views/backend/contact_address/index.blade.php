@@ -30,7 +30,22 @@
             </div>
             @endif
         </div>
-
+         <form action="{!!route('admin.contact_address.update_multiple')!!}" method="POST" enctype="multipart/form-data">
+            @csrf  
+             <div class="card-body">
+                 <div class="row " style="">
+                    <div class="col-md-4">
+                    </div>
+                 <div class="col-md-8">
+                     <div class="row" style="float: right;">
+                         <button style="margin-right: 5px;" name="action" value="save" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu</button>
+                         <button style="margin-right: 5px;" name="action" value="delete" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i> Xoá</button>
+                         <button style="margin-right: 5px;" name="action" value="active" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Kích hoạt</button>
+                         <button style="margin-right: 5px;" name="action" value="unactive" class="btn btn-primary"><i class="fa fa-minus" aria-hidden="true"></i> Ngưng kích hoạt</button>
+                     </div>
+                 </div>
+             </div>
+         </div>
         <table class="table datatable-basic">
             <thead>
                 <tr>
@@ -56,7 +71,7 @@
                     @else
                      <td> <span class="badge bg-grey-400">Ẩn</span></td>
                     @endif
-                    
+                    </form>
                     <td>{{date('d-m-Y', strtotime($record->created_at))}}</td>
                     <td class="">
                         <a href="{{route('admin.contact_address.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
@@ -81,7 +96,12 @@
 @section('script')
 @parent
 
-
+<script type="text/javascript">
+    $('#select_all').click(function() {
+      var c = this.checked;
+      $(':checkbox').prop('checked', c);
+});
+</script>
 <script src="{!! asset('assets/global_assets/js/plugins/tables/datatables/datatables.min.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/plugins/forms/selects/select2.min.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/demo_pages/datatables_basic.js') !!}"></script>

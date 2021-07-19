@@ -13,9 +13,9 @@ class ScheduleController extends Controller {
 
 
     public function index(Request $request) {
-        $records = DB::table('schedule')->get();
+        $records = DB::table('schedule')->orderBy('ordering','desc')->get();
         $courses = DB::table('course')->get();
-        $address = DB::table('contact_address')->get();
+        $address = DB::table('contact_address')->orderBy('created_at','desc')->get();
         return view('backend/schedule/index', compact('records','courses', 'address'));
     }
 
@@ -44,22 +44,12 @@ class ScheduleController extends Controller {
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id) {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id) {
         $record = Schedule::find($id);
         if($record){
@@ -79,7 +69,7 @@ class ScheduleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-         $schedule = new Schedule();
+        $schedule = new Schedule();
         $input = $request->all();
         $validator = \Validator::make($input, $schedule->validateUpdate($id));
         if ($validator->fails()) {
@@ -95,24 +85,43 @@ class ScheduleController extends Controller {
         }
     }
 
+     
+
      public function update_multiple(Request $request) {
         $data = $request->all();
-        if($request->check == null){
-            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một section");
-        }
+        
         if($request->action == "save"){      
-           foreach($data['check'] as $key => $chk){
-                 DB::table('section')->where('id',$chk)->update(['ordering'=>$data['orderBy'][$key]]);
-           }  
+            $records = DB::table('schedule')->orderBy('ordering','desc')->get();
+           foreach ($records as $key => $record) {
+               if($record->course_id != $data['course_id'][$key] || $record->contact_address_id != $data['contact_address_id'][$key]){
+                    DB::table('schedule')->where('id',$record->id)->update(['course_id'=>$data['course_id'][$key], 'contact_address_id'=>$data['contact_address_id'][$key]]);
+               }
+           }
            return redirect()->back()->with('success',"Cập nhật thành công");
         }
-        elseif($request->action == "delete"){
-           foreach($data['check'] as $key => $chk){
-                 DB::table('section')->where('id',$chk)->delete();
-           }  
-           return redirect()->back()->with('success',"Xoá thành công");
+        else{
+            if($request->check == null){
+            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một lịch học");
+            }
+
+            if($request->action == "delete"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('schedule')->where('id',$chk)->delete();
+               }  
+               return redirect()->back()->with('success',"Xoá thành công");
+            }
+            elseif($request->action == "active"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('schedule')->where('id',$chk)->update(['status'=>1]);
+               }  
+               return redirect()->back()->with('success',"Cập nhật thành công");
+            }else{
+                  foreach($data['check'] as $key => $chk){
+                     DB::table('schedule')->where('id',$chk)->update(['status'=>0]);
+               } 
+               } 
+           return redirect()->back()->with('success',"Cập nhật thành công");
         }
-        
     }
 
 

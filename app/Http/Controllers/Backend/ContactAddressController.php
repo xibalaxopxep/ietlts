@@ -13,7 +13,7 @@ class ContactAddressController extends Controller {
 
 
     public function index(Request $request) {
-        $records = DB::table('contact_address')->get();
+        $records = DB::table('contact_address')->orderBy('ordering','desc')->get();
         return view('backend/contact_address/index', compact('records'));
     }
 
@@ -92,24 +92,41 @@ class ContactAddressController extends Controller {
         }
     }
 
-     public function update_multiple(Request $request) {
+      public function update_multiple(Request $request) {
         $data = $request->all();
-        if($request->check == null){
-            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một section");
-        }
+        
         if($request->action == "save"){      
-           foreach($data['check'] as $key => $chk){
-                 DB::table('section')->where('id',$chk)->update(['ordering'=>$data['orderBy'][$key]]);
-           }  
+           $records = DB::table('contact_address')->orderBy('ordering','desc')->get();
+           foreach ($records as $key => $record) {
+               if($record->ordering != $data['orderBy'][$key]){
+                    DB::table('contact_address')->where('id',$record->id)->update(['ordering'=>$data['orderBy'][$key]]);
+               }
+           }
            return redirect()->back()->with('success',"Cập nhật thành công");
         }
-        elseif($request->action == "delete"){
-           foreach($data['check'] as $key => $chk){
-                 DB::table('section')->where('id',$chk)->delete();
-           }  
-           return redirect()->back()->with('success',"Xoá thành công");
+        else{
+            if($request->check == null){
+            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một địa chỉ liên hệ");
+            }
+
+            if($request->action == "delete"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('contact_address')->where('id',$chk)->delete();
+               }  
+               return redirect()->back()->with('success',"Xoá thành công");
+            }
+            elseif($request->action == "active"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('contact_address')->where('id',$chk)->update(['status'=>1]);
+               }  
+               return redirect()->back()->with('success',"Cập nhật thành công");
+            }else{
+                  foreach($data['check'] as $key => $chk){
+                     DB::table('contact_address')->where('id',$chk)->update(['status'=>0]);
+               } 
+               } 
+           return redirect()->back()->with('success',"Cập nhật thành công");
         }
-        
     }
 
 

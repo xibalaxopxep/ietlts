@@ -62,6 +62,14 @@
                                             {!! $errors->first('course_id', '<span class="text-danger">:message</span>') !!}
                                         </div>
                                     </div>
+                                    
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label text-right">Thứ tự <span class="text-danger"></span></label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" readonly="" name="ordering" value="{!!$record->count_ordering!!}" required>
+                                            {!! $errors->first('ordering', '<span class="text-danger">:message</span>') !!}
+                                        </div>
+                                    </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Thời gian học<span class=""></span></label>

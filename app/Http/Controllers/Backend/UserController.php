@@ -26,8 +26,7 @@ class UserController extends Controller {
 
     public function create() {
         $roles = $this->roleRepo->getAllRole();
-        $role_html = \App\Helpers\StringHelper::getSelectOptions($roles);
-        return view('backend/user/create', compact('role_html'));
+        return view('backend/user/create', compact('roles'));
     }
 
     public function store(Request $request) {
@@ -51,8 +50,7 @@ class UserController extends Controller {
     public function edit($id) {
         $record = $this->userRepo->find($id);
         $roles = $this->roleRepo->getAllRole();
-        $role_html = \App\Helpers\StringHelper::getSelectOptions($roles, $record->role_id);
-        return view('backend/user/update', compact('record', 'role_html'));
+        return view('backend/user/update', compact('record', 'roles'));
     }
 
     public function editProfile($id) {

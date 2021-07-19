@@ -17,6 +17,8 @@
     };
 
 
+ 
+
 </script>
 
 <script src="{!! asset('assets/global_assets/js/main/jquery.min.js') !!}"></script>

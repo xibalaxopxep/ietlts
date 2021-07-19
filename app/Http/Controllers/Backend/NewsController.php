@@ -145,35 +145,50 @@ class NewsController extends Controller {
         }
     }
     
-    public function update_multiple(Request $request) {
+       public function update_multiple(Request $request) {
         $data = $request->all();
-        if($request->check == null){
-            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một bài viết");
-        }
+        
         if($request->action == "save"){      
-           foreach($data['check'] as $key => $chk){
-                 DB::table('news')->where('id',$chk)->update(['ordering'=>$data['orderBy'][$key]]);
-           }  
+           $cat_id = $request->cat_id;
+            if($cat_id != null ){
+               $news_id = DB::table('news_category')->where('category_id',$cat_id)->get()->pluck('news_id');
+               $records = DB::table('news')->whereIn('id',$news_id)->get(); 
+            }
+            elseif($cat_id == null || $cat_id == "0"){
+                $records = $this->newsRepo->all();
+            }
+           foreach ($records as $key => $record) {
+               if($record->ordering != $data['orderBy'][$key]){
+                    DB::table('news')->where('id',$record->id)->update(['ordering'=>$data['orderBy'][$key]]);
+               }
+           }
            return redirect()->back()->with('success',"Cập nhật thành công");
         }
-        elseif($request->action == "delete"){
-           foreach($data['check'] as $key => $chk){
-                 DB::table('news')->where('id',$chk)->delete();
-           }  
-           return redirect()->back()->with('success',"Xoá thành công");
-        }
-        elseif($request->action == "active"){
-           foreach($data['check'] as $key => $chk){
-                 DB::table('news')->where('id',$chk)->update(['status'=>1]);
-           }  
-           return redirect()->back()->with('success',"Cập nhật thành công");
-        }else{
-              foreach($data['check'] as $key => $chk){
-                 DB::table('news')->where('id',$chk)->update(['status'=>0]);
-           }  
+        else{
+            if($request->check == null){
+            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một bài viết");
+            }
+
+            if($request->action == "delete"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('news')->where('id',$chk)->delete();
+               }  
+               return redirect()->back()->with('success',"Xoá thành công");
+            }
+            elseif($request->action == "active"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('news')->where('id',$chk)->update(['status'=>1]);
+               }  
+               return redirect()->back()->with('success',"Cập nhật thành công");
+            }else{
+                  foreach($data['check'] as $key => $chk){
+                     DB::table('news')->where('id',$chk)->update(['status'=>0]);
+               } 
+               } 
            return redirect()->back()->with('success',"Cập nhật thành công");
         }
     }
+
 
     /**
      * Remove the specified resource from storage.

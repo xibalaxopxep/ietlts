@@ -40,4 +40,15 @@ return [
     'admin.marketing.index' => 'Tài khoản tiếp thị liên kết',
     'admin.template_setting.index' => 'Tùy chỉnh giao diện',
     'admin.user.index_profile' => 'Tùy chỉnh giao diện',
+    'admin.section.index' => 'Section',
+    'admin.quizz.index' => 'Câu hỏi',
+    'admin.teacher.index' => 'Giảng viên',
+    'admin.contact_address.index' =>'Địa chỉ liên hệ',
+    'admin.feedback.index' => 'Feedback',
+    'admin.course.index' =>"Khoá học",
+    'admin.schedule.index' =>"Lịch học",
+    'admin.test.index' =>"Bài test",
+    'admin.subscriber.index' =>"Danh sách liên hệ",
+    'admin.role.index' =>"Quyền hạn"
+
 ];

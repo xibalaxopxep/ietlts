@@ -16,7 +16,7 @@ class TeacherController extends Controller {
     
     public function index() {
    
-        $records = Teacher::all();
+        $records = Teacher::orderBy('ordering','desc')->get();
         return view('backend/teacher/index', compact('records'));
       
     }
@@ -115,6 +115,43 @@ class TeacherController extends Controller {
         Teacher::destroy($id);
         return redirect()->route('admin.teacher.index')->with('success', 'Xóa thành công');
         //
+    }
+
+    public function update_multiple(Request $request) {
+        $data = $request->all();
+        
+        if($request->action == "save"){      
+           $records = Teacher::orderBy('ordering','desc')->get();
+           foreach ($records as $key => $record) {
+               if($record->ordering != $data['orderBy'][$key]){
+                    DB::table('teacher')->where('id',$record->id)->update(['ordering'=>$data['orderBy'][$key]]);
+               }
+           }
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
+        else{
+            if($request->check == null){
+            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một giảng viên");
+            }
+
+            if($request->action == "delete"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('teacher')->where('id',$chk)->delete();
+               }  
+               return redirect()->back()->with('success',"Xoá thành công");
+            }
+            elseif($request->action == "active"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('teacher')->where('id',$chk)->update(['status'=>1]);
+               }  
+               return redirect()->back()->with('success',"Cập nhật thành công");
+            }else{
+                  foreach($data['check'] as $key => $chk){
+                     DB::table('teacher')->where('id',$chk)->update(['status'=>0]);
+               } 
+               } 
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
     }
 
 }

@@ -64,7 +64,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-4 text-left">Thứ tự </label>
                                     <div class="col-md-5">
-                                        <input type="text" name="ordering" class="form-control touchspin text-center" value="0">
+                                        <input type="text" name="ordering" class="form-control touchspin text-center" value="{{++$count_ordering}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">

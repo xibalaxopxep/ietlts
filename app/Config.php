@@ -8,7 +8,7 @@ class Config extends Model {
 
     protected $table = 'config';
     protected $fillable = [
-        'title', 'company_name', 'address', 'hotline', 'phone', 'email', 'fanpage', 'image', 'favicon', 'twitter', 'youtube_channel', 'working_hours', 'description'
+        'title', 'company_name', 'address', 'hotline', 'phone', 'email', 'fanpage', 'image', 'favicon', 'twitter', 'youtube_channel', 'working_hours', 'description','facebook','keywords'
     ];
     public $timestamps = false;
 }

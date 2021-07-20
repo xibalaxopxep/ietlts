@@ -114,12 +114,74 @@
                                            <tr>
                                               <td scope="col">{{++$key}}</td>
                                               <td scope="col">{{$question->question}}</td>
+                                             
+                                              @if($question->question_type == 1)
+                                               <td scope="col">
+                                              @foreach(explode(",", $question->list_answer) as $val)
+                                                @if($val == $question->answer)
+                                                <b>{{$val}}</b><br>
+                                                @else
+                                                {{$val}}<br>
+                                                @endif
+                                              @endforeach
+                                              </td>
+                                              @else
                                               <td scope="col">{{$question->answer}}</td>
+                                              @endif
                                               <td class="">
-                                               <a href="{{route('admin.quizz.edit',  ['id' => $question->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a><a href="{{route('admin.quizz.edit',  ['id' => $question->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-close2" style="color:red;"></i></a>            
+                                               <a href="#" data-toggle="modal" data-target="#exampleModalCenter_{{$key}}"><i class="icon-pencil"></i></a><a href="{{route('admin.quizz.edit',  ['id' => $question->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-close2" style="color:red;"></i></a>            
                                                 </form>
                                             </td>
                                            </tr>
+                                           <!-- Button trigger modal -->
+
+                                            <!-- Modal -->
+                                        <form action="{!!route('admin.question.update',$question->id)!!}" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="question_type" value="{{$question->question_type}}">
+                                        <div class="modal fade" id="exampleModalCenter_{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                          <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Chỉnh sửa câu hỏi</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                              </div>
+                                              <div class="modal-body">
+                                                <div class="row">
+                                                    @if($question->question_type == 1)
+                                                    <div class="form-group row col-md-12">
+                                                        <label class="col-md-2">Câu hỏi</label>
+                                                        <input type="text" class="form-control col-md-9" name="question">
+                                                    </div>  
+                                                    <div class=" form-group   row col-md-12">  
+                                                        @foreach(explode(",", $question->list_answer) as $val)
+                                                            @if($val == $question->answer)
+                                                           <input checked="" type="radio" class="form-control col-md-2" name="answer[]"><input type="text" value="{{$val}}" class="form-control col-md-10" name="list_answer[]" value="{{$question->question}}">
+                                                            @else
+                                                             <input  type="radio" class="form-control col-md-2" name="answer[]"><input type="text" value="{{$val}}" class="form-control col-md-10" name="list_answer">
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                    @else
+                                                     <div class="form-group row col-md-12">
+                                                        <label class="col-md-2">Câu hỏi</label>
+                                                        <input type="text" class="form-control col-md-9" value="{{$question->question}}" name="question">
+                                                    </div>  
+                                                    <div class=" form-group   row col-md-12">  
+                                                        <label class="col-md-2">Câu trả lời</label>
+                                                        <input type="text" class="form-control col-md-9" value="{{$question->answer}}"  name="answer">
+                                                    </div>
+                                                    @endif
+                                              </div>
+                                              <div style="margin-top: 25px; " class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Cập nhật</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        </form>
                                        @endforeach
                                       </tbody>
                                     </table>
@@ -149,6 +211,8 @@
         </div>
     </form>
 </div>
+
+
 @stop
 @section('script')
 @parent
@@ -189,15 +253,16 @@
                 dataType: "JSON",
                 data:{data:data,question_type:question_type,question:question,quizz_id:quizz_id,radioValue:radioValue,answer:answer},
                 success:function(resp){
-                    key ++;
-                    var html="";
-                    html += "<tr>";
-                    html += '<td>'+key+'</td>';
-                    html += '<td>'+resp.record.question+'</td>';
-                    html += '<td>'+resp.record.answer+'</td>';
-                    html += '<td class=""><a href="{{route('admin.quizz.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a><a href="{{route('admin.quizz.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-close2" style="color:red;"></i></a></td>';
-                    html += "</tr>";
-                    $('tbody').append(html);
+                    window.location.reload();
+                    // key ++;
+                    // var html="";
+                    // html += "<tr>";
+                    // html += '<td>'+key+'</td>';
+                    // html += '<td>'+resp.record.question+'</td>';
+                    // html += '<td>'+resp.record.answer+'</td>';
+                    // html += '<td class=""><a href="{{route('admin.quizz.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a><a href="{{route('admin.quizz.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-close2" style="color:red;"></i></a></td>';
+                    // html += "</tr>";
+                    // $('tbody').append(html);
                    }
         });  
     });
@@ -213,7 +278,7 @@
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
-            x++; //text box increment
+             //text box increment
             var html = "";
              html += '<div class="col-md-12 row" style="margin-bottom: 10px;">';
              html +='<input type="radio"  value="'+x+'" class="col-md-1 is_answer" style="margin-top: 7px;">'; 
@@ -221,6 +286,7 @@
              html += '<a style="margin-left: 5px; margin-top: 5px;" href="#" class="remove_field">Xoá</a>';
              html += '</div>';
             $(wrapper).append(html); //add input box
+            x++;
         }
     });
     

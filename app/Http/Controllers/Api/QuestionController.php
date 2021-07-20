@@ -9,16 +9,16 @@ use DB;
 
 class QuestionController extends Controller {
 
-    //
-
     public function create_question(Request $request) {
         $input = $request->all();
+
         if($input['question_type'] == 1){
 	        $input['list_answer'] = implode(',',$input['data']);
-	        $input['answer'] = $input['radioValue'];
+	        $input['answer'] = $input['data'][$input['radioValue']];
 	        unset($input['data']);
 	        unset($input['radioValue']);
 	        $id = DB::table('question')->insertGetId($input);
+
 	        $record= DB::table('question')->where('id',$id)->first();
         }elseif($input['question_type'] == 2){
         	unset($input['data']);
@@ -27,4 +27,6 @@ class QuestionController extends Controller {
         }
         return response()->json(array('success' => true,'record'=>$record));
     }
+
+    
 }

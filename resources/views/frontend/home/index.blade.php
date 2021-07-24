@@ -2,7 +2,7 @@
 @section('content')
       <div class="container">
         <section class="about">
-change
+
         @foreach($block as $bl)
           @if($bl->position == "gioi-thieu")
           {!!$bl->content!!}

@@ -14,7 +14,7 @@ use Repositories\KeywordRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\OrderDetailRepository;
 use Repositories\GalleryRepository;
-
+use DB;
 class ProductController extends Controller {
 
     public function __construct(OrderRepository $orderRepo, OrderDetailRepository $orderdetailRepo, ProductRepository $productRepo, CategoryRepository $categoryRepo, AttributeRepository $attributeRepo, ProductAttributeRepository $productAttrRepo, ProductCategoryRepository $productCategoryRepo, KeywordRepository $keywordRepo, GalleryRepository $galleryRepo) {

@@ -79,52 +79,5 @@
           </div>
         </div>
       </div>
-       <section id="form" style="background: url(assets/img/background/pattern-2.png) var(--main-color) no-repeat;background-size: cover;">
-        <img id="pattern-1" src="assets/img/background/pattern-1.png" alt="pattern" />
-        <div class="container">
-          <div class="row">
-            <div class="form-wrapper">
-              <div class="col-md-6 simon">
-                <img src="assets/img/simon.png" alt="simon ielts">
-              </div>
-              <div class="form-content">
-                <div class="col-md-6 offset-md-6">
-                  <form>
-                    <h4><b>ĐĂNG KÝ TƯ VẤN</b> LỘ TRÌNH HỌC IELTS</h4>
-                    <p>Pasal cam kết giúp bạn chinh phục mục tiêu IELTS với lộ trình học tinh gọn - hiệu quả - tối ưu chi phí !</p>
-                    <div class="form-group">
-                      <img class="icon" src="assets/icon/user.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Nhập họ tên của bạn*"/>
-                    </div>
-                    <div class="form-group">
-                      <img class="icon" src="assets/icon/phone.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Số điện thoại của bạn*"/>
-                    </div>
-                    <div class="form-group">
-                      <img class="icon" src="assets/icon/mail.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Email của bạn*"/>
-                    </div>
-                    <div class="form-group">
-                      <img class="icon" src="assets/icon/course.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Bạn quan tâm đến khóa học nào?"/>
-                    </div>
-                    <div class="form-group">
-                      <img class="icon" src="assets/icon/location.png" alt="icon" />
-                      <select name="location">
-                        <option value="" disabled selected>Chọn cơ sở Pasal gần bạn nhất*</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                      </select>
-                    </div>
-                    <button class="button-form btn-gradient w-100">ĐĂNG KÝ NGAY</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-<!--/main-->
+ 
 @stop

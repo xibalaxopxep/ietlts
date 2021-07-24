@@ -25,18 +25,15 @@ class NewsController extends Controller {
     }
 
     public function detail($alias) {
-        $record = $this->newsRepo->findByAlias($alias);
-        $this->newsRepo->updateViewCount($record->id, $record->view_count);
-        $featured_news = $this->newsRepo->readFeaturedNews($limit = 5);
-        $category_arr = $this->categoryRepo->readHomeNewsCategory();        
-        $news_ids = $this->newsCategoryRepo->getNewsIds($record->categories->pluck('id'));
-        $related_news = $this->newsRepo->readRelatedNews($record->id, $news_ids);
+        $record = DB::table('news')->where('alias',$alias)->first();
+        DB::table('news')->where('alias',$alias)->update(['view_count'=>$record->view_count + 1]);
+        $category = DB::table('news_category')->where('news_id',$record->id)->pluck('category_id')->first();
+        $related_category = DB::table('news_category')->where('category_id', $category)->get()->pluck('news_id');
+        $related_news = DB::table('news')->whereIn('id',$related_category)->where('id','!=',$record->id)->orderBy('created_at','desc')->limit(4)->get();
+        $featured_news =  DB::table('news')->where('is_hot',1)->where('id','!=',$record->id)->orderBy('created_at','desc')->limit(2)->get();
         //$url = \Illuminate\Support\Facades\Request::url();
-        if (config('global.device') != 'pc') {
-            return view('mobile/news/detail', compact('record', 'category_arr', 'featured_news'));
-        } else {
-            return view('frontend/news/detail', compact('record', 'featured_news', 'category_arr', 'related_news'));
-        }
+            return view('frontend/news/detail', compact('record', 'featured_news', 'category', 'related_news'));
+
     }
 
 }

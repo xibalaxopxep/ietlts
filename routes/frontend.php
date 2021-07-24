@@ -44,4 +44,8 @@ Route::group(['middleware' => 'frontend'], function() {
 
       //Giảng viên
     Route::get('/thanh-tich', ['as' => 'achie.index', 'uses' => 'Frontend\AchieController@index']);
+
+    //Lich khia giảng
+    //Giảng viên
+    Route::get('/lich-khai-giang', ['as' => 'schedule.index', 'uses' => 'Frontend\ScheduleController@index']);
 });

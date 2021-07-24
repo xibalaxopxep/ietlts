@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.master_index')
 @section('content')
       <div class="container">
         <section class="about">
@@ -198,14 +198,14 @@
             <div class="col-md-4">
               <div class="card-news">
                 <div class="thumbnail">
-                  <img class="img-fluid" src="{{asset($news_ielt->images)}}" alt="tiêu đề bài viết">
+                   <a  href="{{route('news.detail',$news_ielt->alias)}}"><img class="img-fluid" src="{{asset($news_ielt->images)}}" alt="tiêu đề bài viết"></a>
                 </div>
                 <div class="info d-flex">
                   <div class="calendar">
-                    <p>APR</p>
-                    <b>07</b>
+                    <p>{{date('M', strtotime($news_ielt->created_at))}}</p>
+                    <b>{{date('d', strtotime($news_ielt->created_at))}}</b>
                   </div>
-                  <h4>{{$news_ielt->title}}</h4>
+                  <h4><a style="color: #342b7a;" href="{{route('news.detail',$news_ielt->alias)}}">{{$news_ielt->title}}</a></h4>
                 </div>
               </div>
             </div>
@@ -219,14 +219,14 @@
             <div class="col-md-4">
               <div class="card-news">
                 <div class="thumbnail">
-                  <img class="img-fluid" src="{{asset($news_hot->images)}}" alt="tiêu đề bài viết">
+                  <a  href="{{route('news.detail',$news_hot->alias)}}"><img class="img-fluid" src="{{asset($news_hot->images)}}" alt="tiêu đề bài viết"></a>
                 </div>
                 <div class="info d-flex">
                   <div class="calendar">
-                    <p>APR</p>
-                    <b>07</b>
+                    <p>{{date('M', strtotime($news_hot->created_at))}}</p>
+                    <b>{{date('d', strtotime($news_hot->created_at))}}</b>
                   </div>
-                  <h4>{{$news_hot->title}}</h4>
+                  <h4><a style="color: #342b7a;" href="{{route('news.detail',$news_hot->alias)}}">{{$news_hot->title}}</a></h4>
                 </div>
               </div>
             </div>

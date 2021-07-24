@@ -62,11 +62,22 @@
                                             {!! $errors->first('course_id', '<span class="text-danger">:message</span>') !!}
                                         </div>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label text-right">Thể loại<span class=""></span></label>
+                                        <div class="col-md-10">
+                                           <select class="select-search form-control"  name="type" data-placeholder="Thể loại"  required>                 
+                                                 <option value="1">Online</option>
+                                                 <option value="2">Offline</option>
+                                            </select>
+                                            {!! $errors->first('type', '<span class="text-danger">:message</span>') !!}
+                                        </div>
+                                    </div>
                                     
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Thứ tự <span class="text-danger"></span></label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" readonly="" name="ordering" value="{!!$record->count_ordering!!}" required>
+                                            <input type="text" class="form-control"  name="ordering" value="{!!++$count_ordering!!}" required>
                                             {!! $errors->first('ordering', '<span class="text-danger">:message</span>') !!}
                                         </div>
                                     </div>
@@ -118,7 +129,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="text-center">
-                                            <a type="button" href="{{route('admin.quizz.index')}}" class="btn btn-secondary legitRipple">Hủy</a>
+                                            <a type="button" href="{{route('admin.schedule.index')}}" class="btn btn-secondary legitRipple">Hủy</a>
                                             <button type="submit" class="btn btn-primary legitRipple">Lưu lại <i class="icon-arrow-right14 position-right"></i></button>
                                         </div>
                                     </div>

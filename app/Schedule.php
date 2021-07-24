@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model {
     protected $table = 'schedule';
     protected $fillable = [
-        'title', 'alias', 'contact_address_id', 'created_at', 'updated_at','course_id','schedule','schedule_detail','opening','alias','status','ordering'
+        'title', 'alias', 'contact_address_id', 'created_at', 'updated_at','course_id','schedule','schedule_detail','opening','alias','status','ordering','type'
     ];
     
 

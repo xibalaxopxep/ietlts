@@ -21,10 +21,10 @@ class FrontendController extends Controller {
         $teachers = DB::table('teacher')->orderBy('ordering','desc')->where('status', 1)->limit(3)->get();
         $news_hots = DB::table('news')->orderBy('ordering','desc')->where('status', 1)->where('is_hot',1)->limit(3)->get();
         $news_ielts = DB::table('news')->orderBy('ordering','desc')->where('status', 1)->where('is_ielts',1)->limit(3)->get();
-        $contact_address = DB::table('contact_address')->orderBy('ordering','desc')->where('status', 1)->get();
+        
         $best_member = DB::Table('best')->where('is_best', 1)->where('status',1)->limit(3)->orderBy('ordering','desc')->get();
 
-        return view('frontend/home/index',compact('courses','teachers','news_ielts','news_hots','contact_address','best_member'));
+        return view('frontend/home/index',compact('courses','teachers','news_ielts','news_hots','best_member'));
         
     }
 

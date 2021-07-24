@@ -1,88 +1,74 @@
 @extends('frontend.layouts.master')
 @section('content')
-<div class="sub_header_in sticky_header">
-    <div class="container">
-        <h1>Tin tức</h1>
-    </div>
-    <!-- /container -->
-</div>
-<!-- /sub_header -->
-<main>
-    <div class="container margin_60_35">
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="singlepost">
-                    <figure><img alt="{{$record->title}}" class="img-fluid" src="{{$record->getImage()}}"></figure>
-                    <h1>{{$record->title}}</h1>
-                    <div class="postmeta">
-                        <ul>
-                            <li>
-                                <i class="ti-folder">
-                                @foreach ($record->categories as $key => $category)
-                                </i><a href="{{$category->urlNews()}}">@if($key != 0), @endif{{$category->title}}</a>
-                                @endforeach
-                            </li>
-                            <li><i class="ti-calendar"></i> {{$record->created_at() }}</li>
-                            <li><i class="ti-user"></i> {{$record->createdBy->full_name}}</li>
-                        </ul>
+      <div class="content news-deital bg-grey-2">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 mt-4">
+              <div class="content">
+                <div class="sumary mt-30">
+
+                       {!!$record->content!!}
+                      </div>
+                      <div class="related-news mt-30">
+                        <h3> Bài viết liên quan</h3>
+                        @foreach($related_news as $related_new )
+                        <h4><a href="{{route('news.detail',$related_new->alias)}}">{{$related_new->title}}</a></h4>
+                        @endforeach
+                      </div>
                     </div>
-                    <div class="post-content">
-                          {!! $record->content !!}
-                    </div>
-                    <div class="share">
-                        <ul class="share-buttons">
-                            <li><a class="fb-share" href="javascript:void(0)" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={!! $record->url() !!}', 'Facebook', 'width=600,height=400');"><i class="social_facebook"></i> Facebook</a></li>
-                            <li><a class="twitter-share" href="javascript:void(0)" onclick="window.open('https://twitter.com/share?text=&url={!! $record->url() !!}', 'Twitter', 'width=600,height=400')"><i class="social_twitter"></i> Twitter</a></li>
-                            <li><a class="pinterest-share" href="javascript:void(0)" onclick="window.open('http://pinterest.com/pin/create/button/?url={!! $record->url() !!}', 'Pinterest', 'width=600,height=400')"><i class="fa fa-pinterest-p"></i> Pinterest</a></li>
-                            <li><a class="linkedin-share" href="javascript:void(0)" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url={!! $record->url() !!}', 'Linkedin', 'width=600,height=400')"><i class="fa fa-linkedin"></i> Linkedin</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /single-post -->
-
-                <div id="comments">
-                    <h5>Bình luận</h5>
-                    <div class="fb-comments" data-href="{{$record->url()}}" data-width="100%" data-numposts="5"></div>
-                </div>
-
-
-            </div>
-            <!-- /col -->            
-            @include('frontend.news.sidebar')    
-            <!-- /aside -->
-        </div>
-        <!-- /row -->
-        @if($related_news->count()>0)
-        <div class="related-news">
-            <h5>Tin tức liên quan</h5>
-
-            <div class="news-owl-carousel owl-carousel owl-theme">
-                @foreach($related_news as $item)
-                <div class="item">
-                    <article class="blog">
-                        <figure>
-                            <a href="{{route('news.detail', ['alias' => $item->alias])}}"><img src="{{$item->images}}" alt="{{$item->title}}">
-                                <div class="preview"><span>Xem thêm</span></div>
-                            </a>
-                        </figure>
-                        <div class="post_info">
-                            <h2 class="post-title"><a href="{{route('news.detail', ['alias' => $item->alias])}}">{{$item->title}}</a></h2>
-                            <ul>
-                                <li>
-                                    <div class="thumb"><img src="{{$item->createdBy->avatar}}" alt="{{$item->createdBy->full_name}}"></div> {{$item->createdBy->full_name}}
-                                </li>
-                                <li><i class="ti-eye"></i>{{$item->view_count}}</li>
-                            </ul>
+                    <div class="maybe-news">
+                      <h4 class="w-100 py-3 p-3">Có thể bạn quan tâm</h4>
+                       @foreach($featured_news as $featured_new )
+                      <div class="col-md-6 sub">
+                        <div class="item">
+                          <div class="thumbnail">
+                            <div class="thumbnail">
+                              <img class="img-responsive" src="{{asset($featured_new->images)}}" alt="tiêu đề bài viết">
+                            </div>
+                            <h4 class="title">
+                              <a href="{{route('news.detail',$featured_new->alias)}}">{{$featured_new->title}}</a>
+                            </h4>
+                            <a href="{{route('news.detail',$featured_new->alias)}}" class="view-more">Đọc thêm</a>
+                          </div>
                         </div>
-                    </article>
+                      </div>
+                      @endforeach
+                    </div>
+                  </div>
+                  <div class="col-md-3 pull-right">
+                    <img class="img-responsive" src="{{asset('assets_pasal/img/advertise.png')}}" alt="quảng cáo" />
+                    <div class="form-sidebar mt-4" id="form">
+                      <h4>ĐĂNG KÝ TƯ VẤN<br><b>LỘ TRÌNH HỌC IELTS</b></h4>
+                      <div class="form-group">
+                        <img class="icon" src="{{asset('assets_pasal/icon/user.png')}}" alt="icon" />
+                        <input name="name" type="text" required="required" placeholder="Nhập họ tên của bạn*"/>
+                      </div>
+                      <div class="form-group">
+                        <img class="icon" src="{{asset('assets_pasal/icon/phone.png')}}" alt="icon" />
+                        <input name="name" type="text" required="required" placeholder="Số điện thoại của bạn*"/>
+                      </div>
+                      <div class="form-group">
+                        <img class="icon" src="{{asset('assets_pasal/icon/mail.png')}}" alt="icon" />
+                        <input name="name" type="text" required="required" placeholder="Email của bạn*"/>
+                      </div>
+                      <div class="form-group">
+                        <img class="icon" src="{{asset('assets_pasal/icon/course.png')}}" alt="icon" />
+                        <input name="name" type="text" required="required" placeholder="Bạn quan tâm đến khóa học nào?"/>
+                      </div>
+                      <div class="form-group">
+                        <img class="icon" src="{{asset('assets_pasal/icon/location.png')}}" alt="icon" />
+                        <select name="location">
+                        <option value="" disabled selected>Chọn cơ sở Pasal gần bạn nhất*</option>
+                        @foreach($contact_address as $add)
+                        <option value="">{{$add->name}}</option>
+                        @endforeach
+                      </select>
+                      </div>
+                      <button class="button-form btn-gradient w-100 mt-2">ĐĂNG KÝ NGAY</button>
+                    </div>
+                  </div>
                 </div>
-                @endforeach
+              </div>
             </div>
-
-        </div>
-        @endif
-    </div>
-    <!-- /container -->
-</main>
 <!--/main-->
 @stop

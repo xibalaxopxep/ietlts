@@ -19,7 +19,7 @@
                     <p class="month">T{{ date('m', strtotime($records[0]->created_at)) }}</p>
                   </div>
                   <h4 class="title">
-                    <a href="#">{{$records[0]->title}}</a>
+                    <a href="{{route('news.detail',$records[0]->alias)}}">{{$records[0]->title}}</a>
                   </h4>
                   <a href="{{route('news.detail',$records[0]->alias)}}" class="view-more">Đọc thêm</a>
                 </div>
@@ -40,7 +40,7 @@
                         <p class="month">T{{ date('m', strtotime($records[0]->created_at)) }}</p>
                       </div>
                       <h4 class="title">
-                        <a href="#">{{$record->title}}</a>
+                        <a href="{{route('news.detail',$records[0]->alias)}}">{{$record->title}}</a>
                       </h4>
                       <p class="description">{{$record->description}}</p>
 
@@ -65,7 +65,7 @@
                     <div class="thumbnail">
                       <img class="img-fluid" src="{{asset($hot->images)}}" alt="tiêu đề bài viết" />
                       <h4 class="title">
-                        <a href="#">{{$hot->title}}</a>
+                        <a href="{{route('news.detail',$hot->alias)}}">{{$hot->title}}</a>
                       </h4>
                       <a href="{{route('news.detail',$hot->alias)}}" class="view-more">Đọc thêm</a>
                     </div>

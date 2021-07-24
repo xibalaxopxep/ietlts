@@ -72,6 +72,7 @@ class NewsController extends Controller {
             $input['status'] = 0;
         }
         $input['is_hot'] = isset($input['is_hot']) ? 1 : 0;
+        $input['is_ielts'] = isset($input['is_ielts']) ? 1 : 0;
         $input['created_by'] = \Auth::user()->id;
         $input['view_count'] = 0;
         if (isset($input['post_schedule'])) {
@@ -104,6 +105,7 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+        $record = $this->newsRepo->find($id);
         if($record){
             $record = $this->newsRepo->find($id);
             $category_ids = $record->categories()->get()->pluck('id')->toArray();
@@ -131,6 +133,7 @@ class NewsController extends Controller {
 //      status
         $input['status'] = (isset($input['status']) && \Auth::user()->role_id <> \App\User::ROLE_CONTRIBUTOR) ? 1 : 0;
         $input['is_hot'] = isset($input['is_hot']) ? 1 : 0;
+        $input['is_ielts'] = isset($input['is_ielts']) ? 1 : 0;
         if (isset($input['post_schedule'])) {
             $input['post_schedule'] = $input['post_schedule_submit'];
         }

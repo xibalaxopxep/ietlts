@@ -7,25 +7,25 @@ use App\Http\Controllers\Controller;
 use Repositories\CategoryRepository;
 use Repositories\ConstructionRepository;
 use Repositories\KeywordRepository;
+use DB;
 
 class FrontendController extends Controller {
 
-    public function __construct(CategoryRepository $categoryRepo, ConstructionRepository $constructionRepo, KeywordRepository $keywordRepo) {
+    public function __construct(CategoryRepository $categoryRepo, KeywordRepository $keywordRepo) {
         $this->categoryRepo = $categoryRepo;
-        $this->constructionRepo = $constructionRepo;
         $this->keywordRepo = $keywordRepo;
     }
 
     public function index() {
-        $category_arr = $this->categoryRepo->readHomeProductCategory();
-        $gallery_arr = $this->categoryRepo->readHomeGalleryCategory($limit = 8);
-        $construction_arr = $this->constructionRepo->readHomeConstruction($limit = 8);
-        $keyword_arr = $this->keywordRepo->readHomeRecentKeyword($limit = 6);
-        if (config('global.device') != 'pc') {
-            return view('mobile/home/index', compact('category_arr', 'construction_arr', 'keyword_arr','gallery_arr'));
-        } else {
-            return view('frontend/home/index', compact('category_arr', 'construction_arr', 'keyword_arr'));
-        }
+        $courses  = DB::table('course')->orderBy('ordering','desc')->where('status', 1)->limit(6)->get();
+        $teachers = DB::table('teacher')->orderBy('ordering','desc')->where('status', 1)->limit(3)->get();
+        $news_hots = DB::table('news')->orderBy('ordering','desc')->where('status', 1)->where('is_hot',1)->limit(3)->get();
+        $news_ielts = DB::table('news')->orderBy('ordering','desc')->where('status', 1)->where('is_ielts',1)->limit(3)->get();
+        $contact_address = DB::table('contact_address')->orderBy('ordering','desc')->where('status', 1)->get();
+        $best_member = DB::Table('best')->where('is_best', 1)->where('status',1)->limit(3)->orderBy('ordering','desc')->get();
+
+        return view('frontend/home/index',compact('courses','teachers','news_ielts','news_hots','contact_address','best_member'));
+        
     }
 
 }

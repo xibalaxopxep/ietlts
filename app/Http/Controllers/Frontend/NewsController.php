@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Repositories\NewsRepository;
 use Repositories\CategoryRepository;
+use DB;
 
 class NewsController extends Controller {
 
@@ -17,20 +18,10 @@ class NewsController extends Controller {
         $this->newsCategoryRepo = $newsCategoryRepo;
     }
 
-    public function index(Request $request, $alias = '') {
-        if ($alias) {
-            $category = $this->categoryRepo->findByAlias($alias);
-            $records = $this->newsRepo->readFE($request, $category->id);
-        } else {
-            $records = $this->newsRepo->readFE($request);
-        }
-        $category_arr = $this->categoryRepo->readHomeNewsCategory();
-        $featured_news = $this->newsRepo->readFeaturedNews($limit = 5);
-        if (config('global.device') != 'pc') {
-            return view('mobile/news/list', compact('records', 'category_arr', 'featured_news'));
-        } else {
-            return view('frontend/news/list', compact('records', 'category_arr', 'featured_news'));
-        }
+    public function index(Request $request, $alias = '') {  
+        $records = DB::table('news')->orderBy('ordering','desc')->limit(7)->get();
+        $hot_news = DB::table('news')->orderBy('ordering','desc')->limit(7)->where('is_hot',1)->get();
+        return view('frontend/news/list', compact('records', 'hot_news'));
     }
 
     public function detail($alias) {

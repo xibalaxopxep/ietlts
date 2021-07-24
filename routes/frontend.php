@@ -38,4 +38,10 @@ Route::group(['middleware' => 'frontend'], function() {
     Route::post('/checkout-success', ['as' => 'product.checkout-sucess', 'uses' => 'Frontend\ProductController@checkoutSuccess']);
     /* Tiếp thị liên kết */
     Route::get('/marketing/{alias}', ['as' => 'marketing.index', 'uses' => 'Frontend\MarketingController@index']);
+
+    //Giảng viên
+    Route::get('/giang-vien', ['as' => 'teacher.index', 'uses' => 'Frontend\TeacherController@index']);
+
+      //Giảng viên
+    Route::get('/thanh-tich', ['as' => 'achie.index', 'uses' => 'Frontend\AchieController@index']);
 });

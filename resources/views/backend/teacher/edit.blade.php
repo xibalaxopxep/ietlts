@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
 <div class="content">
-    <form action="{!!route('admin.teacher.store')!!}" method="POST" enctype="multipart/form-data">
+    <form action="{!!route('admin.teacher.update',$record->id)!!}" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">

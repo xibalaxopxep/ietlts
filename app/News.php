@@ -9,7 +9,7 @@ class News extends Model {
     //
     protected $table = "news";
     protected $fillable = [
-        'title', 'alias', 'description', 'content', 'meta_title', 'meta_keywords', 'meta_description', 'is_hot', 'status', 'ordering', 'keywords', 'images', 'created_by', 'post_schedule'
+        'title', 'alias', 'description', 'content', 'meta_title', 'meta_keywords', 'meta_description', 'is_hot', 'status', 'ordering', 'keywords', 'images', 'created_by', 'post_schedule','is_ielts'
     ];
 
     public function categories() {

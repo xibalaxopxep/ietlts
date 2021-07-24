@@ -9,7 +9,7 @@ class Course extends Model {
     //
     protected $table = "course";
     protected $fillable = [
-        'title', 'alias', 'summary', 'status', 'meta_title', 'meta_keywords', 'meta_description', 'ordering', 'ordering','content', 'course_for', 'image','course_profit','promotion','promotion_time', 'created_at','updated_at'
+        'title', 'alias', 'summary', 'status', 'meta_title', 'meta_keywords', 'meta_description', 'ordering', 'ordering','content', 'course_for', 'image','course_profit','promotion','promotion_time', 'created_at','updated_at','level'
     ];
 
      public function validateCreate() {

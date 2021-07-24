@@ -135,6 +135,14 @@
                                 </label>
                             </div>
                         </div>
+                         <div class="form-group row">
+                            <div class="form-check col-md-5 form-check-right">
+                                <label class="form-check-label float-right">
+                                    Tin kiến thức ielts
+                                    <input type="checkbox" class="form-check-input-styled" name="is_ielts" data-fouc="">
+                                </label>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label class="form-check-label col-md-6  text-left">Hẹn ngày đăng </label>
                             <div class="input-group col-md-12" style="margin-top:20px">

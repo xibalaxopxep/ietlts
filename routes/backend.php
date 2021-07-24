@@ -234,4 +234,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::post('/feedback/{type}/update/{id}', ['as' => 'admin.feedback.update', 'uses' => 'Backend\FeedbackController@update']);
     Route::delete('/feedback/{type}/delete/{id}', ['as' => 'admin.feedback.destroy', 'uses' => 'Backend\FeedbackController@destroy']);
     Route::post('/feedback/update_multiple', ['as' => 'admin.feedback.update_multiple', 'uses' => 'Backend\FeedbackController@update_multiple']);
+
+     /* Quản lý danh mục */
+    Route::get('/best', ['as' => 'admin.best.index', 'uses' => 'Backend\BestController@index']);
+    Route::get('/best/create', ['as' => 'admin.best.create', 'uses' => 'Backend\BestController@create']);
+    Route::get('/best/edit/{id}', ['as' => 'admin.best.edit', 'uses' => 'Backend\BestController@edit']);
+    Route::post('/best/store', ['as' => 'admin.best.store', 'uses' => 'Backend\BestController@store']);
+    Route::post('/best/update/{id}', ['as' => 'admin.best.update', 'uses' => 'Backend\BestController@update']);
+    Route::delete('/best/delete/{id}', ['as' => 'admin.best.destroy', 'uses' => 'Backend\BestController@destroy']);
+    //Route::post('/feedback/update_multiple', ['as' => 'admin.feedback.update_multiple', 'uses' => 'Backend\FeedbackController@update_multiple']);
+
+      /* Quản lý banner */
+    Route::get('/banner', ['as' => 'admin.banner.index', 'uses' => 'Backend\BannerController@index']);
+    Route::get('/banner/create', ['as' => 'admin.banner.create', 'uses' => 'Backend\BannerController@create']);
+    Route::get('/banner/edit/{id}', ['as' => 'admin.banner.edit', 'uses' => 'Backend\BannerController@edit']);
+    Route::post('/banner/store', ['as' => 'admin.banner.store', 'uses' => 'Backend\BannerController@store']);
+    Route::post('/banner/update/{id}', ['as' => 'admin.banner.update', 'uses' => 'Backend\BannerController@update']);
+    Route::delete('/banner/delete/{id}', ['as' => 'admin.banner.destroy', 'uses' => 'Backend\BannerController@destroy']);
 });

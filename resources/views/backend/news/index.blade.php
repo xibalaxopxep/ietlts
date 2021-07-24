@@ -71,9 +71,9 @@
                     <th>#</th>
                     <th><input type="checkbox" id="select_all" value=""></th>
                     <th>Tiêu đề</th>
-                    <th>Link video</th>
                     <th>Thứ tự</th>
                     <th>Trạng thái</th>
+                    <th>Tổng view</th>
                     <th>Ngày tạo</th>
                     <th>Tác vụ</th>
                 </tr>

@@ -88,6 +88,18 @@
                         <li class="nav-item"><a href="{{route('admin.slide.index')}}" class="nav-link">Slide</a></li>
                     </ul>
                 </li>
+                  <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.slide.index')  ) ? 'active' : '' }}"><i class="icon-video-camera"></i> <span>Banner</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="{{route('admin.banner.index')}}" class="nav-link">Danh sách banner</a></li>
+                    </ul>
+                </li>
+                   <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.block.index')  ) ? 'active' : '' }}"><i class="icon-video-camera"></i> <span>Khối</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="{{route('admin.block.index')}}" class="nav-link">Khối</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link {{ ( (Route::currentRouteName() == 'admin.news.index') ) ? 'active' : '' }}"><i class="icon-newspaper2"></i> <span>Tin tức</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
@@ -147,8 +159,15 @@
 
                     </ul>
                 </li>
+                
+                  <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.feedback.index') ) ? 'active' : '' }}"><i class="fa fa-comments-o" aria-hidden="true"></i><span>Học viên tiêu biểu</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="bài test">
+                        <li class="nav-item"><a href="{{route('admin.best.index')}}" class="nav-link">Danh sách</a></li>
+                    </ul>
+                </li>
 
-                   <li class="nav-item nav-item-submenu">
+                <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.feedback.index') ) ? 'active' : '' }}"><i class="fa fa-comments-o" aria-hidden="true"></i><span>Cảm nhận của học viên</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="bài test">
                         <li class="nav-item"><a href="{{route('admin.feedback.index',1)}}" class="nav-link">Video</a></li>

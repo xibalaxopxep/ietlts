@@ -25,7 +25,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Chọn bài test <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <select class="select-search form-control" name="test_id" data-placeholder="Chọn bài test"  required>
+                                            <select class="select-search form-control" name="test_id" data-placeholder="Chọn bài test"  required="">
                                                @foreach($options as $option)
                                                <option value="{{$option->id}}">{{$option->title}}</option>
                                                @endforeach
@@ -45,10 +45,13 @@
                                      <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Thể loại<span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                           <select class="select-search form-control" id="select_type" name="section_type" data-placeholder="Chọn bài test"  required>
+                                           <select class="select-search form-control" id="select_type" name="section_type" data-placeholder="Chọn bài test"  require="">
                                               <option selected="" disabled="">---Lựa chọn---</option>
-                                              <option value="1">Listening</option>
-                                              <option value="2">Reading</option>
+                                              <option value="1">Pronunciation</option>
+                                              <option value="2">Grammar</option>
+                                              <option value="3">Vocabulary</option>
+                                              <option value="4">Listening</option>
+                                              <option value="5">Reading</option>
                                             </select>
                                             {!! $errors->first('section_type', '<span class="text-danger">:message</span>') !!}
                                         </div>
@@ -63,7 +66,6 @@
                                             <textarea class="form-control ckeditor" id="content" name="section_content"></textarea>
                                         </div>
                                     </div>
-                                    
                                     </div>
 
                                      <div class="col-md-12" id="listening_type" style="display: none;">
@@ -74,9 +76,9 @@
                                         {!! $errors->first('file', '<span class="text-danger">:message</span>') !!}
                                    </div>
                                     </div>
-                                    
                                     </div>
-                                      <div class="col-md-12" id="">
+
+                                    <div class="col-md-12" id="">
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Thứ tự: </label>
                                         <div class="col-md-10">
@@ -84,8 +86,8 @@
                                         {!! $errors->first('ordering', '<span class="text-danger">:message</span>') !!}
                                    </div>
                                     </div>
-                                    
                                     </div>
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="text-center">
@@ -117,10 +119,10 @@
 <script type="text/javascript">
     $('#select_type').on('change',function(){
         var type = $(this).val();
-        if(type==1){
+        if(type==4){
             $('#reading_type').hide();
             $('#listening_type').show();
-        }else{
+        }else if(type==5){
             $('#reading_type').show();
             $('#listening_type').hide();
         }

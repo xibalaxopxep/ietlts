@@ -19,11 +19,18 @@ class Section extends Model {
         ];
     }
 
-     public function validateCreate2() {
+    public function validateCreate2() {
         return $rules = [
             'name' => 'required',
             'test_id' => 'required',
             'section_content'=>'required'
+        ];
+    }
+
+    public function validateCreate3() {
+        return $rules = [
+            'name' => 'required',
+            'test_id' => 'required'
         ];
     }
 
@@ -41,6 +48,14 @@ class Section extends Model {
             'name' => 'required',
             'test_id' => 'required',
             'section_content'=>'required'
+
+        ];
+    }
+
+      public function validateUpdate3($id) {
+        return $rules = [
+            'name' => 'required',
+            'test_id' => 'required'
 
         ];
     }

@@ -48,7 +48,7 @@
                         @endif
                     </td>
                     <td class="">
-                        <a href="{{route('admin.question.edit',$record->id)}}" title="{!! trans('base.edit') !!}" class="success"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                       
                         <a href="{{route('admin.test.edit', $record->id)}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
                         <form action="{!! route('admin.test.destroy', ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
                             {!! method_field('DELETE') !!}

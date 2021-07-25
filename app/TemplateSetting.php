@@ -7,10 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 class TemplateSetting extends Model
 {
     protected $table = 'template_setting';
-    protected $fillable = ['name','attribute_id','value'];
+    protected $fillable = ['name','image','	description','type','ordering','status'];
     public $timestamps = false;
-    public function attribute() {
-        $data = $this->belongsTo('\App\TemplateAttribute', 'attribute_id', 'id');
-        return $data;
+
+    public function validateCreate() {
+        return $rules = [
+            'name' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg',
+            'description' => 'required',
+            'type' => 'required',
+            'ordering'=>'required'
+        ];
+    }
+
+    public function validateUpdate($id) {
+        return $rules = [
+            'name' => 'required',
+            'description' => 'required',
+            'type' => 'required',
+            'ordering'=>'required'
+        ];
     }
 }

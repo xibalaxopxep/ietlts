@@ -53,9 +53,10 @@ class QuizzController extends Controller {
 	public function create(Request $request){
 		$type = $request->type;
         $tests = DB::table('test')->where('type',$type)->get();
+        $sections = DB::table('section')->get();
 		if($type==1){
             
-			return view('backend/quizz/create',compact('type','tests'));
+			return view('backend/quizz/create',compact('type','tests','sections'));
 		}
 		else{
 			return view('backend/quizz/create',compact('type','tests'));

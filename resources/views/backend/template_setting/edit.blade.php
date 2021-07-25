@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
 <div class="content">
-    <form action="{!!route('admin.template_setting.store')!!}" method="POST" enctype="multipart/form-data">
+    <form action="{!!route('admin.template_setting.update',$record->id)!!}" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -39,14 +39,14 @@
                                             <div class="form-group row">
                                                 <label class="col-md-3 col-form-label text-right">Tên khối <span class="text-danger">*</span></label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" name="name" value="{!!old('name')!!}" required="">
+                                                    <input type="text" class="form-control" name="name" value="{!!$record->name!!}" required="">
                                                     {!! $errors->first('name', '<span class="text-danger">:message</span>') !!}
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 col-form-label text-right">Thể loại<span class="text-danger">*</span></label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control"  name="type" value="{!!old('type')!!}">
+                                                    <input type="text" class="form-control"  name="type" value="{!!$record->type!!}">
                                                     {!! $errors->first('type', '<span class="text-danger">:message</span>') !!}
                                                 </div>
                                             </div>
@@ -54,7 +54,7 @@
                                              <div class="form-group row">
                                                 <label class="col-md-3 col-form-label text-right">Mô tả</label>
                                                 <div class="col-md-9">
-                                                   <textarea class="form-control" name="description"></textarea>
+                                                   <textarea class="form-control" name="description">{!!$record->description!!}</textarea>
                                                 </div>
                                             </div>
 
@@ -63,7 +63,7 @@
                                             <div class="col-md-3">
                                             </div>
                                             <div class="form-group col-md-2">
-                                                 <img src="{{url('/img/avatar-drive.png')}}" id ="frame" alt="test" width="150" height="150" />
+                                                 <img src="{{asset($record->image)}}" id ="frame" alt="test" width="150" height="150" />
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label class="required">Ảnh</label>
@@ -77,7 +77,7 @@
                                         <div class="form-group row">
                                                 <label class="col-md-3 col-form-label text-right">Thứ tự<span class="text-danger">*</span></label>
                                                 <div class="col-md-9">
-                                                    <input type="number" class="form-control"  name="ordering" value="0" required>
+                                                    <input type="number" class="form-control"  name="ordering" value="{{$record->ordering}}" required>
                                                     {!! $errors->first('ordering', '<span class="text-danger">:message</span>') !!}
                                                 </div>
                                             </div>
@@ -87,7 +87,11 @@
                                                 <div class="form-check col-md-5 form-check-right">
                                                     <label class="form-check-label float-right">
                                                         Kích hoạt
-                                                        <input type="checkbox" class="form-check-input-styled" name="status" value="1" data-fouc="">
+                                                        @if($record->status == 1)
+                                                        <input checked="" type="checkbox" class="form-check-input-styled" name="status" data-fouc="">
+                                                        @else
+                                                           <input type="checkbox" class="form-check-input-styled" name="status" data-fouc="">
+                                                        @endif
                                                     </label>
                                                 </div>
                                             </div>      

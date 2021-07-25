@@ -44,17 +44,22 @@ class SectionController extends Controller {
     public function store(Request $request) {
         $section = new Section();
         $input = $request->all();
-        if($input['section_type'] == 1){
-        $validator = \Validator::make($input, $section->validateCreate1());
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        }else{
-        $validator = \Validator::make($input, $section->validateCreate2());
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        }
+        // if($input['section_type'] == 1){
+        // $validator = \Validator::make($input, $section->validateCreate1());
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+        // }elseif($input['section_type'] == 2){
+        // $validator = \Validator::make($input, $section->validateCreate2());
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+        // }else{
+        // $validator = \Validator::make($input, $section->validateCreate3());
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+        // }
         $get_image=$request->file;
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
@@ -110,17 +115,22 @@ class SectionController extends Controller {
         $section = new Section();
         $input = $request->all();
         $record = DB::table('section')->where('id',$id)->first();
-        if($record->section_type == 1){
-        $validator = \Validator::make($input, $section->validateUpdate1($id));
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        }else{
-        $validator = \Validator::make($input, $section->validateUpdate2($id));
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        }
+        // if($record->section_type == 1){
+        // $validator = \Validator::make($input, $section->validateUpdate1($id));
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+        // }elseif($input['section_type'] == 2){
+        // $validator = \Validator::make($input, $section->validateUpdate2($id));
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+        // }else{
+        // $validator = \Validator::make($input, $section->validateUpdate3($id));
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+        // }
         $get_image=$request->file;
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();

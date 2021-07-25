@@ -28,4 +28,25 @@ class FrontendController extends Controller {
         
     }
 
+      public function block($alias) {
+            $record = DB::table('block')->where('position',$alias)->first();
+            if($record){
+                return view('frontend/block/detail',compact('record'));
+            }else{
+                return redirect()->back();
+            }
+    }
+
+     public function sign_up_advise(Request $request){
+            $input = $request->all();
+            $res = DB::table('contact')->insert($input);
+            if($res){
+                return redirect()->back()->with('success','Thành công, chúng tôi sẽ sớm liên hệ với bạn');
+            }
+            else{
+                 return redirect()->back()->with('error','Có lỗi trong quá trình xử lý, vui long thử lại sau');
+            }
+       }
+ 
+
 }

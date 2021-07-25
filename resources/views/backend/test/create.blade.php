@@ -51,7 +51,7 @@
                                             {!! $errors->first('category_id', '<span class="text-danger">:message</span>') !!}
                                         </div>
                                     </div>
-                                     <div class="form-group row">
+                                   <!--   <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Loại test <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <select class="select-search form-control" name="type" data-placeholder="Chọn loại test"  required>
@@ -60,7 +60,7 @@
                                             </select>
                                             {!! $errors->first('type', '<span class="text-danger">:message</span>') !!}
                                         </div>
-                                    </div>
+                                    </div> -->
                                    <!--  <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Mô tả </label>
                                         <div class="col-md-10">

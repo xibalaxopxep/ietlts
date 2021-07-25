@@ -1,80 +1,101 @@
 @extends('backend.layouts.master')
 @section('content')
-<div class="container">
-    <div class="col-md-12" style="margin-top:25px;">
-        @foreach($records as $key=>$value)
-        <div class="card card-collapsed">
-            <div class="card-header bg-transparent header-elements-inline">
-                <span class="text-uppercase font-size-sm font-weight-semibold">@if(isset($value['title'])) {{$value['title']}} @endif</span>
-                <div class="header-elements">
-                    <div class="list-icons">
-                        <a class="list-icons-item rotate-180" data-action="collapse"></a>
-                    </div>
+<!-- Content area -->
+<div class="content">
+    <!-- Table header styling -->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Danh sách khối </h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
                 </div>
             </div>
-            <div class="card-body" style="display: none;">
-                <ul class="media-list" data-form="true">
-                    <form method="post">
-                        <input type="hidden" name="name" value="{{$key}}"/>
-                        <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-                        @foreach($value as $attribute_name=>$setting_value)
-                        <li class="media">
-                            @switch($attribute[$attribute_name]['type'])
-                            @case('image')
-                            {!! \App\Helpers\StringHelper::getImageInput($attribute[$attribute_name]['id'],$setting_value,$options=array('guid'=>$key))!!}
-                            @break;
-                            @case('number')
-                            {!! \App\Helpers\StringHelper::getNumberInput($attribute[$attribute_name]['id'],$setting_value)!!}
-                            @break;
-                            @case('html')
-                            {!! \App\Helpers\StringHelper::getHtmlInput($attribute[$attribute_name]['id'],$setting_value)!!}
-                            @break;
-                            @case('color')
-                            {!! \App\Helpers\StringHelper::getColorInput($attribute[$attribute_name]['id'],$setting_value)!!}
-                            @break;
-                            @case('radio')
-                            {!! \App\Helpers\StringHelper::getRadioInput($attribute[$attribute_name]['id'],$setting_value)!!}
-                            @break;
-                            @default
-                            {!! \App\Helpers\StringHelper::getTextInput($attribute[$attribute_name]['id'],$setting_value)!!}
-                            @break;
-                            @endswitch
-                        </li>
-                        @endforeach
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Lưu<i class="icon-arrow-right14 position-right"></i></button>
-                        </div>
-                    </form>
-                </ul>
-            </div>
-
         </div>
-        @endforeach
-        <!-- /accordion with controls -->
 
-
+        <div class="card-body">
+            @if (Session::has('success'))
+            <div class="alert bg-success alert-styled-left">
+                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                <span class="text-semibold">{{ Session::get('success') }}</span>
+            </div>
+            @endif
+        </div>
+        <form action="{!!route('admin.template_setting.update_multiple')!!}" method="POST" enctype="multipart/form-data">
+            @csrf  
+             <div class="card-body">
+                 <div class="row " style="">
+                    <div class="col-md-4">
+                    </div>
+                 <div class="col-md-8">
+                     <div class="row" style="float: right;">
+                         <button style="margin-right: 5px;" name="action" value="save" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu</button>
+                         <button style="margin-right: 5px;" name="action" value="delete" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i> Xoá</button>
+                         <button style="margin-right: 5px;" name="action" value="active" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Kích hoạt</button>
+                         <button style="margin-right: 5px;" name="action" value="unactive" class="btn btn-primary"><i class="fa fa-minus" aria-hidden="true"></i> Ngưng kích hoạt</button>
+                     </div>
+                 </div>
+             </div>
+         </div>
+        <table class="table datatable-basic">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th><input type="checkbox" id="select_all" value=""></th>
+                    <th>Tên</th>
+                    <th>Thể loại</th>
+                    <th>Thứ tự</th>
+                    <th>Trạng thái</th>
+                    <th>Tác vụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($records as $key=>$record)
+                <tr>
+                    <td>{{++$key}}</td>
+                    <td><input name="check[]" type="checkbox" value="{{$record->id}}"></td>
+                    <td>{{$record->name}}</td>
+                    <td>{{$record->type}}</td>
+                    <td><input type="text" class="form-control" style="max-width: 70px;" name="orderBy[]" value="{{$record->ordering}}"></td>
+                    <td>
+                        @if($record->status == 1)
+                        <span class="badge bg-success-400">Kích hoạt</span>
+                        @else
+                        <span class="badge bg-grey-400">Khoá</span>
+                        @endif
+                    </td>
+                </form>
+                    <td class="">
+                        <a href="{{route('admin.template_setting.edit', $record->id)}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
+                     <!--    <form action="{!! route('admin.template_setting.destroy', ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
+                            {!! method_field('DELETE') !!}
+                            {!! csrf_field() !!}
+                            <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
+                                <i class="icon-close2"></i>
+                            </a>              
+                        </form> -->
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
+    <!-- /table header styling -->
+
 </div>
+<!-- /content area -->
 @stop
 @section('script')
 @parent
-<script>
-    $(function () {
-        $('body').delegate('[data-form="true"] form', 'submit', function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: '/api/edit_template_setting',
-                data: new FormData(this), contentType: false, processData: false,
-                method: 'POST', dataType: 'json',
-                success: function (resp) {
-                    swal({
-                        title: resp.message,
-                        icon: "success"
-                       })
-                }
-            });
-        });
-    });
+<script type="text/javascript">
+    $('#select_all').click(function() {
+      var c = this.checked;
+      $(':checkbox').prop('checked', c);
+});
 </script>
-<script src="{!! asset('assets/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js') !!}"></script>
-@stop
+<script src="{!! asset('assets/global_assets/js/plugins/tables/datatables/datatables.min.js') !!}"></script>
+<script src="{!! asset('assets/global_assets/js/plugins/forms/selects/select2.min.js') !!}"></script>
+<script src="{!! asset('assets/global_assets/js/demo_pages/datatables_basic.js') !!}"></script>
+@stop   

@@ -14,6 +14,19 @@
               @endforeach
             </ul>
           </header>
+
         </div>
       </div>
+
       </header>
+        @if(Session::has('success'))
+        <script type="text/javascript">
+          swal("Thành công!", "{{ Session::get('success') }}", "success");
+        </script>
+         @elseif(Session::has('error'))
+         <script type="text/javascript">
+             swal("Không thành công!", "{{ Session::get('error') }}", "error");
+         </script>
+         @endif
+     
+

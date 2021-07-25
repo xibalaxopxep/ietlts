@@ -25,7 +25,7 @@
                     <th>Id</th>
                     <th>Tên đăng nhập</th>
                     <th>Họ tên</th>
-                    <th>Quyền hạn</th>
+        
                     <th>Ngày tạo</th>
                     <th>Thao tác</th>
                 </tr>
@@ -36,9 +36,8 @@
                     <td>{{$record->id}}</td>
                     <td>{{$record->username}}</td>
                     <td>{{$record->full_name}}</td>
-                    <td>{{$record->role->name}}</td>
                     <td>{{$record->created_at()}}</td>
-                    <td class="text-center">
+                    <td class="">
                         <a href="{{route('admin.user.edit', $record->id)}}" title="Chỉnh sửa" class="success"><i class="icon-pencil"></i></a>   
                         <form action="{!! route('admin.user.destroy', $record->id) !!}" method="POST" style="display: inline-block">
                             {!! method_field('DELETE') !!}

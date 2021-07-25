@@ -2,6 +2,7 @@
 
 Route::group(['middleware' => 'frontend'], function() {
     Route::get('/', ['as' => 'home.index', 'uses' => 'Frontend\FrontendController@index']);
+
     Route::get('/marketing/activation/{key}', ['as' => 'marketing.activation', 'uses' => 'Frontend\MarketingController@activation']);
     Route::get('/construction/activation/{key}', ['as' => 'construction.activation', 'uses' => 'Frontend\ConstructionController@activation']);
     /* Sản phẩm */
@@ -45,7 +46,13 @@ Route::group(['middleware' => 'frontend'], function() {
       //Giảng viên
     Route::get('/thanh-tich', ['as' => 'achie.index', 'uses' => 'Frontend\AchieController@index']);
 
+    //ĐĂng kí
+    Route::post('/checkout-success', ['as' => 'product.checkout-sucess', 'uses' => 'Frontend\ProductController@checkoutSuccess']);
+
+    Route::get('/sign-up-advise', ['as' => 'home.sign_up_advise', 'uses' => 'Frontend\FrontendController@sign_up_advise']);
+
     //Lich khia giảng
     //Giảng viên
     Route::get('/lich-khai-giang', ['as' => 'schedule.index', 'uses' => 'Frontend\ScheduleController@index']);
+    Route::get('/{alias}', ['as' => 'home.block', 'uses' => 'Frontend\FrontendController@block']);
 });

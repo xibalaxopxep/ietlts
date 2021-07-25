@@ -26,12 +26,15 @@
                                     {!! $errors->first('title', '<span class="text-danger">:message</span>') !!}
                                 </div>
                             </div>
-                            <div class="form-group row">
+                     
+
+                              <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Nội dung: </label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control ckeditor" name="content">{!!old('content')!!}</textarea>                                    
+                                    <textarea rows="10" class="form-control " name="content">{!!old('content')!!}</textarea>                                    
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Vị trí</label>
                                 <div class="col-md-9">

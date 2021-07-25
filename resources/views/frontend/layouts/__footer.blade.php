@@ -8,35 +8,35 @@
               </div>
               <div class="form-content">
                 <div class="col-md-6 offset-md-6">
-                  <form>
+                  <form action="{!!route('home.sign_up_advise')!!}"  method="get" enctype="multipart/form-data">
                     <h4><b>ĐĂNG KÝ TƯ VẤN</b> LỘ TRÌNH HỌC IELTS</h4>
                     <p>Pasal cam kết giúp bạn chinh phục mục tiêu IELTS với lộ trình học tinh gọn - hiệu quả - tối ưu chi phí !</p>
                     <div class="form-group">
                       <img class="icon" src="assets_pasal/icon/user.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Nhập họ tên của bạn*"/>
+                      <input name="name" class="your_name" type="text" required="required" placeholder="Nhập họ tên của bạn*"/>
                     </div>
                     <div class="form-group">
                       <img class="icon" src="assets_pasal/icon/phone.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Số điện thoại của bạn*"/>
+                      <input name="phone" class="your_sdt" type="tel" required="required" placeholder="Số điện thoại của bạn*"/>
                     </div>
                     <div class="form-group">
                       <img class="icon" src="assets_pasal/icon/mail.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Email của bạn*"/>
+                      <input name="email" class="your_email" type="email" required="required" placeholder="Email của bạn*"/>
                     </div>
                     <div class="form-group">
                       <img class="icon" src="assets_pasal/icon/course.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Bạn quan tâm đến khóa học nào?"/>
+                      <input name="course" type="text" class="your_course" required="required" placeholder="Bạn quan tâm đến khóa học nào?"/>
                     </div>
                     <div class="form-group">
                       <img class="icon" src="assets_pasal/icon/location.png" alt="icon" />
-                      <select name="location">
+                      <select name="address" class="your_local">
                         <option value="" disabled selected>Chọn cơ sở Pasal gần bạn nhất*</option>
                         @foreach($contact_address as $add)
-                        <option value="">{{$add->name}}</option>
+                        <option value="{{$add->id}}">{!!$add->name!!}</option>
                         @endforeach
                       </select>
                     </div>
-                    <button class="button-form btn-gradient w-100">ĐĂNG KÝ NGAY</button>
+                    <button  class="button-form btn-gradient w-100 ">ĐĂNG KÝ NGAY</button>
                   </form>
                 </div>
               </div>
@@ -46,6 +46,9 @@
       </section>
     </body>
     <footer>
+
+ 
+
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
       <!-- Magnific Popup core JS file -->
       <script src="{{asset('assets_pasal/magnific-popup/jquery.magnific-popup.js')}}"></script>

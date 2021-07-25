@@ -1,80 +1,42 @@
 @extends('frontend.layouts.master_index')
 @section('content')
-      <div class="container">
+    
+    <div class="container">
+        <img id="pattern-about-5" src="assets_pasal/img/pattern-4.png" alt="pattern" />
         <section class="about">
-
+         
         @foreach($block as $bl)
           @if($bl->position == "gioi-thieu")
           {!!$bl->content!!}
           @endif
         @endforeach
-
         </section>
       </div>
       <div class="container">
         <section class="why py-5">
           <h3>TẠI SAO NÊN LỰA CHỌN <b>PASAL IELTS?</b></h3>
           <div class="row">
+            @foreach($template as $tem)
             <div class=col-md-3>
               <div class="item">
                 <div class="icon">
-                  <img src="{{asset('assets_pasal/img/why-1.png')}}" alt="pasal" />
+                  <img src="assets_pasal/img/why-1.png" alt="pasal" />
                 </div>
                 <div class="info mt-2">
-                  <span>Phương pháp</span>
-                  <h4>Độc quyền <br>Simon IELTS</h4>
+                  @if($tem->type)
+                  <span>{{$tem->type}}</span>
+                  @else
+                  <span><br></span>
+                  @endif
+                  <h4>{!!$tem->name!!}</h4>
                   <a class="btn bg-main">Xem tiếp</a>
                   <div class="description">
-                    As a society, we spend hundreds of billions of dollars measuring the return on our financial assets_pasal
+                    {{$tem->description}}
                   </div>
                 </div>
               </div>              
             </div>
-            <div class=col-md-3>
-              <div class="item">
-                <div class="icon">
-                  <img src="assets_pasal/img/why-2.png" alt="pasal" />
-                </div>
-                <div class="info mt-2">
-                  <span>Tài liệu học</span>
-                  <h4>Độc quyền </br>từ Simon</h4>
-                  <a class="btn bg-main">Xem tiếp</a>
-                  <div class="description">
-                    As a society, we spend hundreds of billions of dollars measuring the return on our financial assets_pasal
-                  </div>
-                </div>
-              </div>              
-            </div>
-            <div class=col-md-3>
-              <div class="item">
-                <div class="icon">
-                  <img src="assets_pasal/img/why-3.png" alt="pasal" />
-                </div>
-                <div class="info mt-2">
-                  <span>ㅤ</span>
-                  <h4>Giảng viên </br>chuyên nghiệp</h4>
-                  <a class="btn bg-main">Xem tiếp</a>
-                  <div class="description">
-                    As a society, we spend hundreds of billions of dollars measuring the return on our financial assets_pasal
-                  </div>
-                </div>
-              </div>              
-            </div>
-            <div class=col-md-3>
-              <div class="item">
-                <div class="icon">
-                  <img src="assets_pasal/img/why-4.png" alt="pasal" />
-                </div>
-                <div class="info mt-2">
-                  <span>Dịch vụ</span>
-                  <h4>Đặc quyền </br>cho học viên</h4>
-                  <a class="btn bg-main">Xem tiếp</a>
-                  <div class="description">
-                    As a society, we spend hundreds of billions of dollars measuring the return on our financial assets_pasal
-                  </div>
-                </div>
-              </div>              
-            </div>
+           @endforeach
           </div>
           <a class="btn btn-submary">ĐĂNG KÝ NHẬN LỘ TRÌNH HỌC NGAY</a>
         </div>
@@ -109,22 +71,34 @@
           </div>
         </div>
       </section>
+
       <section class="teacher">
         <h3>ĐỘI NGŨ <b>GIẢNG VIÊN</b> IELTS TẠI PASAL</h3>
         <div class="container">
           <div class="row d-flex mt-30">
-            @foreach($teachers as $teacher)
+            @foreach($teachers as $key1 => $teacher)
+            @if($key1 == 0)
             <div class="col-md-3">
               <div class="item" style="background: url({{asset($teacher->avatar)}}) no-repeat;">
                 <h4>{{$teacher->name}}</h4>
                 <p>{{$teacher->summary}}</p>
               </div>
             </div>
+            @else
+             <div class="col-md-3 offset-md-1">
+              <div class="item" style="background: url({{asset($teacher->avatar)}}) no-repeat;">
+                <h4>{{$teacher->name}}</h4>
+                <p>{{$teacher->summary}}</p>
+              </div>
+            </div>
+            @endif
+            
             @endforeach
           </div>
         </div>
       </section>
-      <section class="testimonial">
+     
+     <section class="testimonial">
         <h3 class="mb-30">HỌC VIÊN<b> TIÊU BIỂU</b></h3>
         <div class="container">
           <div class="row">
@@ -145,50 +119,11 @@
         </div>
       </section>
       <section id="form" style="background: url(assets_pasal/img/background/pattern-2.png) var(--main-color) no-repeat;background-size: cover;">
-        <img id="pattern-1" src="assets_pasal/img/background/pattern-1.png" alt="pattern" />
-        <div class="container">
-          <div class="row">
-            <div class="form-wrapper">
-              <div class="col-md-6 simon">
-                <img src="assets_pasal/img/simon.png" alt="simon ielts">
-              </div>
-              <div class="form-content">
-                <div class="col-md-6 offset-md-6">
-                  <form>
-                    <h4><b>ĐĂNG KÝ TƯ VẤN</b> LỘ TRÌNH HỌC IELTS</h4>
-                    <p>Pasal cam kết giúp bạn chinh phục mục tiêu IELTS với lộ trình học tinh gọn - hiệu quả - tối ưu chi phí !</p>
-                    <div class="form-group">
-                      <img class="icon" src="assets_pasal/icon/user.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Nhập họ tên của bạn*"/>
-                    </div>
-                    <div class="form-group">
-                      <img class="icon" src="assets_pasal/icon/phone.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Số điện thoại của bạn*"/>
-                    </div>
-                    <div class="form-group">
-                      <img class="icon" src="assets_pasal/icon/mail.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Email của bạn*"/>
-                    </div>
-                    <div class="form-group">
-                      <img class="icon" src="assets_pasal/icon/course.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Bạn quan tâm đến khóa học nào?"/>
-                    </div>
-                    <div class="form-group">
-                      <img class="icon" src="assets_pasal/icon/location.png" alt="icon" />
-                      <select name="location">
-                        <option value="" disabled selected>Chọn cơ sở Pasal gần bạn nhất*</option>
-                        @foreach($contact_address as $add)
-                        <option value="">{{$add->name}}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                    <button class="button-form btn-gradient w-100">ĐĂNG KÝ NGAY</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+         @foreach($block as $bl)
+          @if($bl->position == "dang-ky-footer")
+          {!!$bl->content!!}
+          @endif
+        @endforeach
       </section>
       <section class="recent-news">
         <h3 class=""><b>KIẾN THỨC </b>LUYỆN THI IELTS</h3>

@@ -88,6 +88,12 @@
                         <li class="nav-item"><a href="{{route('admin.slide.index')}}" class="nav-link">Slide</a></li>
                     </ul>
                 </li>
+                 <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.template_setting.index')  ) ? 'active' : '' }}"><i class="icon-video-camera"></i> <span>Tại sao nên chọn pasal</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="{{route('admin.template_setting.index')}}" class="nav-link">Danh sách khối</a></li>
+                    </ul>
+                </li>
                   <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.slide.index')  ) ? 'active' : '' }}"><i class="icon-video-camera"></i> <span>Banner</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">

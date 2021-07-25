@@ -26,7 +26,22 @@
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Bài test <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <select class="select-search form-control" name="test_id" data-placeholder="Chọn danh mục"  required>
+
+                                            <select class="select-search form-control select_test" name="test_id" data-placeholder="Chọn danh mục" id=""  required>
+                                                <option selected="" disabled="">Chọn bài test</option>
+                                                @foreach($tests as $test)
+                                                <option value="{{$test->id}}">{{$test->title}}</option>
+                                                @endforeach
+                                            </select>
+                                            {!! $errors->first('category_id', '<span class="text-danger">:message</span>') !!}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label text-right">Chọn part <span class="text-danger">*</span></label>
+                                        <div class="col-md-10" >
+
+                                            <select class="select-search form-control pick_test" name="section_id" data-placeholder="Chọn danh mục"  required>
                                                 @foreach($tests as $test)
                                                 <option value="{{$test->id}}">{{$test->title}}</option>
                                                 @endforeach
@@ -82,7 +97,11 @@
 @stop
 @section('script')
 @parent
-
+<script type="text/javascript">
+    $('.select_test').on('change',function(){
+           
+    });
+</script>
 <script src="{!! asset('assets/global_assets/js/plugins/forms/selects/select2.min.js') !!}"></script>
 
 <script src="{!! asset('assets/global_assets/js/plugins/forms/styling/uniform.min.js') !!}"></script>

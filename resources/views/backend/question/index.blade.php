@@ -21,14 +21,14 @@
         </div>
         <!-- Button trigger modal -->
 
-        <div style="margin-left: 30px;" class="row">
+        <!-- <div style="margin-left: 30px;" class="row">
             <button type="button" class="btn btn-primary col-md-2" data-toggle="modal" data-target="#exampleModalCenter">
               Thêm câu hỏi listen
             </button>
               <button type="button" style="margin-left: 20px;" class="btn btn-primary col-md-2" data-toggle="modal" data-target="#exampleModalCenter1">
               Thêm câu hỏi reading
             </button>
-        </div>
+        </div> -->
 
 
             <!-- Modal -->

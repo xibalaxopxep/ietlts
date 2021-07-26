@@ -87,8 +87,14 @@
                     <td>{{$record->title }}</td>
                     @if($record->section_type==1)
                     <td>Listening</td>
-                    @else
+                    @elseif($record->section_type==2)
                     <td>Reading</td>
+                    @elseif($record->section_type==3)
+                    <td>Pronunciation</td>
+                    @elseif($record->section_type==4)
+                    <td>Grammar</td>
+                    @elseif($record->section_type==5)
+                    <td>Vocabulary</td>
                     @endif
                     <td><input type="text" class="form-control" style="max-width: 70px;" name="orderBy[]" value="{{$record->ordering}}"></td>
                     <td>{{$record->created_at}}</td>

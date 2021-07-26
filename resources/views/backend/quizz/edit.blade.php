@@ -98,7 +98,7 @@
                                     <label class="col-md-2 col-form-label text-right">Câu trả lời</label>
                                     <div class="input_fields_wrap col-md-10 row">
                                         <div class="col-md-12 row" style="margin-bottom: 10px;">
-                                       <input type="radio" class="col-md-1 is_answer" style="margin-top: 7px;" value="0">
+                                       <input type="radio" class="col-md-1 this_answer" name="this_answer" style="margin-top: 7px;" value="0">
                                        <input type="text" class="form-control col-md-9  list_answer">
                                        <button style="margin-left: 10px;" type="button" class="btn btn-primary add_field_button" name="">Add</button>
                                         </div>
@@ -272,7 +272,7 @@
         var data = [];  //cau trả lời
         var question = $('#question').val();   //Câu hỏi
         var quizz_id = {{$record->id}};        //Nhóm câu hỏi
-        var radioValue = $(".is_answer :checked").val();    //Đáp án đúng trắn nghiệm
+        var radioValue =$('input[name=this_answer]:checked').val()    //Đáp án đúng trắn nghiệm
         var true_false = $("#answer_select :checked").val();   //ĐÁp án true_falsse
         var key = 2;                                        
         var answer =  $('#answer').val();   //Câu trả lời text               
@@ -314,7 +314,7 @@
              //text box increment
             var html = "";
              html += '<div class="col-md-12 row" style="margin-bottom: 10px;">';
-             html +='<input type="radio"  value="'+x+'" class="col-md-1 is_answer" style="margin-top: 7px;">'; 
+             html +='<input type="radio" name="this_answer"  value="'+x+'" class="col-md-1 this_answer" style="margin-top: 7px;">'; 
              html += '<input type="text" class="form-control col-md-9 list_answer">';
              html += '<a style="margin-left: 5px; margin-top: 5px;" href="#" class="remove_field">Xoá</a>';
              html += '</div>';

@@ -68,6 +68,7 @@ class SectionController extends Controller {
             $get_image->move('upload/files/',$new_image);
             $input['file'] = '/upload/files/'.$new_image;
         }
+     
         $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh'); 
         $res = $section->create($input);   
         if ($res) {

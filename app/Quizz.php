@@ -9,7 +9,7 @@ class Quizz extends Model {
     //
     protected $table = "quizz";
     protected $fillable = [
-        'title', 'test_id', 'image', 'type_quizz', 'content', 'orderBy','created_at', 'updated_at'
+        'title', 'test_id', 'image', 'type_quizz', 'content', 'orderBy','created_at', 'updated_at','section_id','section_type'
     ];
 
     public function created_at() {

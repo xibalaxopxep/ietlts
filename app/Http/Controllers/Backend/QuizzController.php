@@ -32,7 +32,8 @@ class QuizzController extends Controller {
 	}
 
 	public function store(Request $request){
-		 $input = $request->except('_token');
+		$input = $request->except('_token');
+        $input['section_type'] = DB::table('section')->where('id',$input['section_id'])->pluck('section_type')->first();
 		 Quizz::create($input);
 		 return redirect()->route('admin.quizz.index');
 	}

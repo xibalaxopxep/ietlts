@@ -13,40 +13,7 @@ class QuizzController extends Controller {
 	public function index(){
         $records = Quizz::join('test','test.id',"=","quizz.test_id")->select('*','quizz.title as quizz_title','quizz.id as id')->orderBy('test.id','desc')->orderBy('quizz.id','asc')->get();
       $questions = DB::table('question')->get();
-     //    $index = 0;
-    	// $first = 0;
-    	// $dem = 0;
-    	// $count = 0;
-    	// $test_index = $records[0]->test_id;
-     //    foreach ($records as $key => $record) {
-     //    	if($key >0){
-     //    		$test_index = $records[$key-1]->test_id;
-     //    	}
-     //    	$test_id= $record->test_id;
-     //    	if($test_id != $test_index){
-     //    		$index = 0;
-		   //  	$first = 0;
-		   //  	$dem = 0;
-     //    	}
-     //    	foreach ($questions as  $question) {
-     //    	    if($question->quizz_id == $record->id){
-     //    	    	$count++;
-     //    	    	$dem++;
-     //    	    }
-     //        }
-     //        if($first == 0){
-     //        	$index = 1;
-     //        	$first = 1;
-     //        }
-     //        else{
-     //        	$index = $dem - $count + 1;
-     //        }
-     //        $count=0;
-     //        $records[$key]['dem'] = $dem; 
-     //        $records[$key]['index'] = $index; 
-        }
-        //dd($records);
-        //$tests = DB::table("test")->where('type', 1)->get(); 
+     
         return view('backend/quizz/index',compact('records','questions'));
 	}
 

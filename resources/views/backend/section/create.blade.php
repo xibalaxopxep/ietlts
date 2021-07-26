@@ -120,10 +120,10 @@
 <script type="text/javascript">
     $('#select_type').on('change',function(){
         var type = $(this).val();
-        if(type==4){
+        if(type==1){
             $('#reading_type').hide();
             $('#listening_type').show();
-        }else if(type==5){
+        }else if(type==2){
             $('#reading_type').show();
             $('#listening_type').hide();
         }

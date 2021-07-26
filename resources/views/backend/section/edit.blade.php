@@ -42,19 +42,22 @@
                                         </div>
                                     </div>
 
-                                     <div class="form-group row">
+                                   <!--   <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Thể loại<span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                          @if($record->section_type==1)
-                                          <input class="form-control" disabled="" type="text" name="section_type" value="Lisening">
-                                          @else
-                                           <input  class="form-control"  disabled="" type="text" name="section_type" value="Reading">
-                                          @endif
+                                             <select readonly class="select-search form-control" id="select_type" name="section_type" data-placeholder="Chọn bài test"  require="">
+                                              <option selected="" disabled="">---Lựa chọn---</option>
+                                              <option value="1">Listening</option>
+                                              <option value="2">Reading</option>
+                                              <option value="3">Pronunciation</option>
+                                              <option value="4">Grammar</option>
+                                              <option value="5">Vocabulary</option>
+                                          </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                                                
                                    
-                                     @if($record->type==1)
+                                     @if($record->section_type==2)
                                     <div class="col-md-12" id="reading_type">
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Nội dung bài đọc: </label>
@@ -64,7 +67,7 @@
                                     </div>
                                     
                                     </div>
-                                       @else
+                                       @elseif($record->section_type==1)
                                      <div class="col-md-12" id="listening_type">
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Chọn file nghe: </label>

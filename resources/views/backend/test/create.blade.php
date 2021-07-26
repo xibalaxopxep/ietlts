@@ -78,40 +78,7 @@
                                 </fieldset>
                             </div>
                             <div class="col-md-4">
-                              <!--   <div class="form-group row">
-                                    <label class="col-form-label col-md-4 text-left">Giá </label>
-                                    <div class="col-md-7">
-                                        <input type="text" name="price" class="form-control touchspin text-center" value="0">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-4 text-left">Giá khuyến mãi </label>
-                                    <div class="col-md-7">
-                                        <input type="text" name="sale_price" class="form-control touchspin text-center" value="0">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="form-check-label col-md-4  text-left">Hẹn ngày đăng </label>
-                                    <div class="input-group col-md-7">
-                                        <span class="input-group-prepend">
-                                            <span class="input-group-text"><i class="icon-calendar5"></i></span>
-                                        </span>
-                                        <input type="text" class="form-control pickadate" placeholder="Ngày đăng" name="post_schedule">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-left">Từ khóa <span class="text-danger">*</span></label>
-                                    <div class="col-md-7">
-                                        <input type="text" class="form-control tokenfield" name="keywords" data-fouc required="">
-                                        {!! $errors->first('keywords', '<span class="text-danger">:message</span>') !!}
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-4 text-left">Thứ tự </label>
-                                    <div class="col-md-5">
-                                        <input type="text" name="ordering" class="form-control touchspin text-center" value="0">
-                                    </div>
-                                </div> -->
+              
                                 <div class="form-group row">
                                     <div class="form-check col-md-4 form-check-right">
                                         <label class="form-check-label float-right">

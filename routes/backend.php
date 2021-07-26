@@ -8,7 +8,7 @@
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
-    Route::get('/', ['as' => 'admin.index', 'uses' => 'Backend\BackendController@index']);
+   Route::get('/index', ['as' => 'admin.index', 'uses' => 'Backend\BackendController@index']);
     /* Cấu hình website */
     Route::get('/config', ['as' => 'admin.config.index', 'uses' => 'Backend\ConfigController@index']);
     Route::post('/config/update/{id}', ['as' => 'admin.config.update', 'uses' => 'Backend\ConfigController@update']);

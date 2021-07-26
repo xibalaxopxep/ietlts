@@ -28,8 +28,8 @@ class FrontendController extends Controller {
         
     }
 
-      public function block($alias) {
-            $record = DB::table('block')->where('position',$alias)->first();
+      public function block($position) {
+            $record = DB::table('block')->where('position',$position)->first();
             if($record){
                 return view('frontend/block/detail',compact('record'));
             }else{

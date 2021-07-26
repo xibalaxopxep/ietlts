@@ -10,8 +10,8 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
-Route::get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-Route::post('/login', ['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']);
+Route::get('/get/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
+Route::post('/post/login', ['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']);
 Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
 Route::get('/filter-news-cat', ['as' => 'api.filter_news_cat', 'uses' => 'Backend\NewssController@filter_news_cat']);
 Route::group(['prefix' => 'api', 'middleware' => 'api'], function() {
@@ -23,5 +23,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'api'], function() {
     Route::post('/update-cart', ['as' => 'api.updatecart', 'uses' => 'Api\ProductController@updateCart']);
     Route::post('/delete-cart', ['as' => 'api.deletecart', 'uses' => 'Api\ProductController@deleteCart']);
     Route::post('/login-with-fb-sdk', ['as' => 'api.login_with_fb', 'uses' => 'Api\FrontendController@checkUser']);
+
     Route::post('/edit_template_setting', ['as' => 'api.edit_template_setting', 'uses' => 'Api\TemplateSettingController@update']);
+
 });
+

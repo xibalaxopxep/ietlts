@@ -54,5 +54,5 @@ Route::group(['middleware' => 'frontend'], function() {
     //Lich khia giảng
     //Giảng viên
     Route::get('/lich-khai-giang', ['as' => 'schedule.index', 'uses' => 'Frontend\ScheduleController@index']);
-    Route::get('/{alias}', ['as' => 'home.block', 'uses' => 'Frontend\FrontendController@block']);
+    Route::get('/{postion}', ['as' => 'block.detail', 'uses' => 'Frontend\FrontendController@block']);
 });

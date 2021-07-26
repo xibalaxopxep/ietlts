@@ -16,6 +16,8 @@
         <section class="why py-5">
           <h3>TẠI SAO NÊN LỰA CHỌN <b>PASAL IELTS?</b></h3>
           <div class="row">
+
+          
             @foreach($template as $tem)
             <div class=col-md-3>
               <div class="item">
@@ -31,7 +33,7 @@
                   <h4>{!!$tem->name!!}</h4>
                   <a class="btn bg-main">Xem tiếp</a>
                   <div class="description">
-                    {{$tem->description}}
+                    {!!$tem->description!!}
                   </div>
                 </div>
               </div>              
@@ -39,8 +41,9 @@
            @endforeach
           </div>
           <a class="btn btn-submary">ĐĂNG KÝ NHẬN LỘ TRÌNH HỌC NGAY</a>
-        </div>
+        
       </section>
+      </div>
       <section class="course">
         <h3>CÁC KHÓA HỌC <b>IELTS TẠI PASAL</b></h3>
         <span class="subtitle">Giải pháp luyện thi IELTS độc quyền từ Simon của Pasal, giúp học viên nắm vững bài thi - đọc vị giám khảo!</span>

@@ -60,7 +60,7 @@
                     <th>#</th>
                     <th>Tiêu đề</th>
                     <th>Đề thi</th>
-                    <th>Nhóm câu hỏi</th>
+                    <!-- <th>Nhóm câu hỏi</th> -->
                     <th>Loại test</th>
                     <th>Ngày tạo</th>
                     <th>Tác vụ</th>
@@ -73,13 +73,13 @@
                     <td>{{++$key}}</td>
                     <td>{{$record->quizz_title}}</td>
                     <td>{{$record->title}}</td>
-                    @if($record->index == $record->dem)
+                 <!--    @if($record->index == $record->dem)
                     <td>{{$record->index}}</td>
                     @elseif($record->index > $record->dem)
                     <td></td>
                     @else
                     <td>{{$record->index}} - {{$record->dem}}</td>
-                    @endif
+                    @endif -->
                     @if($record->type == 1)
                     <td>Listening</td>
                     @else

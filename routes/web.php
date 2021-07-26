@@ -10,8 +10,8 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
-Route::get('/get/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-Route::post('/post/login', ['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']);
+Route::get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
+Route::post('/login', ['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']);
 Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
 Route::get('/filter-news-cat', ['as' => 'api.filter_news_cat', 'uses' => 'Backend\NewssController@filter_news_cat']);
 Route::group(['prefix' => 'api', 'middleware' => 'api'], function() {

@@ -21,7 +21,7 @@
         </div>
         <!-- Button trigger modal -->
 
-        <div style="margin-left: 30px;" class="row">
+        <!-- <div style="margin-left: 30px;" class="row">
           <div class="col-md-2">
             <form action="{!!route('admin.quizz.create')!!}" method="get" enctype="multipart/form-data">
             <button type="submit"  class="btn btn-primary " >
@@ -41,7 +41,7 @@
           </div>
               
            
-        </div>
+        </div> -->
 
 
 

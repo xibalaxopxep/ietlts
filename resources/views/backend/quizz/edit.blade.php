@@ -26,7 +26,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Bài test <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <select class="select-search form-control" name="test_id" data-placeholder="Chọn danh mục"  required>
+                                            <select class="select-search form-control" readonly="" name="test_id" data-placeholder="Chọn danh mục"  required>
                                                 @foreach($tests as $test)
                                                 @if($test->id == $record->test_id)
                                                 <option selected="" value="{{$test->id}}">{{$test->title}}</option>
@@ -68,16 +68,20 @@
                               <div class="card" >
                               <div class="card-body">
                                 <div class="form-group row">
-                                        <label class="col-md-2 col-form-label text-right">Nội dung: </label>
+                                        <label class="col-md-2 col-form-label text-right">Loại câu hỏi: </label>
                                         <div class="col-md-10">
-                                            <select  id="choose" class="form-control">
+                                            <select name="question_type" id="choose" class="form-control">
                                                 <option select="false" value="0">Chọn loại câu hỏi</option>
-                                                <option class="choice" value="1">Trắc nghiệm</option>
+                                                <option id="choice" value="1">Trắc nghiệm</option>
                                                 <option id="fill_input" value="2">Điền từ</option>
+                                                <option id="" value="3">True/False</option>
+                                                <option id="diffirent_spell" value="4">Từ khác loại</option>
+                                                <option id="connect" value="5">Nối từ</option>
+                                                
                                             </select>
                                         </div>
                                 </div>
-                                <div class="form-group row">
+                                <div id="question_div" style="display: none;" class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Câu hỏi: </label>
                                         <div class="col-md-10">
                                             <textarea class="form-control" id="question" rows="4"></textarea>
@@ -86,10 +90,11 @@
                                  <div id="fill_answer" style="display: none;" class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Câu trả lời: </label>
                                         <div class="col-md-10">
-                                            <input id="answer" class="form-control" value="">
+                                            <input name="answer_text" id="answer" class="form-control" value="">
                                         </div>
                                 </div>
-                                <div id="choice_answer" style="display: none;" class="form-group row">
+                              
+                                 <div id="choice_answer" style="display: none;" class="form-group row">
                                     <label class="col-md-2 col-form-label text-right">Câu trả lời</label>
                                     <div class="input_fields_wrap col-md-10 row">
                                         <div class="col-md-12 row" style="margin-bottom: 10px;">
@@ -99,6 +104,16 @@
                                         </div>
                                     </div>
                                </div>
+
+                                 <div id="true_false" style="display: none;" class="form-group row">
+                                    <label class="col-md-2 col-form-label text-right">Chọn đáp án</label>
+                                    <select name="answer_select" class="form-control col-md-10 " id="answer_select">
+                                        <option selected="" value="true">True</option>
+                                        <option value="false">False</option>
+                                        <option value="not_given">Not Given</option>
+                                    </select>
+                               </div>
+
                                <div class="form-group row">
                                     <table class="table">
                                       <thead class="thead-light">
@@ -149,7 +164,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div class="row">
-                                                    @if($question->question_type == 1)
+                                                    @if($question->question_type == 1 || $question->question_type==4)
                                                     <div class="form-group row col-md-12">
                                                         <label class="col-md-2">Câu hỏi</label>
                                                         <input type="text" class="form-control col-md-9" name="question">
@@ -223,24 +238,45 @@
     $('#choose').on('change',function(){
         question_type = $(this).val();
         if(question_type==1){
+          question_div
+           $('#question_div').show();
             $('#choice_answer').show();
             $('#fill_answer').hide();
+             $('#true_false').hide();
             
-        }else{
+        }else if(question_type==2){
+          $('#question_div').show();
             $('#choice_answer').hide();
             $('#fill_answer').show();
+             $('#true_false').hide();
+        }else if(question_type==3){
+          $('#question_div').show();
+            $('#choice_answer').hide();
+            $('#fill_answer').hide();
+            $('#true_false').show();
+        }
+        else if(question_type==4){
+          $('#question_div').hide();
+            $('#choice_answer').show();
+            $('#fill_answer').hide();
+            $('#true_false').hide();
+        }else if(question_type==5){
+          $('#question_div').show();
+            $('#choice_answer').hide();
+            $('#fill_answer').show();
+             $('#true_false').hide();
         }
     });
     
     $('#create_question').on('click',function(){
-        var data = [];
-        var question = $('#question').val();
-        var quizz_id = {{$record->id}};
-        var radioValue = $(".is_answer:checked").val();
-
-        var key = 2;
-        var answer =  $('#answer').val();
-        if(question_type == 1){
+        var data = [];  //cau trả lời
+        var question = $('#question').val();   //Câu hỏi
+        var quizz_id = {{$record->id}};        //Nhóm câu hỏi
+        var radioValue = $(".is_answer :checked").val();    //Đáp án đúng trắn nghiệm
+        var true_false = $("#answer_select :checked").val();   //ĐÁp án true_falsse
+        var key = 2;                                        
+        var answer =  $('#answer').val();   //Câu trả lời text               
+        if(question_type == 1 || question_type == 4 ){
         $(".list_answer").each(function () {                  
             data.push($(this).val()); 
          });
@@ -251,7 +287,7 @@
                 url:'{{route("api.create_question")}}',
                 method:"POST",
                 dataType: "JSON",
-                data:{data:data,question_type:question_type,question:question,quizz_id:quizz_id,radioValue:radioValue,answer:answer},
+                data:{data:data,question_type:question_type,question:question,quizz_id:quizz_id,radioValue:radioValue,answer:answer,true_false:true_false},
                 success:function(resp){
                     window.location.reload();
                     // key ++;
@@ -266,9 +302,6 @@
                    }
         });  
     });
-    
-    
-  
 
     var max_fields = 5; //maximum input boxes allowed
     var wrapper = $(".input_fields_wrap"); //Fields wrapper

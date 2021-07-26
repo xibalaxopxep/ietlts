@@ -3,7 +3,7 @@
 
 
 
-{!!$record->content!!}
+
 
 
 

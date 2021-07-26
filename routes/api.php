@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
   });
  */
 Route::post('/sign-up-advise', ['as' => 'api.sign_up_advise', 'uses' => 'Api\FrontendController@sign_up_advise']);
+Route::post('/select-test', ['as' => 'api.select_test', 'uses' => 'Api\TestController@selectTest']);
 Route::post('/pick-test', ['as' => 'api.pick_test', 'uses' => 'Api\TestController@pickTest']);
 Route::post('/get-product-attribute', ['as' => 'api.get_product_attribute', 'uses' => 'Api\ProductController@getProductAttribute']);
 Route::post('/get-sale-product-attribute', ['as' => 'api.get_sale_product_attribute', 'uses' => 'Api\ProductController@getSaleProductAttribute']);

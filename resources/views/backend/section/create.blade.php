@@ -47,11 +47,12 @@
                                         <div class="col-md-10">
                                            <select class="select-search form-control" id="select_type" name="section_type" data-placeholder="Chọn bài test"  require="">
                                               <option selected="" disabled="">---Lựa chọn---</option>
-                                              <option value="1">Pronunciation</option>
-                                              <option value="2">Grammar</option>
-                                              <option value="3">Vocabulary</option>
-                                              <option value="4">Listening</option>
-                                              <option value="5">Reading</option>
+                                              <option value="1">Listening</option>
+                                              <option value="2">Reading</option>
+                                              <option value="3">Pronunciation</option>
+                                              <option value="4">Grammar</option>
+                                              <option value="5">Vocabulary</option>
+                                            
                                             </select>
                                             {!! $errors->first('section_type', '<span class="text-danger">:message</span>') !!}
                                         </div>

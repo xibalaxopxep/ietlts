@@ -52,7 +52,7 @@ class QuizzController extends Controller {
 
 	public function create(Request $request){
 		$type = $request->type;
-        $tests = DB::table('test')->where('type',$type)->get();
+        $tests = DB::table('test')->get();
         $sections = DB::table('section')->get();
 		if($type==1){
             

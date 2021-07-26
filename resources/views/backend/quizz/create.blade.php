@@ -33,7 +33,7 @@
                                                 <option value="{{$test->id}}">{{$test->title}}</option>
                                                 @endforeach
                                             </select>
-                                            {!! $errors->first('category_id', '<span class="text-danger">:message</span>') !!}
+                                            {!! $errors->first('test_id', '<span class="text-danger">:message</span>') !!}
                                         </div>
                                     </div>
 
@@ -41,12 +41,10 @@
                                         <label class="col-md-2 col-form-label text-right">Chọn part <span class="text-danger">*</span></label>
                                         <div class="col-md-10" >
 
-                                            <select class="select-search form-control pick_test" name="section_id" data-placeholder="Chọn danh mục"  required>
-                                                @foreach($tests as $test)
-                                                <option value="{{$test->id}}">{{$test->title}}</option>
-                                                @endforeach
+                                            <select class="select-search form-control pick_test" name="section_id" data-placeholder="Chọn part "  required="">
+                                              
                                             </select>
-                                            {!! $errors->first('category_id', '<span class="text-danger">:message</span>') !!}
+                                            {!! $errors->first('section_id', '<span class="text-danger">:message</span>') !!}
                                         </div>
                                     </div>
 
@@ -99,7 +97,23 @@
 @parent
 <script type="text/javascript">
     $('.select_test').on('change',function(){
-           
+         $.ajax({
+                url:'{{route("api.select_test")}}',
+                method:"POST",
+                dataType: "JSON",
+                data:{test_id:$(this).val()},
+                success:function(resp){
+                    if(resp.success == 1){
+                      var html="";
+                      $.each(resp.sections, function (index, value) {
+                             html+= '<option value="'+value.id+'">'+value.name+'</option>';
+                        });
+                      $('.pick_test').html(html);
+                    }else{
+                        alert('Có lỗi trong quá trình xử lý');
+                    }
+                }
+         });   
     });
 </script>
 <script src="{!! asset('assets/global_assets/js/plugins/forms/selects/select2.min.js') !!}"></script>

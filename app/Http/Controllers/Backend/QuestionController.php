@@ -22,6 +22,7 @@ class QuestionController extends Controller {
 
 	public function store(Request $request){
 		 $input = $request->except('_token');
+		 dd($input);
 		 if($input['question_type'] == 1){
 		 	 $input['answer'] = $input['list_answer'][$input['is_answer']];
 		 	 $input['created_at'] = Carbon::now();
@@ -36,8 +37,8 @@ class QuestionController extends Controller {
              	DB::table('answer')->insert($data);
              }
 		 }
-		 elseif ($input['question_type'] == 2) {
-		 	dd($input);
+		 elseif ($input['question_type'] == 3) {
+		 	  dd($input);
 		 }
 		 return redirect()->route('admin.question.index');
 	}

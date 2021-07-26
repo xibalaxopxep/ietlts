@@ -22,6 +22,7 @@ class QuestionController extends Controller {
 	        $record= DB::table('question')->where('id',$id)->first();
         }elseif($input['question_type'] == 2){
         	unset($input['data']);
+            unset($input['true_false']);
         	$id = DB::table('question')->insertGetId($input);
 	        $record= DB::table('question')->where('id',$id)->first();
         }

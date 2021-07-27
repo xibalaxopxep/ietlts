@@ -114,7 +114,6 @@
                     </ul>
                 </li>
                 
-                @if (\Auth::user()->role_id == \App\User::ROLE_ADMINISTRATOR)
                  
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.video.index') ) ? 'active' : '' }}"><i class="icon-video-camera"></i> <span>Video</span></a>
@@ -190,7 +189,7 @@
                     </ul>
                 </li>
                 
-                @endif
+       
 
 
             </ul>

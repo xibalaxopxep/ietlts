@@ -45,6 +45,7 @@ Route::group(['middleware' => 'frontend'], function() {
 
     //Test
     Route::get('/test', ['as' => 'test.index', 'uses' => 'Frontend\TestController@index']);
+    Route::get('/ket-qua', ['as' => 'test.result', 'uses' => 'Frontend\TestController@result']);
 
       //Giảng viên
     Route::get('/thanh-tich', ['as' => 'achie.index', 'uses' => 'Frontend\AchieController@index']);

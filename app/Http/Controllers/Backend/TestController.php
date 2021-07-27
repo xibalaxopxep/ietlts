@@ -135,7 +135,6 @@ class TestController extends Controller {
     }
 
     public function addPostHistory($test) {
-
         $post_history['item_id'] = $test->id;
         $post_history['created_at'] = $test->created_at;
         $post_history['updated_at'] = $test->post_schedule ?: $test->updated_at;

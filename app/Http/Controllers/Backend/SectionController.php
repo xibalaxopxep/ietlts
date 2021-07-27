@@ -25,10 +25,10 @@ class SectionController extends Controller {
     public function index(Request $request) {
         $test_id = $request->test_id;
         if($test_id != null ){
-           $records =DB::table('section')->join('test','test.id','=','section.test_id')->where('test.id',$test_id)->select('*','section.id as id','section.ordering as ordering')->get();
+           $records =DB::table('section')->join('test','test.id','=','section.test_id')->where('test.id',$test_id)->orderBy('section.ordering','asc')->select('*','section.id as id','section.ordering as ordering')->get();
         }
         elseif($test_id == null || $test_id == "0"){
-             $records =DB::table('section')->join('test','test.id','=','section.test_id')->select('*','section.id as id','section.ordering as ordering')->get();
+             $records =DB::table('section')->join('test','test.id','=','section.test_id')->orderBy('section.ordering','asc')->select('*','section.id as id','section.ordering as ordering')->get();
         }
         $tests = DB::table('test')->get();
         return view('backend/section/index', compact('records','tests','test_id'));

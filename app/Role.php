@@ -11,4 +11,12 @@ class Role extends Model
         'name', 'route'
     ];
 
+    public function routes() {
+        return $this->hasMany('App\Route');
+    }
+
+    public function route() {
+        return explode(',', $this->route);
+    }
+
 }

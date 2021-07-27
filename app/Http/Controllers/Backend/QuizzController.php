@@ -35,18 +35,24 @@ class QuizzController extends Controller {
 		$input = $request->except('_token');
         $input['section_type'] = DB::table('section')->where('id',$input['section_id'])->pluck('section_type')->first();
 		 Quizz::create($input);
-		 return redirect()->route('admin.quizz.index');
+		 return redirect()->route('admin.quizz.index')->with('success',"Lưu thành công");
 	}
 
 	public function edit($id){
         $record = DB::table('quizz')->where('id',$id)->first();
         if($record){
-	        $tests = DB::table('test')->where('type',$record->type_quizz)->get();
-	        $questions = DB::table('question')->where('quizz_id',$id)->get();
+	        $tests = DB::table('test')->get();
+	        $questions = DB::table('question')->where('quizz_id',$id)->orderBy('ordering','asc')->get();
 	        return view('backend/quizz/edit',compact('record','tests','questions'));
 	    }else{
 	    	abort(404);
 	    }
+	}
+
+	public function update(Request $request,$id){
+		$input = $request->except('_token');
+		 Quizz::find($id)->update($input);
+		 return redirect()->route('admin.quizz.index')->with('success',"Cập nhật thành công");;
 	}
 
 	public function destroy($id){

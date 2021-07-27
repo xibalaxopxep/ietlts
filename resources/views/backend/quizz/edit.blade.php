@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
 <div class="content">
-    <form action="{!!route('admin.quizz.store')!!}" method="POST" enctype="multipart/form-data">
+    <form action="{!!route('admin.quizz.update',$record->id)!!}" method="POST" enctype="multipart/form-data">
 <!--  -->
         <div class="card">
             <div class="card-header header-elements-inline">
@@ -14,6 +14,20 @@
                     </div>
                 </div>
             </div>
+            <div class="card-body">
+            @if (Session::has('success'))
+            <div class="alert bg-success alert-styled-left">
+                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                <span class="text-semibold">{{ Session::get('success') }}</span>
+            </div>
+            @endif
+             @if (Session::has('error'))
+            <div class="alert bg-danger alert-styled-left">
+                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                <span class="text-semibold">{{ Session::get('error') }}</span>
+            </div>
+            @endif
+        </div>
             
             <div class="card-body">
 
@@ -23,7 +37,7 @@
                             <div class="col-md-10" style="">
                                 <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
                                 <fieldset>
-                                    <div class="form-group row">
+                                   <!--  <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Bài test <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <select class="select-search form-control" readonly="" name="test_id" data-placeholder="Chọn danh mục"  required>
@@ -37,7 +51,7 @@
                                             </select>
                                             {!! $errors->first('category_id', '<span class="text-danger">:message</span>') !!}
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Tiêu đề <span class="text-danger">*</span></label>
@@ -113,6 +127,12 @@
                                         <option value="not_given">Not Given</option>
                                     </select>
                                </div>
+                                 <div id="ordering"  class="form-group row">
+                                        <label class="col-md-2 col-form-label text-right">Thứ tự: </label>
+                                        <div class="col-md-10">
+                                            <input name="ordering" id="answer" class="form-control" value="0">
+                                        </div>
+                                </div>
 
                                <div class="form-group row">
                                     <table class="table">
@@ -121,6 +141,7 @@
                                           <th scope="col">#</th>
                                           <th scope="col">Câu hỏi</th>
                                           <th scope="col">Câu trả lời</th>
+                                           <th scope="col">Thứ tự</th>
                                           <th scope="col">Thao tác</th>
                                         </tr>
                                       </thead>
@@ -130,7 +151,7 @@
                                               <td scope="col">{{++$key}}</td>
                                               <td scope="col">{{$question->question}}</td>
                                              
-                                              @if($question->question_type == 1)
+                                              @if($question->question_type == 1 || $question->question_type == 4)
                                                <td scope="col">
                                               @foreach(explode(",", $question->list_answer) as $val)
                                                 @if($val == $question->answer)
@@ -142,7 +163,9 @@
                                               </td>
                                               @else
                                               <td scope="col">{{$question->answer}}</td>
+                                              
                                               @endif
+                                               <td scope="col">{{$question->ordering}}</td>
                                               <td class="">
                                                <a href="#" data-toggle="modal" data-target="#exampleModalCenter_{{$key}}"><i class="icon-pencil"></i></a><a href="{{route('admin.quizz.edit',  ['id' => $question->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-close2" style="color:red;"></i></a>            
                                                 </form>
@@ -152,6 +175,7 @@
 
                                             <!-- Modal -->
                                         <form action="{!!route('admin.question.update',$question->id)!!}" method="POST" enctype="multipart/form-data">
+                                          @csrf
                                         <input type="hidden" name="question_type" value="{{$question->question_type}}">
                                         <div class="modal fade" id="exampleModalCenter_{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -167,18 +191,18 @@
                                                     @if($question->question_type == 1 || $question->question_type==4)
                                                     <div class="form-group row col-md-12">
                                                         <label class="col-md-2">Câu hỏi</label>
-                                                        <input type="text" class="form-control col-md-9" name="question">
+                                                        <input type="text" class="form-control col-md-9" value="{{$question->question}}" name="question">
                                                     </div>  
                                                     <div class=" form-group   row col-md-12">  
-                                                        @foreach(explode(",", $question->list_answer) as $val)
+                                                        @foreach(explode(",", $question->list_answer) as $key => $val)
                                                             @if($val == $question->answer)
-                                                           <input checked="" type="radio" class="form-control col-md-2" name="answer[]"><input type="text" value="{{$val}}" class="form-control col-md-10" name="list_answer[]" value="{{$question->question}}">
+                                                           <input style="height: 1em; margin-top: 10px;" checked="" type="radio" class="form-control col-md-2" name="answer_radio" value="{{$key}}"><input style="margin-bottom: 10px;" type="text" value="{{$val}}" class="form-control col-md-10" name="list_answer[]" value="{{$question->question}}">
                                                             @else
-                                                             <input  type="radio" class="form-control col-md-2" name="answer[]"><input type="text" value="{{$val}}" class="form-control col-md-10" name="list_answer">
+                                                             <input style="height: 1em; margin-top: 10px;" type="radio" class="form-control col-md-2" name="answer_radio"  value="{{$key}}"><input style="margin-bottom: 10px;" type="text" value="{{$val}}" class="form-control col-md-10" name="list_answer[]">
                                                             @endif
                                                         @endforeach
                                                     </div>
-                                                    @else
+                                                    @elseif($question->question_type == 2 || $question->question_type == 5)
                                                      <div class="form-group row col-md-12">
                                                         <label class="col-md-2">Câu hỏi</label>
                                                         <input type="text" class="form-control col-md-9" value="{{$question->question}}" name="question">
@@ -187,11 +211,28 @@
                                                         <label class="col-md-2">Câu trả lời</label>
                                                         <input type="text" class="form-control col-md-9" value="{{$question->answer}}"  name="answer">
                                                     </div>
+                                                    @elseif($question->question_type == 3)
+                                                     <div class="form-group row col-md-12">
+                                                        <label class="col-md-2">Câu hỏi</label>
+                                                        <input type="text" class="form-control col-md-9" value="{{$question->question}}" name="question">
+                                                    </div>  
+                                                    <div class=" form-group   row col-md-12">  
+                                                       <label class="col-md-2">Câu trả lời</label>
+                                                       <select name="answer" class="form-control col-md-10 " id="answer_select">
+                                                          <option selected="" value="true">True</option>
+                                                          <option value="false">False</option>
+                                                          <option value="not_given">Not Given</option>
+                                                      </select>
+                                                    </div>
                                                     @endif
+                                                     <div class=" form-group   row col-md-12">  
+                                                       <label class="col-md-2">Thứ tự</label>
+                                                      <input class="col-md-9 form-control" value="{{$question->ordering}}" type="text" name="ordering">
+                                                    </div>
                                               </div>
                                               <div style="margin-top: 25px; " class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Cập nhật</button>
+                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
                                               </div>
                                             </div>
                                           </div>
@@ -270,6 +311,7 @@
     
     $('#create_question').on('click',function(){
         var data = [];  //cau trả lời
+        var ordering = $('#ordering').val(); 
         var question = $('#question').val();   //Câu hỏi
         var quizz_id = {{$record->id}};        //Nhóm câu hỏi
         var radioValue =$('input[name=this_answer]:checked').val()    //Đáp án đúng trắn nghiệm
@@ -287,7 +329,7 @@
                 url:'{{route("api.create_question")}}',
                 method:"POST",
                 dataType: "JSON",
-                data:{data:data,question_type:question_type,question:question,quizz_id:quizz_id,radioValue:radioValue,answer:answer,true_false:true_false},
+                data:{data:data,question_type:question_type,question:question,quizz_id:quizz_id,radioValue:radioValue,answer:answer,true_false:true_false,ordering:ordering},
                 success:function(resp){
                     window.location.reload();
                     // key ++;
@@ -302,6 +344,34 @@
                    }
         });  
     });
+
+    //    $('#update_question').on('click',function(){
+    //     var data = [];  //cau trả lời
+    //     var ordering = $('#ordering').val(); 
+    //     var question = $('#question').val();   //Câu hỏi
+    //     var quizz_id = {{$record->id}};        //Nhóm câu hỏi
+    //     var radioValue =$('input[name=this_answer]:checked').val()    //Đáp án đúng trắn nghiệm
+    //     var true_false = $("#answer_select :checked").val();   //ĐÁp án true_falsse                                       
+    //     var answer =  $('#answer').val();   //Câu trả lời text               
+    //     if(question_type == 1 || question_type == 4 ){
+    //     $(".list_answer").each(function () {                  
+    //         data.push($(this).val()); 
+    //      });
+    //      }else{
+    //         var data = $('#answer').val();
+    //      }      
+    //     $.ajax({
+    //             url:'{{route("api.update_question")}}',
+    //             method:"POST",
+    //             dataType: "JSON",
+    //             data:{data:data,question_type:question_type,question:question,quizz_id:quizz_id,radioValue:radioValue,answer:answer,true_false:true_false,ordering:ordering},
+    //             success:function(resp){
+    //                 window.location.reload();
+    //                }
+    //     });  
+    // });
+
+
 
     var max_fields = 5; //maximum input boxes allowed
     var wrapper = $(".input_fields_wrap"); //Fields wrapper

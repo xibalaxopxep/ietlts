@@ -77,7 +77,16 @@
                                     </div>
                                 </fieldset>
                             </div>
-                            <div class="col-md-4">
+
+                       
+                            <div class="form-group row">   
+                                <label class="col-form-label col-md-3 text-right">Sắp xếp </label>
+                                <div class="col-md-5">
+                                    <input type="text" name="ordering" class="form-control touchspin text-center" value="0">
+                                </div>
+                            </div>
+
+                 
               
                                 <div class="form-group row">
                                     <div class="form-check col-md-4 form-check-right">
@@ -95,7 +104,7 @@
                                         </label>
                                     </div>
                                 </div> -->
-                            </div>
+                           
                             <div class="col-md-12">
 
                                 <div class="form-group row">

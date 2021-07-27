@@ -22,7 +22,6 @@ class QuestionController extends Controller {
 
 	public function store(Request $request){
 		 $input = $request->except('_token');
-		 dd($input);
 		 if($input['question_type'] == 1){
 		 	 $input['answer'] = $input['list_answer'][$input['is_answer']];
 		 	 $input['created_at'] = Carbon::now();
@@ -47,6 +46,22 @@ class QuestionController extends Controller {
         $records = DB::table('question')->where('test_id',$test_id)->get();
         return view('backend/question/edit',compact('records'));
 	}
+
+	public function update(Request $request,$id){
+		$input = $request->except('_token');
+        if($input['question_type'] == 1 || $input['question_type'] == 4){
+        	if($request->answer_radio == null){
+        		return redirect()->back()->with('error','Vui lòng chọn 1 đáp án');
+        	}
+        	$input['answer'] = $input['list_answer'][$input['answer_radio']];
+            $input['list_answer'] = implode(',',$input['list_answer']);
+	        
+	        unset($input['answer_radio']);
+        }
+        DB::table('question')->where('id',$id)->update($input);
+        return redirect()->back()->with('success','Cập nhật thành công');
+    }
+	
 
 }
 

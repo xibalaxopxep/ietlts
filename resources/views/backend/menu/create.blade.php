@@ -53,7 +53,7 @@
 
                                 <label class="col-form-label col-md-3 text-right">Sắp xếp </label>
                                 <div class="col-md-2">
-                                    <input type="text" name="ordering" class="form-control touchspin text-center" value="">
+                                    <input type="text" name="ordering" class="form-control touchspin text-center" value="0">
                                 </div>
                             </div>
 

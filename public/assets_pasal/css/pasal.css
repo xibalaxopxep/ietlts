@@ -286,7 +286,7 @@ section.course
 {
 	padding: 40px 0px;
 	position: relative;
-	background: #f5f4f1;;
+    background: #F3F4EE;   
 }
 section.course h3 , section.course .subtitle
 {
@@ -1312,4 +1312,35 @@ section.dangky-khoahoc .btn-white
     .menu li a:hover
     {
         color: var(--main-color);
+    }
+    .header-btn
+    {
+            padding: 10px;
+    background: #DE2C32;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    }
+    #video-player
+    {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        z-index: 999;
+        max-width: calc(100% - 20px);
+        border: 2px solid #fff;
+        border-radius: 10px;
+        
+    }
+    .video-holder 
+    {
+        position: fixed;
+        top:  0px;
+        left: 0px;
+        height: 100vh;
+        width: 100vw;
+            background: #2222225c;
+        display: none;
     }

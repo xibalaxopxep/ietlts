@@ -8,7 +8,7 @@
               <img class="logo" src="{{asset('assets_pasal/img/logo.png')}}" alt="logo">
             </a>
 
-            <ul class="nav nav-pills">
+            <ul class="nav nav-pills menu">
               @foreach($menu as $mn)
               <li class="nav-item"><a href="{{url($mn->link)}}" class="nav-link" aria-current="page">{{$mn->title}}</a></li>
               @endforeach

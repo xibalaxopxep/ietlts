@@ -1241,3 +1241,75 @@ section.dangky-khoahoc .btn-white
 	display: block;
 }
 /* END khoahoc detail */
+ footer
+    {
+        padding: 40px 0px;
+    background: #043353;
+    color: #fff;
+    }
+    footer h4
+    {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    footer .recent-news 
+    {
+        padding: 0px;
+    }
+    footer .recent-news li
+    {
+        padding: 10px 0px;
+        border-bottom: 1px solid #fff;
+    }
+    footer .recent-news li a
+    {
+        color: #fff;
+    }
+    .bottom-footer
+    {
+            padding-top: 20px;
+    border-top: 1px solid #fff;
+    }
+    .bottom-footer p
+    {
+        margin: 0px
+    }
+    .button-link
+    {
+        position: relative;
+    font-size: 21px;
+    font-weight: bold;
+    color: var(--main-color);
+    }
+    .button-link:after
+    {
+    content: ' ';
+        background: url(../icon/arrow-button.png) no-repeat;
+        width: 261px;
+        position: absolute;
+        height: 50px;
+        top: 100%;
+        left: 0;
+    }
+    .btn-submary
+    {
+            padding: 10px;
+    background: var(--sub-color);
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    }
+    .btn-submary:hover
+    {
+        color:var(--main-color);
+    }
+    .menu li a
+    {
+        font-weight: bold;
+        color:#252525;
+    }
+    .menu li a:hover
+    {
+        color: var(--main-color);
+    }

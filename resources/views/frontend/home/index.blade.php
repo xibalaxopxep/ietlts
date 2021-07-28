@@ -1,6 +1,8 @@
 @extends('frontend.layouts.master_index')
 @section('content')
-    
+    <div class="banner">
+        <img src="assets_pasal/img/banner-trangchu.jpg" class="img-fluid" alt="banner">
+      </div>
     <div class="container">
         <img id="pattern-about-5" src="assets_pasal/img/pattern-4.png" alt="pattern" />
         <section class="about">
@@ -40,8 +42,9 @@
             </div>
            @endforeach
           </div>
+          <div class="w-100 text-center" style="margin-top: 40px;">
           <a class="btn btn-submary">ĐĂNG KÝ NHẬN LỘ TRÌNH HỌC NGAY</a>
-        
+            </div>
       </section>
       </div>
       <section class="course">

@@ -43,11 +43,13 @@
            @endforeach
           </div>
           <div class="w-100 text-center" style="margin-top: 40px;">
-          <a class="btn btn-submary">ĐĂNG KÝ NHẬN LỘ TRÌNH HỌC NGAY</a>
+          <a class="btn btn-submary" href="#form">ĐĂNG KÝ NHẬN LỘ TRÌNH HỌC NGAY</a>
             </div>
       </section>
       </div>
       <section class="course">
+      <img id="pattern-course-1" alt="pattern" src="assets_pasal/img/Anh-4.jpg">
+      <img id="pattern-course-2" alt="pattern" src="assets_pasal/img/pattern-course.png">
         <h3>CÁC KHÓA HỌC <b>IELTS TẠI PASAL</b></h3>
         <span class="subtitle">Giải pháp luyện thi IELTS độc quyền từ Simon của Pasal, giúp học viên nắm vững bài thi - đọc vị giám khảo!</span>
         <div class="container">
@@ -123,6 +125,7 @@
       
           </div>
         </div>
+        <img id="pattern-testimonial" src="assets_pasal/img/Anh-3.png" alt="pattern">
       </section>
      <section id="form" style="background: url(assets_pasal/img/background/pattern-2.png) var(--main-color) no-repeat;background-size: cover;">
         <img id="pattern-1" src="assets_pasal/img/background/pattern-1.png" alt="pattern" />
@@ -223,6 +226,5 @@
       </section>
     </div>
     @stop   
-    
-   
+
 

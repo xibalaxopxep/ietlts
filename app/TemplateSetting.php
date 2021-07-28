@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TemplateSetting extends Model
 {
     protected $table = 'template_setting';
-    protected $fillable = ['name','image','	description','type','ordering','status'];
+    protected $fillable = ['name','image','description','type','ordering','status'];
     public $timestamps = false;
 
     public function validateCreate() {

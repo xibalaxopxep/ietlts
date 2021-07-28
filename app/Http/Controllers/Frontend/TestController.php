@@ -32,17 +32,17 @@ class TestController extends Controller {
         //  $questions = DB::table('section')->join('quizz','quizz.section_id','=','section.id')->join('question','question.quizz_id','=','quizz.id')->select('*','section.id as section_id','section.name as section_name','quizz.title as quizz_title')->get()->groupBy('quizz_title');
        // $section = DB::table('section')->where('test_id',$test->id)->get()->pluck('name');
 
-        	foreach ($questions as $key1 => $quest) {
-        		if($quest->question_type == 2){
-        			 $index = str_replace("[input]", "<input name='$quest->id' type='text'>", $quest->question);
-        			 $questions[$key1]->question = $index;
-        		}
-        		elseif($quest->question_type == 5){
-                     $index = str_replace("[",'<input name='.$quest->id.' value='.$quest->answer.' type="radio">', $quest->question);
-                     $index2 = str_replace("]", "", $index);
-                     $questions[$key1]->question = $index2;
-        		}
-        	}
+    	foreach ($questions as $key1 => $quest) {
+    		if($quest->question_type == 2){
+    			 $index = str_replace("[input]", "<input name='$quest->id' type='text'>", $quest->question);
+    			 $questions[$key1]->question = $index;
+    		}
+    		elseif($quest->question_type == 5){
+                 $index = str_replace("[",'<input name='.$quest->id.' value='.$quest->answer.' type="radio">', $quest->question);
+                 $index2 = str_replace("]", "", $index);
+                 $questions[$key1]->question = $index2;
+    		}
+    	}
 
         if($request->page == null || $request->page == 0 ){
             $page = 0;
@@ -77,7 +77,7 @@ class TestController extends Controller {
          $res = DB::table('result')->where('contact_id',$contact_id)->get();
    
          foreach($res as $re){
-            //DB::table('result')->where('id',$re->id)->update(['true'=>0]);  
+            //  DB::table('result')->where('id',$re->id)->update(['true'=>0]);  
             $true = DB::table('question')->where('id',$re->question_id)->first();
             if($true->answer == $re->answer){
             DB::table('result')->where('id',$re->id)->update(['true'=>1]);         

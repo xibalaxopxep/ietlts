@@ -70,6 +70,11 @@ class VideoController extends Controller {
         } else {
             $input['is_hot'] = 0;
         }
+        if (isset($input['is_simon'])) {
+            $input['is_simon'] = 1;
+        } else {
+            $input['is_simon'] = 0;
+        }
         $input['created_by'] = \Auth::user()->id;
         $input['view_count'] = 0;
         if (isset($input['post_schedule'])) {
@@ -132,6 +137,11 @@ class VideoController extends Controller {
             $input['is_hot'] = 1;
         } else {
             $input['is_hot'] = 0;
+        }
+        if (isset($input['is_simon'])) {
+            $input['is_simon'] = 1;
+        } else {
+            $input['is_simon'] = 0;
         }
         $input['created_by'] = \Auth::user()->id;
         if (isset($input['post_schedule'])) {

@@ -53,7 +53,7 @@ Route::group(['middleware' => 'frontend'], function() {
     //ĐĂng kí
     Route::post('/checkout-success', ['as' => 'product.checkout-sucess', 'uses' => 'Frontend\ProductController@checkoutSuccess']);
 
-    Route::get('/sign-up-advise', ['as' => 'home.sign_up_advise', 'uses' => 'Frontend\FrontendController@sign_up_advise']);
+    Route::post('/sign-up-advise', ['as' => 'home.sign_up_advise', 'uses' => 'Frontend\FrontendController@sign_up_advise']);
 
     //Lich khia giảng
     //Giảng viên

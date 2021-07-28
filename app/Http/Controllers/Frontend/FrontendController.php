@@ -29,6 +29,7 @@ class FrontendController extends Controller {
     }
 
       public function block($position) {
+
             $record = DB::table('block')->where('position',$position)->first();
             if($record){
                 return view('frontend/block/detail',compact('record'));
@@ -38,13 +39,13 @@ class FrontendController extends Controller {
     }
 
      public function sign_up_advise(Request $request){
-            $input = $request->all();
+            $input = $request->except('_token');
             $res = DB::table('contact')->insert($input);
             if($res){
-                return redirect()->back()->with('success','Thành công, chúng tôi sẽ sớm liên hệ với bạn');
+                return redirect()->back()->with('success','Cám ơn bạn đã đăng kí thông tin. Tư vấn viên của Pasal sẽ sớm liên hệ với bạn trong thời gian sớm nhất');
             }
             else{
-                 return redirect()->back()->with('error','Có lỗi trong quá trình xử lý, vui long thử lại sau');
+                 return redirect()->back()->with('error','Có lỗi trong quá trình xử lý, vui lòng thử lại');
             }
        }
  

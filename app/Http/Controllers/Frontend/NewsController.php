@@ -19,7 +19,7 @@ class NewsController extends Controller {
     }
 
     public function index(Request $request, $alias = '') {  
-        $records = DB::table('news')->orderBy('ordering','desc')->limit(7)->get();
+        $records = DB::table('news')->orderBy('ordering','desc')->paginate(7);
         $hot_news = DB::table('news')->orderBy('ordering','desc')->limit(7)->where('is_hot',1)->get();
         return view('frontend/news/list', compact('records', 'hot_news'));
     }

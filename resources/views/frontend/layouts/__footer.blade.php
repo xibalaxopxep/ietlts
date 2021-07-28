@@ -1,4 +1,4 @@
-          <section id="form" style="background: url(assets_pasal/img/background/pattern-2.png) var(--main-color) no-repeat;background-size: cover;">
+          <section id="form is_dang_ky" style="background: url(assets_pasal/img/background/pattern-2.png) var(--main-color) no-repeat;background-size: cover;">
         <img id="pattern-1" src="assets_pasal/img/background/pattern-1.png" alt="pattern" />
         <div class="container">
           <div class="row">
@@ -8,7 +8,8 @@
               </div>
               <div class="form-content">
                 <div class="col-md-6 offset-md-6">
-                  <form action="{!!route('home.sign_up_advise')!!}"  method="get" enctype="multipart/form-data">
+                  <form action="{!!route('home.sign_up_advise')!!}"  method="post" enctype="multipart/form-data">
+                    @csrf
                     <h4><b>ĐĂNG KÝ TƯ VẤN</b> LỘ TRÌNH HỌC IELTS</h4>
                     <p>Pasal cam kết giúp bạn chinh phục mục tiêu IELTS với lộ trình học tinh gọn - hiệu quả - tối ưu chi phí !</p>
                     <div class="form-group">
@@ -25,11 +26,16 @@
                     </div>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/course.png')}}" alt="icon" />
-                      <input name="course" type="text" class="your_course" required="required" placeholder="Bạn quan tâm đến khóa học nào?"/>
+                      <select name="course_id" class="your_local">
+                        <option value="" disabled selected>Bạn quan tâm đến khoá học nào?</option>
+                        @foreach($course_shares as $course)
+                        <option value="{{$course->id}}">{!!$course->title!!}</option>
+                        @endforeach
+                      </select>
                     </div>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/location.png')}}" alt="icon" />
-                      <select name="address" class="your_local">
+                      <select name="contact_address_id" class="your_local">
                         <option value="" disabled selected>Chọn cơ sở Pasal gần bạn nhất*</option>
                         @foreach($contact_address as $add)
                         <option value="{{$add->id}}">{!!$add->name!!}</option>
@@ -46,7 +52,11 @@
       </section>
     </body>
     <footer>
-
+     @foreach($block as $bl)
+        @if($bl->position == "footer" && $bl->status == 1)
+             {!!$bl->content!!}
+        @endif
+     @endforeach
  
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 

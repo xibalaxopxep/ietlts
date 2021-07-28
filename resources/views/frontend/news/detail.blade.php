@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.master_news')
 @section('content')
       <div class="content news-deital bg-grey-2">
         <div class="container">
@@ -6,7 +6,7 @@
             <div class="col-md-9 mt-4">
               <div class="content">
                 <div class="sumary mt-30">
-
+                       <img src="{{asset($record->images)}}" style="width: 100%;">
                        {!!$record->content!!}
                       </div>
                       <div class="related-news mt-30">

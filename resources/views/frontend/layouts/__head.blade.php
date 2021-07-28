@@ -13,7 +13,12 @@
     <link href="{{asset('assets_pasal/css/pasal.css?v=1.3')}}" rel="stylesheet">
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <div class="top-header bg-grey">
-      <img src="{{asset('assets_pasal/img/top-header.png')}}" alt="top-header" class="img-responsive" />
+       @foreach($banner as $ban)
+           @if($ban->name == "header-banner" && $ban->status == 1 )
+               <img src="{{asset($ban->image)}}" alt="top-header" class="img-responsive" />
+           @endif
+        @endforeach
+     
     </div>
   </head>
   

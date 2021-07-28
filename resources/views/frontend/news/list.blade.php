@@ -1,7 +1,13 @@
 @extends('frontend.layouts.master')
 @section('content')
 
-
+ <div class="banner">
+        @foreach($banner as $ban)
+           @if($ban->name == "news-banner" && $ban->status == 1 )
+              <img src="{{asset($ban->image)}}" class="img-fluid" alt="banner"/>
+           @endif
+        @endforeach
+ </div>
  <div class="content news-category bg-grey">
         <div class="container">
           <div class="row">
@@ -16,7 +22,13 @@
                   </div>
                   <div class="calendar">
                     <p class="day">{{ date('d', strtotime($records[0]->created_at)) }}</p>
-                    <p class="month">T{{ date('m', strtotime($records[0]->created_at)) }}</p>
+                    <p class="month">
+                      @if(date('m', strtotime($records[0]->created_at)) <10)
+                      T{{ substr(date('m', strtotime($records[0]->created_at)),1) }}
+                      @else
+                        T{{ date('m', strtotime($records[0]->created_at)) }}
+                      @endif
+                    </p>
                   </div>
                   <h4 class="title">
                     <a href="{{route('news.detail',$records[0]->alias)}}">{{$records[0]->title}}</a>
@@ -37,7 +49,13 @@
                       </div>
                       <div class="calendar">
                         <p class="day">{{ date('d', strtotime($records[0]->created_at)) }}</p>
-                        <p class="month">T{{ date('m', strtotime($records[0]->created_at)) }}</p>
+                        <p class="month">
+                          @if(date('m', strtotime($records[0]->created_at)) <10)
+                          T{{ substr(date('m', strtotime($records[0]->created_at)),1) }}
+                          @else
+                            T{{ date('m', strtotime($records[0]->created_at)) }}
+                          @endif
+                        </p>
                       </div>
                       <h4 class="title">
                         <a href="{{route('news.detail',$records[0]->alias)}}">{{$record->title}}</a>
@@ -50,9 +68,12 @@
                 </div>
                 @endif
                 @endforeach
-   
+
 
               </div>
+                    <div class="text-center">
+                  {{ $records->links() }}
+                  </div>
             </div>
 
             
@@ -71,8 +92,6 @@
                     </div>
                   </div>
                   @endforeach
-                 
-                  
                 </div>
               </div>
             </div>

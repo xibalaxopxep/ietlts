@@ -43,6 +43,13 @@
                                                     {!! $errors->first('name', '<span class="text-danger">:message</span>') !!}
                                                 </div>
                                             </div>
+                                             <div class="form-group row">
+                                                <label class="col-md-3 col-form-label text-right">Link<span class="text-danger">*</span></label>
+                                                <div class="col-md-9">
+                                                    <input type="text" placeholder="/link" class="form-control" name="link" value="{!!$record->link!!}" required="">
+                                                    {!! $errors->first('link', '<span class="text-danger">:message</span>') !!}
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 col-form-label text-right">Thể loại<span class="text-danger">*</span></label>
                                                 <div class="col-md-9">

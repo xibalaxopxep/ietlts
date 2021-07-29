@@ -45,6 +45,12 @@ class BlockController extends Controller {
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $input['include_news'] = isset($input['include_news']) ? 1 : 0;
+        $input['include_video'] = isset($input['include_video']) ? 1 : 0;
+        $input['include_teacher'] = isset($input['include_teacher']) ? 1 : 0;
+        $input['include_best'] = isset($input['include_best']) ? 1 : 0;
+        $input['include_dangky'] = isset($input['include_dangky']) ? 1 : 0;
+        $input['include_schedule'] = isset($input['include_schedule']) ? 1 : 0;
         if (isset($input['status'])) {
             $input['status'] = 1;
         } else {
@@ -93,6 +99,12 @@ class BlockController extends Controller {
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $input['include_news'] = isset($input['include_news']) ? 1 : 0;
+        $input['include_video'] = isset($input['include_video']) ? 1 : 0;
+        $input['include_teacher'] = isset($input['include_teacher']) ? 1 : 0;
+        $input['include_best'] = isset($input['include_best']) ? 1 : 0;
+        $input['include_dangky'] = isset($input['include_dangky']) ? 1 : 0;
+        $input['include_schedule'] = isset($input['include_schedule']) ? 1 : 0;
         if (isset($input['status'])) {
             $input['status'] = 1;
         } else {

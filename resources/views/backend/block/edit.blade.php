@@ -46,6 +46,50 @@
                                     <input type="text" class="form-control" readonly="" name="position" value="{!!old('position')?:$record->position!!}">
                                 </div>
                             </div>
+                             <div class="form-group row">
+                                <div class="form-check col-md-4 form-check-right">
+                                    <label class="form-check-label float-right">
+                                        Bao gồm khối tin tức
+                                        <div class=""><span><input {{($record->include_news == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_news" data-fouc=""></span></div>
+                                    </label>
+                                </div>
+
+                              <div class="form-check col-md-4 form-check-right">
+                                    <label class="form-check-label float-right">
+                                        Bao gồm khối video
+                                        <div class=""><span><input {{($record->include_video == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_video" data-fouc=""></span></div>
+                                    </label>
+                                </div>
+
+                                 <div class="form-check col-md-4 form-check-right">
+                                    <label class="form-check-label float-right">
+                                        Bao gồm khối giảng viên
+                                        <div class=""><span><input {{($record->include_teacher == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_teacher" data-fouc=""></span></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                               
+
+                               <div class="form-check col-md-4 form-check-right">
+                                    <label class="form-check-label float-right">
+                                        Bao gồm khối học viên tiêu biểu
+                                        <div class=""><span><input {{($record->include_best == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_best" data-fouc=""></span></div>
+                                    </label>
+                                </div>
+                                   <div class="form-check col-md-4 form-check-right">
+                                    <label class="form-check-label float-right">
+                                        Bao gồm khối đăng kí
+                                        <div class=""><span><input {{($record->include_dangky == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_dangky" data-fouc=""></span></div>
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 form-check-right">
+                                    <label class="form-check-label float-right">
+                                        Bao gồm lịch khai giảng
+                                        <div class=""><span><input {{($record->include_schedule == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_schedule" data-fouc=""></span></div>
+                                    </label>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <div class="form-check col-md-4 form-check-right">
                                     <label class="form-check-label float-right">

@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.master_index')
 @section('content')
 
 
@@ -27,11 +27,21 @@
                     </div>
                     <div class="form-group col-md-3">
                       <img class="icon" src="assets_pasal/icon/course.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Bạn quan tâm đến khóa học nào?"/>
+                       <select name="course_id" class="your_local">
+                        <option value="" disabled selected>Bạn quan tâm đến khoá học nào?</option>
+                        @foreach($course_shares as $course)
+                        <option value="{{$course->id}}">{!!$course->title!!}</option>
+                        @endforeach
+                      </select>
                     </div>
                     <div class="form-group col-md-3 offset-md-1">
                       <img class="icon" src="assets_pasal/icon/location.png" alt="icon" />
-                      <input name="name" type="text" required="required" placeholder="Chọn cơ sở Pasal gần bạn nhất*"/>
+                       <select name="contact_address_id" class="your_local">
+                        <option value="" disabled selected>Chọn cơ sở Pasal gần bạn nhất*</option>
+                        @foreach($contact_address as $add)
+                        <option value="{{$add->id}}">{!!$add->name!!}</option>
+                        @endforeach
+                      </select>
                     </div>
                     <div class="form-group col-md-3 offset-md-1">
                       <img class="icon" src="assets_pasal/icon/class.png" alt="icon" />

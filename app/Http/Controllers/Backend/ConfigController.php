@@ -71,10 +71,7 @@ class ConfigController extends Controller {
      */
     public function update(Request $request, $id) {
         $input = $request->all();
-        $validator = \Validator::make($input, $this->configRepo->validateUpdate($id));
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+       
         $this->configRepo->update($input, $id);
         return redirect()->route('admin.config.index')->with('success', 'Update thành công');
     }

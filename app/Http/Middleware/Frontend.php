@@ -15,17 +15,19 @@ class Frontend {
         //     $menu[$key]->children = \DB::table('menu')->where('parent_id',$val->id)->get();
         // }
         $template_setting= \DB::table('template_setting')->get();
-        $news_footer1 = \DB::table('news')->join('news_category', 'news.id', '=', 'news_category.news_id')->where('news_category.category_id',238)->where('status',1)->select('news.*')->orderBy('news.ordering')->get();
+        $news_footer = \DB::table('news')->where('status',1)->orderBy('ordering','desc')->limit(5)->get();
         $news_footer2 = \DB::table('news')->join('news_category', 'news.id', '=', 'news_category.news_id')->where('news_category.category_id',239)->where('status',1)->select('news.*')->orderBy('news.ordering')->get();
         $block = \DB::table('block')->where('status',1)->orderBy('ordering','desc')->get();
         $course_shares = \DB::table('course')->where('status',1)->orderBy('ordering','asc')->get();
         $contact_address = \DB::table('contact_address')->orderBy('ordering','asc')->where('status', 1)->get();
         $banner = \DB::table('banner')->get();
+        $contact_address_footer = \DB::table('contact_address')->where('city',1)->where('status',1)->orderBy('ordering','desc')->get();
         
+        \View::share(['contact_address_footer' => $contact_address_footer]);
         \View::share(['config' => $config]);
         \View::share(['banner' => $banner]);
         \View::share(['menu' => $menu]);
-        \View::share(['news_footer1' => $news_footer1]);
+        \View::share(['news_footer' => $news_footer]);
         \View::share(['news_footer2' => $news_footer2]);
         \View::share(['template' => $template_setting]);
         \View::share(['block' => $block]);

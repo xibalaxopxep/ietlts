@@ -84,24 +84,17 @@
         <h3>ĐỘI NGŨ <b>GIẢNG VIÊN</b> IELTS TẠI PASAL</h3>
         <div class="container">
           <div class="row d-flex mt-30">
+          <div class="owl-carousel owl-theme teacher-slide">
             @foreach($teachers as $key1 => $teacher)
-            @if($key1 == 0)
-            <div class="col-md-3">
+            
               <div class="item" style="background: url({{asset($teacher->avatar)}}) no-repeat;">
                 <h4>{{$teacher->name}}</h4>
                 <p>{{$teacher->summary}}</p>
               </div>
-            </div>
-            @else
-             <div class="col-md-3 offset-md-1">
-              <div class="item" style="background: url({{asset($teacher->avatar)}}) no-repeat;">
-                <h4>{{$teacher->name}}</h4>
-                <p>{{$teacher->summary}}</p>
-              </div>
-            </div>
-            @endif
+            
             
             @endforeach
+            </div>
           </div>
         </div>
       </section>
@@ -110,8 +103,9 @@
         <h3 class="mb-30">HỌC VIÊN<b> TIÊU BIỂU</b></h3>
         <div class="container">
           <div class="row">
+          <div class="owl-carousel owl-theme testimonial-slide">
             @foreach($best_member as $best)
-            <div class="col-md-4">
+            
               <div class="item">
                 <img class="icon" alt="icon" src="assets_pasal/icon/testimonial.png" />
                 <p class="content">{!!$best->content!!}</p>
@@ -120,9 +114,9 @@
                 <p>{{$best->point}}</p>
                 <p>{{$best->summary}}</p>
               </div>
-            </div>
+        
             @endforeach
-      
+        </div>
           </div>
         </div>
         <img id="pattern-testimonial" src="assets_pasal/img/Anh-3.png" alt="pattern">
@@ -183,8 +177,9 @@
         <h3 class=""><b>KIẾN THỨC </b>LUYỆN THI IELTS</h3>
         <div class="container">
           <div class="row">
+          <div class="owl-carousel owl-theme news-slide">
            @foreach($news_ielts as $news_ielt)
-            <div class="col-md-4">
+            <div class="item">
               <div class="card-news">
                 <div class="thumbnail">
                    <a  href="{{route('news.detail',$news_ielt->alias)}}"><img class="img-fluid" src="{{asset($news_ielt->images)}}" alt="tiêu đề bài viết"></a>
@@ -199,13 +194,15 @@
               </div>
             </div>
             @endforeach
+            </div>
           </div>
         </div>
         <h3 class="mt-30">TIN TỨC SỰ KIỆN <b>NỔI BẬT</b></h3>
         <div class="container">
           <div class="row">
+          <div class="owl-carousel owl-theme news-slide">
                @foreach($news_hots as $news_hot)
-            <div class="col-md-4">
+            <div class="item">
               <div class="card-news">
                 <div class="thumbnail">
                   <a  href="{{route('news.detail',$news_hot->alias)}}"><img class="img-fluid" src="{{asset($news_hot->images)}}" alt="tiêu đề bài viết"></a>
@@ -220,6 +217,7 @@
               </div>
             </div>
             @endforeach
+            </div>
             </div>
           </div>
         </div>

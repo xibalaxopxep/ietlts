@@ -33,7 +33,7 @@
                   <span><br></span>
                   @endif
                   <h4>{!!$tem->name!!}</h4>
-                  <a class="btn bg-main">Xem tiếp</a>
+                  <a href="{{url('$tem->link')}}"  class="btn bg-main">Xem tiếp</a>
                   <div class="description">
                     {!!$tem->description!!}
                   </div>

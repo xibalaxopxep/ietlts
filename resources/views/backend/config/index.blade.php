@@ -44,47 +44,27 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Tên trang web:</label>
+                                <label class="col-md-3 col-form-label text-right">Về chúng tôi:</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="title" value="{!!$config->title!!}" required="">
-                                    {!! $errors->first('title', '<span class="text-danger">:message</span>') !!}
+                                    <textarea rows="5" class="form-control" required="" name="content" >{{$config->content}}</textarea>
+                                    {!! $errors->first('content', '<span class="text-danger">:message</span>') !!}
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Tên công ty:</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="company_name" value="{!!old('company_name')?:$config->company_name!!}">
+                                    <input type="text" class="form-control"  name="company_name" value="{!!old('company_name')?:$config->company_name!!}">
                                     {!! $errors->first('company_name', '<span class="text-danger">:message</span>') !!}
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Địa chỉ:</label>
+                               <div class="form-group row">
+                                <label class="col-md-3 col-form-label text-right">Mã số thuế:</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="address" value="{!!$config->address!!}">
-                                    {!! $errors->first('address', '<span class="text-danger">:message</span>') !!}
+                                    <input type="text" class="form-control" name="mst" value="{!!old('mst')?:$config->mst!!}">
+                                    {!! $errors->first('mst', '<span class="text-danger">:message</span>') !!}
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Hotline:</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="hotline" value="{!!$config->hotline!!}">
-                                    {!! $errors->first('hotline', '<span class="text-danger">:message</span>') !!}
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Điện thoại:</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="phone" value="{!!$config->phone!!}">
-                                    {!! $errors->first('phone', '<span class="text-danger">:message</span>') !!}
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Email:</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="email" value="{!!$config->email!!}">
-                                    {!! $errors->first('email', '<span class="text-danger">:message</span>') !!}
-                                </div>
-                            </div>
+                          
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Facebook:</label>
                                 <div class="col-md-9">
@@ -93,26 +73,34 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Twitter:</label>
+                                <label class="col-md-3 col-form-label text-right">Youtube:</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="twitter" value="{!!$config->twitter!!}">
-                                    {!! $errors->first('twitter', '<span class="text-danger">:message</span>') !!}
+                                    <input type="text" class="form-control" name="youtube" value="{!!$config->youtube!!}">
+                                    {!! $errors->first('youtube', '<span class="text-danger">:message</span>') !!}
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Kênh Youtube:</label>
+                                <label class="col-md-3 col-form-label text-right">Instagram:</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="youtube_channel" value="{!!$config->youtube_channel!!}">
-                                    {!! $errors->first('youtube_channel', '<span class="text-danger">:message</span>') !!}
+                                    <input type="text" class="form-control" name="instagram" value="{!!$config->instagram!!}">
+                                    {!! $errors->first('instagram', '<span class="text-danger">:message</span>') !!}
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Thời gian làm việc:</label>
+                                <label class="col-md-3 col-form-label text-right">Tiktok:</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="working_hours" value="{!!$config->working_hours!!}">
-                                    {!! $errors->first('working_hours', '<span class="text-danger">:message</span>') !!}
+                                    <input type="text" class="form-control" name="tiktok" value="{!!$config->tiktok!!}">
+                                    {!! $errors->first('tiktok', '<span class="text-danger">:message</span>') !!}
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label text-right">Fanpage:</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="fanpage" value="{!!$config->fanpage!!}">
+                                    {!! $errors->first('fanpage', '<span class="text-danger">:message</span>') !!}
+                                </div>
+                            </div>
+                           
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Thẻ mô tả (SEO):</label>
                                 <div class="col-md-9">

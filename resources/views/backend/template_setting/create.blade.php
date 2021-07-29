@@ -75,7 +75,7 @@
                                             <div class="form-group col-md-3">
                                                 <label class="required">Ảnh</label>
                                                 <input name="image" type="file" class="form-control" value="{!!old('image')!!}" onchange='UpdatePreview()'>
-                                                {!! $errors->first('image', '<span class="text-danger">:message</span>') !!}
+                                                   {!! $errors->first('image', '<span class="text-danger">:message</span>') !!}
                                             </div>
                                             </div> 
                                     

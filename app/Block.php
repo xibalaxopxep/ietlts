@@ -9,7 +9,7 @@ class Block extends Model {
     //
     protected $table = "block";
     protected $fillable = [
-        'title', 'content', 'ordering', 'status', 'position'
+        'title', 'content', 'ordering', 'status', 'position','link','include_news','include_video','include_teacher','include_best','include_dangky','include_schedule'
     ];
 
     public function created_at() {

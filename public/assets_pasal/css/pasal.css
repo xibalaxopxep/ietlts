@@ -970,6 +970,8 @@ table.lich td p
 	font-size: 25px;
 	color: var(--sub-color);
 	font-weight: bold;
+        line-height: 35px;
+    margin-bottom: 20px;
 }
 .lotrinh-loiich h4 b
 {
@@ -1016,7 +1018,6 @@ table.lich td p
 .lotrinh-loiich .thumbnail
 {
 	padding: 10px;
-	margin-left: -55px;
 }
 .lotrinh-loiich .list-item 
 {

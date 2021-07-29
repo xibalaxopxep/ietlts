@@ -12,5 +12,4 @@
 {!!$record->content!!}
 
 
-
 @stop

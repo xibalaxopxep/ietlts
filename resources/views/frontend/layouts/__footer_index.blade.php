@@ -1,7 +1,7 @@
     </body>
     <footer>
 
-    <div class="container">
+     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <h4>VỀ CHÚNG TÔI</h4>
@@ -15,10 +15,10 @@
                 <a href="{{$config->tiktok}}" target="_blank" class="img"><img src="{{asset('assets_pasal/icon/zalo.png')}}" /></a>
             </div>
             <h4 class="mt-4">HỆ THỐNG CƠ SỞ TẠI HÀ NỘI</h4>
-
-            @foreach($contact_address_footer as $ct_f)
-            <p>{{$ct_f->name}} | {{$ct_f->phone_1}}</p>
-            @endforeach
+            <p>Cơ sở 1: 206, Bạch Mai, Hai Bà Trưng, Hà Nội | 0243.624.8686</p>
+            <p>Cơ sở 2: 33 Dương Khuê, Mai Dịch, Cầu Giấy, Hà Nội | 0246.253.8588</p>
+            <p>Cơ sở 3: Số 2, ngõ 54, Vũ Trọng Phụng, Thanh Xuân, Hà Nội | 024.3990.3669</p>
+            <p>Cơ sở 4: Tầng 2, Số 146 Tây Sơn, Q.Đống Đa, Hà Nội | 0246.292.6968</p>
             </div>
             <div class="col-md-3">
             <h4>BÀI VIẾT MỚI NHẤT</h4>
@@ -30,11 +30,7 @@
             </div>
             <div class="col-md-3">
                 <h4>FOLLOW US ON FACEBOOK</h4>
-              <div class="fb-page" data-href="https://www.facebook.com/PasalEnglish/" data-tabs="timeline" data-width="" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/PasalEnglish/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/PasalEnglish/">Tiếng Anh giao tiếp Pasal</a></blockquote></div>
             </div>
-            
-
-<div class="g-ytsubscribe" data-channel="Go6acmPP2CN7ATFO7urZIV9gogleDevelopers" data-layout="full" data-count="default"></div>
             <div class="col-md-12">
                 <div class="bottom-footer">
                     <p class="text-center">{{$config->company_name}}</p>

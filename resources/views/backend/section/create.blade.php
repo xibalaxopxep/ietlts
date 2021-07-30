@@ -22,7 +22,7 @@
                             <div class="col-md-10" style="">
                                 <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
                                 <fieldset>
-                                    <div class="form-group row">
+                                    <!-- <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Chọn bài test <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <select class="select-search form-control" name="test_id" data-placeholder="Chọn bài test"  required="">
@@ -32,7 +32,7 @@
                                             </select>
                                             {!! $errors->first('test_id', '<span class="text-danger">:message</span>') !!}
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Tiêu đề <span class="text-danger">*</span></label>

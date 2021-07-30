@@ -53,7 +53,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Mô tả </label>
                                         <div class="col-md-10">
-                                            <textarea class="form-control" name="summary">{!!old('summary')!!}</textarea>
+                                            <textarea class="form-control" name="summary">{!!$record->summary!!}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -71,7 +71,54 @@
                             </div>
                             <div class="col-md-4">
                                 
-                                
+                                   <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Giá </label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="price" class="form-control touchspin text-center" value="{{$record->price}}">
+                                    </div>
+                                </div>
+                                 <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Giá khuyến mại </label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="sale_price" class="form-control touchspin text-center" value="{{$record->sale_price}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Thời gian khuyến mại</label>
+                                    <div class="col-md-5">
+                                        <input type="date" name="sale_time" class="form-control" value="{{$record->sale_time}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Chọn giáo viên </label>
+                                    <div class="col-md-5">
+                                        <select required="" class="select-search form-control" multiple="" name="teacher_id[]">
+                                            @foreach($teachers as $teacher)
+                                            @if(in_array($teacher->id,explode(',',$record->teacher_id)))
+                                              <option selected="" value="{{$teacher->id}}"><img src={{asset($teacher->avatar)}}>{{$teacher->name}}</option>
+                                              @else
+                                              <option value="{{$teacher->id}}"><div><img src={{asset($teacher->avatar)}}></div>{{$teacher->name}}</option>
+                                              @endif
+                                              @endforeach
+                                        </select>
+                                    </div>
+                                </div> 
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Chọn học viên</label>
+                                    <div class="col-md-5">
+                                        <select required="" class="select-search form-control" multiple="" name="study_id[]">
+                                            @foreach($studies as $study)
+
+                                             @if(in_array($study->id,explode(',',$record->study_id)))
+                                              <option selected="" value="{{$study->id}}">{{$study->name}}</option>
+                                              @else
+                                              <option  value="{{$study->id}}">{{$study->name}}</option>
+                                              @endif
+                                              @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-4 text-left">Thứ tự </label>
                                     <div class="col-md-5">
@@ -112,29 +159,75 @@
                                 </div>
                             </div>
 
-                              <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label text-right">Nội dung</label>
+                                    <label class="col-md-3 col-form-label ">Thời lượng học</label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control ckeditor" id="content3" name="course_time">{!!$record->course_time!!}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label ">Nội dung khoá học</label>
                                     <div class="col-md-12">
                                         <textarea class="form-control ckeditor" id="content3" name="content">{!!$record->content!!}</textarea>
                                     </div>
                                 </div>
                             </div>
-                              <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label ">Mô hình tổ chức</label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control ckeditor" id="content4" name="course_organization">{!!$record->course_organization!!}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label ">Dịch vụ đặc quyền cho học viên</label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control ckeditor" id="content5" name="course_service">{!!$record->course_service!!}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                             <!--  <div class="col-md-12">
                                 <div class="form-group row">
                                     <label class="col-md-2 col-form-label text-right">Thời gian ưu đãi</label>
                                     <div class="col-md-10">
-                                        <input class="form-control" type="date" value="{{$record->promotion_time}}"  name="promotion_time">
+                                        <input class="form-control" type="date"  name="promotion_time">
+                                    </div>
+                                </div>
+                            </div>
+-->
+                             
+                            <!--  <div class="col-md-12">
+                                  <button class="add_field_button btn btn-primary">Thêm khối phương pháp học</button>
+                             
+                                     <div class="input_fields_wrap row">
+                                  
+                                    <div class="form-group col-md-6 row">
+                                        <label class="col-md-4 col-form-label ">Phương pháp học</label>
+                                        <textarea class="form-control col-md-12 ckeditor" id="content3" name="content">{!!old('content')!!}</textarea>
+                                    </div>
+                                 
+                                    </div>
+                       
+                            </div> -->
+                              <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label class="col-md-6 col-form-label">Phương pháp học (Mỗi khối phương pháp tách nhau băng dấu | )</label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control ckeditor" id="conten64" name="course_method">{!!$record->course_method!!}</textarea>
                                     </div>
                                 </div>
                             </div>
 
-
                              <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label text-right">Text thời gian ưu đãi</label>
+                                    <label class="col-md-2 col-form-label ">Text thời gian ưu đãi</label>
                                     <div class="col-md-12">
-                                        <textarea class="form-control ckeditor" id="content4" name="promotion">{!!$record->promotion!!}</textarea>
+                                        <textarea class="form-control ckeditor" id="content7" name="promotion">{!!$record->promotion!!}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +236,10 @@
                                 CKEDITOR.replace('content1', { height: 100 });
                                 CKEDITOR.replace('content2', { height: 100 });
                                 CKEDITOR.replace('content3', { height: 100 });
-                                 CKEDITOR.replace('content4', { height: 100 });
+                                CKEDITOR.replace('content4', { height: 100 });
+                                CKEDITOR.replace('content5', { height: 100 });
+                                CKEDITOR.replace('content6', { height: 100 });
+                                CKEDITOR.replace('content7', { height: 100 });
                             </script>
                         </div>
                     </div>

@@ -19,29 +19,7 @@
                 </div>
             </div>
         </div>
-        <!-- Button trigger modal -->
-
-        <!-- <div style="margin-left: 30px;" class="row">
-          <div class="col-md-2">
-            <form action="{!!route('admin.quizz.create')!!}" method="get" enctype="multipart/form-data">
-            <button type="submit"  class="btn btn-primary " >
-              Thêm câu hỏi listening
-            </button>
-            <input type="hidden" name="type" value="1">
-            </form>
-          </div>
-           
-           <div class="col-md-3">
-            <form action="{!!route('admin.quizz.create')!!}" method="get" enctype="multipart/form-data">
-            <button type="submit"  class="btn btn-primary " >
-              Thêm câu hỏi reading
-            </button>
-            <input type="hidden" name="type" value="2">
-            </form>
-          </div>
-              
-           
-        </div> -->
+     
 
 
 
@@ -59,8 +37,7 @@
                 <tr>
                     <th>#</th>
                     <th>Tiêu đề</th>
-                    <th>Đề thi</th>
-                    <!-- <th>Nhóm câu hỏi</th> -->
+                    <th>Thuộc bài tập</th>
                     <th>Loại test</th>
                     <th>Ngày tạo</th>
                     <th>Tác vụ</th>
@@ -71,8 +48,9 @@
 
                 <tr>
                     <td>{{++$key}}</td>
-                    <td>{{$record->quizz_title}}</td>
                     <td>{{$record->title}}</td>
+                    <td>{{$record->name}}</td>
+
                  <!--    @if($record->index == $record->dem)
                     <td>{{$record->index}}</td>
                     @elseif($record->index > $record->dem)
@@ -80,22 +58,28 @@
                     @else
                     <td>{{$record->index}} - {{$record->dem}}</td>
                     @endif -->
-                    @if($record->type == 1)
+                    @if($record->section_type == 1)
                     <td>Listening</td>
-                    @else
+                    @elseif($record->section_type == 2)
                     <td>Reading</td>
+                    @elseif($record->section_type == 3)
+                    <td>Pronunciation</td>
+                    @elseif($record->section_type == 4)
+                    <td>Grammar</td>
+                    @elseif($record->section_type == 5)
+                    <td>Vocabulary</td>
                     @endif
                     <td>{{$record->created_at}}</td>
                   
                     <td class="">
                         <a href="{{route('admin.quizz.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
-                       <!--  <form action="{!! route('admin.quizz.destroy',  ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
+                        <form action="{!! route('admin.quizz.destroy',  ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
                             {!! method_field('DELETE') !!}
                             {!! csrf_field() !!}
                             <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
                                 <i class="icon-close2"></i>
                             </a>              
-                        </form> -->
+                        </form>
                     </td>
                 </tr>
                 @endforeach

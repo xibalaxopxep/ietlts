@@ -155,7 +155,7 @@
                     <td>{{$off->course_name}} ({{$off->level}})</td>
                     <td><p class="day"><b>{{$off->schedule}}</b></p><p>{{$off->schedule_detail}}</p></td>
                     <td>{{date('d-m-Y', strtotime($off->opening))}}</td>
-                    <td><button style="font-size: 60%; border-radius: 0px;" class="btn-gradient button_dk">Đăng ký</button></td>
+                    <td><button style="font-size: 60%; border-radius: 0px;" data- class="btn-gradient button_dk">Đăng ký</button></td>
                   </tr>
                  @endforeach
                 </tbody>
@@ -171,7 +171,7 @@
 
 <script type="text/javascript">
      $('.button_dk').on('click',function(){
-
+         
      });
 </script>
 @stop

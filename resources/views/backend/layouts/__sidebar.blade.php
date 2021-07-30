@@ -97,10 +97,16 @@
                 
                  
                 <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.video.index') ) ? 'active' : '' }}"><i class="icon-video-camera"></i> <span>Video</span></a>
+                    <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.video.index') ) ? 'active' : '' }}"><i class="icon-video-camera"></i> <span>Phương pháp học</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                        <li class="nav-item"><a href="{{route('admin.category.index', \App\Category::TYPE_VIDEO)}}" class="nav-link">Danh mục</a></li>
-                        <li class="nav-item"><a href="{{route('admin.video.index')}}" class="nav-link">Video</a></li>
+                        <li class="nav-item"><a href="{{route('admin.method.edit',1)}}" class="nav-link">Block</a></li>
+                         <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.video.index') ) ? 'active' : '' }}"><i class="icon-video-camera"></i> <span>Video</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                <li class="nav-item"><a href="{{route('admin.category.index', \App\Category::TYPE_VIDEO)}}" class="nav-link">Danh mục</a></li>
+                                <li class="nav-item"><a href="{{route('admin.video.index')}}" class="nav-link">Video</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item nav-item-submenu">
@@ -113,23 +119,45 @@
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.test.index') || (Route::currentRouteName() == 'admin.section.index')  || (Route::currentRouteName() == 'admin.quizz.index') ) ? 'active' : '' }}"><i class="icon-check"></i> <span>Bài test</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="bài test">
-                        <li class="nav-item"><a href="{{route('admin.category.index', \App\Category::TYPE_TEST)}}" class="nav-link">Danh mục</a></li>
-                        <li class="nav-item"><a href="{{route('admin.test.index')}}" class="nav-link">Bài test</a></li>
-                        <li class="nav-item"><a href="{{route('admin.section.index')}}" class="nav-link">Section</a></li>
-                        <li class="nav-item"><a href="{{route('admin.quizz.index')}}" class="nav-link">Câu hỏi</a></li>
+                        <!-- <li class="nav-item"><a href="{{route('admin.category.index', \App\Category::TYPE_TEST)}}" class="nav-link">Danh mục</a></li>
+                        <li class="nav-item"><a href="{{route('admin.test.index')}}" class="nav-link">Bài t</a></li> -->
+                        <li class="nav-item"><a href="{{route('admin.section.index')}}" class="nav-link">Test</a></li>
+                        <li class="nav-item"><a href="{{route('admin.quizz.index')}}" class="nav-link">Bài tập và câu hỏi</a></li>
 
                     </ul>
                 </li>
 
                 <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.course.index') || (Route::currentRouteName() == 'admin.schedule.index') ) ? 'active' : '' }}"><i class="icon-check"></i> <span>Khoá học</span></a>
+                    <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.course.index')) ? 'active' : '' }}"><i class="icon-check"></i> <span>Khoá học</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="bài test">
-                        <li class="nav-item"><a href="{{route('admin.course.index')}}" class="nav-link">Danh sách khoá học</a></li>
-                         <li class="nav-item"><a href="{{route('admin.schedule.index')}}" class="nav-link">Lịch học</a></li>
+                        <li class="nav-item"><a href="{{route('admin.course.index')}}" class="nav-link">Khoá học lẻ</a></li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.course.index')) ? 'active' : '' }}"> <span>Lộ trình ProIelts</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="bài test">
+                                <li class="nav-item"><a href="{{route('admin.route.index')}}" class="nav-link">Block</a></li>
+                                 <li class="nav-item"><a href="{{route('admin.route_course.index')}}" class="nav-link">Danh sách khoá học</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.course.index')) ? 'active' : '' }}"><span>Khoá học Online</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="bài test">
+                                <li class="nav-item"><a href="{{route('admin.route_online.index')}}" class="nav-link">Block</a></li>
+                                 <li class="nav-item"><a href="{{route('admin.online_course.index')}}" class="nav-link">Danh sách khoá học</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link  "><i class="icon-check"></i> <span>Lịch học</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="bài test">
+
+                         <li class="nav-item"><a href="{{route('admin.schedule.index')}}" class="nav-link">Lịch khai giảng</a></li>
 
                     </ul>
                 </li>
-
+  
                     <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.contact_address.index') || (Route::currentRouteName() == 'admin.contact.index')  ) ? 'active' : '' }}"><i class="icon-copy"></i> <span>Liên hệ</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="bài test">
@@ -138,28 +166,29 @@
                     </ul>
                 </li>
 
-                  <li class="nav-item nav-item-submenu">
+                <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.teacher.index') ) ? 'active' : '' }}"><i class="icon-check"></i> <span>Đội ngũ giảng viên</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="bài test">
                         <li class="nav-item"><a href="{{route('admin.teacher.index')}}" class="nav-link">Danh sách giảng viên</a></li>
-
                     </ul>
                 </li>
                 
                   <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.best.index') ) ? 'active' : '' }}"><i class="fa fa-comments-o" aria-hidden="true"></i><span>Học viên tiêu biểu</span></a>
+                    <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.best.index') ) ? 'active' : '' }}"><i class="fa fa-comments-o" aria-hidden="true"></i><span>Học viên</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="bài test">
-                        <li class="nav-item"><a href="{{route('admin.best.index')}}" class="nav-link">Danh sách</a></li>
+                        <li class="nav-item"><a href="{{route('admin.best.index')}}" class="nav-link">Bảng vàng thành tích</a></li>
+                         <li class="nav-item"><a href="{{route('admin.study.index')}}" class="nav-link">Học viên tiêu biểu</a></li>
+                             <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.feedback.index') ) ? 'active' : '' }}"><span>Cảm nhận của học viên</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="bài test">
+                                <li class="nav-item"><a href="{{route('admin.feedback.index',1)}}" class="nav-link">Video</a></li>
+                                   <li class="nav-item"><a href="{{route('admin.feedback.index',2)}}" class="nav-link">Ảnh</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
 
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.feedback.index') ) ? 'active' : '' }}"><i class="fa fa-comments-o" aria-hidden="true"></i><span>Cảm nhận của học viên</span></a>
-                    <ul class="nav nav-group-sub" data-submenu-title="bài test">
-                        <li class="nav-item"><a href="{{route('admin.feedback.index',1)}}" class="nav-link">Video</a></li>
-                           <li class="nav-item"><a href="{{route('admin.feedback.index',2)}}" class="nav-link">Ảnh</a></li>
-                    </ul>
-                </li>
+            
              
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.subscriber.index')  || (Route::currentRouteName() == 'admin.member.index') ) ? 'active' : '' }}"><i class="icon-users"></i> <span>Khách hàng</span></a>

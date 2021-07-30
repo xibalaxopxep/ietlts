@@ -39,6 +39,11 @@
                  </div>
              </div>
          </div>
+        <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
         <table class="table datatable-basic">
             <thead>
                 <tr>
@@ -48,6 +53,7 @@
                     <th>Ngày tạo</th>
                     <th>Thứ tự</th>
                     <th>Trạng thái</th>
+                    <th>Ữu đãi</th>
                     <th>Tác vụ</th>
                 </tr>
             </thead>
@@ -66,16 +72,49 @@
                         <span class="badge bg-grey-400">Ẩn</span>
                         @endif
                     </td>
+                    <td><button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter_{{$key}}">
+                          Ưu đãi
+                        </button></td>
+                  <div class="modal fade" id="exampleModalCenter_{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Ưu đãi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                         <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Giá </label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="price_{{$key}}" name="" class="form-control touchspin text-center" value="{{$record->price}}">
+                                    </div>
+                                </div>
+                                 <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Giá khuyến mại </label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="sale_price_{{$key}}" name="" class="form-control touchspin text-center" value="{{$record->sale_price}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Thời gian khuyến mại</label>
+                                    <div class="col-md-5">
+                                        <input type="date" id="sale_time_{{$key}}" name="" class="form-control" value="{{$record->sale_time}}">
+                                    </div>
+                                </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary save_promo" data-id="{{$record->id}}" data-key="{{$key}}">Lưu</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 </form>
-                    <td class="text-center">
+                    <td class="">
                         <a href="{{route('admin.course.edit', $record->id)}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
-                        <form action="{!! route('admin.course.destroy', ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
-                            {!! method_field('DELETE') !!}
-                            {!! csrf_field() !!}
-                            <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
-                                <i class="icon-close2"></i>
-                            </a>              
-                        </form>
+                        
                     </td>
                 </tr>
                 @endforeach
@@ -93,8 +132,32 @@
     $('#select_all').click(function() {
       var c = this.checked;
       $(':checkbox').prop('checked', c);
-});
+    });
+
+    $('.save_promo').click(function() {
+          var key = $(this).data('key');
+          var id = $(this).data('id');
+          var price = $('#price_'+key).val();
+          var sale_price = $('#sale_price_'+key).val();
+          var sale_time = $('#sale_time_'+key).val();
+          $.ajax({
+             url: "{{route('api.update_promo')}}",
+              type: "POST",
+              data: {price : price, sale_price:sale_price, sale_time:sale_time, id:id},
+              success: function(data){
+                if(data.success == 1){
+                 //$('#exampleModalCenter_'+key).hide();
+                 alert('Cập nhật ưu đãi thành công');
+                }
+                else{
+                     alert('Cập nhật thất bại');
+                }
+              }
+          });
+    });
 </script>
+
+
 <script src="{!! asset('assets/global_assets/js/plugins/tables/datatables/datatables.min.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/plugins/forms/selects/select2.min.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/demo_pages/datatables_basic.js') !!}"></script>

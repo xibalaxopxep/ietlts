@@ -56,6 +56,7 @@ Route::group(['middleware' => 'frontend'], function() {
     Route::post('/sign-up-advise', ['as' => 'home.sign_up_advise', 'uses' => 'Frontend\FrontendController@sign_up_advise']);
 
     //Lich khia giảng
+    Route::get('/khoa-hoc/{alias}', ['as' => 'course.detail', 'uses' => 'Frontend\CourseController@detail']);
     //Giảng viên
     Route::get('/lich-khai-giang', ['as' => 'schedule.index', 'uses' => 'Frontend\ScheduleController@index']);
     Route::get('/{postion}', ['as' => 'block.detail', 'uses' => 'Frontend\FrontendController@block']);

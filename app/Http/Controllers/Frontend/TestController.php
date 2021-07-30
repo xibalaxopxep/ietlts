@@ -22,10 +22,9 @@ class TestController extends Controller {
             DB::table('result')->insert($input);
         }
 
-    	$test = DB::table('test')->where('status',1)->first();
-        $sections = DB::table('section')->orderBy('ordering','asc')->join('quizz','quizz.section_id','=','section.id')->where('section.test_id',$test->id)->select('*','section.name as section_name','quizz.id as quizz_id','quizz.title as name','section.id as section_id','section.ordering as order')->get()->groupBy('order');
+
+        $sections = DB::table('section')->orderBy('ordering','asc')->join('quizz','quizz.section_id','=','section.id')->select('*','section.name as section_name','quizz.id as quizz_id','quizz.title as name','section.id as section_id','section.ordering as order')->get()->groupBy('order');
        
- 
         $count = count($sections);
         $questions = DB::table('question')->get();
    

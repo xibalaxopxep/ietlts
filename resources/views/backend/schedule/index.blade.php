@@ -93,13 +93,7 @@
                     <td>{{date('d-m-Y', strtotime($record->created_at))}}</td>
                     <td class="">
                         <a href="{{route('admin.schedule.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
-                        <!-- <form action="{!! route('admin.schedule.destroy',  ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
-                            {!! method_field('DELETE') !!}
-                            {!! csrf_field() !!}
-                            <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
-                                <i class="icon-close2"></i>
-                            </a>              
-                        </form> -->
+                       
                     </td>
                 </tr>
                 @endforeach

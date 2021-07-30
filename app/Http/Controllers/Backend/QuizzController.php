@@ -11,9 +11,9 @@ use Carbon\Carbon;
 
 class QuizzController extends Controller {
 	public function index(){
-        $records = Quizz::join('test','test.id',"=","quizz.test_id")->select('*','quizz.title as quizz_title','quizz.id as id')->orderBy('test.id','desc')->orderBy('quizz.id','asc')->get();
-      $questions = DB::table('question')->get();
-     
+        $records = Quizz::join('section','quizz.section_id','=','section.id')->select('*','quizz.id as id')->orderBy('quizz.orderBy','desc')->get();
+        $questions = DB::table('question')->get();
+
         return view('backend/quizz/index',compact('records','questions'));
 	}
 
@@ -26,7 +26,7 @@ class QuizzController extends Controller {
 			return view('backend/quizz/create',compact('type','tests','sections'));
 		}
 		else{
-			return view('backend/quizz/create',compact('type','tests'));
+			return view('backend/quizz/create',compact('type','tests','sections'));
 		}
         return view('backend/quizz.create',compact('type'));
 	}
@@ -34,7 +34,8 @@ class QuizzController extends Controller {
 	public function store(Request $request){
 		$input = $request->except('_token');
         $input['section_type'] = DB::table('section')->where('id',$input['section_id'])->pluck('section_type')->first();
-		 Quizz::create($input);
+		 $id = DB::table('quizz')->insertGetId($input);
+		 dd($id);
 		 return redirect()->route('admin.quizz.index')->with('success',"Lưu thành công");
 	}
 
@@ -57,6 +58,7 @@ class QuizzController extends Controller {
 
 	public function destroy($id){
         DB::table('quizz')->where('id',$id)->delete();
+
         DB::table('question')->where('quizz_id',$id)->delete();
         return redirect()->back()->with('success','Xoá thành công');
 	}

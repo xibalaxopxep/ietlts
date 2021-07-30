@@ -66,7 +66,7 @@
                     <th><input name="check[]" type="checkbox" value="{{$record->id}}"></th>
                     <td>{{$record->name}}</td>
                     <td>{{$record->point}}</td>
-                    <td><input type="text" class="form-control" style="max-width: 70px;" name="orderBy[]" value="{{$record->ordering}}"></td>
+                    <td>{{$record->ordering}}</td>
                     @if($record->status==1)
                     <td> <span class="badge bg-success-400">Kích hoạt</span></td>
                     @else

@@ -14,7 +14,6 @@ class Section extends Model {
     public function validateCreate1() {
         return $rules = [
             'name' => 'required',
-            'test_id' => 'required',
             'file'=>'required|mimes:audio/mpeg,mpga,mp3,wav,aac'
         ];
     }
@@ -22,7 +21,6 @@ class Section extends Model {
     public function validateCreate2() {
         return $rules = [
             'name' => 'required',
-            'test_id' => 'required',
             'section_content'=>'required'
         ];
     }

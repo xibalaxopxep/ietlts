@@ -13,22 +13,27 @@ class CourseController extends Controller {
 
 
     public function index() {
-        $records = Course::orderBy('ordering','desc')->get();
+        $records = Course::orderBy('ordering','desc')->where('is_pro',null)->where('is_online',null)->get();
         return view('backend/course/index', compact('records'));
     }
 
     public function create() {
-        $count_ordering = Course::count();
-        return view('backend/course/create',compact('count_ordering'));
+          $teachers = DB::table('teacher')->get();
+        $studies = DB::table('study')->get();
+        $count_ordering = Course::where('is_pro',null)->where('is_online',null)->count();
+        return view('backend/course/create',compact('count_ordering','teachers','studies'));
     }
 
     public function store(Request $request) {
         $input = $request->all();
         $course = new Course();
+
         $validator = \Validator::make($input, $course->validateCreate());
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $input['teacher_id'] = implode(',',$input['teacher_id']);
+        $input['study_id'] = implode(',',$input['study_id']);
         $get_image=$request->image;
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
@@ -60,10 +65,13 @@ class CourseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+          $teachers = DB::table('teacher')->get();
+        $studies = DB::table('study')->get();
         $record = Course::find($id);
+
        if($record){
         //Lấy danh sách id thuộc tính của sản phẩm
-        return view('backend/course/edit', compact('record'));
+        return view('backend/course/edit', compact('record','teachers','studies'));
         }else{
             abort(404);
         }
@@ -83,6 +91,8 @@ class CourseController extends Controller {
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $input['teacher_id'] = implode(',',$input['teacher_id']);
+        $input['study_id'] = implode(',',$input['study_id']);
         $get_image=$request->image;
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
@@ -117,7 +127,7 @@ class CourseController extends Controller {
         $data = $request->all();
         
         if($request->action == "save"){      
-          $records = Course::orderBy('ordering','desc')->get();
+          $records = Course::where('is_pro',null)->where('is_online',null)->orderBy('ordering','desc')->get();
            foreach ($records as $key => $record) {
                if($record->ordering != $data['orderBy'][$key]){
                     DB::table('course')->where('id',$record->id)->update(['ordering'=>$data['orderBy'][$key]]);

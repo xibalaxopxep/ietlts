@@ -23,7 +23,7 @@
                             <div class="col-md-10" style="">
                                 <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
                                 <fieldset>
-                                    <div class="form-group row">
+                                    <!-- <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Bài test <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
 
@@ -35,14 +35,17 @@
                                             </select>
                                             {!! $errors->first('test_id', '<span class="text-danger">:message</span>') !!}
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group row">
-                                        <label class="col-md-2 col-form-label text-right">Chọn part <span class="text-danger">*</span></label>
+                                        <label class="col-md-2 col-form-label text-right">Chọn bài tập <span class="text-danger">*</span></label>
                                         <div class="col-md-10" >
 
-                                            <select class="select-search form-control pick_test" name="section_id" data-placeholder="Chọn part "  required="">
-                                              
+                                            <select class="select-search form-control " name="section_id" data-placeholder="Chọn bài tập" id=""  required>
+                                            
+                                                @foreach($sections  as $section)
+                                                <option value="{{$section->id}}">{{$section->name}}</option>
+                                                @endforeach
                                             </select>
                                             {!! $errors->first('section_id', '<span class="text-danger">:message</span>') !!}
                                         </div>

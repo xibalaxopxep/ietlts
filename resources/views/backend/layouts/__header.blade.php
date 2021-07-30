@@ -13,10 +13,11 @@
         <div class="header-elements d-none">
             <div class="d-flex justify-content-center">
                 @if($method == 'index')
-
+                
                 @if (\Route::has(str_replace('index', 'create', $current_route)))
 
                 @if(isset($type))
+
                
                 <a href="{!!route(str_replace('index', 'create', $current_route), ['type'=> $type])!!}" class="btn btn-link btn-float text-default"><i class="icon-googleplus5 text-primary"></i><span>Thêm mới</span></a>
 

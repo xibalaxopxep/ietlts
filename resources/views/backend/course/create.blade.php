@@ -68,7 +68,52 @@
                             </div>
                             <div class="col-md-4">
                                 
-                                
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Giá </label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="price" class="form-control touchspin text-center" value="">
+                                    </div>
+                                </div>
+                                 <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Giá khuyến mại </label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="sale_price" class="form-control touchspin text-center" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Thời gian khuyến mại</label>
+                                    <div class="col-md-5">
+                                        <input type="date" name="sale_time" class="form-control" value="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Chọn giáo viên </label>
+                                    <div class="col-md-5">
+                                        <select required="" class="select-search form-control" multiple="" name="teacher_id[]">
+                                            @foreach($teachers as $teacher)
+                                    
+                                              <option value="{{$teacher->id}}"><div><img src={{asset($teacher->avatar)}}></div>{{$teacher->name}}</option>
+                                    
+                                              @endforeach
+                                        </select>
+                                    </div>
+                                </div> 
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-4 text-left">Chọn học viên</label>
+                                    <div class="col-md-5">
+                                        <select required="" class="select-search form-control" multiple="" name="study_id[]">
+                                            @foreach($studies as $study)
+
+                                             
+                                              <option  value="{{$study->id}}">{{$study->name}}</option>
+                                              @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                               
+
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-4 text-left">Thứ tự </label>
                                     <div class="col-md-5">
@@ -89,7 +134,7 @@
                           
                             <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label text-right">Nội dung khóa học dành cho ai </label>
+                                    <label class="col-md-2 col-form-label ">Nội dung khóa học dành cho ai </label>
                                     <div class="col-md-12">
                                         <textarea class="form-control ckeditor" id="content1" name="course_for">{!!old('course_for')!!}</textarea>
                                     </div>
@@ -98,22 +143,46 @@
 
                                <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label text-right">Lợi ích của khoá học </label>
+                                    <label class="col-md-2 col-form-label ">Lợi ích của khoá học </label>
                                     <div class="col-md-12">
                                         <textarea class="form-control ckeditor" id="content2" name="course_profit">{!!old('course_profit')!!}</textarea>
                                     </div>
                                 </div>
                             </div>
 
-                              <div class="col-md-12">
+                              <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label text-right">Nội dung</label>
+                                    <label class="col-md-3 col-form-label ">Thời lượng học</label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control ckeditor" id="content3" name="course_time">{!!old('course_time')!!}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label ">Nội dung khoá học</label>
                                     <div class="col-md-12">
                                         <textarea class="form-control ckeditor" id="content3" name="content">{!!old('content')!!}</textarea>
                                     </div>
                                 </div>
                             </div>
-                              <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label ">Mô hình tổ chức</label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control ckeditor" id="content4" name="course_organization">{!!old('course_organization')!!}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label ">Dịch vụ đặc quyền cho học viên</label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control ckeditor" id="content5" name="course_service">{!!old('course_service')!!}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                             <!--  <div class="col-md-12">
                                 <div class="form-group row">
                                     <label class="col-md-2 col-form-label text-right">Thời gian ưu đãi</label>
                                     <div class="col-md-10">
@@ -121,13 +190,35 @@
                                     </div>
                                 </div>
                             </div>
-
+-->
+                             
+                            <!--  <div class="col-md-12">
+                                  <button class="add_field_button btn btn-primary">Thêm khối phương pháp học</button>
+                             
+                                     <div class="input_fields_wrap row">
+                                  
+                                    <div class="form-group col-md-6 row">
+                                        <label class="col-md-4 col-form-label ">Phương pháp học</label>
+                                        <textarea class="form-control col-md-12 ckeditor" id="content3" name="content">{!!old('content')!!}</textarea>
+                                    </div>
+                                 
+                                    </div>
+                       
+                            </div> -->
+                              <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label class="col-md-6 col-form-label">Phương pháp học (Mỗi khối phương pháp tách nhau băng dấu | )</label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control ckeditor" id="conten64" name="course_method">{!!old('course_method')!!}</textarea>
+                                    </div>
+                                </div>
+                            </div>
 
                              <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label text-right">Text thời gian ưu đãi</label>
+                                    <label class="col-md-2 col-form-label ">Text thời gian ưu đãi</label>
                                     <div class="col-md-12">
-                                        <textarea class="form-control ckeditor" id="content4" name="promotion">{!!old('promotion')!!}</textarea>
+                                        <textarea class="form-control ckeditor" id="content7" name="promotion">{!!old('promotion')!!}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +227,10 @@
                                 CKEDITOR.replace('content1', { height: 100 });
                                 CKEDITOR.replace('content2', { height: 100 });
                                 CKEDITOR.replace('content3', { height: 100 });
-                                 CKEDITOR.replace('content4', { height: 100 });
+                                CKEDITOR.replace('content4', { height: 100 });
+                                CKEDITOR.replace('content5', { height: 100 });
+                                CKEDITOR.replace('content6', { height: 100 });
+                                CKEDITOR.replace('content7', { height: 100 });
                             </script>
                         </div>
                     </div>
@@ -184,6 +278,27 @@
 @stop
 @section('script')
 @parent
+<script type="text/javascript">
+    $(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+
+    var x = 5; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div class="form-group col-md-6 row"><label class="col-md-4 col-form-label "></label><textarea class="form-control col-md-12 ckeditor" id="content'+x+'" name="content">{!!old('content')!!}</textarea></div></div>'); //add input box
+            CKEDITOR.replace('content'+x, { height: 100 });
+        }
+    });
+
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
 <script src="{!! asset('assets/global_assets/js/plugins/forms/selects/select2.min.js') !!}"></script>
 
 <script src="{!! asset('assets/global_assets/js/plugins/forms/styling/uniform.min.js') !!}"></script>

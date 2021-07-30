@@ -52,11 +52,10 @@
       </section>
     </body>
     <footer>
-    <div class="container">
-      @dd($config)
+       <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h4>Ề CHÚNG TÔI</h4>
+                <h4>VỀ CHÚNG TÔI</h4>
                 <p>{!!$config->content!!}</p>
 
             
@@ -75,11 +74,9 @@
             <div class="col-md-3">
             <h4>BÀI VIẾT MỚI NHẤT</h4>
                 <ul class="recent-news">
-                    <li><a href="#">Kinh nghiệm luyện IELTS band 7.0</a></li>
-                    <li><a href="#">Kinh nghiệm luyện IELTS band 7.0</a></li>
-                    <li><a href="#">Kinh nghiệm luyện IELTS band 7.0</a></li>
-                    <li><a href="#">Kinh nghiệm luyện IELTS band 7.0</a></li>
-                    <li><a href="#">Kinh nghiệm luyện IELTS band 7.0</a></li>
+                  @foreach($news_footer as $n_f)
+                      <li><a href="{{route('news.detail',$n_f->alias)}}">{{$n_f->title}}</a></li>
+                  @endforeach
                 </ul>
             </div>
             <div class="col-md-3">
@@ -92,6 +89,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="video-holder">
+    <iframe width="560" height="315" id="video-player" class="hidden" src="https://www.youtube.com/embed/iAlCEiAvnw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="video-holder">
     <iframe width="560" height="315" id="video-player" class="hidden" src="https://www.youtube.com/embed/iAlCEiAvnw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -93,12 +93,7 @@
                                     
                                     
                                   <div class="form-group row">
-                                    <div class="form-check col-md-4 form-check-right">
-                                        <label class="form-check-label float-right">
-                                            Là học sinh tiêu biểu
-                                            <input type="checkbox" class="form-check-input-styled" name="is_best" data-fouc="">
-                                        </label>
-                                    </div>
+                                    
                                     <div class="form-check col-md-4 form-check-right">
                                         <label class="form-check-label float-right">
                                             Kích hoạt

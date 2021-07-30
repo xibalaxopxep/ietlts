@@ -7,12 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Best;
 use DB;
 use Carbon\Carbon;
+use Route;
 
 class BestController extends Controller {
 
 
 
     public function index(Request $request) {
+        dd(Route::currentRouteName());
         $records = DB::table('best')->orderBy('ordering','desc')->get();
         return view('backend/best/index', compact('records'));
     }

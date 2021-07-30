@@ -65,7 +65,7 @@
 
                                     <div class="col-md-12">
                                     <div class="form-group row">
-                                        <label class="col-md-2 col-form-label text-right">Nội dung: </label>
+                                        <label class="col-md-2 col-form-label text-right">Nội dung (Ảnh hoặc bảng): </label>
                                         <div class="col-md-10">
                                             <textarea class="form-control ckeditor" id="content" name="content">{{$record->content}}</textarea>
                                         </div>

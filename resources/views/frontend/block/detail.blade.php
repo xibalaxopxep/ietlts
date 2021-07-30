@@ -81,6 +81,7 @@
 @endif
 
 
+
 @if($include_dangky != "")
         <section  id="form" style="background: url(assets_pasal/img/background/pattern-2.png) var(--main-color) no-repeat;background-size: cover;">
         <img id="pattern-1" src="assets_pasal/img/background/pattern-1.png" alt="pattern" />
@@ -167,11 +168,10 @@
             </div>
             </div>
       @endif
-
+@stop
 
 <script type="text/javascript">
      $('.button_dk').on('click',function(){
          
      });
 </script>
-@stop

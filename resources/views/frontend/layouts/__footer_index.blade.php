@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="video-holder">
-    <iframe width="560" height="315" id="video-player" class="hidden" src="https://www.youtube.com/embed/iAlCEiAvnw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" id="video-player" class="hidden" src="/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
  
 
@@ -50,6 +50,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
       <!-- Magnific Popup core JS file -->
       <script src="{{asset('assets_pasal/magnific-popup/jquery.magnific-popup.js')}}"></script>
-      <script src="{{asset('assets_pasal/js/style.js?v=2.03')}}"></script>
+      <script src="{{asset('assets_pasal/js/owl.carousel.min.js')}}"></script>
+      <script src="{{asset('assets_pasal/js/style.js?v=2.14')}}"></script>
     </footer>
     </html>

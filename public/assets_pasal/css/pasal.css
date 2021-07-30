@@ -428,11 +428,13 @@ section.testimonial .item
 }
 section.testimonial .item .icon 
 {
-	margin: 20px 0px;
+	margin: 20px auto;
+    width: auto;
 }
 section.testimonial .item .avatar 
 {
-	margin: 20px 0px;
+	margin: 20px auto;
+    width: auto;
 }
 section.testimonial .item h4
 {
@@ -442,6 +444,7 @@ section.testimonial .item h4
 section.testimonial .item p
 {
 	margin-bottom: 0px;
+    font-style: normal;
 }
 /* END Section Testimonial */
 /* START FORM */
@@ -970,6 +973,8 @@ table.lich td p
 	font-size: 25px;
 	color: var(--sub-color);
 	font-weight: bold;
+        line-height: 35px;
+    margin-bottom: 20px;
 }
 .lotrinh-loiich h4 b
 {
@@ -1016,7 +1021,6 @@ table.lich td p
 .lotrinh-loiich .thumbnail
 {
 	padding: 10px;
-	margin-left: -55px;
 }
 .lotrinh-loiich .list-item 
 {
@@ -1343,4 +1347,21 @@ section.dangky-khoahoc .btn-white
         width: 100vw;
             background: #2222225c;
         display: none;
+    }
+    .teacher-slide .owl-nav
+    {
+        position: absolute;
+        top: 40%;
+        width: calc(100% - 20px);
+        display: block !important;
+    }
+    .teacher-slide .owl-nav button.owl-prev
+    {
+        left: -70px;
+    position: absolute;
+    }
+     .teacher-slide .owl-nav button.owl-next
+    {
+        right: -70px;
+    position: absolute;
     }

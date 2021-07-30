@@ -35,7 +35,6 @@ class QuizzController extends Controller {
 		$input = $request->except('_token');
         $input['section_type'] = DB::table('section')->where('id',$input['section_id'])->pluck('section_type')->first();
 		 $id = DB::table('quizz')->insertGetId($input);
-		 dd($id);
 		 return redirect()->route('admin.quizz.index')->with('success',"Lưu thành công");
 	}
 

@@ -53,7 +53,7 @@
                     <th>Ngày tạo</th>
                     <th>Thứ tự</th>
                     <th>Trạng thái</th>
-                    <th>Ữu đãi</th>
+                    <th>Ưu đãi</th>
                     <th>Tác vụ</th>
                 </tr>
             </thead>

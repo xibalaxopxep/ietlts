@@ -14,7 +14,7 @@ class BestController extends Controller {
 
 
     public function index(Request $request) {
-        dd(Route::currentRouteName());
+        $curent_route = Route::currentRouteName();
         $records = DB::table('best')->orderBy('ordering','desc')->get();
         return view('backend/best/index', compact('records'));
     }

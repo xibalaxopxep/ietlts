@@ -80,6 +80,7 @@
                     <th>Thể loại</th>
                     <th>Ví trí</th>
                     <th>Ngày tạo</th>
+                    <th>Quản lý score</th>
                     <th>Tác vụ</th>
                 </tr>
             </thead>
@@ -104,6 +105,30 @@
                     @endif
                     <td><input type="text" class="form-control" style="max-width: 70px;" name="orderBy[]" value="{{$record->ordering}}"></td>
                     <td>{{$record->created_at}}</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_{{$key}}">
+                      Chỉnh sửa
+                    </button></td>
+                    <div class="modal fade" id="exampleModalCenter_{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Quản lý score</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="{{}}" method="post">
+                                
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </form>
                     <td class="">
                         <a href="{{route('admin.section.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>

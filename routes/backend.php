@@ -274,7 +274,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::post('/method/update/{id}', ['as' => 'admin.method.update', 'uses' => 'Backend\MethodController@update']);
   
 
-    
+
+    Route::post('/score/store', ['as' => 'admin.score.store', 'uses' => 'Backend\ScoreController@store']);
+    Route::post('/score/update/{id}', ['as' => 'admin.score.update', 'uses' => 'Backend\ScoreController@update']);
+    Route::delete('/score/delete/{id}', ['as' => 'admin.score.destroy', 'uses' => 'Backend\ScoreController@destroy']);
    
 
       /* Quản lý danh mục */

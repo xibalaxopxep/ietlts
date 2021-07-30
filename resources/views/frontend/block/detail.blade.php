@@ -168,7 +168,7 @@
             </div>
             </div>
       @endif
-
+@stop
 
 <script type="text/javascript">
      $('.button_dk').on('click',function(){

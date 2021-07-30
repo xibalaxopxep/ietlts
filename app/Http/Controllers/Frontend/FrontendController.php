@@ -89,6 +89,12 @@ class FrontendController extends Controller {
                  return redirect()->back()->with('error','Có lỗi trong quá trình xử lý, vui lòng thử lại');
             }
        }
+
+       public function about(Request $request){
+           
+                 return view('frontend/home/about');
+            
+       }
  
 
 }

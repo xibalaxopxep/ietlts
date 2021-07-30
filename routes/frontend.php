@@ -50,6 +50,8 @@ Route::group(['middleware' => 'frontend'], function() {
       //Giảng viên
     Route::get('/thanh-tich', ['as' => 'achie.index', 'uses' => 'Frontend\AchieController@index']);
 
+    Route::get('/gioi-thieu', ['as' => 'achie.index', 'uses' => 'Frontend\FrontendController@about']);
+
     //ĐĂng kí
     Route::post('/checkout-success', ['as' => 'product.checkout-sucess', 'uses' => 'Frontend\ProductController@checkoutSuccess']);
 

@@ -5,7 +5,7 @@
         @include('frontend/layouts/__head')
     </head>
 
-    <body>
+    <body >
         <!-- Page content -->
         <div id="page">
             <!-- Main content -->

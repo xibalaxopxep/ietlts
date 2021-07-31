@@ -13,10 +13,19 @@
 body
 {
 	font-family: 'Tahoma';
+        max-width: 100vw;
+    overflow-x: hidden;
+}
+a{
+    color: var(--main-color);
 }
 .mt-30
 {
 	margin-top: 30px;
+}
+.mt-40
+{
+    margin-top: 40px;
 }
 .mb-30
 {
@@ -373,6 +382,7 @@ section.course .item .thumbnail
 	border-radius: 30px;
 	overflow: hidden;
 	height: 250px;
+    display: block;
 }
 
 section.course .item:hover .thumbnail img
@@ -967,6 +977,7 @@ table.lich td p
 {
 		padding-bottom: 0px;
 	margin-bottom: -25px;
+    position: relative;
 }
 .lotrinh-loiich h4
 {
@@ -1364,4 +1375,96 @@ section.dangky-khoahoc .btn-white
     {
         right: -70px;
     position: absolute;
+    }
+    #khoahoc-loiich-pattern-1
+    {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: auto;
+        z-index: -1;
+    }
+    .noidung-khoahoc .item .info
+    {
+    border-style: dashed;
+    background: #fff;
+    border-radius: 0px 0px 10px 10px;
+    border-top: none;
+    padding: 20px;
+    }
+    .noidung-khoahoc .item .title
+    {
+        font-size: 20px;
+    padding: 15px;
+    color: #fff;
+    margin-bottom: 0px;
+        border-radius: 10px 10px 0px 0px;
+    }
+    .noidung-khoahoc .item-1 .title 
+    {
+        background: #fe8a18;
+    }
+    .noidung-khoahoc .item-2 .title 
+    {
+        background: #1a4562;
+    }
+    .noidung-khoahoc .item-1 .info
+    {
+        border-color: #fe8a18;
+    }
+    .noidung-khoahoc .item-2 .info
+    {
+        border-color: #1a4562;
+    }
+    .noidung-khoahoc h3
+    {
+        margin-bottom: 40px;
+    }
+    .noidung-khoahoc .item .info ul li
+    {
+        margin-top: 10px;
+        position: relative;
+    }
+    .noidung-khoahoc .item .info ul li:before {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    display: block;
+    content: ' ';
+    position: absolute;
+    left: -20px;
+    border: 2px solid var(--main-color);
+    top: 7px;
+    border-radius: 50%;
+    }
+    .noidung-khoahoc .content .item
+    {
+    padding-top: 35px;
+    }
+    .noidung-khoahoc .content .item p
+    {
+        margin-top: 15px;
+    }
+    @media (min-width: 768px)
+    {
+        .noidung-khoahoc .content 
+        {
+            padding-top: 85px;
+        }
+    }
+    #toc>ol
+    {
+        padding: 0px;
+        font-weight: bold;
+    }
+    #toc>ol>ol
+    {
+        padding: 0px;
+    }
+    #toc
+    {
+        border: 2px solid #252525;
+        background: #f1f1f1;
+        padding: 20px;
+    margin-top: 20px;
     }

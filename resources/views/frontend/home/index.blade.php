@@ -58,14 +58,14 @@
             <div class="col-md-4">
               <div class="item-wrap">
                 <div class="item">
-                  <div class="thumbnail">
+                  <a class="thumbnail" href="{{route('course.detail',$course->alias)}}">
                     <img class="img-fluid" src="{{asset($course->image)}}" alt="khóa học" />
-                  </div>
+                  </a>
                   <div class="info">
-                    <a class="title">Khóa học <b>{{$course->title}}</b></a>
+                    <a class="title" href="{{route('course.detail',$course->alias)}}">Khóa học <b>{{$course->title}}</b></a>
                     <span>{{$course->summary}}</span>
                     <div class="bottom">
-                      <a class="view-more">Xem tiếp</a>
+                      <a class="view-more" href="{{route('course.detail',$course->alias)}}">Xem tiếp</a>
                       @if($course->level)
                       <p class="label">{{$course->level}}</p>
                       @else

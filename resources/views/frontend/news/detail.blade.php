@@ -4,9 +4,14 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 mt-4">
-              <div class="content">
-                <div class="sumary mt-30">
-                       <img src="{{asset($record->images)}}" style="width: 100%;">
+              <div class="content" >
+                <div class="sumary mt-30" id="contents">
+               
+                       <img src="{{asset($record->images)}}" style="width: 100%;" alt="{{$record->images}}" />
+                       <div id='console'></div>
+                            <div id="toc">
+                            <b style="margin-bottom: 20px; display: block;">NỘI DUNG CHÍNH</b>
+                            </div>
                        {!!$record->content!!}
                       </div>
                       <div class="related-news mt-30">

@@ -40,27 +40,103 @@
             @csrf  
   <div class="card-body">
          <div class="row " style="">
-            <div class="col-md-4 row">
-            <label style="margin-top: 5px; font-size: 110%;" class="col-md-4">Lọc theo bài test:</label>
-            <div class="col-md-7">
-             <select class="form-control select-search filter_new" >
-                    @if(0 == $test_id)
-                    <option selected="" value="0">Tất cả danh mục</option>
-                     @else
-                     <option  value="0">Tất cả danh mục</option>
-                     @endif
-                 @foreach($tests as $test)
-                     @if($test->id == $test_id)
-                     <option selected="" value="{{$test->id}}">{{$test->title}}</option>
-                     @else
-                     <option value="{{$test->id}}">{{$test->title}}</option>
-                     @endif
-                 @endforeach
-             </select>
-             </div>
-         </div>
-     
-         <div class="col-md-8">
+           <!--  -->
+          <div class="col-md-6">
+            
+            <div class="row">
+              <label style="margin-top: 5px;" class="col-md-2">Quản lý Score:</label>
+                <button style="margin-right: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_1">
+                  Pronunciation
+                </button>
+                <button style="margin-right: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_2">
+                  Grammar
+                </button>
+                <button style="margin-right: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_3">
+                  Vocabulary
+                </button>
+                <button style="margin-right: 5px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_4">
+                  Listening
+                </button>
+                <button style="margin-right: 5px;"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_5">
+                  Reading
+                </button>
+            </div>
+          </div>
+          @for($i = 1; $i<=5; $i++)
+          <div class="modal fade" id="exampleModalCenter_{{$i}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Quản lý score</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                     <div class="row">                     
+                         <table class="table">
+                          <thead>
+                             <tr>
+                                <th scope="col">Số câu từ</th>
+                                <th scope="col">Đến câu</th>
+                                <th scope="col">Điểm</th>
+                                <th scope="col">Đánh giá</th>
+                                 <th scope="col">Tác vụ</th>
+                            </tr>
+                           </thead>
+                           <tbody>
+                           @foreach($scores as $score)
+                              @if($score->type == $i)
+                                <tr>
+                                  <th scope="row">{{$score->from}}</th>
+                                  <th scope="row">{{$score->to}}</th>
+                                  <td>{{$score->score}}</td>
+                                  <td>{!!$score->content!!}</td>
+                                  <td><a href="{{route('admin.score.edit',$score->id)}}">Sửa</a></td>
+                                </tr>
+                               @endif
+                            @endforeach
+                         </tbody>
+                       </table>
+                    </div>
+                 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" data-dismiss="modal">Lưu</button>
+                  <button type="button" class="btn btn-primary"><a style="color:white;" href="{{route('admin.score.create',$i)}}">Thêm mới</a></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endfor
+
+          <script type="text/javascript">
+            var max_fields = 5; //maximum input boxes allowed
+            var wrapper = $(".input_fields_wrap"); //Fields wrapper
+            var add_button = $(".add_field_button"); //Add button ID
+            
+            var x = 1; //initlal text box count
+            $(add_button).click(function(e){ //on add input button click
+                e.preventDefault();
+                if(x < max_fields){ //max input box allowed
+                     //text box increment
+                    var html = "";
+                     html += '<div class="col-md-12 row" style="margin-bottom: 10px;">';
+                     html +='<input type="radio" name="this_answer"  value="'+x+'" class="col-md-1 this_answer" style="margin-top: 7px;">'; 
+                     html += '<input type="text" class="form-control col-md-9 list_answer">';
+                     html += '<a style="margin-left: 5px; margin-top: 5px;" href="#" class="remove_field">Xoá</a>';
+                     html += '</div>';
+                    $(wrapper).append(html); //add input box
+                    x++;
+                }
+            });
+            
+            $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent('div').remove(); x--;
+            });
+       
+          </script>
+         <div class="col-md-6">
              <div class="row" style="float: right;">
                  <button style="margin-right: 5px;" name="action" value="save" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu</button>
                  <button style="margin-right: 5px;" name="action" value="delete" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i> Xoá</button>
@@ -76,22 +152,20 @@
                     <th>#</th>
                      <th><input type="checkbox" id="select_all" value=""></th>
                     <th>Tiêu đề</th>
-                    <th>Bài test</th>
                     <th>Thể loại</th>
+                    <th>Số câu hỏi</th>
                     <th>Ví trí</th>
                     <th>Ngày tạo</th>
-                    <th>Quản lý score</th>
+                    
                     <th>Tác vụ</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($records as $key=>$record)
-
                 <tr>
                     <td>{{++$key}}</td>
                     <th><input name="check[]" type="checkbox" value="{{$record->id}}"></th>
                     <td>{{$record->name}}</td>
-                    <td>{{$record->title }}</td>
                     @if($record->section_type==1)
                     <td>Listening</td>
                     @elseif($record->section_type==2)
@@ -103,41 +177,22 @@
                     @elseif($record->section_type==5)
                     <td>Vocabulary</td>
                     @endif
+                    @foreach($quizzs as $quizz)
+                       @if($quizz->section)
+                    @endforeach
                     <td><input type="text" class="form-control" style="max-width: 70px;" name="orderBy[]" value="{{$record->ordering}}"></td>
                     <td>{{$record->created_at}}</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_{{$key}}">
-                      Chỉnh sửa
-                    </button></td>
-                    <div class="modal fade" id="exampleModalCenter_{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Quản lý score</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form action="{{}}" method="post">
-                                
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    
+                   
                 </form>
                     <td class="">
                         <a href="{{route('admin.section.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
-                        <!-- <form action="{!! route('admin.section.destroy',  ['id' => $record->id]) !!}" method="post" style="display: inline-block">
+                        <form action="{!! route('admin.score.destroy',  ['id' => $record->id]) !!}" method="post" style="display: inline-block">
                             {!! csrf_field() !!}
                             <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
                                 <i class="icon-close2"></i>
                             </a>              
-                        </form> -->
+                        </form>
                     </td>
                 </tr>
                 @endforeach

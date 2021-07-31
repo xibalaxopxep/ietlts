@@ -123,7 +123,7 @@
                         <li class="nav-item"><a href="{{route('admin.test.index')}}" class="nav-link">Bài t</a></li> -->
                         <li class="nav-item"><a href="{{route('admin.section.index')}}" class="nav-link">Test</a></li>
                         <li class="nav-item"><a href="{{route('admin.quizz.index')}}" class="nav-link">Bài tập và câu hỏi</a></li>
-
+                        <li class="nav-item"><a href="{{route('admin.rule.index')}}" class="nav-link">Rule</a></li>
                     </ul>
                 </li>
 
@@ -196,6 +196,7 @@
                         <li class="nav-item"><a href="{{route('admin.subscriber.index')}}" class="nav-link">Người đăng kí</a></li>
                         <!-- <li class="nav-item"><a href="{{route('admin.contact.index')}}" class="nav-link">Liên hệ</a></li> -->
                         <li class="nav-item"><a href="{{route('admin.member.index')}}" class="nav-link">Thành viên</a></li>
+
                     </ul>
                 </li>
                 

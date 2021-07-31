@@ -23,15 +23,25 @@ class SectionController extends Controller {
     }
 
     public function index(Request $request) {
-        $test_id = $request->test_id;
-        if($test_id != null ){
-           $records =DB::table('section')->join('test','test.id','=','section.test_id')->where('test.id',$test_id)->orderBy('section.ordering','asc')->select('*','section.id as id','section.ordering as ordering')->get();
+
+         
+        $scores = DB::Table('score')->get();
+     
+        $records =DB::table('section')->orderBy('ordering','asc')->get();
+        $quizzs = DB::table('question')->join('quizz','question.quizz_id','=','quizz.id')->get();
+        
+        $eachs = $quizzs->groupBy('section_type');
+        foreach ($eachs as $key => $each) {
+            $dem = 0;
+            foreach ($each as $key1 => $ea) {
+                $dem++;
+            }
+            $eachs[$key]->dem = $dem;
         }
-        elseif($test_id == null || $test_id == "0"){
-             $records =DB::table('section')->join('test','test.id','=','section.test_id')->orderBy('section.ordering','asc')->select('*','section.id as id','section.ordering as ordering')->get();
-        }
+   
+
         $tests = DB::table('test')->get();
-        return view('backend/section/index', compact('records','tests','test_id'));
+        return view('backend/section/index', compact('records','tests','scores','quizzs','eachs'));
     }
 
 

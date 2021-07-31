@@ -104,7 +104,7 @@
                                  <div id="fill_answer" style="display: none;" class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Câu trả lời: </label>
                                         <div class="col-md-10">
-                                            <input name="answer_text" id="answer" class="form-control" value="">
+                                            <input name="answer_text" placeholder="Các đáp án cách nhau bởi dấu phẩy" id="answer" class="form-control" value="">
                                         </div>
                                 </div>
                               

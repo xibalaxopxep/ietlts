@@ -275,9 +275,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
   
 
 
-    Route::post('/score/store', ['as' => 'admin.score.store', 'uses' => 'Backend\ScoreController@store']);
+    Route::get('/score', ['as' => 'admin.score.index', 'uses' => 'Backend\ScoreController@index']);
+    Route::get('/score/create/{type}', ['as' => 'admin.score.create', 'uses' => 'Backend\ScoreController@create']);
+    Route::get('/score/edit/{id}', ['as' => 'admin.score.edit', 'uses' => 'Backend\ScoreController@edit']);
+    Route::post('/score/{type}/store', ['as' => 'admin.score.store', 'uses' => 'Backend\ScoreController@store']);
     Route::post('/score/update/{id}', ['as' => 'admin.score.update', 'uses' => 'Backend\ScoreController@update']);
     Route::delete('/score/delete/{id}', ['as' => 'admin.score.destroy', 'uses' => 'Backend\ScoreController@destroy']);
+
+    Route::get('/rule', ['as' => 'admin.rule.index', 'uses' => 'Backend\RuleController@index']);
+    Route::get('/rule/create', ['as' => 'admin.rule.create', 'uses' => 'Backend\RuleController@create']);
+    Route::get('/rule/edit/{id}', ['as' => 'admin.rule.edit', 'uses' => 'Backend\RuleController@edit']);
+    Route::post('/rule/store', ['as' => 'admin.rule.store', 'uses' => 'Backend\RuleController@store']);
+    Route::post('/rule/update/{id}', ['as' => 'admin.rule.update', 'uses' => 'Backend\RuleController@update']);
+    Route::delete('/rule/delete/{id}', ['as' => 'admin.rule.destroy', 'uses' => 'Backend\RuleController@destroy']);
    
 
       /* Quản lý danh mục */

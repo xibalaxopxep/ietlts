@@ -5,120 +5,161 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Rule;
-use DB;
 use Carbon\Carbon;
+use DB;
+use Auth;
 
 class RuleController extends Controller {
+    
 
-
-
+    
     public function index() {
-        $records = Rule::orderBy('type','asc')->get();
-        return view('backend/rule/index', compact('records'));
+        $courses= DB::table('course')->get();
+        $records = Rule::orderBy('to','asc')->get();
+        return view('backend/rule/index', compact('records','courses'));
+      
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create() {
-        $count_ordering = Route::count();
-        return view('backend/route_online/create',compact('count_ordering'));
+        $courses= DB::table('course')->where('is_pro',null)->where('is_online',null)->get();
+        $pro_courses =  DB::table('course')->where('is_pro',1)->get();
+        $online_courses =  DB::table('course')->where('is_online',1)->get();
+        return view('backend/rule/create',compact('courses','pro_courses','online_courses'));
+      
     }
+
 
     public function store(Request $request) {
+        $rule = new Rule();
         $input = $request->all();
-        $route_online = new Route();
-        $validator = \Validator::make($input, $route_online->validateCreate());
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        if($request->check){
+        $input['courses'] = implode(',',$input['check']);
+        }else{
+             return Redirect()->back()->with('error','Vui lòng chọn khoá học');
         }
-        $get_image=$request->image;
-        if($get_image){
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = current(explode('.',$get_name_image));
-            $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-            $get_image->move('upload/images/',$new_image);
-            $input['image'] = '/upload/images/'.$new_image;
+        unset($input['check']);
+        $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');
+        $records = DB::table('rule')->whereIn('from',[$input['from'],$input['to']])->orWhereIn('to',[$input['from'],$input['to']])->get();
+        $count= $records->count();
+        if($count>0){
+             return Redirect()->back()->with('error','Vui lòng nhập lại');
+        }        
+        
+      
+        if($input['from'] > $input['to'] || $input['to'] > 10 ){
+             return Redirect()->back()->with('error','Vui lòng nhập lại');
         }
-        $input['status'] = isset($input['status']) ? 1 : 0;
-        $res = $route_online->create($input);
 
-        //Thêm danh mục sản phẩm
-        if ($res) {
-            return redirect()->route('admin.route_online.index')->with('success', 'Tạo mới thành công');
-        } else {
-            return redirect()->route('admin.route_online.index')->with('error', 'Tạo mới thất bại');
+        $create_score = $rule::create($input);
+        if($create_score){
+            return redirect()->route('admin.rule.index')->with('success','Thêm mới thành công');
+        }
+        else{
+             return redirect()->route('admin.rule.index')->with('error','Thêm mới thất bại');
         }
     }
 
 
-    public function show($id) {
+    public function edit($id) {
+           $record = Rule::find($id);
+           if(!$record){
+               abort(404);
+           }
+            $courses= DB::table('course')->where('is_pro',null)->where('is_online',null)->get();
+            $pro_courses =  DB::table('course')->where('is_pro',1)->get();
+            $online_courses =  DB::table('course')->where('is_online',1)->get();
+            return view('backend/rule/edit', compact('record','courses','pro_courses','online_courses'));     
+    }
+
+
+    public function update(Request $request, $id) {
+
+        $rule = new Rule();
+        $input = $request->all();
+        if($request->check){
+        $input['courses'] = implode(',',$input['check']);
+        }else{
+             return Redirect()->back()->with('error','Vui lòng chọn khoá học');
+        }
+        unset($input['check']);
+        $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');
+        $records = DB::table('rule')->whereIn('from',[$input['from'],$input['to']])->orWhereIn('to',[$input['from'],$input['to']])->get();
+        foreach ($records as $key => $record) {
+            if($record->id == $id){
+                unset($records[$key]);
+            }
+        }
+        $count= $records->count();
+        if($count>0){
+             return Redirect()->back()->with('error','Vui lòng nhập lại');
+        }        
+        
+      
+        if($input['from'] > $input['to'] || $input['to'] > 10 ){
+             return Redirect()->back()->with('error','Vui lòng nhập lại');
+        }
+        $create_score = $rule::find($id)->update($input);
+        if($create_score){
+            return redirect()->route('admin.rule.index')->with('success','Thêm mới thành công');
+        }
+        else{
+             return redirect()->route('admin.rule.index')->with('error','Thêm mới thất bại');
+        }
+       
+       
+       
+    }
+
+
+    public function destroy($id) {
+        Rule::destroy($id);
+        return redirect()->route('admin.rule.index')->with('success', 'Xóa thành công');
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id) {
-        $teachers = DB::table('teacher')->get();
-        $studies = DB::table('study')->get();
-        $record = Route::find($id);
-       if($record){
-        //Lấy danh sách id thuộc tính của sản phẩm
-        return view('backend/route_online/edit', compact('record','studies','teachers'));
-        }else{
-            abort(404);
+    public function update_multiple(Request $request) {
+        $data = $request->all();
+        
+        if($request->action == "save"){      
+           $records = Teacher::orderBy('ordering','desc')->get();
+           foreach ($records as $key => $record) {
+               if($record->ordering != $data['orderBy'][$key]){
+                    DB::table('teacher')->where('id',$record->id)->update(['ordering'=>$data['orderBy'][$key]]);
+               }
+           }
+           return redirect()->back()->with('success',"Cập nhật thành công");
+        }
+        else{
+            if($request->check == null){
+            return redirect()->back()->with('error',"Vui lòng chọn ít nhất một giảng viên");
+            }
+
+            if($request->action == "delete"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('teacher')->where('id',$chk)->delete();
+               }  
+               return redirect()->back()->with('success',"Xoá thành công");
+            }
+            elseif($request->action == "active"){
+               foreach($data['check'] as $key => $chk){
+                     DB::table('teacher')->where('id',$chk)->update(['status'=>1]);
+               }  
+               return redirect()->back()->with('success',"Cập nhật thành công");
+            }else{
+                  foreach($data['check'] as $key => $chk){
+                     DB::table('teacher')->where('id',$chk)->update(['status'=>0]);
+               } 
+               } 
+           return redirect()->back()->with('success',"Cập nhật thành công");
         }
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id) {
-        $input = $request->all();
-        $route_online = new Route();
-        $validator = \Validator::make($input, $route_online->validateUpdate($id));
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        $input['teacher_id'] = implode(',',$input['teacher_id']);
-        $input['study_id'] = implode(',',$input['study_id']);
-        $get_image=$request->image;
-        if($get_image){
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = current(explode('.',$get_name_image));
-            $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-            $get_image->move('upload/images/',$new_image);
-            $input['image'] = '/upload/images/'.$new_image;
-        }
-        $input['status'] = isset($input['status']) ? 1 : 0;
-        $res = $route_online->find($id)->update($input);
-
-        //Thêm danh mục sản phẩm
-        if ($res) {
-            return redirect()->route('admin.route_online.index')->with('success', 'Tạo mới thành công');
-        } else {
-            return redirect()->route('admin.route_online.index')->with('error', 'Tạo mới thất bại');
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id) {
-        Teacher::destroy($id);
-        return redirect()->back()->with('success', 'Xóa thành công');
-    }
-
-
-
- 
 
 }
+
+
+   

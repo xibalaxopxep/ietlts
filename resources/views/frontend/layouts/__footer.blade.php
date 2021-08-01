@@ -63,7 +63,7 @@
                 <a href="{{$config->facebook}}" target="_blank" class="img"><img src="{{asset('assets_pasal/icon/facebook.png')}}" /></a>
                 <a href="{{$config->youtube}}" target="_blank" class="img"><img src="{{asset('assets_pasal/icon/youtube.png')}}" /></a>
                 <a href="{{$config->instagram}}" target="_blank" class="img"><img src="{{asset('assets_pasal/icon/ins.png')}}" /></a>
-                <a href="{{$config->tiktok}}" target="_blank" class="img"><img src="{{asset('assets_pasal/icon/zalo.png')}}" /></a>
+                <a href="{{$config->tiktok}}" target="_blank" class="img"><img src="{{asset('assets_pasal/icon/tiktok.png')}}" /></a>
             </div>
             <h4 class="mt-4">HỆ THỐNG CƠ SỞ TẠI HÀ NỘI</h4>
             <p>Cơ sở 1: 206, Bạch Mai, Hai Bà Trưng, Hà Nội | 0243.624.8686</p>

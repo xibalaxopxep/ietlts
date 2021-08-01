@@ -61,7 +61,7 @@ class ContactAddressController extends Controller {
         $record = ContactAddress::find($id);
         if($record){
 
-        return view('backend/contact_address/edit', compact('record',));
+        return view('backend/contact_address/edit', compact('record'));
         }else{
             abort(404);
         }

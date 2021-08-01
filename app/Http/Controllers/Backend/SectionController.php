@@ -29,7 +29,7 @@ class SectionController extends Controller {
      
         $records =DB::table('section')->orderBy('ordering','asc')->get();
         $quizzs = DB::table('question')->join('quizz','question.quizz_id','=','quizz.id')->get();
-        
+ 
         $eachs = $quizzs->groupBy('section_type');
         foreach ($eachs as $key => $each) {
             $dem = 0;
@@ -37,8 +37,9 @@ class SectionController extends Controller {
                 $dem++;
             }
             $eachs[$key]->dem = $dem;
+
         }
-   
+        //dd($quizzs);
 
         $tests = DB::table('test')->get();
         return view('backend/section/index', compact('records','tests','scores','quizzs','eachs'));

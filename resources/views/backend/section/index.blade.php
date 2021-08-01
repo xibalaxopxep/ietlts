@@ -167,19 +167,27 @@
                     <th><input name="check[]" type="checkbox" value="{{$record->id}}"></th>
                     <td>{{$record->name}}</td>
                     @if($record->section_type==1)
-                    <td>Listening</td>
+                    <td>Listening (Tổng {{$eachs[$record->section_type]->dem}} câu)</td>
                     @elseif($record->section_type==2)
-                    <td>Reading</td>
+                    <td>Reading (Tổng {{$eachs[$record->section_type]->dem}} câu)</td>
                     @elseif($record->section_type==3)
-                    <td>Pronunciation</td>
+                    <td>Pronunciation (Tổng {{$eachs[$record->section_type]->dem}} câu)</td>
                     @elseif($record->section_type==4)
-                    <td>Grammar</td>
+                    <td>Gramma (Tổng {{$eachs[$record->section_type]->dem}} câu)</td>
                     @elseif($record->section_type==5)
-                    <td>Vocabulary</td>
+                    <td>Vocabulary (Tổng {{$eachs[$record->section_type]->dem}} câu)</td>
                     @endif
+                    @php
+                    $dem = 0;
+                    @endphp
                     @foreach($quizzs as $quizz)
-                       @if($quizz->section)
+                       @if($quizz->section_id == $record->id)
+                       @php
+                          $dem++;
+                       @endphp   
+                       @endif
                     @endforeach
+                    <td>{{$dem}}</td>
                     <td><input type="text" class="form-control" style="max-width: 70px;" name="orderBy[]" value="{{$record->ordering}}"></td>
                     <td>{{$record->created_at}}</td>
                     
@@ -187,7 +195,7 @@
                 </form>
                     <td class="">
                         <a href="{{route('admin.section.edit',  ['id' => $record->id])}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
-                        <form action="{!! route('admin.score.destroy',  ['id' => $record->id]) !!}" method="post" style="display: inline-block">
+                        <form action="{!! route('admin.section.destroy',  ['id' => $record->id]) !!}" method="post" style="display: inline-block">
                             {!! csrf_field() !!}
                             <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
                                 <i class="icon-close2"></i>

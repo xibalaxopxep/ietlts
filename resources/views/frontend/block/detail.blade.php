@@ -135,11 +135,12 @@
           </div>
         </div>
       </section>
-      <div style="background-color: white;">
-       <div style="background-color: white; margin-right: 100px; margin-left: 100px;" class="table-lich table-responsive-md">
+      <section class="lichkhaigiang-page py-40">
+      <div class="container">
+       <div class="table-lich table-responsive-md mt-0">
               @foreach($include_dangky as $key => $schedule)
               <div class="title btn-gradient text-white rounded-0"><h4 class="text-left">{{$key}}</h4></div>
-              <table class="lich w-100 table">
+              <table class="lich w-100 table mb-0">
                 <thead>
                   <tr style="background-color: #eee; color: #eb4d37;">
                     <th scope="col">Lớp học</th>
@@ -156,7 +157,7 @@
                     <td>{{$off->course_name}} ({{$off->level}})</td>
                     <td><p class="day"><b>{{$off->schedule}}</b></p><p>{{$off->schedule_detail}}</p></td>
                     <td>{{date('d-m-Y', strtotime($off->opening))}}</td>
-                    <td><button style="font-size: 60%; border-radius: 0px;" data- class="btn-gradient button_dk">Đăng ký</button></td>
+                    <td><button style="border-radius: 0px;" class="btn-gradient button_dk fs-16">Đăng ký</button></td>
                   </tr>
                  @endforeach
                 </tbody>
@@ -166,7 +167,8 @@
    
               @endforeach
             </div>
-            </div>
+    </div>
+    </section>
       @endif
 @stop
 

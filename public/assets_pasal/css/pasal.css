@@ -623,6 +623,7 @@ section.recent-news
 	background: #fff;
 	padding: 10px;
 	box-shadow: 1px 1px 3px 1px #b9b9b9b3;
+    float: left;
 }
 .sidebar h4
 {
@@ -1471,4 +1472,40 @@ section.dangky-khoahoc .btn-white
         background: #f1f1f1;
         padding: 20px;
     margin-top: 20px;
+    }
+    .pagination
+    {
+        justify-content: center;
+    }
+    .pagination .page-item .page-link
+    {
+    border: none;
+    background: none;
+    color: #252525;
+    border-radius: 50px;
+    height: 45px;
+    width: 45px;
+    line-height: 45px;
+    padding: 0px;
+    }
+    .page-item.active .page-link
+    {
+        background-color: #27253d;
+        color: #fff;
+    }
+    .title-sidebar
+    {
+            font-size: 18px;
+    color: var(--main-color);
+    font-weight: bold;
+    border-bottom: 1px solid;
+    width: auto;
+    float: left;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    }
+    #form.form-sidebar.fixed
+    {
+        position: fixed;
+        top: 0px;
     }

@@ -41,7 +41,7 @@
                     </div>
                   </div>
                   <div class="col-md-3 pull-right">
-                    <img class="img-responsive" src="{{asset('assets_pasal/img/advertise.png')}}" alt="quảng cáo" />
+                    <img id="ads-sidebar" class="img-responsive" src="{{asset('assets_pasal/img/advertise.png')}}" alt="quảng cáo" />
                     <div class="form-sidebar mt-4" id="form">
                       <h4>ĐĂNG KÝ TƯ VẤN<br><b>LỘ TRÌNH HỌC IELTS</b></h4>
                       <div class="form-group">

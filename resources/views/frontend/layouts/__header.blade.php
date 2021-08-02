@@ -13,6 +13,7 @@
            
 
             <ul class="nav nav-pills menu">
+
               @foreach($menu as $key => $mn)
               <li class="nav-item"><a href="{{url($mn->link)}}" class="nav-link" aria-current="page">{{$mn->title}}</a>
                    @if($mn->children != null)
@@ -23,6 +24,7 @@
                   </ul>
                   @endif
               </li>
+
               @endforeach
             </ul>
           

@@ -25,8 +25,8 @@
                 </div>
             </a>
         </div>
-        <div class="col-sm-4">
-            <a href="{{route('admin.contact.index')}}">
+        <!-- <div class="col-sm-4">
+            <a href="{{route('admin.contact.index',1)}}">
                 <div class="tile-stats tile-green"> 
                     <div class="icon"><i class="icon-bubble-dots4"></i>
                     </div> 
@@ -36,7 +36,7 @@
                     <h3>Liên hệ</h3>
                 </div>
             </a>
-        </div>
+        </div> -->
     </div>
 </div>
 <!-- /content area -->

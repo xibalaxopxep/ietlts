@@ -13,7 +13,11 @@
 
             <ul class="nav nav-pills menu">
               @foreach($menu as $mn)
-              <li class="nav-item"><a href="{{url($mn->link)}}" class="nav-link" aria-current="page">{{$mn->title}}</a></li>
+              <li class="nav-item"><a href="{{url($mn->link)}}" class="nav-link" aria-current="page">{{$mn->title}}</a>
+                <ul class="submenu">
+                    <li><a href="#">submenu</a></li>
+                </ul>
+              </li>
 
               @endforeach
               

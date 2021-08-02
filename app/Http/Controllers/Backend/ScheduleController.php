@@ -20,14 +20,14 @@ class ScheduleController extends Controller {
     }
 
 
-    public function create($type) {
+    public function create() {
         $count_ordering =DB::table('schedule')->count();
         $courses = DB::table('course')->get();
         $address = DB::table('contact_address')->get();
         return view('backend/schedule/create', compact('count_ordering','courses', 'address'));
     }
 
-    public function store(Request $request,$type) {
+    public function store(Request $request) {
         $schedule = new Schedule();
         $input = $request->all();
         $validator = \Validator::make($input, $schedule->validateCreate());

@@ -16,9 +16,7 @@
               <li class="nav-item"><a href="{{url($mn->link)}}" class="nav-link" aria-current="page">{{$mn->title}}</a></li>
 
               @endforeach
-              <ul>
-                <li>1</li>
-              </ul>
+              
             </ul>
           </header>
 

@@ -19,8 +19,8 @@ class FrontendController extends Controller {
     public function index() {
         $courses  = DB::table('course')->orderBy('ordering','desc')->where('status', 1)->limit(6)->get();
         $teachers = DB::table('teacher')->orderBy('ordering','desc')->where('status', 1)->limit(3)->get();
-        $news_hots = DB::table('news')->orderBy('ordering','desc')->where('status', 1)->where('is_hot',1)->limit(3)->get();
-        $news_ielts = DB::table('news')->orderBy('ordering','desc')->where('status', 1)->where('is_ielts',1)->limit(3)->get();
+        $news_hots = DB::table('news')->orderBy('ordering','desc')->where('status', 1)->where('is_hot',1)->get();
+        $news_ielts = DB::table('news_category')->join('category','category.id','=','news_category.category_id')->join('news','news.id','=','news_category.news_id')->where('category.is_ielts',1)->orderBy('news.ordering','desc')->where('news.status', 1)->get();
         
         $best_member = DB::Table('best')->where('is_best', 1)->where('status',1)->limit(3)->orderBy('ordering','desc')->get();
 
@@ -80,10 +80,14 @@ class FrontendController extends Controller {
     }
 
      public function sign_up_advise(Request $request){
+
             $input = $request->except('_token');
+            $input['type'] = 1;
+            $input['link'] = "/".$request->path();
             $res = DB::table('contact')->insert($input);
+
             if($res){
-                return redirect()->back()->with('success','Cám ơn bạn đã đăng kí thông tin. Tư vấn viên của Pasal sẽ sớm liên hệ với bạn trong thời gian sớm nhất');
+                return redirect()->back()->with('success','Cám ơn bạn đã đăng kí thông tin. Tư vấn viên của Pasal sẽ liên hệ với bạn trong thời gian sớm nhất');
             }
             else{
                  return redirect()->back()->with('error','Có lỗi trong quá trình xử lý, vui lòng thử lại');
@@ -103,11 +107,12 @@ class FrontendController extends Controller {
        }
 
         public function route(Request $request){
-                $record = DB::table('method')->first();
-                $videos = DB::table('video')->where('status',1)->orderBy('ordering','desc')->limit(6)->get();
-                $news = DB::table('news')->where('status',1)->orderBy('ordering','desc')->where('is_ielts',1)->limit(6)->get();
-                $studies = DB::table('study')->where('status',1)->orderBy('ordering','desc')->get();
-                return view('frontend/route/detail',compact('record','videos','news','studies'));   
+                $record = DB::table('route')->first();
+                $courses = DB::table('course')->where('is_pro',1)->orderBy('ordering','desc')->limit(3)->get(); 
+                $teachers = DB::table('teacher')->where('status',1)->whereIn('id',explode(',', $record->teacher_id))->orderBy('ordering','desc')->get();
+                //dd($courses);
+                $studies = DB::table('study')->where('status',1)->whereIn('id',explode(',', $record->study_id))->orderBy('ordering','desc')->get();
+                return view('frontend/route/detail',compact('record','teachers','courses','studies'));   
        }
  
  

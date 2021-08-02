@@ -50,6 +50,20 @@
                                     {!! $errors->first('content', '<span class="text-danger">:message</span>') !!}
                                 </div>
                             </div>
+                             
+                                 <div class="form-group row">
+                                    <label class="col-md-3 col-form-label text-right">Khối giới thiệu: </label>
+                                    <div class="col-md-9">
+                                        <textarea class="form-control ckeditor" id="content1" name="about">{!!$config->about!!}</textarea>
+                                    </div>
+                                </div>
+
+                                 <div class="form-group row">
+                                    <label class="col-md-3 col-form-label text-right">Khối những con số về Pasal: </label>
+                                    <div class="col-md-9">
+                                        <textarea class="form-control ckeditor" id="content2" name="statistic">{!!$config->statistic!!}</textarea>
+                                    </div>
+                                </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Tên công ty:</label>
                                 <div class="col-md-9">
@@ -127,6 +141,11 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+                                CKEDITOR.replace('content1', { height: 100 });
+                                CKEDITOR.replace('content2', { height: 100 });
+                                
+                            </script>
 @stop
 
 @section('script')
@@ -135,4 +154,5 @@
 <script src="{!! asset('assets/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js') !!}"></script>
+<script src="{!! asset('assets/backend/ckeditor/ckeditor.js') !!}"></script>
 @stop

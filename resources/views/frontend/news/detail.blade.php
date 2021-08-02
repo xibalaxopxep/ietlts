@@ -40,29 +40,52 @@
                       @endforeach
                     </div>
                   </div>
+                   
                   <div class="col-md-3 pull-right">
+                    @php
+                        $index = 0;
+                    @endphp
+                    @foreach($banner as $ban)
+                    @if($ban->name == "advertise")
+                    @php
+                       $index++;
+                    @endphp
+                    <a target="_blank"  href="{{$ban->link}}"><img id="ads-sidebar" class="img-responsive" src="{{asset($ban->image)}}" alt="quảng cáo" /></a>
+                    @break
+                    @endif
+                    @endforeach
+
+                    @if($index != 1)
                     <img id="ads-sidebar" class="img-responsive" src="{{asset('assets_pasal/img/advertise.png')}}" alt="quảng cáo" />
+                    @endif
                     <div class="form-sidebar mt-4" id="form">
                       <h4>ĐĂNG KÝ TƯ VẤN<br><b>LỘ TRÌNH HỌC IELTS</b></h4>
+                      <form action="{!!route('home.sign_up_advise')!!}"  method="post" enctype="multipart/form-data">
+                    @csrf
                       <div class="form-group">
                         <img class="icon" src="{{asset('assets_pasal/icon/user.png')}}" alt="icon" />
                         <input name="name" type="text" required="required" placeholder="Nhập họ tên của bạn*"/>
                       </div>
                       <div class="form-group">
                         <img class="icon" src="{{asset('assets_pasal/icon/phone.png')}}" alt="icon" />
-                        <input name="name" type="text" required="required" placeholder="Số điện thoại của bạn*"/>
+                        <input name="phone" type="text" required="required" placeholder="Số điện thoại của bạn*"/>
                       </div>
                       <div class="form-group">
                         <img class="icon" src="{{asset('assets_pasal/icon/mail.png')}}" alt="icon" />
-                        <input name="name" type="text" required="required" placeholder="Email của bạn*"/>
+                        <input name="email" type="text" required="required" placeholder="Email của bạn*"/>
                       </div>
                       <div class="form-group">
                         <img class="icon" src="{{asset('assets_pasal/icon/course.png')}}" alt="icon" />
-                        <input name="name" type="text" required="required" placeholder="Bạn quan tâm đến khóa học nào?"/>
+                        <select name="course_id" class="your_local">
+                        <option value="" disabled selected>Bạn quan tâm đến khoá học nào?</option>
+                        @foreach($course_shares as $course)
+                        <option value="{{$course->id}}">{!!$course->title!!}</option>
+                        @endforeach
+                      </select>
                       </div>
                       <div class="form-group">
                         <img class="icon" src="{{asset('assets_pasal/icon/location.png')}}" alt="icon" />
-                        <select name="location">
+                        <select name="contact_address_id">
                         <option value="" disabled selected>Chọn cơ sở Pasal gần bạn nhất*</option>
                         @foreach($contact_address as $add)
                         <option value="">{{$add->name}}</option>
@@ -70,8 +93,10 @@
                       </select>
                       </div>
                       <button class="button-form btn-gradient w-100 mt-2">ĐĂNG KÝ NGAY</button>
+                    </form>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>

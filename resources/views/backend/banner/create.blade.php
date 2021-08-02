@@ -28,6 +28,14 @@
                                             <input type="text" class="form-control" name="name" value="{!!old('name')!!}" required="">
                                             {!! $errors->first('name', '<span class="text-danger">:message</span>') !!}
                                         </div>
+                                    </div> 
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label text-right">Link<span class="text-danger">*</span></label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="link" value="{!!old('link')!!}" required="">
+                                            {!! $errors->first('link', '<span class="text-danger">:message</span>') !!}
+                                        </div>
                                     </div>     
 
                                      <div class="form-group row">

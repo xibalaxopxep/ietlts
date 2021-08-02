@@ -78,7 +78,22 @@
 
             
             <div class="col-md-3 pull-right">
-              <img class="img-responsive" src="assets_pasal/img/advertise.png" alt="quảng cáo" />
+                  @php
+                        $index = 0;
+                    @endphp
+                    @foreach($banner as $ban)
+                    @if($ban->name == "advertise")
+                    @php
+                       $index++;
+                    @endphp
+                    <a target="_blank"  href="{{$ban->link}}"><img id="ads-sidebar" class="img-responsive" src="{{asset($ban->image)}}" alt="quảng cáo" /></a>
+                    @break
+                    @endif
+                    @endforeach
+
+                    @if($index != 1)
+                    <img id="ads-sidebar" class="img-responsive" src="{{asset('assets_pasal/img/advertise.png')}}" alt="quảng cáo" />
+                    @endif
               <h3 class="title-sidebar"> TIN NỔI BẬT NHẤT </h3>
               <div class="sidebar mt-1">
               

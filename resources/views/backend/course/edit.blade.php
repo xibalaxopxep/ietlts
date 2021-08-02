@@ -225,7 +225,7 @@
 
                              <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label ">Text thời gian ưu đãi</label>
+                                    <label class="col-md-2 col-form-label ">Text ưu đãi đặc biệt</label>
                                     <div class="col-md-12">
                                         <textarea class="form-control ckeditor" id="content7" name="promotion">{!!$record->promotion!!}</textarea>
                                     </div>

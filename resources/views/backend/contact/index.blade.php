@@ -31,8 +31,10 @@
                     <th>Họ tên</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
-                    <th>Ngày tạo</th>
-                    <th>Tác vụ</th>
+                    <th>Khoá học</th>
+                    <th>Cơ sở</th>
+                    <th>Ngày dăng ký</th>
+                    <th>Link</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,17 +43,12 @@
                         <td>{{++$key}}</td>
                         <td>{{$record->name}}</td>
                         <td>{{$record->email}}</td>
-                        <td>{{$record->mobile}}</td>
+                        <td>{{$record->phone}}</td>
+                        <td>{{$record->course_name($record->course_id)}}</td>
+                        <td>{{$record->address_name($record->contact_address_id)}}</td>
                         <td>{{$record->created_at()}}</td>
                         <td class="text-center">
-                            <a href="{{route('admin.contact.edit', $record->id)}}" title="{!! trans('base.show') !!}" class="success"><i class="icon-eye"></i></a>
-                            <form action="{!! route('admin.contact.destroy', ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
-                                {!! method_field('DELETE') !!}
-                                {!! csrf_field() !!}
-                                <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
-                                    <i class="icon-close2"></i>
-                                </a>
-                            </form>
+                           <a href="{{url($record->link)}}">{{$record->link}}</a>
                         </td>
                     </tr>
                 @endforeach

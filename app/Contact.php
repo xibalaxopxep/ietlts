@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Contact extends Model
 {
@@ -10,6 +11,14 @@ class Contact extends Model
     protected $fillable = ['name','member_id','mobile','company_name','email','content','is_read'];
     public function created_at() {
         return date("d/m/Y", strtotime($this->created_at));
+    }
+
+    public function course_name($id) {
+        return DB::table('course')->where('id',$id)->pluck('title')->first();
+    }
+
+    public function address_name($id) {
+        return DB::table('contact_address')->where('id',$id)->pluck('name')->first();
     }
 
 }

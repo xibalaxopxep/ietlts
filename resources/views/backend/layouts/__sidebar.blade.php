@@ -159,10 +159,10 @@
                 </li>
   
                     <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.contact_address.index') || (Route::currentRouteName() == 'admin.contact.index')  ) ? 'active' : '' }}"><i class="icon-copy"></i> <span>Liên hệ</span></a>
+                    <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.contact_address.index')  ) ? 'active' : '' }}"><i class="icon-copy"></i> <span>Liên hệ</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="bài test">
-                        <li class="nav-item"><a href="{{route('admin.contact_address.index')}}" class="nav-link">Địa chỉ liên hệ</a></li>
-                        <li class="nav-item"><a href="{{route('admin.contact.index')}}" class="nav-link">Danh sách liên hệ</a></li>
+                        <li class="nav-item"><a href="{{route('admin.contact_address.index')}}" class="nav-link">Danh sách cơ sở</a></li>
+                
                     </ul>
                 </li>
 
@@ -193,9 +193,10 @@
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link {{ ((Route::currentRouteName() == 'admin.subscriber.index')  || (Route::currentRouteName() == 'admin.member.index') ) ? 'active' : '' }}"><i class="icon-users"></i> <span>Khách hàng</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Khách hàng">
-                        <li class="nav-item"><a href="{{route('admin.subscriber.index')}}" class="nav-link">Người đăng kí</a></li>
-                        <!-- <li class="nav-item"><a href="{{route('admin.contact.index')}}" class="nav-link">Liên hệ</a></li> -->
-                        <li class="nav-item"><a href="{{route('admin.member.index')}}" class="nav-link">Thành viên</a></li>
+                       
+                        <li class="nav-item"><a href="{{route('admin.contact.index',1)}}" class="nav-link">Khách hàng đăng kí tư vấn</a></li>
+                        <li class="nav-item"><a href="{{route('admin.contact.index',2)}}" class="nav-link">Khách hàng đăng kí học</a></li>
+                        <li class="nav-item"><a href="{{route('admin.contact.index',3)}}" class="nav-link">Khách hàng đăng kí test</a></li>
 
                     </ul>
                 </li>

@@ -9,11 +9,11 @@ use App\User;
 class Frontend {
     public function handle($request, Closure $next){
         $config = \DB::table('config')->first();
-        $menu = \DB::table('menu')->get();
-        // $menu = \DB::table('menu')->where('parent_id', 0)->get();
-        // foreach($menu as $key=>$val){
-        //     $menu[$key]->children = \DB::table('menu')->where('parent_id',$val->id)->get();
-        // }
+        //$menu = \DB::table('menu')->get();
+        $menu = \DB::table('menu')->where('parent_id', 0)->get();
+        foreach($menu as $key=>$val){
+            $menu[$key]->children = \DB::table('menu')->where('parent_id',$val->id)->get();
+        }
         $template_setting= \DB::table('template_setting')->get();
         $news_footer = \DB::table('news')->where('status',1)->orderBy('ordering','desc')->limit(5)->get();
         $news_footer2 = \DB::table('news')->join('news_category', 'news.id', '=', 'news_category.news_id')->where('news_category.category_id',239)->where('status',1)->select('news.*')->orderBy('news.ordering')->get();

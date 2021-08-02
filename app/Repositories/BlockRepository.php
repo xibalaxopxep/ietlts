@@ -16,7 +16,8 @@ class BlockRepository extends AbstractRepository{
     }
     public function validate(){
         return $rules = [
-            'title' => 'required'
+            'title' => 'required',
+            'image' => 'mimes:jpg,png,jpeg'
             
         ];
     }

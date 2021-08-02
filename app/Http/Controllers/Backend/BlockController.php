@@ -45,12 +45,20 @@ class BlockController extends Controller {
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        $input['include_news'] = isset($input['include_news']) ? 1 : 0;
-        $input['include_video'] = isset($input['include_video']) ? 1 : 0;
-        $input['include_teacher'] = isset($input['include_teacher']) ? 1 : 0;
-        $input['include_best'] = isset($input['include_best']) ? 1 : 0;
-        $input['include_dangky'] = isset($input['include_dangky']) ? 1 : 0;
-        $input['include_schedule'] = isset($input['include_schedule']) ? 1 : 0;
+        $get_images = $request->image;
+        if($get_images){
+            $get_name_image = $get_images->getClientOriginalName();
+            $name_image = current(explode('.',$get_name_image));
+            $new_image =  $name_image.rand(0,99).'.'.$get_images->getClientOriginalExtension();
+            $get_images->move('upload/images/',$new_image);
+            $input['image'] = '/upload/images/'.$new_image;
+        }
+        // $input['include_news'] = isset($input['include_news']) ? 1 : 0;
+        // $input['include_video'] = isset($input['include_video']) ? 1 : 0;
+        // $input['include_teacher'] = isset($input['include_teacher']) ? 1 : 0;
+        // $input['include_best'] = isset($input['include_best']) ? 1 : 0;
+        // $input['include_dangky'] = isset($input['include_dangky']) ? 1 : 0;
+        // $input['include_schedule'] = isset($input['include_schedule']) ? 1 : 0;
         if (isset($input['status'])) {
             $input['status'] = 1;
         } else {
@@ -99,12 +107,20 @@ class BlockController extends Controller {
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        $input['include_news'] = isset($input['include_news']) ? 1 : 0;
-        $input['include_video'] = isset($input['include_video']) ? 1 : 0;
-        $input['include_teacher'] = isset($input['include_teacher']) ? 1 : 0;
-        $input['include_best'] = isset($input['include_best']) ? 1 : 0;
-        $input['include_dangky'] = isset($input['include_dangky']) ? 1 : 0;
-        $input['include_schedule'] = isset($input['include_schedule']) ? 1 : 0;
+        $get_images = $request->image;
+        if($get_images){
+            $get_name_image = $get_images->getClientOriginalName();
+            $name_image = current(explode('.',$get_name_image));
+            $new_image =  $name_image.rand(0,99).'.'.$get_images->getClientOriginalExtension();
+            $get_images->move('upload/images/',$new_image);
+            $input['image'] = '/upload/images/'.$new_image;
+        }
+        // $input['include_news'] = isset($input['include_news']) ? 1 : 0;
+        // $input['include_video'] = isset($input['include_video']) ? 1 : 0;
+        // $input['include_teacher'] = isset($input['include_teacher']) ? 1 : 0;
+        // $input['include_best'] = isset($input['include_best']) ? 1 : 0;
+        // $input['include_dangky'] = isset($input['include_dangky']) ? 1 : 0;
+        // $input['include_schedule'] = isset($input['include_schedule']) ? 1 : 0;
         if (isset($input['status'])) {
             $input['status'] = 1;
         } else {

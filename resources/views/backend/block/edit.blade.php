@@ -40,13 +40,13 @@
                                     <textarea rows="10" class="form-control " name="content">{!!old('content')?:$record->content!!}</textarea>                                    
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Vị trí</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" readonly="" name="position" value="{!!old('position')?:$record->position!!}">
                                 </div>
-                            </div>
-                             <div class="form-group row">
+                            </div> -->
+                            <!--  <div class="form-group row">
                                 <div class="form-check col-md-4 form-check-right">
                                     <label class="form-check-label float-right">
                                         Bao gồm khối tin tức
@@ -89,7 +89,32 @@
                                         <div class=""><span><input {{($record->include_schedule == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_schedule" data-fouc=""></span></div>
                                     </label>
                                 </div>
+                            </div> -->
+
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label text-right">Video ID: </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" value="{!!$record->video_url!!}" name="content">                            </div>
                             </div>
+
+                             <div class="form-group row">
+                                <div class="col-md-3">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                     @if($record->image == null)
+                                     <img src="{{asset('/img/avt.png')}}" id ="frame" alt="test" width="100%" height="150" />
+                                     @else
+                                     <img src="{{asset($record->image)}}" id ="frame" alt="test" width="100%" height="150" />
+                                     @endif
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="required">Ảnh</label>
+                                    <input name="image" type="file" class="form-control" value="{!!old('image')!!}" onchange='UpdatePreview()'>
+                                    {!! $errors->first('image', '<span class="text-danger">:message</span>') !!}
+                                </div>
+                             </div> 
+
                             <div class="form-group row">
                                 <div class="form-check col-md-4 form-check-right">
                                     <label class="form-check-label float-right">
@@ -98,10 +123,10 @@
                                     </label>
                                 </div>
 
-                                <label class="col-form-label col-md-3 text-right">Sắp xếp </label>
+                               <!--  <label class="col-form-label col-md-3 text-right">Sắp xếp </label>
                                 <div class="col-md-5">
                                     <input type="text" name="ordering" class="form-control touchspin text-center" value="{{$record->ordering}}">
-                                </div>
+                                </div> -->
                             </div>
 
                         </fieldset>

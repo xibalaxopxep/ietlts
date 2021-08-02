@@ -45,7 +45,9 @@ Route::group(['middleware' => 'frontend'], function() {
 
     //Test
     Route::get('/test/{number}', ['as' => 'test.index', 'uses' => 'Frontend\TestController@index']);
-     Route::post('/test-submit/{number}', ['as' => 'test.submit', 'uses' => 'Frontend\TestController@submit']);
+    Route::get('/dang-ky-test', ['as' => 'test.signup', 'uses' => 'Frontend\TestController@signup']);
+    Route::post('/dang-ky-test-submit', ['as' => 'test.signup_submit', 'uses' => 'Frontend\TestController@signup_submit']);
+    Route::post('/test-submit/{number}', ['as' => 'test.submit', 'uses' => 'Frontend\TestController@submit']);
     Route::get('/ket-qua', ['as' => 'test.result', 'uses' => 'Frontend\TestController@result']);
 
       //Giảng viên
@@ -53,7 +55,11 @@ Route::group(['middleware' => 'frontend'], function() {
 
     Route::get('/gioi-thieu', ['as' => 'achie.index', 'uses' => 'Frontend\FrontendController@about']);
 
-      Route::get('/phuong-phap', ['as' => 'method.detail', 'uses' => 'Frontend\FrontendController@method']);
+    Route::get('/phuong-phap', ['as' => 'method.detail', 'uses' => 'Frontend\FrontendController@method']);
+
+    Route::get('/lo-trinh', ['as' => 'route.detail', 'uses' => 'Frontend\FrontendController@route']);
+
+    
 
      
 

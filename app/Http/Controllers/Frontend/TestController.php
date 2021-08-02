@@ -13,6 +13,9 @@ class TestController extends Controller {
 
 
     public function index(Request $request,$page) {
+        if(!Session::get('contact_id')){
+            return redirect()->back()->with('error','Vui lòng đăng kí để làm bài test');
+        }
         $sections = DB::table('section')->orderBy('ordering','asc')->join('quizz','quizz.section_id','=','section.id')->select('*','section.name as section_name','quizz.id as quizz_id','quizz.title as name','section.id as section_id','section.ordering as order')->get()->groupBy('order');
         $count = count($sections);
         $questions = DB::table('question')->get();
@@ -31,9 +34,9 @@ class TestController extends Controller {
                  $questions[$key1]->question = $index2;
     		}
     	}
-        if($page == null || $page == 0 ){
+        if($page == null ){
             $page = 0;
-            Session::put( 'contact_id',rand(2,100));
+           
         }
 
         if($page<$count-1){
@@ -84,6 +87,18 @@ class TestController extends Controller {
         $true_number = count(DB::table('result')->where('true',1)->get());
          return view('frontend/test/result',compact('question_numer','true_number'));
     }
+
+    public function signup(){
+        return view('frontend/test/signup');
+    }
+
+    public function signup_submit(Request $request){
+            $input = $request->except('_token');
+            $input['type'] = 3;
+            $res = DB::table('contact')->insertGetId($input);
+             Session::put('contact_id',$res);
+            return redirect()->route('test.index',0);
+       }
 
    
 

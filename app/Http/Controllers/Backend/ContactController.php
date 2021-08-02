@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Repositories\ContactRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contact;
 
 class ContactController extends Controller
 {
@@ -12,10 +13,10 @@ class ContactController extends Controller
         $this->contactRepo = $contactRepo;
     }
 
-    public function index()
+    public function index($type)
     {
-        $records = $this->contactRepo->all();
-        return view('backend/contact/index', compact('records'));
+        $records = Contact::where('type',$type)->orderBy('created_at','desc')->get();
+        return view('backend/contact/index', compact('records','type'));
     }
 
     public function show($id)

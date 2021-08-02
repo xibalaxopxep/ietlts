@@ -10,14 +10,22 @@
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
               <img class="logo" src="{{asset('assets_pasal/img/logo.png')}}" alt="logo">
             </a>
+           
 
             <ul class="nav nav-pills menu">
-              @foreach($menu as $mn)
-              <li class="nav-item"><a href="{{url($mn->link)}}" class="nav-link" aria-current="page">{{$mn->title}}</a></li>
-
+              @foreach($menu as $key => $mn)
+              <li class="nav-item"><a href="{{url($mn->link)}}" class="nav-link" aria-current="page">{{$mn->title}}</a>
+                   @if($mn->children != null)
+                   <ul>
+                    @foreach($menu[$key]->children as $val)
+                     <li class="nav-item"><a href="{{url($val->link)}}" class="nav-link" aria-current="page">{{$val->title}}</a>
+                    @endforeach
+                  </ul>
+                  @endif
+              </li>
               @endforeach
-              
             </ul>
+          
           </header>
 
         </div>
@@ -33,5 +41,7 @@
              swal("Không thành công!", "{{ Session::get('error') }}", "error");
          </script>
          @endif
+
+        
      
 

@@ -78,8 +78,10 @@
 
             
             <div class="col-md-3 pull-right">
-              <img class="img-responsive" src="assets_pasal/img/advertise.png" alt="quảng c" />
-              <div class="sidebar mt-4">
+              <img class="img-responsive" src="assets_pasal/img/advertise.png" alt="quảng cáo" />
+              <h3 class="title-sidebar"> TIN NỔI BẬT NHẤT </h3>
+              <div class="sidebar mt-1">
+              
                 <div class="recent-news">
                     @foreach($hot_news as $hot)
                   <div class="item-recent">

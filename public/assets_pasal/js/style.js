@@ -123,18 +123,23 @@ window.onload = function () {
 
     document.getElementById("toc").innerHTML += toc;
 };
-// function isScrolledIntoView(elem)
-//{
-//    var docViewTop = $(window).scrollTop();
-//    var docViewBottom = docViewTop + $(window).height();
-//    var elemTop = $(elem).offset().top;
-//    var elemBottom = elemTop + $(elem).height();
-//    return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-//}
-//
-//$(window).scroll(function() {    
-//    if(isScrolledIntoView($('#form-sidebar')))
-//    {
-//        console.log('visible');
-//    }    
-//});
+ function isScrolledIntoView(elem)
+{
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+    return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+$(window).scroll(function() {    
+    if(isScrolledIntoView($('.form-sidebar')))
+    {   var current_width = $('.form-sidebar').width();
+        $('.form-sidebar').width(current_width);
+        $('.form-sidebar').addClass('fixed');
+    }   
+    if(isScrolledIntoView($('#ads-sidebar')))
+    {  
+        $('.form-sidebar').removeClass('fixed');
+    }
+});

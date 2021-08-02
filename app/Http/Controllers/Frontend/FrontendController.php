@@ -91,10 +91,25 @@ class FrontendController extends Controller {
        }
 
        public function about(Request $request){
-           
-                 return view('frontend/home/about');
-            
+                 return view('frontend/home/about');  
        }
+
+        public function method(Request $request){
+                $record = DB::table('method')->first();
+                $videos = DB::table('video')->where('status',1)->orderBy('ordering','desc')->limit(6)->get();
+                $news = DB::table('news')->where('status',1)->orderBy('ordering','desc')->where('is_ielts',1)->limit(6)->get();
+                $studies = DB::table('study')->where('status',1)->orderBy('ordering','desc')->get();
+                return view('frontend/method/detail',compact('record','videos','news','studies'));   
+       }
+
+        public function route(Request $request){
+                $record = DB::table('method')->first();
+                $videos = DB::table('video')->where('status',1)->orderBy('ordering','desc')->limit(6)->get();
+                $news = DB::table('news')->where('status',1)->orderBy('ordering','desc')->where('is_ielts',1)->limit(6)->get();
+                $studies = DB::table('study')->where('status',1)->orderBy('ordering','desc')->get();
+                return view('frontend/route/detail',compact('record','videos','news','studies'));   
+       }
+ 
  
 
 }

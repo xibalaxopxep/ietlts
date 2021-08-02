@@ -12,22 +12,11 @@ use Session;
 class TestController extends Controller {
 
 
-    public function index(Request $request) {
-
-        $data = $request->except('page');
-        foreach($data as $key=> $data){
-            $input['question_id'] = $key;
-            $input['answer'] = $data;
-            $input['contact_id'] = Session::get('contact_id');
-            DB::table('result')->insert($input);
-        }
-
-
+    public function index(Request $request,$page) {
         $sections = DB::table('section')->orderBy('ordering','asc')->join('quizz','quizz.section_id','=','section.id')->select('*','section.name as section_name','quizz.id as quizz_id','quizz.title as name','section.id as section_id','section.ordering as order')->get()->groupBy('order');
-       
         $count = count($sections);
         $questions = DB::table('question')->get();
-   
+
         //  $questions = DB::table('section')->join('quizz','quizz.section_id','=','section.id')->join('question','question.quizz_id','=','quizz.id')->select('*','section.id as section_id','section.name as section_name','quizz.title as quizz_title')->get()->groupBy('quizz_title');
        // $section = DB::table('section')->where('test_id',$test->id)->get()->pluck('name');
 
@@ -42,13 +31,11 @@ class TestController extends Controller {
                  $questions[$key1]->question = $index2;
     		}
     	}
-
-        if($request->page == null || $request->page == 0 ){
+        if($page == null || $page == 0 ){
             $page = 0;
             Session::put( 'contact_id',rand(2,100));
-        }else{
-            $page = $request->page;
         }
+
         if($page<$count-1){
             $button = "Tiếp theo";
         }
@@ -63,12 +50,21 @@ class TestController extends Controller {
         elseif ($page>$count) {
              abort(404);
         }
-
+ 
         $sections =  $sections[$page+1];
-
-        
-    //dd($sections);
         return view('frontend/test/index',compact('questions','page','sections','button'));
+    }
+
+    public function submit(Request $request, $page){
+          $data = $request->except('_token');
+          foreach($data as $key=> $data){
+                $input['question_id'] = $key;
+                $input['answer'] = $data;
+                $input['contact_id'] = Session::get('contact_id');
+                DB::table('result')->insert($input);
+           }
+           $page++;
+        return redirect()->route('test.index',$page);
     }
 
     public function result(){

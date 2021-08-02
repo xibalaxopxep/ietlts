@@ -26,7 +26,8 @@
             <img class="logo" src="{{asset('assets_pasal/img/logo.png')}}" alt="logo" />
         </div>
         </div>
-        <form action="{{route('test.index')}}" method="get">
+        <form action="{{route('test.submit',$page)}}" method="post">
+          @csrf
         <div class="content-test">
             <div class="question-list">
             <div class="part-name w-100"><a class="box-shadow">{{$sections[0]->section_name}}</a></div>
@@ -44,7 +45,7 @@
 
             <!-- <div id="waveform"></div> -->
            
-            <input type="hidden" name="page" value="{{++$page}}">
+            <!-- <input type="hidden" name="page" value="{{++$page}}"> -->
       	    @foreach($sections as $key => $section)
               @php
                  $index = 0;

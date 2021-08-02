@@ -44,13 +44,18 @@ Route::group(['middleware' => 'frontend'], function() {
     Route::get('/giang-vien', ['as' => 'teacher.index', 'uses' => 'Frontend\TeacherController@index']);
 
     //Test
-    Route::get('/test', ['as' => 'test.index', 'uses' => 'Frontend\TestController@index']);
+    Route::get('/test/{number}', ['as' => 'test.index', 'uses' => 'Frontend\TestController@index']);
+     Route::post('/test-submit/{number}', ['as' => 'test.submit', 'uses' => 'Frontend\TestController@submit']);
     Route::get('/ket-qua', ['as' => 'test.result', 'uses' => 'Frontend\TestController@result']);
 
       //Giảng viên
     Route::get('/thanh-tich', ['as' => 'achie.index', 'uses' => 'Frontend\AchieController@index']);
 
     Route::get('/gioi-thieu', ['as' => 'achie.index', 'uses' => 'Frontend\FrontendController@about']);
+
+      Route::get('/phuong-phap', ['as' => 'method.detail', 'uses' => 'Frontend\FrontendController@method']);
+
+     
 
     //ĐĂng kí
     Route::post('/checkout-success', ['as' => 'product.checkout-sucess', 'uses' => 'Frontend\ProductController@checkoutSuccess']);

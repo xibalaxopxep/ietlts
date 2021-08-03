@@ -47,7 +47,7 @@
               <div class="info">
                 <p class="fs-22 m-0">Khoá học IELTS độc quyền từ Simon Corconan giúp bạn </p>
                 <p class="fs-22 text-uppercase"><b>Nắm vững bài thi - Đọc vị giám khảo</b></p>
-                <a href="#" class="btn-white w-100">ĐĂNG KÝ TƯ VẤN NGAY</a>
+                <a href="#form" class="btn-white w-100">ĐĂNG KÝ TƯ VẤN NGAY</a>
                 <p>Hãy đăng ký trở thành học viên khoá PRE-IELTS ngay hôm nay!</p>
               </div>
             </div>

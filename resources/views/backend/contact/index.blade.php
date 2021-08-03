@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('backend.layouts.master2')
 @section('content')
     <!-- Content area -->
     <div class="content">

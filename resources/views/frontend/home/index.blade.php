@@ -7,11 +7,29 @@
         <img id="pattern-about-5" src="assets_pasal/img/pattern-4.png" alt="pattern" />
         <section class="about">
          
-        @foreach($block as $bl)
-          @if($bl->position == "gioi-thieu")
-          {!!$bl->content!!}
-          @endif
-        @endforeach
+        <img id="pattern-about-1" src="assets_pasal/img/Anh-5.png" alt="pattern" />
+          <img id="pattern-about-2" src="assets_pasal/img/pattern-1.png" alt="pattern" />
+          <img id="pattern-about-3" src="assets_pasal/img/pattern-2.png" alt="pattern" />
+
+          <div class="row">
+            <h3>Tổ chức đào tạo tiếng Anh Pasal</h3>
+            <span class="description">Pasal là tổ chức đào tạo tiếng Anh duy nhất tại Việt Nam hợp tác ĐỘC QUYỀN với chuyên gia Paul Gruber (hệ thống Pronunciation Workshop) & TS A.J Hoge (hệ thống Effortless English).</span>
+            <span class="description">Tại Pasal, chúng tôi cam kết mang tới những giải pháp học uy tín và hiệu quả nhất thế giới - giúp bạn giao tiếp tiếng Anh trôi chảy từ 3-6 tháng</span>
+          </div>
+          <div class="row mt-5">
+            <div class="col-md-5" style="position: relative;">
+            
+              <div id="pattern-about-4" data-video="{{$block[0]->video_url}}">
+                <img src="assets_pasal/img/pattern-about.png" alt="pattern"  />
+              </div>
+              <img src="assets_pasal/img/about-1.png" alt="pasal simon" class="img-fluid" />
+            </div>
+            <div class="col-md-7 info">
+              <h3>HỆ THỐNG </br><b>LUYỆN THI <strong>IELTS ĐỘC QUYỀN</strong> TỪ SIMON CORCORAN</b></h3>
+              <span>Hệ thống học tiếng Anh Effortless English được sáng lập bởi TS A.J Hoge sau nhiều năm giảng dạy. Hiện nay, phương pháp này đã được áp dụng thành công trên 54 quốc gia và giúp cho hàng triệu người trên thế giới cải thiện khả năng tiếng Anh của mình.</span>
+              <a class="button-link" href="#form">ĐĂNG KÝ TƯ VẤN NGAY</a>
+            </div>
+          </div>
         </section>
       </div>
       <div class="container">

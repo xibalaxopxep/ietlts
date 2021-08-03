@@ -17,9 +17,9 @@
            
               <div class="lastest">
                 <div class="item">
-                  <div class="thumbnail">
+                  <a class="thumbnail" href="{{route('news.detail',$records[0]->alias)}}">
                     <img class="img-responsive" src="{{asset($records[0]->images)}}" alt="tiêu đề bài viết">
-                  </div>
+                  </a>
                   <div class="calendar">
                     <p class="day">{{ date('d', strtotime($records[0]->created_at)) }}</p>
                     <p class="month">
@@ -44,9 +44,9 @@
                 <div class="col-md-6 sub">
                   <div class="item">
                     <div class="thumbnail">
-                      <div class="thumbnail">
+                      <a class="thumbnail" href="{{route('news.detail',$record->alias)}}">
                         <img class="img-responsive" src="{{asset($record->images)}}" alt="tiêu đề bài viết">
-                      </div>
+                      </a>
                       <div class="calendar">
                         <p class="day">{{ date('d', strtotime($records[0]->created_at)) }}</p>
                         <p class="month">

@@ -8,7 +8,7 @@ use Repositories\CategoryRepository;
 use Repositories\ConstructionRepository;
 use Repositories\KeywordRepository;
 use DB;
-
+use Carbon\Carbon;
 class FrontendController extends Controller {
 
     public function __construct(CategoryRepository $categoryRepo, KeywordRepository $keywordRepo) {
@@ -84,6 +84,23 @@ class FrontendController extends Controller {
             $input = $request->except('_token');
             $input['type'] = 1;
             $input['link'] = "/".$request->path();
+             $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');
+            $res = DB::table('contact')->insert($input);
+
+            if($res){
+                return redirect()->back()->with('success','Cám ơn bạn đã đăng kí thông tin. Tư vấn viên của Pasal sẽ liên hệ với bạn trong thời gian sớm nhất');
+            }
+            else{
+                 return redirect()->back()->with('error','Có lỗi trong quá trình xử lý, vui lòng thử lại');
+            }
+       }
+
+         public function sign_up_advise2(Request $request){
+
+            $input = $request->except('_token');
+            $input['type'] = 2;
+            $input['link'] = "/".$request->path();
+            $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');
             $res = DB::table('contact')->insert($input);
 
             if($res){
@@ -110,9 +127,11 @@ class FrontendController extends Controller {
                 $record = DB::table('route')->first();
                 $courses = DB::table('course')->where('is_pro',1)->orderBy('ordering','desc')->limit(3)->get(); 
                 $teachers = DB::table('teacher')->where('status',1)->whereIn('id',explode(',', $record->teacher_id))->orderBy('ordering','desc')->get();
-                //dd($courses);
+                $schedules = DB::table('schedule')->join('contact_address','contact_address.id','=','schedule.contact_address_id')->join('course','course.id','=','schedule.course_id')->select('*','schedule.title as schedule_name','contact_address.name as contact_address_name','course.title as course_name','course.id as course_id','schedule.id as schedule_id','contact_address.id as contact_address_id')->where('course.is_pro',1)->where('schedule.type',2)->get()->groupBy('contact_address_name');
+                $coursess = DB::table('course')->where('is_pro',1)->orderBy('ordering','desc')->get(); 
                 $studies = DB::table('study')->where('status',1)->whereIn('id',explode(',', $record->study_id))->orderBy('ordering','desc')->get();
-                return view('frontend/route/detail',compact('record','teachers','courses','studies'));   
+                $contact_add = DB::table('contact_address')->where('address','!=','Online')->get();
+                return view('frontend/route/detail',compact('record','teachers','courses','studies','schedules','contact_add','coursess'));   
        }
  
  

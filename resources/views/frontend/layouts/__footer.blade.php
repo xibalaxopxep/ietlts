@@ -103,5 +103,7 @@
       <script src="{{asset('assets_pasal/magnific-popup/jquery.magnific-popup.js')}}"></script>
       <script src="{{asset('assets_pasal/js/owl.carousel.min.js')}}"></script>
       <script src="{{asset('assets_pasal/js/style.js')}}"></script>
+      <script src="{{asset('assets_pasal/js/countdown.js')}}"></script>
+
     </footer>
     </html>

@@ -9,7 +9,7 @@ class Route extends Model {
     //
     protected $table = "route";
     protected $fillable = [
-        'title', 'alias', 'summary', 'status', 'meta_title', 'meta_keywords', 'meta_description', 'ordering', 'ordering','content', 'course_for', 'image','course_profit','promotion','promotion_time', 'created_at','updated_at','level','price','sale_price','sale_time','teacher_id','study_id','is_pro','is_online'
+        'title', 'alias', 'summary', 'status', 'meta_title', 'meta_keywords', 'meta_description', 'ordering', 'ordering','content', 'course_for', 'image','course_profit','promotion','promotion_time', 'created_at','updated_at','level','price','sale_price','sale_time','teacher_id','study_id','is_pro','is_online','video_id'
     ];
 
      public function validateCreate() {

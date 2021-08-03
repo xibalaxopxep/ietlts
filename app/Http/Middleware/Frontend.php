@@ -18,7 +18,7 @@ class Frontend {
         $news_footer = \DB::table('news')->where('status',1)->orderBy('ordering','desc')->limit(5)->get();
         $news_footer2 = \DB::table('news')->join('news_category', 'news.id', '=', 'news_category.news_id')->where('news_category.category_id',239)->where('status',1)->select('news.*')->orderBy('news.ordering')->get();
         $block = \DB::table('block')->where('status',1)->orderBy('ordering','desc')->get();
-        $course_shares = \DB::table('course')->where('status',1)->orderBy('ordering','asc')->get();
+        $course_shares = \DB::table('course')->where('status',1)->where('is_pro',null)->where('is_online',null)->orderBy('ordering','asc')->get();
         $contact_address = \DB::table('contact_address')->orderBy('ordering','asc')->where('status', 1)->get();
         $banner = \DB::table('banner')->get();
         $contact_address_footer = \DB::table('contact_address')->where('city',1)->where('status',1)->orderBy('ordering','desc')->get();

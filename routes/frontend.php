@@ -68,6 +68,8 @@ Route::group(['middleware' => 'frontend'], function() {
 
     Route::post('/sign-up-advise', ['as' => 'home.sign_up_advise', 'uses' => 'Frontend\FrontendController@sign_up_advise']);
 
+    Route::post('/sign-up-advise2', ['as' => 'home.sign_up_advise2', 'uses' => 'Frontend\FrontendController@sign_up_advise2']);
+
     //Lich khia giảng
     Route::get('/khoa-hoc/{alias}', ['as' => 'course.detail', 'uses' => 'Frontend\CourseController@detail']);
     //Giảng viên

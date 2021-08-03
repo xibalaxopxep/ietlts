@@ -11,7 +11,7 @@
               <img class="logo" src="{{asset('assets_pasal/img/logo.png')}}" alt="logo">
             </a>
            
-
+<!--         <div class='countdown' data-date="2021-09-01" data-time="18:31"></div> -->
             <ul class="nav nav-pills menu">
 
               @foreach($menu as $key => $mn)

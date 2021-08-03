@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
   return $request->user();
   });
  */
+Route::post('/get/schedule', ['as' => 'api.get_schedule', 'uses' => 'Api\FrontendController@get_schedule']);
 Route::post('/sign-up-advise', ['as' => 'api.sign_up_advise', 'uses' => 'Api\FrontendController@sign_up_advise']);
 Route::post('/select-test', ['as' => 'api.select_test', 'uses' => 'Api\TestController@selectTest']);
 Route::post('/pick-test', ['as' => 'api.pick_test', 'uses' => 'Api\TestController@pickTest']);

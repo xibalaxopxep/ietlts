@@ -31,9 +31,16 @@ class FrontendController extends Controller {
             DB::table('course')->where('id',$input['id'])->update(['price'=>$input['price'],'sale_price'=>$input['sale_price'],'sale_time'=>$input['sale_time']]);
 
                 return response()->json(['success'=>1]);
-       
-          
+       }
 
+       public function get_schedule (request $request){
+            $input = $request->all();
+            $schedules = DB::table('schedule')->where('course_id',$input['course_id'])->get();
+            $html = "";
+            foreach($schedules as $schedule){
+                 $html .= "<option value=".$schedule->id.">".$schedule->title."</option>"; 
+            }
+            return $html;
        }
  
 }

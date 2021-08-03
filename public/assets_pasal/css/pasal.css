@@ -824,6 +824,12 @@ table.lich td p
 {
 	padding: 20px 0px;
 }
+@media only screen and (min-width: 768px) {
+    .lichkhaigiang-page table th
+    {
+        width: 20%;
+    }
+}
 .table-lich
 {
 	border: 1px solid #e5e5e5;

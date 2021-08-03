@@ -22,7 +22,6 @@ class Frontend {
         $contact_address = \DB::table('contact_address')->orderBy('ordering','asc')->where('status', 1)->get();
         $banner = \DB::table('banner')->get();
         $contact_address_footer = \DB::table('contact_address')->where('city',1)->where('status',1)->orderBy('ordering','desc')->get();
-        
         \View::share(['contact_address_footer' => $contact_address_footer]);
         \View::share(['config' => $config]);
         \View::share(['banner' => $banner]);

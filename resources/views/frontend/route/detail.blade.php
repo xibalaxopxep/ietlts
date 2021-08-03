@@ -11,18 +11,18 @@
       <section class="about py-4">
         <div class="container">
           <div class="lotrinh-about box-shadow">       
-            <div class="row">
-              <h3 class="mt-30">{{$record->title}} <b>DÀNH CHO AI?</b></h3>
              {!!$record->course_for!!}
-            </div>
           </div>
         </div>
       </section>
       <section class="lotrinh-loiich py-40">
         <div class="container">
           <div class="row">
-            <div class="col-md-6">
-              <h4>LỢI ÍCH CỦA LỘ TRÌNH<br><b>{{$record->title}} ({{$record->level}})</b></h4>
+           <div class="col-md-6">
+              <h4>LỢI ÍCH CỦA LỘ TRÌNH</br><b>{!!$record->title!!} ({!!$record->level!!})</b></h4>
+              <span class="description">{!!$record->summary!!}</span>
+              <img class="thumbnail" src="assets_pasal/img/loi-ich-lotrinh.png" alt="Lộ trình PRO IELTS">
+            </div>
             {!!$record->course_profit!!}
           </div>
         </div>
@@ -98,7 +98,7 @@
 
 
          <section class="testimonial">
-        <h3 class="mb-30">CÂU CHUYỆN THÀNH CÔNG<b> CỦA HỌC VIÊN</b></h3>
+        <h3 class="mb-30"><b>HỌC VIÊN</b> TIÊU BIỂU</h3>
         <div class="container">
           <div class="row">
           <div class="owl-carousel owl-theme testimonial-slide">

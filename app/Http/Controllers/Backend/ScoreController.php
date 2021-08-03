@@ -57,27 +57,27 @@ class ScoreController extends Controller {
         //      return Redirect()->back()->with('error','Vui lòng nhập lại');
         // }
 
-         $records = DB::table('score')->where('type',$type)->whereIn('from',[$input['from'],$input['to']])->orWhereIn('to',[$input['from'],$input['to']])->get();
-        
+        //  $records = DB::table('score')->where('type',$type)->whereIn('from',[$input['from'],$input['to']])->orWhereIn('to',[$input['from'],$input['to']])->get();
+        // dd($records);
         // foreach ($records as $key => $record) {
         //     if($record->id == $id){
         //         unset($records[$key]);
         //     }
         // }
-        $count= $records->count();
-        if($count>0){
-             return Redirect()->back()->with('error','Vui lòng nhập lại');
-        }
+        // $count= $records->count();
+        // if($count>0){
+        //      return Redirect()->back()->with('error','Vui lòng nhập lại');
+        // }
         
-        $max = DB::table('quizz')->join('question','question.quizz_id','=','quizz.id')->where('quizz.section_type',$type)->count();
+        // $max = DB::table('quizz')->join('question','question.quizz_id','=','quizz.id')->where('quizz.section_type',$type)->count();
 
-        if($max == null){
-             return Redirect()->back()->with('error','Vui lòng nhập thêm câu hỏi');
-        }
+        // if($max == null){
+        //      return Redirect()->back()->with('error','Vui lòng nhập thêm câu hỏi');
+        // }
       
-        if($input['from'] > $input['to'] || $input['to'] > $max ){
-             return Redirect()->back()->with('error','Vui lòng nhập lại');
-        }
+        // if($input['from'] > $input['to'] || $input['to'] > $max ){
+        //      return Redirect()->back()->with('error','Vui lòng nhập lại');
+        // }
 
 
 
@@ -94,7 +94,7 @@ class ScoreController extends Controller {
     public function edit($id) {
      
            $record = Score::find($id);
-           if(!$score){
+           if(!$record){
                abort(404);
            }
             $min = DB::table('score')->where('type',$record->type)->max('to') +1;

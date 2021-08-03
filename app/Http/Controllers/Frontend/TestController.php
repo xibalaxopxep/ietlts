@@ -80,12 +80,33 @@ class TestController extends Controller {
             if($true->answer == $re->answer){
             DB::table('result')->where('id',$re->id)->update(['true'=>1]);         
         }
+
+        $result = DB::table('result')->join('question','question.id','=','result.question_id')->join('quizz','quizz.id','=','question.quizz_id')->where('contact_id',$contact_id)->get();
+         $result= $result->groupBy('section_type');
+        foreach ($result as $key => $value) {
+            $dem = 0;
+            $true = 0;
+            foreach ($value as $key1 => $val) {
+                $dem++;
+                if($val->true == 1){
+                    $true++;
+                }
+            }
+            $result[$key]->dem = $dem;
+            $result[$key]->true = $true;
+        }
     }
+     $true_number = count(DB::table('result')->where('true',1)->get());
+ $question_numer = count($res);
+    $rule = DB::table('rule')->where('from','<=', $question_numer)->orWhere('to','>=', $question_numer)->first();
+    $courses= DB::table('course')->whereIn('id',explode(',', $rule->courses))->get();
+
+  //    dd($res);
         // $result = DB::table('question')->join('quizz','quizz.id','=','question.quizz_id')->join('result','result.question_id','=','question.id')->get()->groupBy('title');
         // dd($result);
-        $question_numer = count($res);
-        $true_number = count(DB::table('result')->where('true',1)->get());
-         return view('frontend/test/result',compact('question_numer','true_number'));
+       
+       
+         return view('frontend/test/result',compact('question_numer','true_number','result','courses'));
     }
 
     public function signup(){

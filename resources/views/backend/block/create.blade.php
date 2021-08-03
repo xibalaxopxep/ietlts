@@ -38,7 +38,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Video ID: </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" value="{!!old('video_url')!!}" name="content">                            </div>
+                                    <input type="text" class="form-control" value="{!!old('video_url')!!}" name="video_url">                            </div>
                             </div>
 
                              <div class="form-group row">

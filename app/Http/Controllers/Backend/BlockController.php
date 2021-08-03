@@ -53,12 +53,7 @@ class BlockController extends Controller {
             $get_images->move('upload/images/',$new_image);
             $input['image'] = '/upload/images/'.$new_image;
         }
-        // $input['include_news'] = isset($input['include_news']) ? 1 : 0;
-        // $input['include_video'] = isset($input['include_video']) ? 1 : 0;
-        // $input['include_teacher'] = isset($input['include_teacher']) ? 1 : 0;
-        // $input['include_best'] = isset($input['include_best']) ? 1 : 0;
-        // $input['include_dangky'] = isset($input['include_dangky']) ? 1 : 0;
-        // $input['include_schedule'] = isset($input['include_schedule']) ? 1 : 0;
+       
         if (isset($input['status'])) {
             $input['status'] = 1;
         } else {
@@ -115,12 +110,7 @@ class BlockController extends Controller {
             $get_images->move('upload/images/',$new_image);
             $input['image'] = '/upload/images/'.$new_image;
         }
-        // $input['include_news'] = isset($input['include_news']) ? 1 : 0;
-        // $input['include_video'] = isset($input['include_video']) ? 1 : 0;
-        // $input['include_teacher'] = isset($input['include_teacher']) ? 1 : 0;
-        // $input['include_best'] = isset($input['include_best']) ? 1 : 0;
-        // $input['include_dangky'] = isset($input['include_dangky']) ? 1 : 0;
-        // $input['include_schedule'] = isset($input['include_schedule']) ? 1 : 0;
+       //dd($input);
         if (isset($input['status'])) {
             $input['status'] = 1;
         } else {

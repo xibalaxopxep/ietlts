@@ -27,74 +27,19 @@
                                     {!! $errors->first('title', '<span class="text-danger">:message</span>') !!}
                                 </div>
                             </div>
-                           <!--  <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Nội dung: </label>
-                                <div class="col-md-9">
-                                    <textarea class="form-control ckeditor" name="content">{!!old('content')?:$record->content!!}</textarea>                                    
-                                </div>
-                            </div> -->
+                           
 
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Nội dung: </label>
                                 <div class="col-md-9">
-                                    <textarea rows="10" class="form-control " name="content">{!!old('content')?:$record->content!!}</textarea>                                    
+                                    <textarea rows="10" class="form-control " name="content">{!!$record->content!!}</textarea>                                    
                                 </div>
                             </div>
-                            <!-- <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Vị trí</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" readonly="" name="position" value="{!!old('position')?:$record->position!!}">
-                                </div>
-                            </div> -->
-                            <!--  <div class="form-group row">
-                                <div class="form-check col-md-4 form-check-right">
-                                    <label class="form-check-label float-right">
-                                        Bao gồm khối tin tức
-                                        <div class=""><span><input {{($record->include_news == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_news" data-fouc=""></span></div>
-                                    </label>
-                                </div>
-
-                              <div class="form-check col-md-4 form-check-right">
-                                    <label class="form-check-label float-right">
-                                        Bao gồm khối video
-                                        <div class=""><span><input {{($record->include_video == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_video" data-fouc=""></span></div>
-                                    </label>
-                                </div>
-
-                                 <div class="form-check col-md-4 form-check-right">
-                                    <label class="form-check-label float-right">
-                                        Bao gồm khối giảng viên
-                                        <div class=""><span><input {{($record->include_teacher == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_teacher" data-fouc=""></span></div>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                               
-
-                               <div class="form-check col-md-4 form-check-right">
-                                    <label class="form-check-label float-right">
-                                        Bao gồm khối học viên tiêu biểu
-                                        <div class=""><span><input {{($record->include_best == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_best" data-fouc=""></span></div>
-                                    </label>
-                                </div>
-                                   <div class="form-check col-md-4 form-check-right">
-                                    <label class="form-check-label float-right">
-                                        Bao gồm khối đăng kí
-                                        <div class=""><span><input {{($record->include_dangky == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_dangky" data-fouc=""></span></div>
-                                    </label>
-                                </div>
-                                <div class="form-check col-md-4 form-check-right">
-                                    <label class="form-check-label float-right">
-                                        Bao gồm lịch khai giảng
-                                        <div class=""><span><input {{($record->include_schedule == 1)?'checked':''}}  type="checkbox" class="form-check-input-styled" name="include_schedule" data-fouc=""></span></div>
-                                    </label>
-                                </div>
-                            </div> -->
-
+                           
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Video ID: </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" value="{!!$record->video_url!!}" name="content">                            </div>
+                                    <input type="text" class="form-control" value="{!!$record->video_url!!}" name="video_url">                            </div>
                             </div>
 
                              <div class="form-group row">

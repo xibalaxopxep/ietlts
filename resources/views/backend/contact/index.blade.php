@@ -23,7 +23,7 @@
                     </div>
                 @endif
             </div>
-
+            @if($type == 1 || $type == 2)
             <table class="table datatable-basic">
                 <thead>
                 <tr>
@@ -31,9 +31,13 @@
                     <th>Họ tên</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
+                    @if($type == 1)
                     <th>Khoá học</th>
+                    @elseif($type == 2)
+                    <th>Lớp học</th>
+                    @endif
                     <th>Cơ sở</th>
-                    <th>Ngày dăng ký</th>
+                    <th>Ngày đăng ký</th>
                     <th>Link</th>
                 </tr>
                 </thead>
@@ -44,7 +48,11 @@
                         <td>{{$record->name}}</td>
                         <td>{{$record->email}}</td>
                         <td>{{$record->phone}}</td>
+                        @if($record->schedule_id != null)
                         <td>{{$record->course_name($record->course_id)}}</td>
+                         @else
+                        <td>{{$record->schedule_name($record->schedule_id)}}</td>
+                        @endif
                         <td>{{$record->address_name($record->contact_address_id)}}</td>
                         <td>{{$record->created_at()}}</td>
                         <td class="text-center">
@@ -54,6 +62,45 @@
                 @endforeach
                 </tbody>
             </table>
+            @else
+            <table class="table datatable-basic">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Mục tiêu</th>
+                    <th>Cơ sở</th>
+                    <th>Ngày đăng ký</th>
+                    <th>Điểm trung bình</th>
+                    <th>Chi tiết</th>
+                    <th>Khoá học gợi ý</th>
+               
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($records as $key=>$record)
+                    <tr>
+                        <td>{{++$key}}</td>
+                        <td>{{$record->name}}</td>
+                        <td>{{$record->email}}</td>
+                        <td>{{$record->phone}}</td>
+                        <td>{{$record->target}}</td>
+                        <td>{{$record->address_name($record->contact_address_id)}}</td>
+                        <td>{{$record->created_at()}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-center">
+                         
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+            @endif
         </div>
         <!-- /table header styling -->
 

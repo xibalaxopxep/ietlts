@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group col-md-3 offset-md-1">
                       <img class="icon" src="assets_pasal/icon/class.png" alt="icon" />
-                       <select  required="" name="contact_address_id" class="pick_schedule">
+                       <select  required="" name="schedule_id" class="pick_schedule">
                         <option value="0" disabled selected>Chọn lớp học </option>
                       </select>
                     </div>

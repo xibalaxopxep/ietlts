@@ -122,7 +122,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-4 text-right">Thứ tự </label>
                             <div class="col-md-5">
-                                <input type="text" name="ordering" class="form-control touchspin text-center" value="{{$count_order}}">
+                                <input type="number" min="0" name="ordering" class="form-control  text-center" value="{{$count_order}}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -133,7 +133,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group row">
+                      <!--   <div class="form-group row">
                             <div class="form-check col-md-5 form-check-right">
                                 <label class="form-check-label float-right">
                                     Video nổi bật
@@ -148,8 +148,8 @@
                                     <input type="checkbox" class="form-check-input-styled" name="is_simon" data-fouc="">
                                 </label>
                             </div>
-                        </div>
-                        <div class="form-group row">
+                        </div> -->
+                        <!-- <div class="form-group row">
                             <label class="form-check-label col-md-6  text-left">Hẹn ngày đăng </label>
                             <div class="input-group col-md-12" style="margin-top:20px">
                                 <span class="input-group-prepend">
@@ -157,7 +157,7 @@
                                 </span>
                                 <input type="text" class="form-control pickadate" placeholder="Ngày đăng" name="post_schedule">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Từ khóa</label>
                             <div class="col-md-9">

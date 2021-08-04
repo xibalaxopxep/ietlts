@@ -33,7 +33,14 @@ class NewsController extends Controller {
         $featured_news =  DB::table('news')->where('is_hot',1)->where('id','!=',$record->id)->orderBy('created_at','desc')->limit(2)->get();
         //$url = \Illuminate\Support\Facades\Request::url();
             return view('frontend/news/detail', compact('record', 'featured_news', 'category', 'related_news'));
+    }
 
+
+    public function news_category(Request $request, $alias = '') {  
+        $records = DB::table('news')->join('news_category','news.id','=','news_category.news_id')->join('category','category.id','=','news_category.category_id')->where('category.alias',$alias)->orderBy('news.ordering','desc')->paginate(7);
+
+        $hot_news = DB::table('news')->orderBy('ordering','desc')->limit(7)->where('is_hot',1)->get();
+        return view('frontend/news/news_category', compact('records', 'hot_news'));
     }
 
 }

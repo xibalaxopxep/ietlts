@@ -21,4 +21,8 @@ class Contact extends Model
         return DB::table('contact_address')->where('id',$id)->pluck('name')->first();
     }
 
+      public function schedule_name($id) {
+        return DB::table('schedule')->where('id',$id)->pluck('title')->first();
+    }
+
 }

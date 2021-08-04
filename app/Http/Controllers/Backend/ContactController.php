@@ -15,6 +15,7 @@ class ContactController extends Controller
 
     public function index($type)
     {
+
         $records = Contact::where('type',$type)->orderBy('created_at','desc')->get();
         return view('backend/contact/index', compact('records','type'));
     }

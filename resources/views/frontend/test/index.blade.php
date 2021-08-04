@@ -42,7 +42,6 @@
                     
             @endif
 
-
             <!-- <div id="waveform"></div> -->
            
             <!-- <input type="hidden" name="page" value="{{++$page}}"> -->

@@ -72,6 +72,10 @@ class TestController extends Controller {
 
     public function result(){
          $contact_id = Session::get('contact_id');
+
+         if(!$contact_id){
+             return redirect()->route('home.index')->with('error','Phiên test đã hết hạn. Vui lòng thử lại');
+         }
          $res = DB::table('result')->where('contact_id',$contact_id)->get();
    
          foreach($res as $re){
@@ -82,7 +86,7 @@ class TestController extends Controller {
         }
 
         $result = DB::table('result')->join('question','question.id','=','result.question_id')->join('quizz','quizz.id','=','question.quizz_id')->where('contact_id',$contact_id)->get();
-         $result= $result->groupBy('section_type');
+        $result= $result->groupBy('section_type');
         foreach ($result as $key => $value) {
             $dem = 0;
             $true = 0;
@@ -95,18 +99,19 @@ class TestController extends Controller {
             $result[$key]->dem = $dem;
             $result[$key]->true = $true;
         }
-    }
-     $true_number = count(DB::table('result')->where('true',1)->get());
- $question_numer = count($res);
-    $rule = DB::table('rule')->where('from','<=', $question_numer)->orWhere('to','>=', $question_numer)->first();
-    $courses= DB::table('course')->whereIn('id',explode(',', $rule->courses))->get();
-
-  //    dd($res);
-        // $result = DB::table('question')->join('quizz','quizz.id','=','question.quizz_id')->join('result','result.question_id','=','question.id')->get()->groupBy('title');
-        // dd($result);
-       
-       
-         return view('frontend/test/result',compact('question_numer','true_number','result','courses'));
+     }
+     $true_number = count(DB::table('result')->where('contact_id',$contact_id)->where('true',1)->get());
+     $question_numer = count($res);
+     $rules = DB::table('rule')->get();
+     foreach($rules as $key => $value){
+           if($true_number<=$value->to && $true_number>=$value->from ){
+                $rule = $rules[$key];
+           }
+     }
+     $scores= DB::table('score')->get()->groupBy('type');
+     $courses= DB::table('course')->whereIn('id',explode(',', $rule->courses))->get();
+     
+         return view('frontend/test/result',compact('question_numer','true_number','result','courses','scores'));
     }
 
     public function signup(){
@@ -117,6 +122,9 @@ class TestController extends Controller {
             $input = $request->except('_token');
             $input['type'] = 3;
             $res = DB::table('contact')->insertGetId($input);
+            if(Session::get('contact_id')){
+                Session::flush('contact_id');
+            }
              Session::put('contact_id',$res);
             return redirect()->route('test.index',0);
        }

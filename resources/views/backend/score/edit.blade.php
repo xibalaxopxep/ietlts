@@ -56,12 +56,12 @@
                                             <div class="form-group row">
                                                 <label class="col-md-3 col-form-label text-right">Điểm từ <span class="text-danger">*</span></label>
                                                 <div class="col-md-4">
-                                                    <input type="text" min="1" placeholder="Vui lòng nhập lớn hơn {{--$min}}" class="form-control" name="from" value="{!!$record->from!!}" required="">
+                                                    <input type="text" min="1"  class="form-control" name="from" value="{!!$record->from!!}" required="">
                                                     {!! $errors->first('from', '<span class="text-danger">:message</span>') !!}
                                                 </div>
                                                 <span style="margin: 10px">đến</span>
                                                 <div class="col-md-4">
-                                                    <input type="text" placeholder="Vui lòng nhập nhỏ hơn hoặc bằng {{$max}}"  class="form-control" name="to" value="{!!$record->to!!}" required="">
+                                                    <input type="text"  class="form-control" name="to" value="{!!$record->to!!}" required="">
                                                     {!! $errors->first('to', '<span class="text-danger">:message</span>') !!}
                                                 </div>
                                             </div>

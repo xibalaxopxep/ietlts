@@ -44,15 +44,19 @@ class RuleController extends Controller {
         }
         unset($input['check']);
         $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');
-        $records = DB::table('rule')->whereIn('from',[$input['from'],$input['to']])->orWhereIn('to',[$input['from'],$input['to']])->get();
-        $count= $records->count();
-        if($count>0){
+
+        $records = DB::table('rule')->get();
+        if($input['to'] > 10 || $input['from'] > $input['to']){
              return Redirect()->back()->with('error','Vui lòng nhập lại');
-        }        
-        
-      
-        if($input['from'] > $input['to'] || $input['to'] > 10 ){
-             return Redirect()->back()->with('error','Vui lòng nhập lại');
+        }
+
+        foreach ($records as $key => $record) {
+            if( $record->from >= $input['from']  &&   $record->from <= $input['to']){
+                 return Redirect()->back()->with('error','Vui lòng nhập lại');
+            }
+             if( $record->to >= $input['from']  &&   $record->to <= $input['to']){
+                 return Redirect()->back()->with('error','Vui lòng nhập lại');
+            }
         }
 
         $create_score = $rule::create($input);
@@ -88,20 +92,18 @@ class RuleController extends Controller {
         }
         unset($input['check']);
         $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');
-        $records = DB::table('rule')->whereIn('from',[$input['from'],$input['to']])->orWhereIn('to',[$input['from'],$input['to']])->get();
-        foreach ($records as $key => $record) {
-            if($record->id == $id){
-                unset($records[$key]);
-            }
+        $records = DB::table('rule')->where('id','!=',$id)->get();
+        if($input['to'] > 10 || $input['from'] > $input['to']){
+             return Redirect()->back()->with('error','Vui lòng nhập lại');
         }
-        $count= $records->count();
-        if($count>0){
-             return Redirect()->back()->with('error','Vui lòng nhập lại');
-        }        
-        
-      
-        if($input['from'] > $input['to'] || $input['to'] > 10 ){
-             return Redirect()->back()->with('error','Vui lòng nhập lại');
+
+        foreach ($records as $key => $record) {
+            if( $record->from >= $input['from']  &&   $record->from <= $input['to']){
+                 return Redirect()->back()->with('error','Vui lòng nhập lại');
+            }
+             if( $record->to >= $input['from']  &&   $record->to <= $input['to']){
+                 return Redirect()->back()->with('error','Vui lòng nhập lại');
+            }
         }
         $create_score = $rule::find($id)->update($input);
         if($create_score){

@@ -62,7 +62,31 @@
                 </button>
             </div>
           </div>
+          @php
+             $index = 0;
+          @endphp
+
           @for($i = 1; $i<=5; $i++)
+          @php
+
+          if($i == 1){
+             $index = 3;
+          }
+          elseif($i == 2){
+             $index = 4;
+          }
+          elseif($i == 3){
+             $index = 5;
+          }
+          elseif($i == 4){
+             $index = 1;
+          }
+          elseif($i == 5){
+             $index = 2;
+          }
+
+          @endphp
+
           <div class="modal fade" id="exampleModalCenter_{{$i}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -86,7 +110,7 @@
                            </thead>
                            <tbody>
                            @foreach($scores as $score)
-                              @if($score->type == $i)
+                              @if($score->type == $index)
                                 <tr>
                                   <th scope="row">{{$score->from}}</th>
                                   <th scope="row">{{$score->to}}</th>
@@ -103,7 +127,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-success" data-dismiss="modal">Lưu</button>
-                  <button type="button" class="btn btn-primary"><a style="color:white;" href="{{route('admin.score.create',$i)}}">Thêm mới</a></button>
+                  <button type="button" class="btn btn-primary"><a style="color:white;" href="{{route('admin.score.create',$index)}}">Thêm mới</a></button>
                 </div>
               </div>
             </div>

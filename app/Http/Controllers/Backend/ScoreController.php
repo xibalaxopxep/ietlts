@@ -26,10 +26,8 @@ class ScoreController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create($type) {
-        $min = DB::table('score')->where('type',$type)->max('to') +1;
-        $max = DB::table('quizz')->join('question','question.quizz_id','=','quizz.id')->where('quizz.section_type',$type)->count();
-        //$min = DB::table('teacher')->count();
-        return view('backend/score/create',compact('type','min','max'));
+       
+        return view('backend/score/create',compact('type'));
       
     }
 
@@ -47,39 +45,27 @@ class ScoreController extends Controller {
         }
        
         // $min = DB::table('score')->where('type',$type)->max('to') +1;
-        // $max = DB::table('quizz')->join('question','question.quizz_id','=','quizz.id')->where('quizz.section_type',$type)->count();
+        $max = DB::table('quizz')->join('section','section.id','=','quizz.section_id')->join('question','question.quizz_id','=','quizz.id')->count();
 
-        // if($max == null){
-        //      return Redirect()->back()->with('error','Vui lòng nhập thêm câu hỏi');
-        // }
+        if($max == null){
+             return Redirect()->back()->with('error','Vui lòng nhập thêm câu hỏi');
+        }
       
-        // if($input['from'] < $min || $input['from'] > $max || $input['to'] > $max || $input['to'] < $min){
-        //      return Redirect()->back()->with('error','Vui lòng nhập lại');
-        // }
+        if($input['to'] > $max || $input['from'] > $input['to']){
+             return Redirect()->back()->with('error','Vui lòng nhập lại');
+        }
 
-        //  $records = DB::table('score')->where('type',$type)->whereIn('from',[$input['from'],$input['to']])->orWhereIn('to',[$input['from'],$input['to']])->get();
-        // dd($records);
-        // foreach ($records as $key => $record) {
-        //     if($record->id == $id){
-        //         unset($records[$key]);
-        //     }
-        // }
-        // $count= $records->count();
-        // if($count>0){
-        //      return Redirect()->back()->with('error','Vui lòng nhập lại');
-        // }
+        $records = DB::table('score')->where('type',$type)->get();
+
+        foreach ($records as $key => $record) {
+            if( $record->from >= $input['from']  &&   $record->from <= $input['to']){
+                 return Redirect()->back()->with('error','Vui lòng nhập lại');
+            }
+             if( $record->to >= $input['from']  &&   $record->to <= $input['to']){
+                 return Redirect()->back()->with('error','Vui lòng nhập lại');
+            }
+        }
         
-        // $max = DB::table('quizz')->join('question','question.quizz_id','=','quizz.id')->where('quizz.section_type',$type)->count();
-
-        // if($max == null){
-        //      return Redirect()->back()->with('error','Vui lòng nhập thêm câu hỏi');
-        // }
-      
-        // if($input['from'] > $input['to'] || $input['to'] > $max ){
-        //      return Redirect()->back()->with('error','Vui lòng nhập lại');
-        // }
-
-
 
         $create_score = $score::create($input);
         if($create_score){
@@ -97,14 +83,11 @@ class ScoreController extends Controller {
            if(!$record){
                abort(404);
            }
-            $min = DB::table('score')->where('type',$record->type)->max('to') +1;
-            $max = DB::table('quizz')->join('question','question.quizz_id','=','quizz.id')->where('quizz.section_type',$record->type)->count();
-            if($record){
-                return view('backend/score/edit', compact('record','min','max'));
             
-            }else{
-                abort(404);
-            }
+        
+           return view('backend/score/edit', compact('record'));
+            
+            
     }
 
 
@@ -122,28 +105,31 @@ class ScoreController extends Controller {
         }
        
         $record = Score::find($id);
-        $records = DB::table('score')->where('type',$record->type)->whereIn('from',[$input['from'],$input['to']])->orWhereIn('to',[$input['from'],$input['to']])->get();
+        $records = DB::table('score')->where('type',$record->type)->get();
         
         foreach ($records as $key => $record) {
             if($record->id == $id){
                 unset($records[$key]);
             }
         }
-        $count= $records->count();
-        if($count>0){
-             return Redirect()->back()->with('error','Vui lòng nhập lại');
-        }
-        
-        $max = DB::table('quizz')->join('question','question.quizz_id','=','quizz.id')->where('quizz.section_type',$record->type)->count();
+        $max = DB::table('quizz')->join('section','section.id','=','quizz.section_id')->join('question','question.quizz_id','=','quizz.id')->count();
 
         if($max == null){
              return Redirect()->back()->with('error','Vui lòng nhập thêm câu hỏi');
         }
       
-        if($input['from'] > $input['to'] || $input['to'] > $max ){
+        if($input['to'] > $max || $input['from'] > $input['to']){
              return Redirect()->back()->with('error','Vui lòng nhập lại');
         }
 
+        foreach ($records as $key => $record) {
+            if( $record->from >= $input['from']  &&   $record->from <= $input['to']){
+                 return Redirect()->back()->with('error','Vui lòng nhập lại');
+            }
+             if( $record->to >= $input['from']  &&   $record->to <= $input['to']){
+                 return Redirect()->back()->with('error','Vui lòng nhập lại');
+            }
+        }
 
         $create_score = $score::find($id)->update($input);
         if($create_score){

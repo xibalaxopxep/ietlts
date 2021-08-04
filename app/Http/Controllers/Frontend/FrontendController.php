@@ -84,7 +84,7 @@ class FrontendController extends Controller {
             $input = $request->except('_token');
             $input['type'] = 1;
             $input['link'] = "/".$request->path();
-             $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');
+             $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');    
             $res = DB::table('contact')->insert($input);
 
             if($res){

@@ -48,7 +48,7 @@
                         <td>{{$record->name}}</td>
                         <td>{{$record->email}}</td>
                         <td>{{$record->phone}}</td>
-                        @if($record->schedule_id != null)
+                        @if($record->schedule_id == null)
                         <td>{{$record->course_name($record->course_id)}}</td>
                          @else
                         <td>{{$record->schedule_name($record->schedule_id)}}</td>

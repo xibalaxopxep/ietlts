@@ -17,7 +17,7 @@
               @foreach($menu as $key => $mn)
               <li class="nav-item"><a href="{{url($mn->link)}}" class="nav-link" aria-current="page">{{$mn->title}}</a>
                    @if($mn->children != null)
-                   <ul>
+                   <ul class="submenu box-shadow">
                     @foreach($menu[$key]->children as $val)
                      <li class="nav-item"><a href="{{url($val->link)}}" class="nav-link" aria-current="page">{{$val->title}}</a>
                     @endforeach

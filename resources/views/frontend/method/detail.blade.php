@@ -7,9 +7,14 @@
       </div>
       <section class="about py-4">
         <div class="container">
-          <div class="pp-about box-shadow">       
+          <div class="pp-about box-shadow">   
+          <img id="pattern-about-2" src="assets_pasal/img/pattern-1.png" alt="pattern" />
+          <img id="pattern-about-3" src="assets_pasal/img/pattern-2.png" alt="pattern" />    
             <div class="row">
-              <div class="col-md-5">
+              <div class="col-md-5" style="position: relative;">
+              <div id="pattern-about-4" class="open-video" data-video="{!!$record->link_video!!}">
+                <img src="assets_pasal/img/pattern-about.png" alt="pattern"  />
+              </div>
                 <img src="assets_pasal/img/about-1.png" alt="pasal simon" class="img-fluid" />
               </div>
               <div class="col-md-7 info">
@@ -19,13 +24,14 @@
             </div>
             {!!$record->profit!!}
             <div class="text-center mt-30">
-              <a class="btn-about fs-23">ĐĂNG KÝ TƯ VẤN NGAY</a>
+              <a href="#form" class="btn-about fs-23">ĐĂNG KÝ TƯ VẤN NGAY</a>
             </div>
           </div>
         </div>
       </section>
       <section class="pp-uudiem py-40">
-        <div class="container">
+        <img id="pattern-pp-udiem" src="/assets_pasal/img/pattern-pp.png" alt="pattern"/>
+        <div class="container" style="position: relative;">
           <div class="row">
             {!!$record->content!!}
           </div>

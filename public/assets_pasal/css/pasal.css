@@ -864,11 +864,17 @@ table.lich td p
 .pp-uudiem
 {
 	background-color: #f5f4f1;
+    position: relative;
 }
 .pp-uudiem h4
 {
 	font-size: 25px;
 	color: var(--sub-color);
+}
+#pattern-pp-udiem
+{
+    position: absolute;
+    bottom: 0px;
 }
 .pp-uudiem h4 b
 { 
@@ -1514,4 +1520,19 @@ section.dangky-khoahoc .btn-white
     {
         position: fixed;
         top: 0px;
+    }
+    .submenu
+    {
+        background:#fff;
+        padding: 0px;
+        display: none;
+        position: absolute;
+    }
+    .nav-item:hover .submenu
+    {
+        display: block;
+    }
+    .submenu .nav-link:hover
+    {
+        border-left: 2px solid var(--main-color);
     }

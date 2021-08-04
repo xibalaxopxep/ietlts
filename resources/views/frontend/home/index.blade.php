@@ -19,7 +19,7 @@
           <div class="row mt-5">
             <div class="col-md-5" style="position: relative;">
             
-              <div id="pattern-about-4" data-video="{{$block[0]->video_url}}">
+              <div id="pattern-about-4" class="open-video" data-video="{{$block[0]->video_url}}">
                 <img src="assets_pasal/img/pattern-about.png" alt="pattern"  />
               </div>
               <img src="assets_pasal/img/about-1.png" alt="pasal simon" class="img-fluid" />

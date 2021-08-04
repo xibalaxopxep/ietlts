@@ -28,7 +28,7 @@
         </div>
       </section>
       <section class="lotrinh-content">
-        <h3 class=""><b>NÔI DUNG </b>LỘ TRÌNH PRO IELTS</h3>
+        <h3 class="mb-30"><b>NỘI DUNG </b>LỘ TRÌNH PRO IELTS</h3>
         <div class="container">
           <div class="row">
             @foreach($courses as $key => $course)

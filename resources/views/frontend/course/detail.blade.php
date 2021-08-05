@@ -7,16 +7,8 @@
         <div class="container">
           <div class="lotrinh-about box-shadow">       
             <div class="row">
-              <h3 class="mt-30">LỘ TRÌNH PRO IELTS <b>DÀNH CHO AI?</b></h3>
-              <div class="mb-4 text-left mt-30">
-                <p class="fs-19 m-0"><img src="assets/icon/tick.png" alt="icon" class="mr-2" />Học viên có trình độ đầu vào 6.0-8.0</p>
-              </div>
-              <div class="mb-4 text-left">
-                <p class="fs-19 m-0"><img src="assets/icon/tick.png" alt="icon" class="mr-2" />Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying ...</p>
-              </div>
-              <div class="mb-4 text-left">
-                <p class="fs-19 m-0"><img src="assets/icon/tick.png" alt="icon" class="mr-2" />Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying ...</p>
-              </div>
+             <h3 class="mt-30">{{$record->title}} ({{$record->level}}) <b>DÀNH CHO AI?</b></h3>     
+             {!!$record->course_for!!}
             </div>
           </div>
         </div>
@@ -59,7 +51,7 @@
                   </div>
                 </div>
                 <img id="lotrinh-loiich-pattern-1" src="{{asset('assets_pasal/img/pattern-13.png')}}" alt="pattern" />
-                <img id="lotrinh-loiich-pattern-2" src="{{asset('assets_pasal/img/pattern-13.png')}}" alt="pattern" />
+                <img id="lotrinh-loiich-pattern-2" src="{{asset('assets_pasal /img/pattern-13.png')}}" alt="pattern" />
               </div>
             </div>
           </div>

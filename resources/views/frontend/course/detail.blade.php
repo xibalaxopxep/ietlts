@@ -83,29 +83,45 @@
           </div>
           <div class="row content">
             <div class="col-md-9">
-                <div class="w-100 d-flex">
                   @php
-                       $data = explode('|',$record->course_method)
+                    $data = [];
+                    if($record->course_method != null){
+                         $data = explode('|',$record->course_method);
+                    }     
                   @endphp
+                 @if($data != null)
+                 @if(count($data) >=1 || count($data) >=2)
+                <div class="w-100 d-flex">
+                  @if(count($data) >=1)
                     <div class="item" style="background: url(/assets_pasal/icon/1.png) no-repeat">
                        {!!$data[0]!!}
                     </div>
                     <div class="col-md-3"></div>
+                    @endif
+                    @if(count($data) >=2)
                     <div class="item" style="background: url(/assets_pasal/icon/2.png) no-repeat">
                          {!!$data[1]!!}
                     </div>
-                </div>
+                    @endif
+                  </div>
+                  @endif
+
+                @if(count($data) >=3 || count($data)>=4)
                 <div class="w-100 d-flex mt-40">
+                     @if(count($data) >= 3)
                     <div class="item" style="background: url(/assets_pasal/icon/3.png) no-repeat">
                         {!!$data[2]!!}
                     </div>
                     <div class="col-md-3"></div>
+                    @endif
                     @if(count($data) == 4)
                     <div class="item" style="background: url(/assets_pasal/icon/4.png) no-repeat">
                         {!!$data[3]!!}
                     </div>
                     @endif
                 </div>
+                @endif
+                @endif
             </div>
             <div class="col-md-3">
                 <img id="course-content-pattern" src="/assets_pasal/img/course-content-bg2.png" alt="pattern" />

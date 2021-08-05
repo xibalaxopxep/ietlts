@@ -123,6 +123,10 @@ h3 b
 {
 	color: var(--main-color);
 }
+.top-header
+{
+    margin-bottom: -60px;
+}
 /* START Section About */
 #pattern-about-1
 {

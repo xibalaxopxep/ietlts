@@ -80,7 +80,7 @@
                     <img class="img-fluid" src="{{asset($course->image)}}" alt="khóa học" />
                   </a>
                   <div class="info">
-                    <a class="title" href="{{route('course.detail',$course->alias)}}">Khóa học <b>{{$course->title}}</b></a>
+                    <a class="title" href="{{route('course.detail',$course->alias)}}"><b>{{$course->title}}</b></a>
                     <span>{{$course->summary}}</span>
                     <div class="bottom">
                       <a class="view-more" href="{{route('course.detail',$course->alias)}}">Xem tiếp</a>

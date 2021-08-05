@@ -84,26 +84,27 @@
           <div class="row content">
             <div class="col-md-9">
                 <div class="w-100 d-flex">
+                  @php
+                       $data = explode('|',$record->course_method)
+                  @endphp
                     <div class="item" style="background: url(/assets_pasal/icon/1.png) no-repeat">
-                        <b>Kỹ năng reading</b>
-                        <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying ...</p>
+                       {!!$data[0]!!}
                     </div>
                     <div class="col-md-3"></div>
                     <div class="item" style="background: url(/assets_pasal/icon/2.png) no-repeat">
-                        <b>Kỹ năng reading</b>
-                        <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying ...</p>
+                         {!!$data[1]!!}
                     </div>
                 </div>
                 <div class="w-100 d-flex mt-40">
                     <div class="item" style="background: url(/assets_pasal/icon/3.png) no-repeat">
-                        <b>Kỹ năng reading</b>
-                        <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying ...</p>
+                        {!!$data[2]!!}
                     </div>
                     <div class="col-md-3"></div>
+                    @if(count($data) == 4)
                     <div class="item" style="background: url(/assets_pasal/icon/4.png) no-repeat">
-                        <b>Kỹ năng reading</b>
-                        <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying ...</p>
+                        {!!$data[3]!!}
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-3">

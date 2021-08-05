@@ -8,15 +8,15 @@
       <div class="banner">
         <img src="assets_pasal/img/banner-pp.png" class="img-fluid" alt="banner"/>
       </div>
-      <section class="about py-4">
+
         <div class="container">
           <div class="lotrinh-about box-shadow">  
            <div class="row">
-              <h3 class="mt-30">{{$record->title}} ({{$record->level}}) <b>DÀNH CHO AI?</b></h3>     
+              <h3 class="text-center" class="mt-30">{{$record->title}} ({{$record->level}}) <b>DÀNH CHO AI?</b></h3>     
              {!!$record->course_for!!}
           </div>
         </div>
-      </section>
+
       <section class="lotrinh-loiich py-40">
         <div class="container">
           <div class="row">
@@ -51,7 +51,7 @@
                 <div class="col-sm-6">
                   <div class="item item-4">
                     <img class="thumbnail-item" src="assets_pasal/icon/lotrinh4.png" />
-                    <p>{!!$content[3]!!}</p>
+                    <p>{!!$content[3  ]!!}</p>
                   </div>
                 </div>
                 <img id="lotrinh-loiich-pattern-1" src="assets_pasal/img/pattern-13.png" alt="pattern" />

@@ -3,16 +3,20 @@
  <div class="banner">
         <img src="{{asset('assets_pasal/img/banner-pp.png')}}" class="img-fluid" alt="banner"/>
       </div>
-             <section class="about py-4">
+ 
+   
+
+        <section class="about py-4">
         <div class="container">
           <div class="lotrinh-about box-shadow">       
             <div class="row">
-             <h3 class="mt-30">{{$record->title}} ({{$record->level}}) <b>DÀNH CHO AI?</b></h3>     
-             {!!$record->course_for!!}
+               <h3 class="text-center" class="mt-30">{{$record->title}} ({{$record->level}}) <b>DÀNH CHO AI?</b></h3>  
+              {!!$record->course_for!!}
             </div>
           </div>
         </div>
       </section>
+
       <section class="lotrinh-loiich py-40">
         <div class="container">
           <div class="row">

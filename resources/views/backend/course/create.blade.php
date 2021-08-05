@@ -53,7 +53,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Mô tả </label>
                                         <div class="col-md-10">
-                                            <textarea class="form-control" name="summary">{!!old('summary')!!}</textarea>
+                                            <textarea class="form-control ckeditor" id="content2" name="summary">{!!old('summary')!!}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -143,9 +143,9 @@
 
                                <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label ">Lợi ích của khoá học </label>
+                                    <label class="col-md-2 col-form-label ">Lợi ích của khoá học (Mỗi lợi ích tách nhau bằng kí tự | )</label>
                                     <div class="col-md-12">
-                                        <textarea class="form-control ckeditor" id="content2" name="course_profit">{!!old('course_profit')!!}</textarea>
+                                        <textarea class="form-control" rows="6" id="" name="course_profit">{!!old('course_profit')!!}</textarea>
                                     </div>
                                 </div>
                             </div>

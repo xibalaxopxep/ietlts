@@ -30,6 +30,10 @@ class RouteOnlineController extends Controller {
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $data = count(explode('|',$input['course_profit']));
+        if($data != 4){
+             return redirect()->back()->with('error','Vui lòng nhập 4 lợi ích khoá học');
+        }
         $get_image=$request->image;
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
@@ -85,6 +89,10 @@ class RouteOnlineController extends Controller {
         $validator = \Validator::make($input, $route_online->validateUpdate($id));
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $data = count(explode('|',$input['course_profit']));
+      if($data != 4){
+             return redirect()->back()->with('error','Vui lòng nhập 4 lợi ích khoá học');
         }
         $input['teacher_id'] = implode(',',$input['teacher_id']);
         $input['study_id'] = implode(',',$input['study_id']);

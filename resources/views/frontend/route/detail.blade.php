@@ -10,7 +10,9 @@
       </div>
       <section class="about py-4">
         <div class="container">
-          <div class="lotrinh-about box-shadow">       
+          <div class="lotrinh-about box-shadow">  
+           <div class="row">
+              <h3 class="mt-30">{{$record->title}} ({{$record->level}}) <b>DÀNH CHO AI?</b></h3>     
              {!!$record->course_for!!}
           </div>
         </div>
@@ -19,11 +21,43 @@
         <div class="container">
           <div class="row">
            <div class="col-md-6">
-              <h4>LỢI ÍCH CỦA LỘ TRÌNH</br><b>{!!$record->title!!} ({!!$record->level!!})</b></h4>
+              <h4>LỢI ÍCH CỦA LỘ TRÌNH<br><b>{!!$record->title!!} ({!!$record->level!!})</b></h4>
               <span class="description">{!!$record->summary!!}</span>
-              <img class="thumbnail" src="assets_pasal/img/loi-ich-lotrinh.png" alt="Lộ trình PRO IELTS">
+              <img class="thumbnail" src="{{asset($record->image)}}" alt="Lộ trình PRO IELTS">
             </div>
-            {!!$record->course_profit!!}
+              <div class="col-md-6 list-item">
+              <div class="row">
+                @php
+                    $content = explode('|', $record->course_profit);
+                @endphp
+                <div class="col-sm-6">
+                  <div class="item item-1">
+                    <img class="thumbnail-item" src="assets_pasal/icon/lotrinh1.png" />
+                    <p>{!!$content[0]!!}</p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="item item-2">
+                    <img class="thumbnail-item" src="assets_pasal/icon/lotrinh2.png" />
+                    <p>{!!$content[1]!!}</p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="item item-3">
+                    <img class="thumbnail-item" src="assets_pasal/icon/lotrinh3.png" />
+                    <p>{!!$content[2]!!}</p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="item item-4">
+                    <img class="thumbnail-item" src="assets_pasal/icon/lotrinh4.png" />
+                    <p>{!!$content[3]!!}</p>
+                  </div>
+                </div>
+                <img id="lotrinh-loiich-pattern-1" src="assets_pasal/img/pattern-13.png" alt="pattern" />
+                <img id="lotrinh-loiich-pattern-2" src="assets_pasal/img/pattern-13.png" alt="pattern" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -34,7 +68,7 @@
             @foreach($courses as $key => $course)
             <div class="col-md-4">
               <div class="item item-{{++$key}} box-shadow">
-                <img class="thumbnail" src="assets_pasal/img/lotrinh-2.png" alt="lộ trình" />
+                <img class="thumbnail" src="{{asset($course->image)}}" alt="lộ trình" />
                 <h4><b>PRO IELTS</b> {{$course->title}}</h4>
                 <div class="label">
                   <a>Lợi ích của khóa học</a>

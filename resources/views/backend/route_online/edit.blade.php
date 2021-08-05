@@ -147,9 +147,9 @@
 
                                <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label text-right">Lợi ích của lộ trình </label>
+                                    <label class="col-md-2 col-form-label text-right">Lợi ích của lộ trình (Mỗi lợi ích tách nhau bở kí tự | ) </label>
                                     <div class="col-md-12">
-                                        <textarea class="form-control ckeditor" id="content2" name="course_profit">{!!$record->course_profit!!}</textarea>
+                                        <textarea class="form-control" rows="6" id="content2" name="course_profit">{!!$record->course_profit!!}</textarea>
                                     </div>
                                 </div>
                             </div>

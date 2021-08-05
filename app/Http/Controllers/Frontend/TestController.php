@@ -84,12 +84,13 @@ class TestController extends Controller {
             if($true->answer == $re->answer){
             DB::table('result')->where('id',$re->id)->update(['true'=>1]);         
         }
-
+        $scores= DB::table('score')->get()->groupBy('type');
         $result = DB::table('result')->join('question','question.id','=','result.question_id')->join('quizz','quizz.id','=','question.quizz_id')->where('contact_id',$contact_id)->get();
         $result= $result->groupBy('section_type');
         foreach ($result as $key => $value) {
             $dem = 0;
             $true = 0;
+            $content = "";
             foreach ($value as $key1 => $val) {
                 $dem++;
                 if($val->true == 1){
@@ -98,6 +99,16 @@ class TestController extends Controller {
             }
             $result[$key]->dem = $dem;
             $result[$key]->true = $true;
+              foreach($scores[$key] as $score){
+                  if($score->from <= $true && $score->to >= $true){
+                    $content = $score->content;
+                  }
+               }
+               $result_final = DB::table('result_final')->where('contact_id',$contact_id)->get();
+
+               if( count($result_final) < 5){
+                   DB::table('result_final')->insert(['contact_id'=> $contact_id,'type'=>$key,'true_number'=>$true,'question_number'=>$dem,'review'=>$content]);
+                }
         }
      }
      $true_number = count(DB::table('result')->where('contact_id',$contact_id)->where('true',1)->get());
@@ -108,7 +119,7 @@ class TestController extends Controller {
                 $rule = $rules[$key];
            }
      }
-     $scores= DB::table('score')->get()->groupBy('type');
+     
      $courses= DB::table('course')->whereIn('id',explode(',', $rule->courses))->get();
      
          return view('frontend/test/result',compact('question_numer','true_number','result','courses','scores'));

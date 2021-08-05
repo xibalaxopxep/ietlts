@@ -38,6 +38,10 @@ class RouteController extends Controller {
             $get_image->move('upload/images/',$new_image);
             $input['image'] = '/upload/images/'.$new_image;
         }
+        $data = count(explode('|',$input['course_profit']));
+       if($data != 4){
+             return redirect()->back()->with('error','Vui lòng nhập 4 lợi ích');
+        }
         $input['status'] = isset($input['status']) ? 1 : 0;
         $res = $route->create($input);
 
@@ -85,6 +89,10 @@ class RouteController extends Controller {
         $validator = \Validator::make($input, $route->validateUpdate($id));
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $data = count(explode('|',$input['course_profit']));
+        if($data != 4){
+             return redirect()->back()->with('error','Vui lòng nhập 4 lợi ích');
         }
         $input['teacher_id'] = implode(',',$input['teacher_id']);
         $input['study_id'] = implode(',',$input['study_id']);

@@ -13,7 +13,12 @@
                     </div>
                 </div>
             </div>
-            
+             @if (Session::has('error'))
+                            <div class="alert bg-danger alert-styled-left">
+                                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                <span class="text-semibold">{{ Session::get('error') }}</span>
+                            </div>
+                            @endif
             <div class="card-body">
                 <ul class="nav nav-tabs nav-tabs-highlight">
                     <li class="nav-item"><a href="#left-icon-tab1" class="nav-link active" data-toggle="tab"><i class="icon-menu7 mr-2"></i> Thông tin cơ bản</a></li>
@@ -22,11 +27,13 @@
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane fade show active" id="left-icon-tab1">
+              <div class="tab-pane fade show active" id="left-icon-tab1">
+
                         <div class="row">
                             <div class="col-md-8">
                                 <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
                                 <fieldset>
+                                    
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Tiêu đề <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
@@ -53,7 +60,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Mô tả </label>
                                         <div class="col-md-10">
-                                            <textarea class="form-control" name="summary">{!!$record->summary!!}</textarea>
+                                            <textarea class="form-control ckeditor" id="content2" name="summary">{!!$record->summary!!}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -152,9 +159,9 @@
 
                                <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-2 col-form-label text-right">Lợi ích của khoá học </label>
+                                    <label class="col-md-5 col-form-label ">Lợi ích của khoá học (Mỗi lợi ích tách nhau bằng kí tự | ) </label>
                                     <div class="col-md-12">
-                                        <textarea class="form-control ckeditor" id="content2" name="course_profit">{!!$record->course_profit!!}</textarea>
+                                        <textarea class="form-control" rows="6" id="" name="course_profit">{!!$record->course_profit!!}</textarea>
                                     </div>
                                 </div>
                             </div>

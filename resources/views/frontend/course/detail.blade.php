@@ -3,29 +3,11 @@
  <div class="banner">
         <img src="{{asset('assets_pasal/img/banner-pp.png')}}" class="img-fluid" alt="banner"/>
       </div>
-      <section class="about py-4">
-        <div class="container">
-          <div class="lotrinh-about box-shadow">       
-            <div class="row">
-             {!!$record->course_for!!}
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="lotrinh-loiich py-40">
-        <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-              <h4>LỢI ÍCH CỦA KHÓA HỌC</br><b>{{$record->title}}</b></h4>
-              <span class="description">Khoá học Pre-IELTS độc quyền từ Simon Corconan sẽ giúp bạn <b class="text-uppercase">chinh phục mục tiêu IELTS!</b></span>
-              <img class="thumbnail" src="{{asset('assets_pasal/img/loi-ich-khoahoc.png?v=1.1')}}" alt="{{$record->title}}">
-            </div>
-            <div class="col-md-6 list-item">
+                  {!!$record->course_for!!}
+          
+      
                 {!!$record->course_profit!!}
-                <img alt="pattern" id="lotrinh-loiich-pattern-1" src="{{asset('assets_pasal/img/pattern-13.png')}}" /> <img alt="pattern" id="lotrinh-loiich-pattern-2" src="{{asset('assets_pasal/img/pattern-13.png')}}" />
-
-            </div>
-        </div>
+             
              
         </div>
         <img alt="pattern" id="khoahoc-loiich-pattern-1" src="{{asset('assets_pasal/img/loi-ich-khoahoc-bg.png')}}" />
@@ -106,8 +88,9 @@
                   </div>
                   @endif
 
-                @if(count($data) >=3 || count($data)>=4)
+                
                 <div class="w-100 d-flex mt-40">
+                  @if(count($data) >=3 || count($data)>=4)
                      @if(count($data) >= 3)
                     <div class="item" style="background: url(/assets_pasal/icon/3.png) no-repeat">
                         {!!$data[2]!!}
@@ -119,8 +102,9 @@
                         {!!$data[3]!!}
                     </div>
                     @endif
+                        @endif
                 </div>
-                @endif
+            
                 @endif
             </div>
             <div class="col-md-3">

@@ -182,39 +182,6 @@
         </div>
       </section>
 
-      <div class="container">
-             
-        @foreach($schedules as $key => $schedule_off)
-        <div class="table-lich table-responsive-md">
-          <div class="title btn-gradient text-white rounded-0"><h4 class="text-left">{{$key}} (tel: {{$schedule_off[0]->phone_1}})</h4></div>
-          <table class="lich w-100">
-            <thead>
-              <tr>
-                <th scope="col">Lớp học</th>
-                <th scope="col">Khóa học</th>
-                <th scope="col">Thời gian học</th>
-                <th scope="col">Khai giảng</th>
-                <th scope="col">Đăng ký</th>
-              </tr>
-            </thead>
-            <tbody>
-            
-              @foreach($schedule_off as $off)
-              <tr>
-
-                <th scope="row">{{$off->schedule_name}}</th>
-                <td>{{$off->course_name}} ({{$off->level}})</td>
-                <td><p class="day"><b>{{$off->schedule}}</b></p><p>{{$off->schedule_detail}}</p></td>
-                <td>{{date('d-m-Y', strtotime($off->opening))}}</td>
-                <td><input  name="radio" value="Đăng ký"  class="radio btn btn-danger" type="button" data-course_id="{{$off->course_id}}" data-schedule_id="{{$off->schedule_id}}"  data-address_id="{{$off->contact_address_id}}"/></td>
-              </tr>
-              @endforeach
-              
-            </tbody>
-          </table>
-        </div>
-
-        @endforeach
-        </div>
+   <!--  -->
 <!--/main-->
 @stop

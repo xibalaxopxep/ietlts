@@ -23,7 +23,7 @@
            <div class="col-md-6">
               <h4>LỢI ÍCH CỦA LỘ TRÌNH<br><b>{!!$record->title!!} ({!!$record->level!!})</b></h4>
               <span class="description">{!!$record->summary!!}</span>
-              <img class="thumbnail" src="/assets_pasal/img/loi-ich-lotrinh.png" alt="Lộ trình PRO IELTS">
+              <img class="thumbnail" src="{{asset($record->image)}}" alt="Lộ trình PRO IELTS">
             </div>
               <div class="col-md-6 list-item">
               <div class="row">
@@ -216,7 +216,7 @@
         </div>
       </section>
 
-             <!-- <div class="container">
+             <div class="container">
              
             @foreach($schedules as $key => $schedule_off)
             <div class="table-lich table-responsive-md">
@@ -249,7 +249,7 @@
             </div>
    
             @endforeach
-            </div> -->
+            </div>
 
                     <script type="text/javascript">
            

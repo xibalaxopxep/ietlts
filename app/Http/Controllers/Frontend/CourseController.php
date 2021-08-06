@@ -14,6 +14,6 @@ class CourseController extends Controller {
          $studies= DB::table('study')->whereIn('id',explode(',',$record->study_id))->get();
           // $schedules = DB::table('schedule')->join('contact_address','contact_address.id','=','schedule.contact_address_id')->join('course','course.id','=','schedule.course_id')->select('*','schedule.title as schedule_name','contact_address.name as contact_address_name','course.title as course_name','course.id as course_id','schedule.id as schedule_id','contact_address.id as contact_address_id')->where('course.alias',$alias)->where('schedule.type',2)->get()->groupBy('contact_address_name');
 
-         return view('frontend/course/detail',compact('record','teachers','studies','schedules'));
+         return view('frontend/course/detail',compact('record','teachers','studies'));
 	}
 }

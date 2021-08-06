@@ -10,7 +10,7 @@
         <div class="container">
           <div class="lotrinh-about box-shadow">       
             <div class="row">
-               <!-- <h3 class="text-center" class="mt-30">{{$record->title}} ({{$record->level}}) <b>DÀNH CHO AI?</b></h3> -->  
+               <h3 class="text-center" class="mt-30">{{$record->title}} ({{$record->level}}) <b>DÀNH CHO AI?</b></h3>  
               {!!$record->course_for!!}
             </div>
           </div>

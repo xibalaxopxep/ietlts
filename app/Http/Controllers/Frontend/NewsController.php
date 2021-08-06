@@ -25,6 +25,7 @@ class NewsController extends Controller {
     }
 
     public function detail($alias) {
+     
         $record = DB::table('news')->where('alias',$alias)->first();
         DB::table('news')->where('alias',$alias)->update(['view_count'=>$record->view_count + 1]);
         $category = DB::table('news_category')->where('news_id',$record->id)->pluck('category_id')->first();
@@ -36,11 +37,15 @@ class NewsController extends Controller {
     }
 
 
-    public function news_category(Request $request, $alias = '') {  
+    public function news_category(Request $request, $alias) {  
+
         $records = DB::table('news')->join('news_category','news.id','=','news_category.news_id')->join('category','category.id','=','news_category.category_id')->where('category.alias',$alias)->orderBy('news.ordering','desc')->paginate(7);
 
+          if(count($records) == 0){
+              return redirect()->back()->with('error','Danh mục hiện chưa có bài viết');
+          }
         $hot_news = DB::table('news')->orderBy('ordering','desc')->limit(7)->where('is_hot',1)->get();
-        return view('frontend/news/news_category', compact('records', 'hot_news'));
+        return view('frontend/news/news_category', compact('records', 'hot_news','alias'));
     }
 
 }

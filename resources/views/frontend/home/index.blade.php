@@ -19,10 +19,12 @@
           <div class="row mt-5">
             <div class="col-md-5" style="position: relative;">
             
-              <div id="pattern-about-4" class="open-video" data-video="{{$block[0]->video_url}}">
+              <div id="pattern-about-4">
                 <img src="assets_pasal/img/pattern-about.png" alt="pattern"  />
               </div>
+              <div class="open-video-2" data-video="{{$block[0]->video_url}}">
               <img src="assets_pasal/img/about-1.png" alt="pasal simon" class="img-fluid" />
+              </div>
             </div>
             <div class="col-md-7 info">
               <h3>HỆ THỐNG </br><b>LUYỆN THI <strong>IELTS ĐỘC QUYỀN</strong> TỪ SIMON CORCORAN</b></h3>
@@ -42,7 +44,7 @@
             <div class=col-md-3>
               <div class="item">
                 <div class="icon">
-                  <img src="assets_pasal/img/why-1.png" alt="pasal" />
+                  <img src="{!!$tem->image!!}" alt="pasal" />
                 </div>
                 <div class="info mt-2">
                   @if($tem->type)

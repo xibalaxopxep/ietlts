@@ -13,6 +13,10 @@ $(document).ready(function() {
             $('#video-player').attr('src','');
         }
   });
+  $('.open-video-2').click(function (){
+    var video = $(this).data("video");
+    $(this).append('<iframe width="560" height="315" src="https://www.youtube.com/embed/'+video+'" autoplay="1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+  });
   $('.teacher-slide').owlCarousel({
     loop:true,
     margin:60,

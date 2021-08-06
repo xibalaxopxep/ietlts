@@ -3,9 +3,6 @@
  <div class="banner">
         <img src="{{asset('assets_pasal/img/banner-pp.png')}}" class="img-fluid" alt="banner"/>
       </div>
- 
-   
-
         <section class="about py-4">
         <div class="container">
           <div class="lotrinh-about box-shadow">       
@@ -18,44 +15,29 @@
       </section>
 
       <section class="lotrinh-loiich py-40">
+      <img id="khoahoc-loiich-pattern-1" alt="pattern" src="/assets_pasal/img/loi-ich-khoahoc-bg.png" />
         <div class="container">
           <div class="row">
             <div class="col-md-6">
               <h4>LỢI ÍCH CỦA KHOÁ HỌC<br><b>{{$record->title}} ({{$record->level}})</b></h4>
              <span class="description">{!!$record->summary!!}</span>
-              <img class="thumbnail" src="{{asset($record->image)}}" alt="Lộ trình PROIELTS">
+              <img class="thumbnail" src="/assets_pasal/img/loi-ich-khoahoc.png" alt="Lộ trình PROIELTS">
             </div>
             <div class="col-md-6 list-item">
               <div class="row">
               @php
                     $content = explode('|', $record->course_profit);
                 @endphp
+                @foreach ($content as $item)
                 <div class="col-sm-6">
-                  <div class="item item-1">
-                    <img class="thumbnail-item" src="{{asset('assets_pasal/icon/lotrinh1.png')}}" />
-                    <p>{!!$content[0]!!}</p>
+                  <div class="item item-{!!$loop->index+1!!}">
+                    <img class="thumbnail-item" src="/assets_pasal/icon/lotrinh{!!$loop->index+1!!}.png" />
+                    <p>{!!$item!!}</p>
                   </div>
                 </div>
-                <div class="col-sm-6">
-                  <div class="item item-2">
-                    <img class="thumbnail-item" src="{{asset('assets_pasal/icon/lotrinh2.png')}}"  />
-                    <p>{!!$content[1]!!}</p>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="item item-3">
-                    <img class="thumbnail-item" src="{{asset('assets_pasal/icon/lotrinh3.png')}}"  />
-                    <p>{!!$content[2]!!} </p>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="item item-4">
-                    <img class="thumbnail-item" src="{{asset('assets_pasal/icon/lotrinh4.png')}}" />
-                    <p>{!!$content[3]!!}</p>
-                  </div>
-                </div>
+                @endforeach
                 <img id="lotrinh-loiich-pattern-1" src="{{asset('assets_pasal/img/pattern-13.png')}}" alt="pattern" />
-                <img id="lotrinh-loiich-pattern-2" src="{{asset('assets_pasal /img/pattern-13.png')}}" alt="pattern" />
+                <img id="lotrinh-loiich-pattern-2" src="{{asset('assets_pasal/img/pattern-13.png')}}" alt="pattern" />
               </div>
             </div>
           </div>
@@ -122,7 +104,7 @@
                   @endphp
                  @if($data != null)
                  @if(count($data) >=1 || count($data) >=2)
-                <div class="w-100 d-flex">
+                <div class="w-100 d-flex" style="min-height: 170px;">
                   @if(count($data) >=1)
                     <div class="item" style="background: url(/assets_pasal/icon/1.png) no-repeat">
                        {!!$data[0]!!}
@@ -138,7 +120,7 @@
                   @endif
 
                 
-                <div class="w-100 d-flex mt-40">
+                <div class="w-100 d-flex mt-40" style="min-height: 170px;">
                   @if(count($data) >=3 || count($data)>=4)
                      @if(count($data) >= 3)
                     <div class="item" style="background: url(/assets_pasal/icon/3.png) no-repeat">

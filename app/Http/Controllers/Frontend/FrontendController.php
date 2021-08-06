@@ -120,6 +120,7 @@ class FrontendController extends Controller {
                 $videos = DB::table('video')->where('status',1)->orderBy('ordering','desc')->limit(6)->get();
                 $news = DB::table('news')->where('status',1)->orderBy('ordering','desc')->where('is_ielts',1)->limit(6)->get();
                 $studies = DB::table('study')->where('status',1)->orderBy('ordering','desc')->get();
+               
                 return view('frontend/method/detail',compact('record','videos','news','studies'));   
        }
 

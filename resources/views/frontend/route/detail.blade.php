@@ -216,7 +216,7 @@
         </div>
       </section>
 
-             <div class="container">
+             <!-- <div class="container">
              
             @foreach($schedules as $key => $schedule_off)
             <div class="table-lich table-responsive-md">
@@ -249,7 +249,7 @@
             </div>
    
             @endforeach
-            </div>
+            </div> -->
 
                     <script type="text/javascript">
            

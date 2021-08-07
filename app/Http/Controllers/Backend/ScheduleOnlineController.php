@@ -8,29 +8,30 @@ use App\Schedule;
 use DB;
 use Carbon\Carbon;
 
-class ScheduleController extends Controller {
+class ScheduleOnlineController extends Controller {
 
 
 
     public function index(Request $request) {
-        $records = DB::table('schedule')->where('type',2)->orderBy('ordering','desc')->get();
-        $courses = DB::table('course')->where('is_online',null)->get();
+        $records = DB::table('schedule')->where('type',1)->orderBy('ordering','desc')->get();
+        $courses = DB::table('course')->where('is_online',1)->get();
         $address = DB::table('contact_address')->orderBy('created_at','desc')->get();
-        return view('backend/schedule/index', compact('records','courses', 'address'));
+        return view('backend/schedule_online/index', compact('records','courses', 'address'));
     }
 
 
     public function create() {
         $count_ordering =DB::table('schedule')->count();
-        $courses = DB::table('course')->where('is_online',null)->get();
+        $courses = DB::table('course')->where('is_online',1)->get();
         $address = DB::table('contact_address')->get();
-        return view('backend/schedule/create', compact('count_ordering','courses', 'address'));
+        return view('backend/schedule_online/create', compact('count_ordering','courses', 'address'));
     }
 
     public function store(Request $request) {
         $schedule = new Schedule();
         $input = $request->all();
-        $input['type'] = 2;
+        $input['contact_address_id'] = 0;
+        $input['type'] = 1;
         $validator = \Validator::make($input, $schedule->validateCreate());
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -39,9 +40,9 @@ class ScheduleController extends Controller {
         $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh'); 
         $res = $schedule->create($input);   
         if ($res) {
-            return redirect()->route('admin.schedule.index')->with('success', 'Tạo mới thành công');
+            return redirect()->route('admin.schedule_online.index')->with('success', 'Tạo mới thành công');
         } else {
-            return redirect()->route('admin.schedule.index')->with('error', 'Tạo mới thất bại');
+            return redirect()->route('admin.schedule_online.index')->with('error', 'Tạo mới thất bại');
         }
     }
 
@@ -54,9 +55,9 @@ class ScheduleController extends Controller {
     public function edit($id) {
         $record = Schedule::find($id);
         if($record){
-         $courses = DB::table('course')->where('is_online',null)->get();
+        $courses = DB::table('course')->where('is_online',1)->get();
         $address = DB::table('contact_address')->get();
-        return view('backend/schedule/edit', compact('record','courses','address'));
+        return view('backend/schedule_online/edit', compact('record','courses','address'));
         }else{
             abort(404);
         }
@@ -72,7 +73,8 @@ class ScheduleController extends Controller {
     public function update(Request $request, $id) {
         $schedule = new Schedule();
         $input = $request->all();
-        $input['type'] = 2;
+        $input['contact_address_id'] = 0;
+        $input['type'] = 1;
         $validator = \Validator::make($input, $schedule->validateUpdate($id));
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -81,9 +83,9 @@ class ScheduleController extends Controller {
         $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh'); 
         $res = $schedule->find($id)->update($input);   
         if ($res) {
-            return redirect()->route('admin.schedule.index')->with('success', 'Cập nhật thành công');
+            return redirect()->route('admin.schedule_online.index')->with('success', 'Cập nhật thành công');
         } else {
-            return redirect()->route('admin.schedule.index')->with('error', 'Cập nhật thất bại');
+            return redirect()->route('admin.schedule_online.index')->with('error', 'Cập nhật thất bại');
         }
     }
 
@@ -93,7 +95,7 @@ class ScheduleController extends Controller {
         $data = $request->all();
         
         if($request->action == "save"){      
-            $records = DB::table('schedule')->where('type',2)->orderBy('ordering','desc')->get();
+            $records = DB::table('schedule')->where('type',1)->orderBy('ordering','desc')->get();
            foreach ($records as $key => $record) {
                if($record->course_id != $data['course_id'][$key] || $record->contact_address_id != $data['contact_address_id'][$key]){
                     DB::table('schedule')->where('id',$record->id)->update(['course_id'=>$data['course_id'][$key], 'contact_address_id'=>$data['contact_address_id'][$key]]);

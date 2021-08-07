@@ -5,7 +5,7 @@
     <!-- Table header styling -->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Block</h5>
+            <h5 class="card-title">Giới thiệu</h5>
             <div class="header-elements">
                 <div class="list-icons">
                     <a class="list-icons-item" data-action="collapse"></a>
@@ -29,36 +29,21 @@
                 <tr>
                     <th>#</th>
                     <th>Tiêu đề</th>
-                    <th>Ngày tạo</th>
-                    <th>Trạng thái</th>
                     <th>Tác vụ</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($records as $key=>$record)
+
                 <tr>
-                    <td>{{++$key}}</td>
+                    <td>1</td>
                     <td>{{$record->title}}</td>
-                    <td>{{$record->created_at()}}</td>
-                    <td>
-                        @if($record->status == 1)
-                        <span class="badge bg-success-400">Hiển thị</span>
-                        @else
-                        <span class="badge bg-grey-400">Ẩn</span>
-                        @endif
-                    </td>
-                    <td class="text-center">
-                        <a href="{{route('admin.block.edit', $record->id)}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
-                        <form action="{!! route('admin.block.destroy', ['id' => $record->id]) !!}" method="POST" style="display: inline-block">
-                            {!! method_field('DELETE') !!}
-                            {!! csrf_field() !!}
-                            <a title="{!! trans('base.delete') !!}" class="delete text-danger" data-action="delete">
-                                <i class="icon-close2"></i>
-                            </a>
-                        </form>
+                 
+                    <td class="">
+                        <a href="{{route('admin.about.edit', $record->id)}}" title="{!! trans('base.edit') !!}" class="success"><i class="icon-pencil"></i></a>
+                      
                     </td>
                 </tr>
-                @endforeach
+
             </tbody>
         </table>
     </div>

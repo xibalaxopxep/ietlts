@@ -83,7 +83,7 @@
                   </a>
                   <div class="info">
                     <a class="title" href="{{route('course.detail',$course->alias)}}"><b>{{$course->title}}</b></a>
-                    <span>{{$course->summary}}</span>
+                    <span>{!!$course->summary!!}</span>
                     <div class="bottom">
                       <a class="view-more" href="{{route('course.detail',$course->alias)}}">Xem tiếp</a>
                       @if($course->level)
@@ -96,6 +96,46 @@
               </div>
             </div>   
             @endforeach 
+            <div class="col-md-4">
+              <div class="item-wrap">
+                <div class="item">
+                  <a class="thumbnail" href="{{route('route.detail')}}">
+                    <img class="img-fluid" src="{{asset($route->image)}}" alt="khóa học" />
+                  </a>
+                  <div class="info">
+                    <a class="title" href="{{route('route.detail')}}"><b>{{$route->title}}</b></a>
+                    <span>{!!$route->summary!!}</span>
+                    <div class="bottom">
+                      <a class="view-more" href="{{route('route.detail')}}">Xem tiếp</a>
+                      @if($route->level)
+                      <p class="label">{{$route->level}}</p>
+                      @else
+                      @endif
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+            <div class="col-md-4">
+              <div class="item-wrap">
+                <div class="item">
+                  <a class="thumbnail" href="">
+                    <img class="img-fluid" src="{{asset($course->image)}}" alt="khóa học" />
+                  </a>
+                  <div class="info">
+                    <a class="title" href=""><b>{{$route_online->title}}</b></a>
+                    <span>{!!$route_online->summary!!}</span>
+                    <div class="bottom">
+                      <a class="view-more" href="">Xem tiếp</a>
+                      @if($route_online->level)
+                      <p class="label">{{$route_online->level}}</p>
+                      @else
+                      @endif
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   
           </div>
         </div>
       </section>
@@ -209,7 +249,7 @@
                     <p>{{date('M', strtotime($news_ielt->created_at))}}</p>
                     <b>{{date('d', strtotime($news_ielt->created_at))}}</b>
                   </div>
-                  <h4><a style="color: #342b7a;" href="{{route('news.detail',$news_ielt->alias)}}">{{$news_ielt->title}}</a></h4>
+                  <h4><a style="color: #342b7a;" href="{{route('news.detail',$news_ielt->alias)}}">{!!$news_ielt->title!!}</a></h4>
                 </div>
               </div>
             </div>
@@ -232,7 +272,7 @@
                     <p>{{date('M', strtotime($news_hot->created_at))}}</p>
                     <b>{{date('d', strtotime($news_hot->created_at))}}</b>
                   </div>
-                  <h4><a style="color: #342b7a;" href="{{route('news.detail',$news_hot->alias)}}">{{$news_hot->title}}</a></h4>
+                  <h4><a style="color: #342b7a;" href="{{route('news.detail',$news_hot->alias)}}">{!!$news_ielt->title!!}</a></h4>
                 </div>
               </div>
             </div>

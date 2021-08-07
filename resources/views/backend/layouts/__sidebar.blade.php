@@ -81,7 +81,8 @@
                         <a href="#" class="nav-link  {{ ((Route::currentRouteName() == 'admin.menu.index') || (Route::currentRouteName() == 'admin.block.index') || (Route::currentRouteName() == 'admin.slide.index')  || (Route::currentRouteName() == 'admin.template_setting.index') ||  (Route::currentRouteName() == 'admin.banner.index')) ? 'active' : '' }}"><i class="icon-check"></i> <span>Giao diện</span></a>
                         <ul class="nav nav-group-sub" data-submenu-title="Giao diện">
                             <li class="nav-item"><a href="{{route('admin.menu.index')}}" class="nav-link">Menu</a></li>
-                            <li class="nav-item"><a href="{{route('admin.slide.index')}}" class="nav-link">Slide</a></li>
+                            <li class="nav-item"><a href="{{route('admin.about.index')}}" class="nav-link">Giới thiệu</a></li>
+                           <!--  <li class="nav-item"><a href="{{route('admin.slide.index')}}" class="nav-link">Slide</a></li> -->
                             <li class="nav-item"><a href="{{route('admin.template_setting.index')}}" class="nav-link">Tại sao nên chọn pasal</a></li>
                             <li class="nav-item"><a href="{{route('admin.banner.index')}}" class="nav-link">Banner</a></li>
                             <li class="nav-item"><a href="{{route('admin.block.index')}}" class="nav-link">Khối</a></li>
@@ -152,9 +153,8 @@
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link  "><i class="icon-check"></i> <span>Lịch học</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="bài test">
-
-                         <li class="nav-item"><a href="{{route('admin.schedule.index')}}" class="nav-link">Lịch khai giảng</a></li>
-
+                        <li class="nav-item"><a href="{{route('admin.schedule.index')}}" class="nav-link">Lịch khai giảng offline</a></li>
+                        <li class="nav-item"><a href="{{route('admin.schedule_online.index')}}" class="nav-link">Lịch khai giảng online</a></li>
                     </ul>
                 </li>
   

@@ -48,6 +48,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::delete('/course/delete/{id}', ['as' => 'admin.course.destroy', 'uses' => 'Backend\CourseController@destroy']);
     Route::post('/course/update_multiple', ['as' => 'admin.course.update_multiple', 'uses' => 'Backend\CourseController@update_multiple']);
 
+ 
+
      /* Quản lý khoá học */
     Route::get('route_course/index', ['as' => 'admin.route_course.index', 'uses' => 'Backend\RouteCourseController@index']);
     Route::get('/route_course/create', ['as' => 'admin.route_course.create', 'uses' => 'Backend\RouteCourseController@create']);
@@ -141,6 +143,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::post('/menu/store', ['as' => 'admin.menu.store', 'uses' => 'Backend\MenuController@store']);
     Route::post('/menu/update/{id}', ['as' => 'admin.menu.update', 'uses' => 'Backend\MenuController@update']);
     Route::delete('/menu/delete/{id}', ['as' => 'admin.menu.destroy', 'uses' => 'Backend\MenuController@destroy']);
+ 
+    //about
+    Route::get('/about', ['as' => 'admin.about.index', 'uses' => 'Backend\AboutController@index']);
+    Route::get('/about/edit/{id}', ['as' => 'admin.about.edit', 'uses' => 'Backend\AboutController@edit']);
+    Route::post('/about/update/{id}', ['as' => 'admin.about.update', 'uses' => 'Backend\AboutController@update']);
+   
     /* Block*/
     Route::get('/block', ['as' => 'admin.block.index', 'uses' => 'Backend\BlockController@index']);
     Route::get('/block/create', ['as' => 'admin.block.create', 'uses' => 'Backend\BlockController@create']);
@@ -237,6 +245,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::post('/schedule/update/{id}', ['as' => 'admin.schedule.update', 'uses' => 'Backend\ScheduleController@update']);
     Route::delete('/schedule/{id}', ['as' => 'admin.schedule.destroy', 'uses' => 'Backend\ScheduleController@destroy']);
     Route::post('/schedule/update_multiple', ['as' => 'admin.schedule.update_multiple', 'uses' => 'Backend\ScheduleController@update_multiple']);
+
+        /*Lịch */
+    Route::get('/schedule-online', ['as' => 'admin.schedule_online.index', 'uses' => 'Backend\ScheduleOnlineController@index']);
+    Route::get('/schedule-online/create', ['as' => 'admin.schedule_online.create', 'uses' => 'Backend\ScheduleOnlineController@create']);
+    Route::get('/schedule-online/edit/{id}', ['as' => 'admin.schedule_online.edit', 'uses' => 'Backend\ScheduleOnlineController@edit']);
+    Route::post('/schedule-online/store', ['as' => 'admin.schedule_online.store', 'uses' => 'Backend\ScheduleOnlineController@store']);
+    Route::post('/schedule-online/update/{id}', ['as' => 'admin.schedule_online.update', 'uses' => 'Backend\ScheduleOnlineController@update']);
+    Route::delete('/schedule-online/{id}', ['as' => 'admin.schedule_online.destroy', 'uses' => 'Backend\ScheduleOnlineController@destroy']);
+    Route::post('/schedule-online/update_multiple', ['as' => 'admin.schedule_online.update_multiple', 'uses' => 'Backend\ScheduleOnlineController@update_multiple']);
 
      /* Quản lý danh mục */
     Route::get('/best', ['as' => 'admin.best.index', 'uses' => 'Backend\BestController@index']);

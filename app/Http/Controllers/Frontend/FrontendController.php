@@ -17,14 +17,16 @@ class FrontendController extends Controller {
     }
 
     public function index() {
-        $courses  = DB::table('course')->orderBy('ordering','desc')->where('status', 1)->limit(6)->get();
+        $courses  = DB::table('course')->orderBy('ordering','desc')->where('status', 1)->limit(3)->get();
+        $route = DB::table('route')->where('is_pro',1)->first();
+        $route_online = DB::table('route')->where('is_online',1)->first();
         $teachers = DB::table('teacher')->orderBy('ordering','desc')->where('status', 1)->limit(3)->get();
         $news_hots = DB::table('news')->orderBy('ordering','desc')->where('status', 1)->where('is_hot',1)->get();
         $news_ielts = DB::table('news_category')->join('category','category.id','=','news_category.category_id')->join('news','news.id','=','news_category.news_id')->where('category.is_ielts',1)->orderBy('news.ordering','desc')->where('news.status', 1)->get();
         
         $best_member = DB::Table('best')->where('is_best', 1)->where('status',1)->limit(3)->orderBy('ordering','desc')->get();
 
-        return view('frontend/home/index',compact('courses','teachers','news_ielts','news_hots','best_member'));
+        return view('frontend/home/index',compact('courses','teachers','news_ielts','news_hots','best_member','route','route_online'));
         
     }
 

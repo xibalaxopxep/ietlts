@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
 <div class="content">
-    <form action="{!!route('admin.schedule.store')!!}" method="POST" enctype="multipart/form-data">
+    <form action="{!!route('admin.schedule_online.store')!!}" method="POST" enctype="multipart/form-data">
         <div class="card">
             <div class="card-header header-elements-inline">
                 <h6 class="card-title">Tạo mới</h6>
@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
 
-                                     <div class="form-group row">
+                                    <!--  <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Cở sở/ Trung tâm<span class=""></span></label>
                                         <div class="col-md-10">
                                            <select class="select-search form-control" id="select_type" name="contact_address_id" data-placeholder="Cở sở/ Trung tâm"  required>
@@ -49,7 +49,7 @@
                                             </select>
                                             {!! $errors->first('contact_address_id', '<span class="text-danger">:message</span>') !!}
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                       <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Khoá học<span class=""></span></label>
@@ -63,7 +63,7 @@
                                         </div>
                                     </div>
 
-                                  <!--   <div class="form-group row">
+                                    <!-- <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Thể loại<span class=""></span></label>
                                         <div class="col-md-10">
                                            <select class="select-search form-control"  name="type" data-placeholder="Thể loại"  required>                 
@@ -129,7 +129,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="text-center">
-                                            <a type="button" href="{{route('admin.schedule.index')}}" class="btn btn-secondary legitRipple">Hủy</a>
+                                            <a type="button" href="{{route('admin.schedule_online.index')}}" class="btn btn-secondary legitRipple">Hủy</a>
                                             <button type="submit" class="btn btn-primary legitRipple">Lưu lại <i class="icon-arrow-right14 position-right"></i></button>
                                         </div>
                                     </div>

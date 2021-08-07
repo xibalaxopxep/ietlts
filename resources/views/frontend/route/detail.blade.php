@@ -165,7 +165,7 @@
                 <p style="text-decoration: line-through;"> {{$record->price}}</p>
                  {{$record->sale_price}}
                      @php
-                     $time = explode(' ',$record->created_at);
+                     $time = explode(' ',$record->sale_time);
                      $time1= $time[0];
                      $time2= $time[1];
                      @endphp
@@ -215,6 +215,7 @@
           </div>
         </div>
       </section>
+
 
              <div class="container">
              

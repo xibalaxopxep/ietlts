@@ -114,7 +114,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label text-right">Ngày khai giảng<span class=""></span></label>
                                         <div class="col-md-10">
-                                            <input type="date" class="form-control" name="opening" value="{!!date('d-m-Y', strtotime($record->opening))!!}" >
+                                            <input type="date" class="form-control" name="opening" value="{!!$record->opening!!}" >
                                             {!! $errors->first('opening', '<span class="text-danger">:message</span>') !!}
                                         </div>
                                     </div>

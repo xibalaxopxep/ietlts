@@ -12,7 +12,7 @@ class Frontend {
         //$menu = \DB::table('menu')->get();
         $menu = \DB::table('menu')->where('status',1)->orderBy('ordering','asc')->where('parent_id', 0)->get();
         foreach($menu as $key=>$val){
-            $menu[$key]->children = \DB::table('menu')->where('parent_id',$val->id)->get();
+            $menu[$key]->children = \DB::table('menu')->where('status',1)->where('parent_id',$val->id)->orderBy('ordering','asc')->get();
         }
         $template_setting= \DB::table('template_setting')->get();
         $news_footer = \DB::table('news')->where('status',1)->orderBy('ordering','desc')->limit(5)->get();

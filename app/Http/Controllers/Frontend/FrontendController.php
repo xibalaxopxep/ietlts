@@ -113,9 +113,7 @@ class FrontendController extends Controller {
             }
        }
 
-       public function about(Request $request){
-                 return view('frontend/home/about');  
-       }
+      
 
         public function method(Request $request){
                 $record = DB::table('method')->first();
@@ -135,6 +133,11 @@ class FrontendController extends Controller {
                 $studies = DB::table('study')->where('status',1)->whereIn('id',explode(',', $record->study_id))->orderBy('ordering','desc')->get();
                 $contact_add = DB::table('contact_address')->where('address','!=','Online')->get();
                 return view('frontend/route/detail',compact('record','teachers','courses','studies','schedules','contact_add','coursess'));   
+       }
+
+       public function about(Request $request){
+            $about = DB::table('about')->first();
+           return view('frontend/home/about',compact('about')); 
        }
  
  

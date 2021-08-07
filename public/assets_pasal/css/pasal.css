@@ -908,10 +908,14 @@ table.lich td p
 }
 /* END pp page */
 /* START detail news */
-.news-deital .content 
+.news-detail .content 
 {
 	padding: 20px;
 	background: #fff;
+}
+.news-detail img
+{
+    max-width: 100% !important;
 }
 .related-news h3
 {
@@ -1524,7 +1528,7 @@ section.dangky-khoahoc .btn-white
     #form.form-sidebar.fixed
     {
         position: fixed;
-        top: 0px;
+        top: 75px;
     }
     .submenu
     {
@@ -1575,4 +1579,18 @@ section.dangky-khoahoc .btn-white
     top: 0px;
     object-fit: cover;
     left: 0px;
+    }
+    #header-top.fixed-top
+    {
+    background: #fff;
+    transition: 0.2s all;
+    box-shadow: 0px 1px 4px 2px #5858581f;
+    }
+    #header-top.fixed-top .header-btn 
+    {
+        display: none;
+    }
+    #header-top.fixed-top header
+    {
+        margin-bottom: 0px !important;
     }

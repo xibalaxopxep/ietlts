@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master_news')
 @section('content')
-      <div class="content news-deital bg-grey-2">
+      <div class="content news-detail bg-grey-2">
         <div class="container">
           <div class="row">
             <div class="col-md-9 mt-4">

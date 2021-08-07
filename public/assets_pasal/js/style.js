@@ -150,4 +150,14 @@ $(window).scroll(function() {
         $('.form-sidebar').removeClass('fixed');
     }
     }
+    // Get the header
+    var header = document.getElementById("header-top");
+    
+    // Get the offset position of the navbar
+    var sticky = header.offsetTop;
+    if (window.pageYOffset > sticky) {
+        header.classList.add("fixed-top");
+      } else {
+        header.classList.remove("fixed-top");
+      }
 });

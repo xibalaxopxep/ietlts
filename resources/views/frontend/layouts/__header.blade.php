@@ -1,6 +1,6 @@
 
     <body class="bg-grey homepage">
-      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+      <div id="header-top">
             <div class="container">
         <div class="row">
         <div class="text-right" style="text-align: right;">
@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      </header>
+      </div>
         @if(Session::has('success'))
         <script type="text/javascript">
           swal("Thành công!", "{{ Session::get('success') }}", "success");

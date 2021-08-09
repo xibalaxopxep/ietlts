@@ -64,6 +64,14 @@
                                             <span class="help-block">Chỉ cho phép các file ảnh có đuôi <code>jpg</code>, <code>gif</code> và <code>png</code>. File có dung lượng tối đa 20M.</span>
                                         </div>
                                     </div>
+                                        <div class="form-group row">
+                                        <label class="col-md-2 col-form-label text-right">Video iD<span class="text-danger"></span></label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control"  name="video" value="{!!old('video')!!}" >
+                                            {!! $errors->first('video', '<span class="text-danger">:message</span>') !!}
+                                        </div>
+                                    </div>
+                                   
                                 </fieldset>
                             </div>
                             <div class="col-md-4">

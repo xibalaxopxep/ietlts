@@ -17,7 +17,7 @@ class FrontendController extends Controller {
     }
 
     public function index() {
-        $courses  = DB::table('course')->orderBy('ordering','desc')->where('status', 1)->limit(3)->get();
+        $courses  = DB::table('course')->where('is_online',null)->where('is_pro',null)->orderBy('ordering','desc')->where('status', 1)->limit(3)->get();
         $route = DB::table('route')->where('is_pro',1)->first();
         $route_online = DB::table('route')->where('is_online',1)->first();
         $teachers = DB::table('teacher')->orderBy('ordering','desc')->where('status', 1)->limit(3)->get();

@@ -154,6 +154,11 @@ class FrontendController extends Controller {
             $about = DB::table('about')->first();
            return view('frontend/home/about',compact('about')); 
        }
+       
+         public function contact(Request $request){
+           
+           return view('frontend/contact/index'); 
+       }
  
  
 

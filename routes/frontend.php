@@ -29,6 +29,9 @@ Route::group(['middleware' => 'frontend'], function() {
 
     //Giảng viên
     Route::get('/giang-vien', ['as' => 'teacher.index', 'uses' => 'Frontend\TeacherController@index']);
+    
+     //Liên hệ
+    Route::get('/lien-he', ['as' => 'contact.index', 'uses' => 'Frontend\FrontendController@contact']);
 
     //Test
     Route::get('/test/{number}', ['as' => 'test.index', 'uses' => 'Frontend\TestController@index']);

@@ -13,19 +13,21 @@
               <form id="form" action="{!!route('home.sign_up_advise2')!!}"  method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="container">
-                  <div class="row">
+                  <div class="row d-flex">
                     <div class="form-group col-md-3">
                       <img class="icon" src="assets_pasal/icon/user.png" alt="icon" />
                       <input name="name" type="text" required="required" placeholder="Nhập họ tên của bạn*"/>
                     </div>
-                    <div class="form-group col-md-3 offset-md-1">
+                    <div class="form-group col-md-3">
                       <img class="icon" src="assets_pasal/icon/phone.png" alt="icon" />
                       <input name="phone" type="text" required="required" placeholder="Nhập số điện thoại của bạn*"/>
                     </div>
-                    <div class="form-group col-md-3 offset-md-1">
+                    <div class="form-group col-md-3">
                       <img class="icon" src="assets_pasal/icon/mail.png" alt="icon" />
                       <input  name="email" type="email" required="required" placeholder="Nhập email của bạn*"/>
                     </div>
+                    </div>
+                     <div class="row d-flex">
                     <div class="form-group col-md-3">
                       <img class="icon" src="assets_pasal/icon/course.png" alt="icon" />
                        <select required="" name="course_id" class="pick_course">
@@ -35,7 +37,7 @@
                         @endforeach
                       </select>
                     </div>
-                    <div class="form-group col-md-3 offset-md-1">
+                    <div class="form-group col-md-3">
                       <img class="icon" src="assets_pasal/icon/location.png" alt="icon" />
                        <select required="" name="contact_address_id" class="your_local">
                         <option value="" disabled selected>Chọn cơ sở Pasal gần bạn nhất*</option>
@@ -44,14 +46,15 @@
                         @endforeach
                       </select>
                     </div>
-                    <div class="form-group col-md-3 offset-md-1">
+                    <div class="form-group col-md-3">
                       <img class="icon" src="assets_pasal/icon/class.png" alt="icon" />
                        <select  required="" name="schedule_id" class="pick_schedule">
                         <option value="0" disabled selected>Chọn lớp học </option>
                       </select>
                     </div>
-                    <button class="button-form btn-gradient">GỬI ĐĂNG KÝ</button>
+                    
                   </div>
+                  <button class="button-form btn-gradient">GỬI ĐĂNG KÝ</button>
                 </div>
               </form>
             </div>

@@ -108,13 +108,13 @@
                  @if(count($data) >=1 || count($data) >=2)
                 <div class="w-100 d-flex" style="min-height: 170px;">
                   @if(count($data) >=1)
-                    <div class="item" style="background: url(/assets_pasal/icon/1.png) no-repeat">
+                    <div class="item col-md-5" style="background: url(/assets_pasal/icon/1.png) no-repeat">
                        {!!$data[0]!!}
                     </div>
-                    <div class="col-md-3"></div>
+                    <div class="col-md-2"></div>
                     @endif
                     @if(count($data) >=2)
-                    <div class="item" style="background: url(/assets_pasal/icon/2.png) no-repeat">
+                    <div class="item col-md-5" style="background: url(/assets_pasal/icon/2.png) no-repeat">
                          {!!$data[1]!!}
                     </div>
                     @endif
@@ -125,13 +125,13 @@
                 <div class="w-100 d-flex mt-40" style="min-height: 170px;">
                   @if(count($data) >=3 || count($data)>=4)
                      @if(count($data) >= 3)
-                    <div class="item" style="background: url(/assets_pasal/icon/3.png) no-repeat">
+                    <div class="item col-md-5" style="background: url(/assets_pasal/icon/3.png) no-repeat">
                         {!!$data[2]!!}
                     </div>
-                    <div class="col-md-3"></div>
+                    <div class="col-md-2 "></div>
                     @endif
                     @if(count($data) == 4)
-                    <div class="item" style="background: url(/assets_pasal/icon/4.png) no-repeat">
+                    <div class="item col-md-5" style="background: url(/assets_pasal/icon/4.png) no-repeat">
                         {!!$data[3]!!}
                     </div>
                     @endif
@@ -192,14 +192,17 @@
                <!--  <img src="{{asset('assets_pasal/img/simon.png')}}" alt="simon ielts"> -->
             
                 <p style="text-decoration: line-through;"> {{$record->price}}</p>
+                
                  {{$record->sale_price}}
                      @php
                      $time = explode(' ',$record->sale_time);
-                     $time1= $time[0];
-                     $time2= $time[1];
+                             $time1= $time[0];
+                             if(count($time)>1)$time2= $time[1];
                      @endphp
-              
+                
+              @if(count($time)>1) 
                <div class='countdown' data-date="{{$time1}}" data-time="{{$time2}}"></div>
+               @endif
               </div>
               <div class="form-content">
                 <div class="col-md-6 offset-md-6">

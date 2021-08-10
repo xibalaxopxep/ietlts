@@ -19,6 +19,9 @@ body
 a{
     color: var(--main-color);
 }
+img{
+    max-width: 100%;
+}
 .mt-30
 {
 	margin-top: 30px;
@@ -34,6 +37,10 @@ a{
 .mb-40
 {
 	margin-bottom: 40px;
+}
+.pt-40
+{
+    padding-top: 40px;
 }
 .py-40
 {
@@ -786,6 +793,7 @@ section.recent-news
 .search-form #form .form-group
 {
 	margin-top: 10px;
+    margin: auto;
 }
 .search-form .button-form
 {
@@ -1028,7 +1036,7 @@ table.lich td p
 	border: 2px solid;
 	position: relative;
 	z-index: 1;
-	min-height: 245px;
+	min-height: 340px;
 	margin-bottom: 40px;
 }
 .lotrinh-loiich .item p
@@ -1089,10 +1097,13 @@ table.lich td p
 	padding: 10px  ;
 	background: #fff;
 	border-radius: 0 115px;
+    height: 1350px;
+    position: relative;
 }
 .lotrinh-content .item img
 {
 	width: 100%;
+    border-radius: 0px 110px 0px 110px;
 }
 .lotrinh-content h4
 {
@@ -1136,6 +1147,12 @@ table.lich td p
 45deg
  , #e62136, #f08038);
 }
+.lotrinh-content .item .price
+{
+        position: absolute;
+    width: calc(100% - 20px);
+    bottom: 10px;
+}
 .lotrinh-content .item-1 .price 
 {
 	    padding: 20px 35px;
@@ -1151,6 +1168,7 @@ table.lich td p
 45deg
  , #fc3e10, #ff7e00);
     border-radius: 0 115px;
+
 }
 .lotrinh-content .item-3 .price 
 {
@@ -1417,6 +1435,7 @@ section.dangky-khoahoc .btn-white
     border-radius: 0px 0px 10px 10px;
     border-top: none;
     padding: 20px;
+    min-height: 450px;
     }
     .noidung-khoahoc .item .title
     {
@@ -1564,7 +1583,7 @@ section.dangky-khoahoc .btn-white
         position: relative;
     }
     .about-page h3
-    {
+    { 
         font-weight: bold;
     }
     .about-page .text-info
@@ -1594,3 +1613,4 @@ section.dangky-khoahoc .btn-white
     {
         margin-bottom: 0px !important;
     }
+ 

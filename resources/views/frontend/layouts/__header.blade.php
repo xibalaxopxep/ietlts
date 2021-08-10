@@ -27,7 +27,8 @@
 
               @endforeach
             </ul>
-          
+            <div id="navigation">
+            </div>
           </header>
 
         </div>

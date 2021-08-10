@@ -20,7 +20,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              <h4>LỢI ÍCH CỦA KHOÁ HỌC<br><b>{{$record->title}} ({{$record->level}})</b></h4>
+              <h4>LỢI ÍCH CỦA<br><b>{{$record->title}} ({{$record->level}})</b></h4>
              <span class="description">{!!$record->summary!!}</span>
               <img class="thumbnail" src="/assets_pasal/img/loi-ich-khoahoc.png" alt="Lộ trình PROIELTS">
             </div>

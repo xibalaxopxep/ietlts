@@ -21,13 +21,12 @@ class FrontendController extends Controller {
         $route = DB::table('route')->where('is_pro',1)->first();
         $route_online = DB::table('route')->where('is_online',1)->first();
         $teachers = DB::table('teacher')->orderBy('ordering','desc')->where('status', 1)->limit(10)->get();
-        $news_hots = DB::table('news')->orderBy('ordering','desc')->where('status', 1)->where('is_hot',1)->get();
-        $news_ielts = DB::table('news_category')->join('category','category.id','=','news_category.category_id')->join('news','news.id','=','news_category.news_id')->where('category.is_ielts',1)->orderBy('news.ordering','desc')->where('news.status', 1)->get();
+        $news_ielts = DB::table('news_category')->join('category','category.id','=','news_category.category_id')->join('news','news.id','=','news_category.news_id')->whereIn('category.id',[9,10,11,12,13])->where('news.is_hot',1)->where('news.status', 1)->orderBy('news.ordering','desc')->get();
+        $news_hots = DB::table('news_category')->join('category','category.id','=','news_category.category_id')->join('news','news.id','=','news_category.news_id')->whereIn('category.id',[14,16,8,7])->where('news.status', 1)->where('news.is_hot',1)->orderBy('news.ordering','desc')->get();
         
         $best_member = DB::Table('best')->where('is_best', 1)->where('status',1)->limit(10)->orderBy('ordering','desc')->get();
 
         return view('frontend/home/index',compact('courses','teachers','news_ielts','news_hots','best_member','route','route_online'));
-        
     }
 
       public function block($position) {
@@ -82,13 +81,15 @@ class FrontendController extends Controller {
     }
     
      public function sign_up_advise(Request $request){
-
             $input = $request->except('_token');
             $input['type'] = 1;
             $input['link'] = "/".$request->path();
-             $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');    
+            if($input['course_id'] == 'pro' || $input['course_id'] == 'online'){
+                $input['course'] = $input['course_id'];
+                unset($input['course_id']);
+            }
+            $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh'); 
             $res = DB::table('contact')->insert($input);
-
             if($res){
                 return redirect()->back()->with('success','Cám ơn bạn đã đăng kí thông tin. Tư vấn viên của Pasal sẽ liên hệ với bạn trong thời gian sớm nhất');
             }
@@ -98,13 +99,16 @@ class FrontendController extends Controller {
        }
 
          public function sign_up_advise2(Request $request){
-
             $input = $request->except('_token');
             $input['type'] = 2;
             $input['link'] = "/".$request->path();
+            if($input['course_id'] == 'pro' || $input['course_id'] == 'online'){
+                $input['course'] = $input['course_id'];
+                unset($input['course_id']);
+            }
             $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh');
             $res = DB::table('contact')->insert($input);
-
+           
             if($res){
                 return redirect()->back()->with('success','Cám ơn bạn đã đăng kí thông tin. Tư vấn viên của Pasal sẽ liên hệ với bạn trong thời gian sớm nhất');
             }
@@ -133,10 +137,10 @@ class FrontendController extends Controller {
                 $studies = DB::table('study')->where('status',1)->whereIn('id',explode(',', $record->study_id))->orderBy('ordering','desc')->get();
                 $contact_add = DB::table('contact_address')->where('address','!=','Online')->get();
                 return view('frontend/route/detail',compact('record','teachers','courses','studies','schedules','contact_add','coursess'));   
-       }
+        }
 
         public function online(Request $request){
-                $record = DB::table('route')->first();
+                $record = DB::table('route')->where('is_online',1)->first();
                 $courses = DB::table('course')->where('is_online',1)->orderBy('ordering','desc')->limit(3)->get(); 
                 $teachers = DB::table('teacher')->where('status',1)->whereIn('id',explode(',', $record->teacher_id))->orderBy('ordering','desc')->get();
                 // $schedules = DB::table('schedule')->join('contact_address','contact_address.id','=','schedule.contact_address_id')->join('course','course.id','=','schedule.course_id')->select('*','schedule.title as schedule_name','contact_address.name as contact_address_name','course.title as course_name','course.id as course_id','schedule.id as schedule_id','contact_address.id as contact_address_id')->where('course.online',1)->where('schedule.type',2)->get()->groupBy('contact_address_name');

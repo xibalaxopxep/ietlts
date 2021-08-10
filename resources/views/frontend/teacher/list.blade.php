@@ -9,7 +9,7 @@
           <div class="container">
           <div class="row mt-30">
             @foreach($records as $record)
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="item" style="background: url({{asset($record->avatar)}}) no-repeat;">
                 <h4>{{$record->name}}</h4>
                 <p>8.5 IELTS</p>

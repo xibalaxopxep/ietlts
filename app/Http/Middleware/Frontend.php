@@ -21,7 +21,7 @@ class Frontend {
         $course_shares = \DB::table('course')->where('status',1)->where('is_pro',null)->where('is_online',null)->orderBy('ordering','asc')->get();
         $contact_address = \DB::table('contact_address')->orderBy('ordering','asc')->where('status', 1)->get();
         $banner = \DB::table('banner')->get();
-        $contact_address_footer = \DB::table('contact_address')->where('city',1)->where('status',1)->orderBy('ordering','desc')->get();
+        $contact_address_footer = \DB::table('contact_address')->where('city',1)->where('status',1)->orderBy('ordering','asc')->get();
         \View::share(['contact_address_footer' => $contact_address_footer]);
         \View::share(['config' => $config]);
         \View::share(['banner' => $banner]);

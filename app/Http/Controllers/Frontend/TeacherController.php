@@ -11,7 +11,7 @@ class TeacherController extends Controller {
 
 
     public function index(Request $request, $alias = '') {  
-        $records = DB::table('teacher')->orderBy('ordering','desc')->limit(6)->get();
+        $records = DB::table('teacher')->orderBy('ordering','desc')->get();
         return view('frontend/teacher/list', compact('records'));
     }
 

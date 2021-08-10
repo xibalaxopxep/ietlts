@@ -69,7 +69,10 @@
             <div class="col-md-4">
               <div class="item item-{{++$key}} box-shadow">
                 <img class="thumbnail" src="{{asset($course->image)}}" alt="lộ trình" />
-                <h4><b>PRO IELTS</b> {{$course->title}}</h4>
+                @php
+                    $str = str_replace("PRO IELTS", "<b>PRO IELTS</b>",$course->title);
+                @endphp
+                <h4> {!!$str!!}</h4>
                 <div class="label">
                   <a>Lợi ích của khóa học</a>
                 </div>
@@ -132,7 +135,7 @@
 
 
          <section class="testimonial">
-        <h3 class="mb-30"><b>HỌC VIÊN</b> TIÊU BIỂU</h3>
+        <h3 class="mb-30"><b>CÂU CHUYỆN THÀNH CÔNG</b> CỦA HỌC VIÊN</h3>
         <div class="container">
           <div class="row">
           <div class="owl-carousel owl-theme testimonial-slide">
@@ -175,7 +178,7 @@
                 <div class="col-md-6 offset-md-6">
                   <form action="{!!route('home.sign_up_advise2')!!}"  method="post" enctype="multipart/form-data">
                     @csrf
-                    <h4><b>ĐĂNG KÝ TƯ VẤN</b> LỘ TRÌNH HỌC IELTS</h4>
+                    <h4><b>ĐĂNG KÝ TƯ VẤN</b> LỘ TRÌNH PRO IELTS</h4>
                     <p>Pasal cam kết giúp bạn chinh phục mục tiêu IELTS với lộ trình học tinh gọn - hiệu quả - tối ưu chi phí !</p>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/user.png')}}" alt="icon" />
@@ -226,11 +229,11 @@
               <table class="lich w-100">
                 <thead>
                   <tr>
-                    <th scope="col">Lớp học</th>
-                    <th scope="col">Khóa học</th>
-                    <th scope="col">Thời gian học</th>
-                    <th scope="col">Khai giảng</th>
-                    <th scope="col">Đăng ký</th>
+                    <th class="text-center" scope="col">Lớp học</th>
+                    <th  scope="col">Khóa học</th>
+                    <th class="text-center"  scope="col">Thời gian học</th>
+                    <th class="text-center"  scope="col">Khai giảng</th>
+                    <th class="text-center"  scope="col">Đăng ký</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -238,11 +241,11 @@
                   @foreach($schedule_off as $off)
                   <tr>
 
-                    <th scope="row">{{$off->schedule_name}}</th>
+                    <th class="text-center"  scope="row">{{$off->schedule_name}}</th>
                     <td>{{$off->course_name}} ({{$off->level}})</td>
-                    <td><p class="day"><b>{{$off->schedule}}</b></p><p>{{$off->schedule_detail}}</p></td>
-                    <td>{{date('d-m-Y', strtotime($off->opening))}}</td>
-                    <td><input  name="radio" value="Đăng ký"  class="radio btn btn-danger" type="button" data-course_id="{{$off->course_id}}" data-schedule_id="{{$off->schedule_id}}"  data-address_id="{{$off->contact_address_id}}"/></td>
+                    <td class="text-center" ><p class="day"><b>{{$off->schedule}}</b></p><p>{{$off->schedule_detail}}</p></td>
+                    <td class="text-center" >{{date('d-m-Y', strtotime($off->opening))}}</td>
+                    <td class="text-center" ><input  name="radio" value="Đăng ký"  class="radio btn btn-danger" type="button" data-course_id="{{$off->course_id}}" data-schedule_id="{{$off->schedule_id}}"  data-address_id="{{$off->contact_address_id}}"/></td>
                   </tr>
                   @endforeach
                   

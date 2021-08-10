@@ -272,7 +272,7 @@
                     <p>{{date('M', strtotime($news_hot->created_at))}}</p>
                     <b>{{date('d', strtotime($news_hot->created_at))}}</b>
                   </div>
-                  <h4><a style="color: #342b7a;" href="{{route('news.detail',$news_hot->alias)}}">{!!$news_ielt->title!!}</a></h4>
+                  <h4><a style="color: #342b7a;" href="{{route('news.detail',$news_hot->alias)}}">{!!$news_hot->title!!}</a></h4>
                 </div>
               </div>
             </div>

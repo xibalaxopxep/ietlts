@@ -1,5 +1,11 @@
 
 $(document).ready(function() {
+    $('.radio').change(function ()
+    {
+       $('html, body').animate({
+                    scrollTop: $("#form").offset().top - 200
+                }, 200); 
+    });
   $('.image-link').magnificPopup({type:'image'});
   $('.open-video').click(function (){
     var video = $(this).data("video");

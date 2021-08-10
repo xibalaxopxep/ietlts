@@ -40,7 +40,7 @@ Route::group(['middleware' => 'frontend'], function() {
       //Giảng viên
     Route::get('/thanh-tich', ['as' => 'achie.index', 'uses' => 'Frontend\AchieController@index']);
 
-    Route::get('/gioi-thieu', ['as' => 'achie.index', 'uses' => 'Frontend\FrontendController@about']);
+    Route::get('/gioi-thieu-ve-pasal', ['as' => 'achie.index', 'uses' => 'Frontend\FrontendController@about']);
 
     Route::get('/phuong-phap', ['as' => 'method.detail', 'uses' => 'Frontend\FrontendController@method']);
 

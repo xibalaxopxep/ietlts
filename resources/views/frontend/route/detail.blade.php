@@ -16,7 +16,7 @@
              {!!$record->course_for!!}
           </div>
         </div>
-
+        </div>
       <section class="lotrinh-loiich py-40">
         <div class="container">
           <div class="row">
@@ -216,7 +216,8 @@
         </div>
       </section>
 
-
+        <div class="lichkhaigiang-page">
+            <h3 class="sub-color pt-40">LỊCH KHAI GIẢNG</h3>
              <div class="container">
              
             @foreach($schedules as $key => $schedule_off)
@@ -251,6 +252,7 @@
    
             @endforeach
             </div>
+    </div>
 
                     <script type="text/javascript">
            

@@ -135,6 +135,17 @@ class FrontendController extends Controller {
                 return view('frontend/route/detail',compact('record','teachers','courses','studies','schedules','contact_add','coursess'));   
        }
 
+        public function online(Request $request){
+                $record = DB::table('route')->first();
+                $courses = DB::table('course')->where('is_online',1)->orderBy('ordering','desc')->limit(3)->get(); 
+                $teachers = DB::table('teacher')->where('status',1)->whereIn('id',explode(',', $record->teacher_id))->orderBy('ordering','desc')->get();
+                // $schedules = DB::table('schedule')->join('contact_address','contact_address.id','=','schedule.contact_address_id')->join('course','course.id','=','schedule.course_id')->select('*','schedule.title as schedule_name','contact_address.name as contact_address_name','course.title as course_name','course.id as course_id','schedule.id as schedule_id','contact_address.id as contact_address_id')->where('course.online',1)->where('schedule.type',2)->get()->groupBy('contact_address_name');
+                $coursess = DB::table('course')->where('is_online',1)->orderBy('ordering','desc')->get(); 
+                $studies = DB::table('study')->where('status',1)->whereIn('id',explode(',', $record->study_id))->orderBy('ordering','desc')->get();
+                $contact_add = DB::table('contact_address')->where('address','!=','Online')->get();
+                return view('frontend/online_course/detail',compact('record','teachers','courses','studies','contact_add','coursess'));   
+       }
+
        public function about(Request $request){
             $about = DB::table('about')->first();
            return view('frontend/home/about',compact('about')); 

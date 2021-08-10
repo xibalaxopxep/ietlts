@@ -21,7 +21,7 @@
         <div class="container">
           <div class="row">
            <div class="col-md-6">
-              <h4>LỢI ÍCH CỦA LỘ TRÌNH<br><b>{!!$record->title!!} ({!!$record->level!!})</b></h4>
+              <h4>LỢI ÍCH CỦA<br><b>{!!$record->title!!} ({!!$record->level!!})</b></h4>
               <span class="description">{!!$record->summary!!}</span>
               <img class="thumbnail" src="{{asset($record->image)}}" alt="Lộ trình PRO IELTS">
             </div>
@@ -62,7 +62,7 @@
         </div>
       </section>
       <section class="lotrinh-content">
-        <h3 class="mb-30"><b>NỘI DUNG </b>LỘ TRÌNH PRO IELTS</h3>
+        <h3 class="mb-30"><b>NỘI DUNG </b>KHOÁ HỌC IELTS ONLINE</h3>
         <div class="container">
           <div class="row">
             @foreach($courses as $key => $course)

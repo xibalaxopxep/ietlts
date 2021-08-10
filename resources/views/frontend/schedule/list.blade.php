@@ -65,22 +65,22 @@
               <table class="lich w-100">
                 <thead>
                   <tr>
-                    <th scope="col">Lớp học</th>
+                    <th class="text-center" scope="col">Lớp học</th>
                     <th scope="col">Khóa học</th>
-                    <th scope="col">Thời gian học</th>
-                    <th scope="col">Khai giảng</th>
-                    <th scope="col">Đăng ký</th>
+                    <th class="text-center" scope="col">Thời gian học</th>
+                    <th class="text-center" scope="col">Khai giảng</th>
+                    <th class="text-center"  scope="col">Đăng ký</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($schedule_off as $off)
                   <tr>
 
-                    <th scope="row">{{$off->schedule_name}}</th>
-                    <td>{{$off->course_name}} ({{$off->level}})</td>
-                    <td><p class="day"><b>{{$off->schedule}}</b></p><p>{{$off->schedule_detail}}</p></td>
-                    <td>{{date('d-m-Y', strtotime($off->opening))}}</td>
-                    <td><input  name="radio"  class="radio" type="radio" data-course_id="{{$off->course_id}}" data-schedule_id="{{$off->schedule_id}}"  data-address_id="{{$off->contact_address_id}}"/></td>
+                    <td class="text-center" scope="row">{{$off->schedule_name}}</td>
+                    <td >{{$off->course_name}} ({{$off->level}})</td>
+                    <td class="text-center"><p class="day"><b>{{$off->schedule}}</b></p><p>{{$off->schedule_detail}}</p></td>
+                    <td class="text-center">{{date('d-m-Y', strtotime($off->opening))}}</td>
+                    <td class="text-center"><input  name="radio"  class="radio" type="radio" data-course_id="{{$off->course_id}}" data-schedule_id="{{$off->schedule_id}}"  data-address_id="{{$off->contact_address_id}}"/></td>
                   </tr>
                   @endforeach
                   
@@ -96,21 +96,21 @@
               <table class="lich w-100">
                 <thead>
                   <tr>
-                    <th scope="col">Lớp học</th>
-                    <th scope="col">Khóa học</th>
-                    <th scope="col">Thời gian học</th>
-                    <th scope="col">Khai giảng</th>
-                    <th scope="col">Đăng ký</th>
+                    <th class="text-center" scope="col">Lớp học</th>
+                    <th  scope="col">Khóa học</th>
+                    <th class="text-center" scope="col">Thời gian học</th>
+                    <th class="text-center" scope="col">Khai giảng</th>
+                    <th class="text-center" scope="col">Đăng ký</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($schedule_on as $on)
                   <tr>
-                    <th scope="row">{{$on->schedule_name}}</th>
-                    <td>{{$on->course_name}} ({{$on->level}})</td>
-                    <td><p class="day"><b>{{$on->schedule}}</b></p><p>{{$on->schedule_detail}}</p></td>
-                    <td>{{date('d-m-Y', strtotime($on->opening))}}</td>
-                    <td><input   type="radio" name="radio" class="radio" data-course_id="{{$on->course_id}}" data-schedule_id="{{$on->schedule_id}}"  data-address_id="{{$on->contact_address_id}}"/></td>
+                    <td class="text-center" scope="row">{{$on->schedule_name}}</td>
+                    <td >{{$on->course_name}} ({{$on->level}})</td>
+                    <td class="text-center"><p class="day"><b>{{$on->schedule}}</b></p><p>{{$on->schedule_detail}}</p></td>
+                    <td class="text-center">{{date('d-m-Y', strtotime($on->opening))}}</td>
+                    <td class="text-center"><input   type="radio" name="radio" class="radio" data-course_id="{{$on->course_id}}" data-schedule_id="{{$on->schedule_id}}"  data-address_id="{{$on->contact_address_id}}"/></td>
                   </tr>
                   @endforeach
                   

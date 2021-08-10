@@ -8,7 +8,7 @@ use DB;
 class Contact extends Model
 {
     protected $table = 'contact';
-    protected $fillable = ['name','member_id','mobile','company_name','email','content','is_read','created_at'];
+    protected $fillable = ['name','member_id','mobile','course','course_id','company_name','email','content','is_read','created_at'];
     public function created_at() {
         return date("d/m/Y", strtotime($this->created_at));
     }

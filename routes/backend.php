@@ -313,8 +313,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::post('/route-online/store', ['as' => 'admin.route_online.store', 'uses' => 'Backend\RouteOnlineController@store']);
     Route::post('/route-online/update/{id}', ['as' => 'admin.route_online.update', 'uses' => 'Backend\RouteOnlineController@update']);
     Route::delete('/route-online/delete/{id}', ['as' => 'admin.route_online.destroy', 'uses' => 'Backend\RouteOnlineController@destroy']);
-
-
       /* Quản lý banner */
    
 

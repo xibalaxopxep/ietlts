@@ -50,12 +50,13 @@
             <div class="col-md-6">
               <div class="thumbnail"> 
                 <img src="{{asset('assets_pasal/img/about-1.png')}}" alt="đăng ký khóa học">
-                <div id="pattern-about-4" class="bg-white">
+                <div id="pattern-about-4" class="bg-white open-video-2" data-video="{{$record->video}}">
                 <img src="{{asset('assets_pasal/icon/play.png')}}" alt="pattern"  />
               </div>
               </div>
               
             </div>
+             
             <div class="col-md-6">
               <div class="d-sm-none d-md-block py-40"></div>
               <div class="info">

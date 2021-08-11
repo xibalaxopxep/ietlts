@@ -91,7 +91,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-4 text-left">Thời gian khuyến mại</label>
                                     <div class="col-md-5">
-                                        <input type="date" name="sale_time" class="form-control" value="">
+                                        <input type="datetime-local" name="sale_time" class="form-control" value="">
                                     </div>
                                 </div>
 

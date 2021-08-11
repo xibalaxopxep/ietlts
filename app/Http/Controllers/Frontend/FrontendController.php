@@ -84,6 +84,9 @@ class FrontendController extends Controller {
             $input = $request->except('_token');
             $input['type'] = 1;
             $input['link'] = "/".$request->path();
+            if($input['course_id'] == null || $input['contact_address_id'] == null){
+                return redirect()->back()->with('error','Vui lòng chọn cơ sở và khoá học');
+            }
             if($input['course_id'] == 'pro' || $input['course_id'] == 'online'){
                 $input['course'] = $input['course_id'];
                 unset($input['course_id']);

@@ -167,12 +167,14 @@
             
                 <p style="text-decoration: line-through;"> {{$record->price}}</p>
                  {{$record->sale_price}}
+                 @if($record->sale_time)
                      @php
                      $time = explode(' ',$record->sale_time);
                      $time1= $time[0];
                      $time2= $time[1];
                      @endphp
                <div class='countdown' data-date="{{$time1}}" data-time="{{$time2}}"></div>
+               @endif
               </div>
               <div class="form-content">
                 <div class="col-md-6 offset-md-6">

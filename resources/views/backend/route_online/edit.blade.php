@@ -86,7 +86,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-4 text-left">Thời gian khuyến mại</label>
                                     <div class="col-md-5">
-                                        <input type="date" name="sale_time" class="form-control" value="{{$record->sale_time}}">
+                                        <input type="datetime-local" name="sale_time" class="form-control" value="{{date('Y-m-d\TH:i', strtotime($record->sale_time))}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">

@@ -28,8 +28,10 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Tiêu đề</th>
+                    <th >Tiêu đề</th>
+                    <th>Vị trí</th>
                     <th>Ngày tạo</th>
+                    
                     <th>Trạng thái</th>
                     <th>Tác vụ</th>
                 </tr>
@@ -38,7 +40,8 @@
                 @foreach($records as $key=>$record)
                 <tr>
                     <td>{{++$key}}</td>
-                    <td>{{$record->title}}</td>
+                    <td class="col-md-5">{{$record->title}}</td>
+                    <td>{{$record->position}}</td>
                     <td>{{$record->created_at()}}</td>
                     <td>
                         @if($record->status == 1)

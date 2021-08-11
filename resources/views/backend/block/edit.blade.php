@@ -23,8 +23,8 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label text-right">Tiêu đề <span class="text-danger">*</span></label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="title" value="{!!old('title')?:$record->title!!}">
-                                    {!! $errors->first('title', '<span class="text-danger">:message</span>') !!}
+                                     <textarea rows="10" class="form-control " name="title">{!!old('title')?:$record->title!!}</textarea>
+                                 
                                 </div>
                             </div>
                            

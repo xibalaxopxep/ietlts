@@ -20,7 +20,9 @@ class NewsController extends Controller {
 
     public function index(Request $request, $alias = '') {  
         $records = DB::table('news_category')->join('category','category.id','=','news_category.category_id')->join('news','news.id','=','news_category.news_id')->where('category.id',16)->where('news.status', 1)->orderBy('news.ordering','desc')->paginate(7);
-
+        if(count($records) == 0){
+              return redirect()->back()->with('error','Trang này hiện chưa có bài viết');
+          }
         $hot_news = DB::table('news_category')->join('category','category.id','=','news_category.category_id')->join('news','news.id','=','news_category.news_id')->where('category.id',16)->where('news.status', 1)->where('news.is_hot',1)->orderBy('news.ordering','desc')->get();
         return view('frontend/news/list', compact('records', 'hot_news'));
     }

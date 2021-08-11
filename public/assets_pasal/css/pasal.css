@@ -556,10 +556,16 @@ section.recent-news
 	margin: 0;
 	width: 100%;
 }
+.card-news a
+{
+    width: 100%;
+    display: block;
+}
 .card-news img
 {
 	width: 100%;
 	object-fit: cover;
+    height: 235px;
 }
 .news-category
 {

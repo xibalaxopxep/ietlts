@@ -28,7 +28,7 @@ Route::group(['middleware' => 'frontend'], function() {
     Route::get('/marketing/{alias}', ['as' => 'marketing.index', 'uses' => 'Frontend\MarketingController@index']);
 
     //Giảng viên
-    Route::get('/giang-vien', ['as' => 'teacher.index', 'uses' => 'Frontend\TeacherController@index']);
+    Route::get('/giang-vien-tai-pasal', ['as' => 'teacher.index', 'uses' => 'Frontend\TeacherController@index']);
     
      //Liên hệ
     Route::get('/lien-he', ['as' => 'contact.index', 'uses' => 'Frontend\FrontendController@contact']);

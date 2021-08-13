@@ -1641,3 +1641,32 @@ section.dangky-khoahoc .btn-white
     text-align: center;
     font-family: 'Montserrat', sans-serif;
  } 
+ #form .timer h4
+ {
+    font-weight: 800;
+    font-size: 40px;
+    margin-top: 35px;
+    color: #E62236;
+ }
+ #form .new-price
+ {
+    margin-top: 20px;
+ }
+ #form .new-price span
+ {
+    font-size: 45px;
+    font-weight: 700;
+    padding: 1px 33px;
+    border-radius: 60px;
+    border: 5px solid;
+    color: var(--sub-color);
+ }
+ #form .old-price
+ {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--main-color);
+ }
+ .countdown-container .countdown-value {
+    background: var(--main-color);
+}

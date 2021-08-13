@@ -19,7 +19,7 @@
 
     <link href="{{asset('assets_pasal/css/countdown.css')}}" rel="stylesheet">
 
-    <link href="{{asset('assets_pasal/css/pasal.css?v=2.36')}}" rel="stylesheet">
+    <link href="{{asset('assets_pasal/css/pasal.css?v=2.41')}}" rel="stylesheet">
     <link href="{{asset('assets_pasal/css/mobile.css?v=1.08')}}" rel="stylesheet">
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <div class="top-header bg-grey">

@@ -32,6 +32,8 @@
                       <img class="icon" src="assets_pasal/icon/course.png" alt="icon" />
                        <select required="" name="course_id" class="pick_course">
                         <option value="" disabled selected>Bạn quan tâm đến khoá học nào?</option>
+                        <option value="pro">Lộ trình Pro IELTS</option>
+                        <option value="online">Khoá học IELTS Online</option>
                         @foreach($course_shares as $course)
                         <option  value="{{$course->id}}">{!!$course->title!!}</option>
                         @endforeach

@@ -35,7 +35,15 @@ class FrontendController extends Controller {
 
        public function get_schedule (request $request){
             $input = $request->all();
-            $schedules = DB::table('schedule')->where('course_id',$input['course_id'])->get();
+            if($input['course_id'] == "pro"){
+               $course_id = DB::table('course')->where('is_pro',1)->get()->pluck('id');
+               $schedules = DB::table('schedule')->whereIn('course_id',$course_id)->get();
+            }elseif($input['course_id'] == "online"){
+               $course_id = DB::table('course')->where('is_online',1)->get()->pluck('id');
+               $schedules = DB::table('schedule')->whereIn('course_id',$course_id)->get();
+            }else{
+               $schedules = DB::table('schedule')->where('course_id',$input['course_id'])->get();
+            }
             $html = "";
             foreach($schedules as $schedule){
                  $html .= "<option value=".$schedule->id.">".$schedule->title."</option>"; 

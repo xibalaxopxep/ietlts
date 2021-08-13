@@ -189,12 +189,17 @@
         <div class="container">
           <div class="row">
             <div class="form-wrapper">
-              <div class="col-md-6 simon">
+              <div class="col-md-6  timer">
                <!--  <img src="{{asset('assets_pasal/img/simon.png')}}" alt="simon ielts"> -->
             
-                <p style="text-decoration: line-through;"> {{$record->price}}</p>
+                 <h4> NHẬN NGAY ƯU ĐÃI </br>HỌC PHÍ ĐẶC BIỆT </h4>
+                <div class="new-price">
+                 <span>{{number_format($record->price)}} VNĐ</span>
+                </div>
+                <div class="old-price">
+                <span style="text-decoration: line-through;"> {{number_format($record->sale_price)}} VNĐ</span>
+                </div>
                 
-                 {{$record->sale_price}}
                      @php
                      $time = explode(' ',$record->sale_time);
                              $time1= $time[0];

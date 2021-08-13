@@ -49,7 +49,14 @@
                         <td>{{$record->email}}</td>
                         <td>{{$record->phone}}</td>
                         @if($record->schedule_id == null)
+                        @if($record->course == "pro")
+                        <td>Khoá học Pro IELTS</td>
+                        @elseif($record->course == "online")
+                        <td>Khoá học Online</td>
+                        @else
                         <td>{{$record->course_name($record->course_id)}}</td>
+                        @endif
+
                          @else
                         <td>{{$record->schedule_name($record->schedule_id)}}</td>
                         @endif

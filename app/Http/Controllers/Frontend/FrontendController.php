@@ -101,7 +101,7 @@ class FrontendController extends Controller {
             }
        }
 
-         public function sign_up_advise2(Request $request){
+        public function sign_up_advise2(Request $request){
             $input = $request->except('_token');
             $input['type'] = 2;
             $input['link'] = "/".$request->path();
@@ -118,7 +118,7 @@ class FrontendController extends Controller {
             else{
                  return redirect()->back()->with('error','Có lỗi trong quá trình xử lý, vui lòng thử lại');
             }
-       }
+        }
 
       
 

@@ -100,7 +100,7 @@ class StudyController extends Controller {
         return redirect()->back()->with('success', 'Xóa thành công');
     }
 
-   public function update_multiple(Request $request) {
+    public function update_multiple(Request $request) {
         $data = $request->all();
         
         if($request->action == "save"){      
@@ -144,8 +144,4 @@ class StudyController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
-   
-
 }

@@ -39,7 +39,7 @@ class StudyController extends Controller {
             $get_avt->move('upload/images/',$new_image);
             $input['avatar'] = '/upload/images/'.$new_image;
         }
-        $input['status'] = 1;
+        $input['status'] = isset($input['status']) ? 1 : 0;
         $input['is_best'] = isset($input['is_best']) ? 1 : 0;
         $input['created_at'] = Carbon::now('Asia/Ho_Chi_Minh'); 
         $res = $study->create($input);   
@@ -83,7 +83,7 @@ class StudyController extends Controller {
             $get_avt->move('upload/images/',$new_image);
             $input['avatar'] = '/upload/images/'.$new_image;
         }
-        $input['status'] = 1;
+        $input['status'] = isset($input['status']) ? 1 : 0;
         $input['is_best'] = isset($input['is_best']) ? 1 : 0;
         $input['updated_at'] = Carbon::now('Asia/Ho_Chi_Minh'); 
         $res = $study->find($id)->update($input);   

@@ -88,8 +88,17 @@
                                     
                                     
                                   <div class="form-group row">
-                                   
-                                   
+                                 
+                                    <div class="form-check col-md-4 form-check-right">
+                                        <label class="form-check-label float-right">
+                                            Kích hoạt
+                                            @if($record->status == 1)
+                                            <input type="checkbox" checked="" class="form-check-input-styled" name="status" data-fouc="">
+                                            @else
+                                            <input type="checkbox" class="form-check-input-styled" name="status" data-fouc="">
+                                            @endif
+                                        </label>
+                                    </div>
                                 </div>
 
                                     <

@@ -10,7 +10,7 @@
             <div class="col-md-3">
               <div class="item">
                 <div class="thumbnail">
-                  <a  href="assets/img/thanhtich.png" class="image-link"><img class="img-responsive img-thanhtich" src="{{$record->image}}" alt="thanhtich" /></a>
+                  <a  href="{{$record->image}}" class="image-link"><img class="img-responsive img-thanhtich" src="{{$record->image}}" alt="thanhtich" /></a>
                   <img class="zoom" src="assets_pasal/icon/zoom.png" alt="zoom">
                 </div>
                 <h4>{{$record->name}}</h4>

@@ -15,7 +15,7 @@
           <div class="row">
             {!!$bl->title!!}
           </div>
-          <div class="row mt-5">
+          <div class="row mt-5 m-mb-0">
             <div class="col-md-5" style="position: relative;">
             
               <div id="pattern-about-4">
@@ -41,7 +41,7 @@
 
           
             @foreach($template as $tem)
-            <div class=col-md-3>
+            <div class="col-md-3 col-sm-6">
               <div class="item">
                 <div class="icon">
                   <img src="{!!$tem->image!!}" alt="pasal" />

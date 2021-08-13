@@ -16,7 +16,7 @@
              {!!$record->course_for!!}
           </div>
         </div>
-
+</div>
       <section class="lotrinh-loiich py-40">
         <div class="container">
           <div class="row">

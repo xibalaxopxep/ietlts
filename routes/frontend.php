@@ -49,7 +49,7 @@ Route::group(['middleware' => 'frontend'], function() {
 
     Route::get('/lo-trinh', ['as' => 'route.detail', 'uses' => 'Frontend\FrontendController@route']);
 
-    Route::get('/khoa-hoc-online', ['as' => 'online.detail', 'uses' => 'Frontend\FrontendController@online']);
+    Route::get('/khoa-hoc-ielts-online', ['as' => 'online.detail', 'uses' => 'Frontend\FrontendController@online']);
 
     
 

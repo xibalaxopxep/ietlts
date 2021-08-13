@@ -162,9 +162,9 @@
         <div class="container">
           <div class="row">
             <div class="form-wrapper">
-              <div class="col-md-6 simon">
+              <div class="col-md-6 timer">
                <!--  <img src="{{asset('assets_pasal/img/simon.png')}}" alt="simon ielts"> -->
-            
+                <h4> NHẬN NGAY ƯU ĐÃI </br>HỌC PHÍ ĐẶC BIỆT </h4>
                 <p style="text-decoration: line-through;"> {{$record->price}}</p>
                  {{$record->sale_price}}
                  @if($record->sale_time)
@@ -197,7 +197,7 @@
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/course.png')}}" alt="icon" />
                       <select name="course_id" class="pick_course">
-                        <option style="color: orange;" value="" disabled selected>Lộ trình pro ielts</option>
+                        <option style="color: orange;" value="" disabled selected>Lộ trình PRO IELTS</option>
                         @foreach($coursess as $course)
                         <option value="{{$course->id}}">{!!$course->title!!}</option>
                         @endforeach

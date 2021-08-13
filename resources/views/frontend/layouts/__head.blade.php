@@ -14,11 +14,13 @@
     <link href="{{asset('assets_pasal/css/owl.carousel.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets_pasal/css/owl.theme.default.min.css')}}" rel="stylesheet">
 
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="{{asset('assets_pasal/magnific-popup/magnific-popup.css')}}">
 
     <link href="{{asset('assets_pasal/css/countdown.css')}}" rel="stylesheet">
 
-    <link href="{{asset('assets_pasal/css/pasal.css?v=2.29')}}" rel="stylesheet">
-    <link href="{{asset('assets_pasal/css/mobile.css?v=1.0')}}" rel="stylesheet">
+    <link href="{{asset('assets_pasal/css/pasal.css?v=2.36')}}" rel="stylesheet">
+    <link href="{{asset('assets_pasal/css/mobile.css?v=1.08')}}" rel="stylesheet">
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <div class="top-header bg-grey">
        @foreach($banner as $ban)

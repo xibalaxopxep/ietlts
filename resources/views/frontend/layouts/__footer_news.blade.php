@@ -29,9 +29,8 @@
                 </ul>
             </div>
             <div class="col-md-3">
-                <h4>FOLLOW US ON FACEBOOK</h4>
-                <iframe src="https://www.facebook.com/plugins/page.php?href={{$config->facebook}}&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=973359936027041" width="340" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-
+            <h4>FOLLOW US ON FACEBOOK</h4>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPasalEnglish%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=973359936027041" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 <h4 class="mt-40">FOLLOW US ON YOUTUBE</h4>
                 <div class="youtube" style="display: flex;">
                     <div class="left_youtube"><a href="https://www.youtube.com/channel/UCdSXHCAntcnNkxQvuawegkw" target="_blank"><img alt="" src="https://pasal.edu.vn/upload_images/images/img6.png" style="width: 48px; height: 48px;margin-right:10px"></a></div>

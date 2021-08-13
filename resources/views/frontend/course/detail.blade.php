@@ -19,7 +19,7 @@
       <img id="khoahoc-loiich-pattern-1" alt="pattern" src="/assets_pasal/img/loi-ich-khoahoc-bg.png" />
         <div class="container">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" style="position: relative;">
               <h4>LỢI ÍCH CỦA<br><b>{{$record->title}} ({{$record->level}})</b></h4>
              <span class="description">{!!$record->summary!!}</span>
               <img class="thumbnail" src="/assets_pasal/img/loi-ich-khoahoc.png" alt="Lộ trình PROIELTS">
@@ -48,9 +48,9 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              <div class="thumbnail"> 
+              <div class="thumbnail open-video-2" data-video="{{$record->video}}"> 
                 <img src="{{asset('assets_pasal/img/about-1.png')}}" alt="đăng ký khóa học">
-                <div id="pattern-about-4" class="bg-white open-video-2" data-video="{{$record->video}}">
+                <div id="pattern-about-4" class="bg-white ">
                 <img src="{{asset('assets_pasal/icon/play.png')}}" alt="pattern"  />
               </div>
               </div>
@@ -97,7 +97,7 @@
               </div>
             </div>
           </div>
-          <div class="row content">
+          <div class="row content" style="position: relative;">
             <div class="col-md-9">
                   @php
                     $data = [];
@@ -107,7 +107,7 @@
                   @endphp
                  @if($data != null)
                  @if(count($data) >=1 || count($data) >=2)
-                <div class="w-100 d-flex" style="min-height: 170px;">
+                <div class="w-100 d-md-flex" style="min-height: 170px;">
                   @if(count($data) >=1)
                     <div class="item col-md-5" style="background: url(/assets_pasal/icon/1.png) no-repeat">
                        {!!$data[0]!!}
@@ -123,7 +123,7 @@
                   @endif
 
                 
-                <div class="w-100 d-flex mt-40" style="min-height: 170px;">
+                <div class="w-100 d-md-flex mt-40" style="min-height: 170px;">
                   @if(count($data) >=3 || count($data)>=4)
                      @if(count($data) >= 3)
                     <div class="item col-md-5" style="background: url(/assets_pasal/icon/3.png) no-repeat">
@@ -244,9 +244,9 @@
           </div>
         </div>
       </section>
-
+        <section class="lichkhaigiang-page" style="background: transparent;">
              <div class="container">
-             
+             <h3 class="mb-30 mt-40">LỊCH KHAI GIẢNG</b></h3>
             @foreach($schedules as $key => $schedule_off)
             <div class="table-lich table-responsive-md">
               <div class="title btn-gradient text-white rounded-0"><h4 class="text-left">{{$key}} (tel: {{$schedule_off[0]->phone_1}})</h4></div>
@@ -279,7 +279,7 @@
    
             @endforeach
             </div>
-    
+     </section>
 
                     <script type="text/javascript">
              $(".radio").on('click',function(){

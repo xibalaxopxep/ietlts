@@ -6,6 +6,7 @@
 	url('/libraries/webfonts/Tahoma Regular font.woff') format('woff'),
 	url('/libraries/webfonts/Tahoma Regular font.ttf') format('truetype');
 }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap');
 :root {
 	--main-color: #ef5a2f;
 	--sub-color: #043353;
@@ -1072,6 +1073,9 @@ table.lich td p
 .lotrinh-loiich .thumbnail
 {
 	padding: 10px;
+    position: absolute;
+    bottom: 0px;
+    width: 70%;
 }
 .lotrinh-loiich .list-item 
 {
@@ -1106,10 +1110,16 @@ table.lich td p
     height: 1350px;
     position: relative;
 }
+.lotrinh-content .item ul>ul
+{
+    padding: 0px;
+}
 .lotrinh-content .item img
 {
 	width: 100%;
     border-radius: 0px 110px 0px 110px;
+        height: 315px;
+    object-fit: cover;
 }
 .lotrinh-content h4
 {
@@ -1117,6 +1127,7 @@ table.lich td p
     text-align: center;
     font-weight: bold;
     color: var(--sub-color);
+    font-size: 23px;
 }
 .lotrinh-content h4 b
 {
@@ -1619,4 +1630,14 @@ section.dangky-khoahoc .btn-white
     {
         margin-bottom: 0px !important;
     }
- 
+    #course-content-pattern
+    {
+        position:absolute;
+        bottom: 0px;
+    }
+ #form .timer
+ {
+    position: absolute;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+ } 

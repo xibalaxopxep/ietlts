@@ -12,7 +12,7 @@
             </a>
            
 <!--         <div class='countdown' data-date="2021-09-01" data-time="18:31"></div> -->
-            <ul class="nav nav-pills menu">
+            <ul class="nav nav-pills menu d-md-flex d-none">
 
               @foreach($menu as $key => $mn)
               <li class="nav-item"><a href="{{url($mn->link)}}" class="nav-link" aria-current="page">{{$mn->title}}</a>

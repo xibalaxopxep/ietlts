@@ -58,13 +58,25 @@
                                                     <textarea class="form-control" name="description">{!!old('description')!!}</textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group row" data-field="images">
+                                            <!-- <div class="form-group row" data-field="images">
                                                 <label class="col-md-3 col-form-label text-right">Hình ảnh</label>
                                                 <div class="col-md-9 div-image">
                                                     <input type="hidden" name="images" class="image_data" value="{!!old('images')!!}"/>
                                                     <input type="file" id="images" onclick="openKCFinder(this)" data-value="{!!old('images')!!}" class="file-input-overwrite" data-field="images">
                                                 </div>
+                                            </div> -->
+                                            <div class="form-group row">
+                                                <div class="col-md-3">
                                             </div>
+                                           <div class="form-group col-md-3">
+                                                 <img src="{{url('/img/avatar-drive.png')}}" id ="frame" alt="test" width="250" height="200" />
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label class="required">Hình ảnh</label>
+                                                <input name="images" type="file" class="form-control" value="{!!old('images')!!}" onchange='UpdatePreview()'>
+                                                {!! $errors->first('images', '<span class="text-danger">:message</span>') !!}
+                                            </div>
+                                            </div> 
                                             <div class="form-group row">
                                                 <label class="col-md-3 col-form-label text-right">Nội dung: </label>
                                                 <div class="col-md-12">

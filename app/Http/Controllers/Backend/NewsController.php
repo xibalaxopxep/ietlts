@@ -71,6 +71,14 @@ class NewsController extends Controller {
         } else {
             $input['status'] = 0;
         }
+         $get_image = $request->images;
+        if($get_image){
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = current(explode('.',$get_name_image));
+            $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move('upload/images/',$new_image);
+            $input['images'] = '/upload/images/'.$new_image;
+        }
         $input['is_hot'] = isset($input['is_hot']) ? 1 : 0;
         $input['is_ielts'] = isset($input['is_ielts']) ? 1 : 0;
         $input['created_by'] = \Auth::user()->id;
@@ -130,10 +138,19 @@ class NewsController extends Controller {
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $get_image = $request->images;
+        if($get_image){
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = current(explode('.',$get_name_image));
+            $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move('upload/images/',$new_image);
+            $input['images'] = '/upload/images/'.$new_image;
+        }
 //      status
         $input['status'] = (isset($input['status']) && \Auth::user()->role_id <> \App\User::ROLE_CONTRIBUTOR) ? 1 : 0;
         $input['is_hot'] = isset($input['is_hot']) ? 1 : 0;
         $input['is_ielts'] = isset($input['is_ielts']) ? 1 : 0;
+        //dd($input);
         if (isset($input['post_schedule'])) {
             $input['post_schedule'] = $input['post_schedule_submit'];
         }

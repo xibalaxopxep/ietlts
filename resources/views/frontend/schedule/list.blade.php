@@ -92,7 +92,7 @@
             @endforeach
           
             <img class="pt-3 w-100" src="assets_pasal/img/online-class.png" alt="lớp học online" />
-             @foreach($schedule_online as $key => $schedule_on)
+             @foreach($schedule_online as $key => $on)
             <div class="table-lich table-responsive-md">
             
               <table class="lich w-100">
@@ -106,7 +106,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($schedule_on as $on)
                   <tr>
                     <td class="text-center" scope="row">{{$on->schedule_name}}</td>
                     <td >{{$on->course_name}} ({{$on->level}})</td>
@@ -114,7 +113,6 @@
                     <td class="text-center">{{date('d-m-Y', strtotime($on->opening))}}</td>
                     <td class="text-center"><input   type="radio" name="radio" class="radio" data-course_id="{{$on->course_id}}" data-schedule_id="{{$on->schedule_id}}"  data-address_id="{{$on->contact_address_id}}"/></td>
                   </tr>
-                  @endforeach
                   
                 </tbody>
               </table>

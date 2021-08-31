@@ -18,7 +18,7 @@
           <div class="row mt-5 m-mb-0">
             <div class="col-md-5" style="position: relative;">
             
-              <div id="pattern-about-4">
+              <div id="pattern-about-4" class="open-video">
                 <img src="assets_pasal/img/pattern-about.png" alt="pattern"  />
               </div>
               <div class="open-video-2" data-video="{{$bl->video_url}}">
@@ -41,7 +41,7 @@
 
           
             @foreach($template as $tem)
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6 col-6">
               <div class="item">
                 <div class="icon">
                   <img src="{!!$tem->image!!}" alt="pasal" />
@@ -120,7 +120,7 @@
               <div class="item-wrap">
                 <div class="item">
                   <a class="thumbnail" href="">
-                    <img class="img-fluid" src="{{asset($course->image)}}" alt="khóa học" />
+                    <img class="img-fluid" src="{{asset($route_online->image)}}" alt="khóa học" />
                   </a>
                   <div class="info">
                     <a class="title" href=""><b>{{$route_online->title}}</b></a>
@@ -186,7 +186,7 @@
         <div class="container">
           <div class="row">
             <div class="form-wrapper">
-              <div class="col-md-6 simon">
+              <div class="col-md-6 simon d-none d-md-block">
                 <img src="{{asset('assets_pasal/img/simon.png')}}" alt="simon ielts">
               </div>
               <div class="form-content">

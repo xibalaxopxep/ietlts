@@ -5,14 +5,14 @@
           <div class="row">
             <div class="col-md-9 mt-4">
               <div class="content" >
-                <div class="sumary mt-30" id="contents">
+                <div class="sumary mt-30" id="contents" >
                
                        <img src="{{asset($record->images)}}" style="width: 100%;" alt="{{$record->images}}" />
-                       <div id='console'></div>
-                            <div id="toc">
-                            <b style="margin-bottom: 20px; display: block;">NỘI DUNG CHÍNH</b>
-                            </div>
+                            <nav id="toc"><b style="margin-bottom: 20px; display: block;">NỘI DUNG CHÍNH</b></nav>
+                            
+                       <div data-spy="scroll" data-target="#toc" class="content-detail">
                        {!!$record->content!!}
+                       </div>
                       </div>
                       <div class="related-news mt-30">
                         <h3> Bài viết liên quan</h3>

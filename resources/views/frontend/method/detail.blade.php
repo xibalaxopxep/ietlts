@@ -20,7 +20,7 @@
               </div>
               </div>
               <div class="col-md-7 info">
-                <h3 class="mt-2">HỆ THỐNG <br><b>LUYỆN THI <strong>IELTS ĐỘC QUYỀN</strong> TỪ SIMON CORCORAN</b></h3>
+                <h3 class="mt-2">HỆ THỐNG <br class="d-none d-lg-block"><b>LUYỆN THI <strong>IELTS ĐỘC QUYỀN</strong> TỪ SIMON CORCORAN</b></h3>
                 <span>{!!$record->description!!}</span>
               </div>
             </div>
@@ -67,19 +67,25 @@
 		        <h3 class=""><b>VIDEO HỌC IELTS </b>ĐỘC QUYỀN TỪ SIMON</h3>
 		        <div class="container">
 		          <div class="row">
-		          	@foreach($videos as $video)
-		            <div class="col-md-3">
-		              <div class="item">
-		              	@php
-			              	$id = explode('=',$video->video_url);
-			              	$link =  "https://www.youtube.com/embed/".$id[1];
-		      
-		              	@endphp
-		                <iframe width="560" height="315" src="{{$link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		              </div>
-		            </div>
-		            @endforeach
-		          </div>
+                      <div class="owl-carousel owl-theme video-slide">
+    		          	@foreach($videos as $video)
+                        @if ($loop->index%3 == 0)
+                          <div class="flex-container">
+                          @endif
+    		              <div class="item">
+    		              	@php
+    			              	$id = explode('=',$video->video_url);
+    			              	$link =  "https://www.youtube.com/embed/".$id[1];
+    		      
+    		              	@endphp
+    		                <iframe width="560" height="315" src="{{$link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    		              </div>
+                         @if ($loop->index%3 == 2)
+                          </div>
+                          @endif
+    		            @endforeach
+    		          </div>
+                  </div>
 		        </div>
 		</section>
 

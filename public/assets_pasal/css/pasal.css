@@ -1,10 +1,10 @@
 @font-face
 {
 	font-family: 'Tahoma';
-	src: url('/libraries/webfonts/Tahoma Regular font.eot');
-	url('/libraries/webfonts/Tahoma Regular font.eot?#') format('embedded-opentype'),
-	url('/libraries/webfonts/Tahoma Regular font.woff') format('woff'),
-	url('/libraries/webfonts/Tahoma Regular font.ttf') format('truetype');
+	src: url('/assets_pasal/font/Tahoma Regular font.eot');
+	url('/assets_pasal/font/Tahoma Regular font.eot?#') format('embedded-opentype'),
+	url('/assets_pasal/font/Tahoma Regular font.woff') format('woff'),
+	url('/assets_pasal/font/Tahoma Regular font.ttf') format('truetype');
 }
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap');
 :root {
@@ -413,12 +413,13 @@ section.teacher
 }
 section.teacher .item
 {
-	height: 350px;
-	background-position: bottom center !important;
-	background-color: #fff !important;
-	padding: 20px;
-	border-radius: 20px;
-	box-shadow: 2px 1px 9px 2px #82828245;
+    height: 450px;
+    background-position: bottom center !important;
+    background-color: #fff !important;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 1px 9px 2px #82828245;
+    background-size: cover !important;
 }
 section.teacher .item h4
 {
@@ -451,6 +452,7 @@ section.testimonial .item
 	padding: 20px;
 	z-index: 1;
 	position: relative;
+    height: 550px;
 }
 section.testimonial .item .icon 
 {
@@ -745,8 +747,22 @@ section.recent-news
 .teacher-page section.about
 {
 	background:  #f5f4f1;
-	padding:  40px 0px;
-	padding-top: 60px;
+	padding:  60px 0px;
+	padding-top: 100px;
+    position: relative;
+}
+#teacher-bg
+{
+        position: absolute;
+    top: 0px;
+    left: 100px;
+    height: 100%;
+    width: auto;
+}
+.teacher-page section.about .content
+{
+    position: relative;
+    z-index: 9;
 }
 .teacher-page section.about h4
 {
@@ -1075,7 +1091,9 @@ table.lich td p
 	padding: 10px;
     position: absolute;
     bottom: 0px;
-    width: 70%;
+    width: 100%;
+        max-height: 680px;
+    object-fit: contain;
 }
 .lotrinh-loiich .list-item 
 {
@@ -1529,6 +1547,7 @@ section.dangky-khoahoc .btn-white
         background: #f1f1f1;
         padding: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
     }
     .pagination
     {
@@ -1650,7 +1669,8 @@ section.dangky-khoahoc .btn-white
  }
  #form .new-price
  {
-    margin-top: 20px;
+    margin-top: 25px;
+    margin-bottom: 20px;
  }
  #form .new-price span
  {
@@ -1666,7 +1686,58 @@ section.dangky-khoahoc .btn-white
     font-size: 30px;
     font-weight: 600;
     color: var(--main-color);
+        margin-bottom: 20px;
+ }
+ .countdown-container
+ {
+    margin: 0px 10px;
  }
  .countdown-container .countdown-value {
     background: var(--main-color);
+}
+.content-wrapper
+{
+    padding-top: 90px;
+}
+#header-top
+{
+    position: absolute;
+    width: 100vw;
+    top: 75px;
+}
+#header-top.fixed-top{
+    position: fixed;
+    top: 0px;
+}
+#menuToggle
+{
+    display: none;
+}
+#toc .h1, #toc .h2
+{
+        width: 100%;
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #404040;
+}
+#toc .h3
+{
+   width: 100%;
+    display: block;
+    font-size: 18px;
+    color: #404040;
+    padding-left: 30px;
+}
+#toc .h4
+{
+   width: 100%;
+    display: block;
+    font-size: 18px;
+    color: #404040;
+    padding-left: 40px;
+}
+.news-detail ul li
+{
+    list-style: revert;
 }

@@ -30,7 +30,7 @@
                     $content = explode('|', $record->course_profit);
                 @endphp
                 @foreach ($content as $item)
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="item item-{!!$loop->index+1!!}">
                     <img class="thumbnail-item" src="/assets_pasal/icon/lotrinh{!!$loop->index+1!!}.png" />
                     <p>{!!$item!!}</p>
@@ -58,7 +58,7 @@
             </div>
              
             <div class="col-md-6">
-              <div class="d-sm-none d-md-block py-40"></div>
+              <div class="d-none d-md-block py-40"></div>
               <div class="info">
                 <p class="fs-22 m-0">Khoá học IELTS độc quyền từ Simon Corconan giúp bạn </p>
                 <p class="fs-22 text-uppercase"><b>Nắm vững bài thi - Đọc vị giám khảo</b></p>
@@ -230,7 +230,14 @@
                     </div>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/course.png')}}" alt="icon" />
-                      <input readonly="" type="" value="{!!$record->title!!}" name="">
+                      <select name="course_id" id="course_id" class="pick_course">
+                        @foreach($courses as $course)
+                        <option value="{{$course->id}}" @if($course->id == $record->id) selected="selected" @endif >{!!$course->title!!}</option>
+                        @endforeach
+                      </select>
+                      @foreach($courses as $course)
+                      <input type="hidden" id="course-{{$course->id}}" data-sale-price="{!!$course->sale_price!!}" data-price="{!!$course->price!!}"/>
+                        @endforeach
                     </div>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/location.png')}}" alt="icon" />

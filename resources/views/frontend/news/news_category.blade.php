@@ -48,17 +48,17 @@
                         <img class="img-responsive" src="{{asset($record->images)}}" alt="tiêu đề bài viết">
                       </a>
                       <div class="calendar">
-                        <p class="day">{{ date('d', strtotime($records[0]->created_at)) }}</p>
+                        <p class="day">{{ date('d', strtotime($record->created_at)) }}</p>
                         <p class="month">
-                          @if(date('m', strtotime($records[0]->created_at)) <10)
-                          T{{ substr(date('m', strtotime($records[0]->created_at)),1) }}
+                          @if(date('m', strtotime($record->created_at)) <10)
+                          T{{ substr(date('m', strtotime($record->created_at)),1) }}
                           @else
-                            T{{ date('m', strtotime($records[0]->created_at)) }}
+                            T{{ date('m', strtotime($record->created_at)) }}
                           @endif
                         </p>
                       </div>
                       <h4 class="title">
-                        <a href="{{route('news.detail',$records[0]->alias)}}">{{$record->title}}</a>
+                        <a href="{{route('news.detail',$record->alias)}}">{{$record->title}}</a>
                       </h4>
                       <p class="description">{{$record->description}}</p>
 

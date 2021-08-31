@@ -20,35 +20,35 @@
       <section class="lotrinh-loiich py-40">
         <div class="container">
           <div class="row">
-           <div class="col-md-6">
+           <div class="col-md-6" style="position: relative;">
               <h4>LỢI ÍCH CỦA<br><b>{!!$record->title!!} ({!!$record->level!!})</b></h4>
               <span class="description">{!!$record->summary!!}</span>
-              <img class="thumbnail" src="{{asset($record->image)}}" alt="Lộ trình PRO IELTS">
+              <img class="thumbnail" src="/assets_pasal/img/loi-ich-khoahoc-onl.png" alt="Khóa học online">
             </div>
               <div class="col-md-6 list-item">
               <div class="row">
                 @php
                     $content = explode('|', $record->course_profit);
                 @endphp
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="item item-1">
                     <img class="thumbnail-item" src="assets_pasal/icon/lotrinh1.png" />
                     <p>{!!$content[0]!!}</p>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="item item-2">
                     <img class="thumbnail-item" src="assets_pasal/icon/lotrinh2.png" />
                     <p>{!!$content[1]!!}</p>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="item item-3">
                     <img class="thumbnail-item" src="assets_pasal/icon/lotrinh3.png" />
                     <p>{!!$content[2]!!}</p>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="item item-4">
                     <img class="thumbnail-item" src="assets_pasal/icon/lotrinh4.png" />
                     <p>{!!$content[3  ]!!}</p>
@@ -93,8 +93,8 @@
                  {!!$course->course_organization!!}
                 </ul>
                 <div class="price">
-                  <span class="sale-price">{{number_format($course->price)}}</span>
-                  <span class="old-price">{{number_format($course->sale_price)}} VNĐ</span>
+                  <span class="sale-price">{{number_format($course->sale_price)}}</span>
+                  <span class="old-price">{{number_format($course->price)}} VNĐ</span>
                 </div>
               </div>
               <div class="item-uudai item-uudai-1">
@@ -154,28 +154,35 @@
         <img id="pattern-testimonial" src="assets_pasal/img/Anh-3.png" alt="pattern">
       </section>
 
-       <section id="form" style="background: url(assets_pasal/img/background/pattern-2.png) var(--main-color) no-repeat;background-size: cover;">
+      <section id="form" style="background: url(assets_pasal/img/background/pattern-2.png) var(--main-color) no-repeat;background-size: cover;">
         <img id="pattern-1" src="assets_pasal/img/background/pattern-1.png" alt="pattern" />
         <div class="container">
           <div class="row">
             <div class="form-wrapper">
-              <div class="col-md-6 simon">
+              <div class="col-md-6 timer">
                <!--  <img src="{{asset('assets_pasal/img/simon.png')}}" alt="simon ielts"> -->
-            
-                <p style="text-decoration: line-through;"> {{$record->price}}</p>
-                 {{$record->sale_price}}
+                <h4> NHẬN NGAY ƯU ĐÃI </br>HỌC PHÍ ĐẶC BIỆT </h4>
+                <div class="new-price">
+                 <span>{{number_format($record->price)}} VNĐ</span>
+                </div>
+                <div class="old-price">
+                <span style="text-decoration: line-through;"> {{number_format($record->sale_price)}} VNĐ</span>
+                </div>
+                
+                 @if($record->sale_time)
                      @php
                      $time = explode(' ',$record->sale_time);
                      $time1= $time[0];
                      $time2= $time[1];
                      @endphp
                <div class='countdown' data-date="{{$time1}}" data-time="{{$time2}}"></div>
+               @endif
               </div>
               <div class="form-content">
                 <div class="col-md-6 offset-md-6">
                   <form action="{!!route('home.sign_up_advise2')!!}"  method="post" enctype="multipart/form-data">
                     @csrf
-                    <h4><b>ĐĂNG KÝ TƯ VẤN</b> LỘ TRÌNH HỌC IELTS</h4>
+                    <h4><b>ĐĂNG KÝ TƯ VẤN</b> KHÓA HỌC PRO IELTS ONLINE</h4>
                     <p>Pasal cam kết giúp bạn chinh phục mục tiêu IELTS với lộ trình học tinh gọn - hiệu quả - tối ưu chi phí !</p>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/user.png')}}" alt="icon" />
@@ -191,12 +198,14 @@
                     </div>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/course.png')}}" alt="icon" />
-                      <select name="course_id" class="pick_course">
-                        <option style="color: orange;" value="" disabled selected>Lộ trình pro ielts</option>
+                      <select name="course_id" id="course_id" class="pick_course">
                         @foreach($coursess as $course)
-                        <option value="{{$course->id}}">{!!$course->title!!}</option>
+                        <option value="{{$course->id}}" @if ($course->id == 15) selected @endif>{!!$course->title!!}</option>
                         @endforeach
                       </select>
+                      @foreach($coursess as $course)
+                      <input type="hidden" id="course-{{$course->id}}" data-sale-price="{!!$course->sale_price!!}" data-price="{!!$course->price!!}"/>
+                        @endforeach
                     </div>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/location.png')}}" alt="icon" />

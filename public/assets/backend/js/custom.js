@@ -29,7 +29,8 @@ if ($('.pickadate').length) {
 }
 if ($('.ckeditor').length) {
     if (typeof (CKEDITOR) !== 'undefined' && $('#content').length)
-        CKEDITOR.replace('content');
+       var editor =  CKEDITOR.replace('content');
+        CKFinder.setupCKEditor( editor );
 }
 // Default initialization
 if ($('.form-check-input-styled').length) {

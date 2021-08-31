@@ -32,7 +32,8 @@
 <script src="{!! asset('assets/global_assets/js/plugins/pickers/daterangepicker.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/plugins/bootbox/bootbox.min.js') !!}"></script>
 <script src="{!!asset('assets/frontend/js/sweetalert.min.js')!!}"></script> 
+<script src="{!! asset('assets/backend/ckfinder/ckfinder.js') !!}"></script>
 <script src="{!! asset('assets/backend/js/common.js') !!}"></script>
-<script src="{!! asset('assets/backend/js/custom.js') !!}"></script>
+<script src="{!! asset('assets/backend/js/custom.js?v=1.0') !!}"></script>
 <script src="{!! asset('assets/js/app.js') !!}"></script>
 <script src="{!! asset('assets/global_assets/js/demo_pages/dashboard.js') !!}"></script>

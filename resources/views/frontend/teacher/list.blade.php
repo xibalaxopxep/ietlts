@@ -8,14 +8,22 @@
         <h3>ĐỘI NGŨ <b>GIẢNG VIÊN IELTS</b> TẠI PASAL</h3>
           <div class="container">
           <div class="row mt-30">
+          <div class="owl-carousel owl-theme teacher-slide">
             @foreach($records as $record)
-            <div class="col-md-4">
+              @if ($loop->index%2 == 0)
+              <div class="flex-container">
+              @endif
+              
               <div class="item" style="background: url({{asset($record->avatar)}}) no-repeat;">
-                <h4>{{$record->name}}</h4>
+                <h4>{{$record->name}} {{$loop->index}}</h4>
                 <p>8.5 IELTS</p>
               </div>
-            </div>
+              @if ($loop->index%2 == 1)
+              </div>
+              @endif
+              
           @endforeach
+          </div>
           </div>
         </div>
       </section>

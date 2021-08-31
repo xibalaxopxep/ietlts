@@ -40,6 +40,7 @@ class AuthController extends Controller {
             session_start();
             $_SESSION['KCFINDER'] = []; //
             $_SESSION['KCFINDER'] = array('disabled' => false, 'uploadURL' => "/public/upload");
+            $_SESSION['IsAuthorized'] = $user;
             return Redirect::route('admin.index');
         }
         return Redirect::route('login')->with('error', 'Wrong login account');

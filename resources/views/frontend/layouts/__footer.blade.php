@@ -3,7 +3,7 @@
         <div class="container">
           <div class="row">
             <div class="form-wrapper">
-              <div class="col-md-6 simon">
+              <div class="col-md-6 simon d-none d-md-block">
                 <img src="{{asset('assets_pasal/img/simon.png')}}" alt="simon ielts">
               </div>
               <div class="form-content">
@@ -113,7 +113,7 @@
       <!-- Magnific Popup core JS file -->
       <script src="{{asset('assets_pasal/magnific-popup/jquery.magnific-popup.js')}}"></script>
       <script src="{{asset('assets_pasal/js/owl.carousel.min.js')}}"></script>
-      <script src="{{asset('assets_pasal/js/style.js?v=2.19')}}"></script>
+      <script src="{{asset('assets_pasal/js/style.js?v=2.48')}}"></script>
       <script src="{{asset('assets_pasal/js/countdown.js')}}"></script>
 
     </footer>

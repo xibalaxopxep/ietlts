@@ -58,7 +58,7 @@
       <!-- Magnific Popup core JS file -->
       <script src="{{asset('assets_pasal/magnific-popup/jquery.magnific-popup.js')}}"></script>
       <script src="{{asset('assets_pasal/js/owl.carousel.min.js')}}"></script>
-      <script src="{{asset('assets_pasal/js/style.js?v=2.23')}}"></script>
+      <script src="{{asset('assets_pasal/js/style.js?v=2.61')}}"></script>
        <script src="{{asset('assets_pasal/js/countdown.js')}}"></script>
     </footer>
     </html>

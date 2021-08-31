@@ -1,4 +1,5 @@
 @media only screen and (max-width: 600px) {
+    select{ -webkit-appearance: none; }
     .m-mb-0
     {
         margin-top:0px !important;
@@ -12,7 +13,7 @@
         overflow-x: hidden;
         font-size: 14px;
     }
-    .owl-nav img, #pattern-about-1, #pattern-about-2, #pattern-about-3, #course-content-pattern
+    .owl-nav img, #pattern-about-1, #pattern-about-2, #pattern-about-3, #course-content-pattern, #pattern-pp-udiem, .lotrinh-loiich .thumbnail, #teacher-bg, #lotrinh-loiich-pattern-1
     {
     display: none;
     }
@@ -30,7 +31,7 @@
     }
     #pattern-about-4
     {
-        background: none;
+        background: none !important;
         bottom: calc(50% - 22.5px);
         right: calc(50% - 22.5px);
         padding: 0px;
@@ -42,4 +43,327 @@
     text-align: left;
     margin-top: 10px;
     }
+    section.why .item .icon img
+    {
+       padding: 15px;
+    height: auto;
+    width: 100%;
+    display: block;
+    float: left;
+    }
+    section.why .item h4
+    {
+            font-size: 18px;
+    margin-bottom: 0px;
+    }
+    section.why .item a
+    {
+        padding: 10px;
+    margin: 10px;
+    }
+    .btn-submary
+    {
+        font-size: 16px;
+    }
+    section.course .item .thumbnail
+    {
+        height: 250px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        padding: 1px;
+    }
+    section.course .item .info
+    {
+        padding: 0px;   
+    }
+    section.course .item img
+    {
+        border-radius: 0px;
+    }
+    section.why .item .icon
+    {
+        padding: 0px;
+        height: auto;
+    }
+    section.why .item
+    {
+        margin-bottom: 20px;
+    }
+
+
+.menu-mobile li ul
+{
+        padding-left: 10px;
+    height: 0px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+.item-menu-mobile
+{
+        font-weight: bold;
+    padding: 10px 0px;
+}
+
+#menuToggle {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 25px;
+  left: 25px;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input
+{
+  display: flex;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+}
+
+#menuToggle span
+{
+  display: flex;
+  width: 29px;
+  height: 2px;
+  margin-bottom: 5px;
+  position: relative;
+  background: var(--main-color);
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 5px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-3px, -1px);
+  background: #36383F;
+}
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu
+{
+    position: fixed;
+    width: 70vw;
+    height: 100%;
+    box-shadow: 0 0 10px #85888c;
+    margin: -40px 0 0 -50px;
+    padding: 50px;
+    padding-top: 96px;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    overflow-y: scroll;
+    padding-right: 7px;
+    padding-left: 30px;
+}
+
+#menu li
+{
+  padding: 10px 0;
+  transition-delay: 2s;
+     
+}
+#menu>li
+{
+     padding-left: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+#background-about
+{
+    width: 100%;
+    position: relative;
+}
+.about-page .text-info
+{
+    padding-left: 0px;
+    margin-top: 20px;
+}
+.about-page
+{
+    padding: 0px;
+}
+.pp-about .btn-about
+{
+    font-size: 16px;
+    padding: 10px 20px;
+}
+.pp-uudiem img
+{
+    height: auto !important;
+}
+section.dangky-khoahoc .btn-white
+{
+    font-size: 18px;
+}
+#form .timer
+{
+        position: static;
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px 0px;
+}
+#form .timer h4
+{
+    font-size: 23px;
+}
+#form .new-price span
+{
+    font-size: 30px;
+}
+.table-lich h4
+{
+    font-size: 14px;
+}
+.lichkhaigiang-page table *
+{
+    font-size: 12px;
+}
+.lichkhaigiang-page table>thead>tr>th:first-child, .lichkhaigiang-page table>tbody>tr>th:first-child
+{
+    padding-left: 0px;
+    padding: 0px 10px;
+}
+.lotrinh-about
+{
+    padding: 15px;
+}
+.countdown-container .countdown-value
+{
+    font-size: 35px;
+}
+#form.form-sidebar.fixed
+{
+    position: static;
+}
+.header-btn
+{
+    display: none;
+}
+#header-top.fixed-top header
+{
+    height: 70px;
+    padding: 0px !important;
+}
+#header-top.fixed-top header .logo
+{
+  position: absolute;
+    top: 37px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+#header-top
+{
+        position: absolute;
+    width: 100vw;
+    top: 10px;
+}
+.content-wrapper
+{
+    padding-top: 100px;
+}
+#header-top header
+{
+    padding: 0px !important;
+}
+#header-top.fixed-top
+{
+    position: fixed;
+    top: 0px;
+}
+header nav
+{
+    z-index: 999;
+}
+.teacher-page section.about h4
+{
+    font-size: 18px;
+    text-align: center;
+}
+.lotrinh-loiich .item .thumbnail-item
+{
+    width: 70px;
+    border-radius: 38px 10px 10px 10px;
+}
+.lotrinh-loiich .item
+{
+        min-height: 326px;
+    margin-bottom: 20px;
+}
+section.dangky-khoahoc
+{
+    margin-top: 10px;
+}
+.noidung-khoahoc .item .info
+{
+    min-height: auto;
+}
+.noidung-khoahoc .item-2
+{
+    margin-top: 10px;
+}
+.noidung-khoahoc .content
+{
+    margin-top: 10px;
+    padding-top: 425px;
+}
+#course-content-pattern
+{
+display: block;
+    top: 0px;
+    width: 100vw;
+    left: 0px;
+    height: 400px;
+    object-fit: contain;
+}
+.lotrinh-loiich .item p
+{
+    padding: 10px;
+    margin: 0px;
+}
+#form .form-wrapper
+{
+    padding: 0px;
+}
+.lotrinh-content .item
+{
+    height: auto;
+    padding-bottom: 135px;
+}
 }

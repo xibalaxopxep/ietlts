@@ -32,22 +32,22 @@
 <h3 class="mb-40"><b>PASAL</b> VÀ NHỮNG CON SỐ</h3>
     <div class="container">
         <div class="row">
-            <div class="item col-md-3 col-xs-6 text-center">
+            <div class="item col-md-3 col-6 text-center">
                 <img class="icon" src="/assets_pasal/icon/about-1.png" alt="icon"/>
                 <p style="margin-top: 10px; margin-bottom: 0px;"><b>08 Trung tâm</b></p>
                 <p>trên toàn quốc</p>
             </div>
-            <div class="item col-md-3 col-xs-6 text-center">
+            <div class="item col-md-3 col-6 text-center">
                 <img class="icon" src="/assets_pasal/icon/about-2.png" alt="icon"/>
                 <p style="margin-top: 10px; margin-bottom: 0px;"><b>03 Chuyên gia</b></p>
                 <p>hàng đầu thế giới</p>
             </div>
-            <div class="item col-md-3 col-xs-6 text-center">
+            <div class="item col-md-3 col-6 text-center">
                 <img class="icon" src="/assets_pasal/icon/about-3.png" alt="icon"/>
                 <p style="margin-top: 10px; margin-bottom: 0px;"><b>12000+ Học viên</b></p>
                 <p>mỗi năm tin chọn</p>
             </div>
-            <div class="item col-md-3 col-xs-6 text-center">
+            <div class="item col-md-3 col-6 text-center">
                 <img class="icon" src="/assets_pasal/icon/about-4.png" alt="icon"/>
                 <p style="margin-top: 10px; margin-bottom: 0px;"><b>97% Học viên</b></p>
                 <p>đạt mục tiêu đầu ra</p>
@@ -59,6 +59,10 @@
 .number b
 {
     color: var(--main-color);
+}
+.content-about-page li
+{
+list-style: revert;
 }
 </style>
 @stop

@@ -20,35 +20,35 @@
       <section class="lotrinh-loiich py-40">
         <div class="container">
           <div class="row">
-           <div class="col-md-6">
+           <div class="col-md-6" style="position: relative;">
               <h4>LỢI ÍCH CỦA LỘ TRÌNH<br><b>{!!$record->title!!} ({!!$record->level!!})</b></h4>
               <span class="description">{!!$record->summary!!}</span>
-              <img class="thumbnail" src="{{asset($record->image)}}" alt="Lộ trình PRO IELTS">
+              <img class="thumbnail" src="/assets_pasal/img/loi-ich-lotrinh.png" alt="Lộ trình PRO IELTS">
             </div>
               <div class="col-md-6 list-item">
               <div class="row">
                 @php
                     $content = explode('|', $record->course_profit);
                 @endphp
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="item item-1">
                     <img class="thumbnail-item" src="assets_pasal/icon/lotrinh1.png" />
                     <p>{!!$content[0]!!}</p>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="item item-2">
                     <img class="thumbnail-item" src="assets_pasal/icon/lotrinh2.png" />
                     <p>{!!$content[1]!!}</p>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="item item-3">
                     <img class="thumbnail-item" src="assets_pasal/icon/lotrinh3.png" />
                     <p>{!!$content[2]!!}</p>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="item item-4">
                     <img class="thumbnail-item" src="assets_pasal/icon/lotrinh4.png" />
                     <p>{!!$content[3  ]!!}</p>
@@ -96,8 +96,8 @@
                  {!!$course->course_organization!!}
                 </ul>
                 <div class="price">
-                  <span class="sale-price">{{number_format($course->price)}}</span>
-                  <span class="old-price">{{number_format($course->sale_price)}} VNĐ</span>
+                  <span class="sale-price">{{number_format($course->sale_price)}}</span>
+                  <span class="old-price">{{number_format($course->price)}} VNĐ</span>
                 </div>
               </div>
               <div class="item-uudai item-uudai-1">
@@ -201,12 +201,14 @@
                     </div>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/course.png')}}" alt="icon" />
-                      <select name="course_id" class="pick_course">
-                        <option style="color: orange;" value="" disabled selected>Lộ trình PRO IELTS</option>
+                      <select name="course_id" id="course_id" class="pick_course">
                         @foreach($coursess as $course)
-                        <option value="{{$course->id}}">{!!$course->title!!}</option>
+                        <option value="{{$course->id}}" @if ($course->id == 11) selected @endif>{!!$course->title!!}</option>
                         @endforeach
                       </select>
+                      @foreach($coursess as $course)
+                      <input type="hidden" id="course-{{$course->id}}" data-sale-price="{!!$course->sale_price!!}" data-price="{!!$course->price!!}"/>
+                        @endforeach
                     </div>
                     <div class="form-group">
                       <img class="icon" src="{{asset('assets_pasal/icon/location.png')}}" alt="icon" />
@@ -252,7 +254,7 @@
                     <td>{{$off->course_name}} ({{$off->level}})</td>
                     <td class="text-center" ><p class="day"><b>{{$off->schedule}}</b></p><p>{{$off->schedule_detail}}</p></td>
                     <td class="text-center" >{{date('d-m-Y', strtotime($off->opening))}}</td>
-                    <td class="text-center" ><input  name="radio" value="Đăng ký"  class="radio btn btn-danger" type="button" data-course_id="{{$off->course_id}}" data-schedule_id="{{$off->schedule_id}}"  data-address_id="{{$off->contact_address_id}}"/></td>
+                    <td class="text-center" ><input name="radio" value="Đăng ký"  class="radio radio-btn btn btn-danger" type="button" data-course_id="{{$off->course_id}}" data-schedule_id="{{$off->schedule_id}}"  data-address_id="{{$off->contact_address_id}}"/></td>
                   </tr>
                   @endforeach
                   
